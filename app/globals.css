@@ -8,13 +8,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-guminert), ui-sans-serif, system-ui, sans-serif;
+  --font-guminert: var(--font-guminert);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
@@ -22,5 +22,42 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-guminert), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer components {
+  .btn-underline {
+    @apply pb-1.25 border-b-[1.5px] border-gray-200 inline-flex justify-center items-center gap-5;
+    & span {
+      @apply justify-center text-gray-200 text-lg font-semibold leading-7;
+    }
+    & svg {
+      @apply transition-all duration-300;
+    }
+    &:hover {
+      svg {
+        rotate: -45deg;
+      }
+    }
+  }
+
+  .btn-primary {
+    @apply px-7 py-4 bg-white inline-flex justify-center items-center gap-5 text-black transition-all duration-300;
+    & span {
+      @apply justify-start text-xl font-semibold font-['Guminert'] leading-8;
+    }
+    & svg {
+      @apply transition-all duration-300;
+    }
+    &:hover {
+      @apply bg-neutral-900 text-white;
+      svg {
+        @apply -rotate-45;
+      }
+    }
+  }
+
+  .section-title {
+    @apply text-gray-200 text-5xl font-extrabold leading-19.5 tracking-wide;
+  }
 }

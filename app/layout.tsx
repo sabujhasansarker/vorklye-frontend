@@ -1,5 +1,34 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
+import "swiper/css";
 import "./globals.css";
+
+const guminert = localFont({
+  src: [
+    {
+      path: "../public/fonts/guminert/Guminert.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/guminert/Guminert-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/guminert/Guminert-SemiBold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/guminert/Guminert-ExtraBold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  variable: "--font-guminert",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -8,8 +37,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${guminert.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );
 }
