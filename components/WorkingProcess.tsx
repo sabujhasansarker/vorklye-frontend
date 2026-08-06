@@ -36,7 +36,7 @@ const WorkingProcess: React.FC<Props> = () => {
             <div className="flex mt-13.5">
               <a
                 href="#"
-                className="size- px-5 py-3 outline -outline-offset-1 outline-neutral-500 inline-flex justify-center items-center gap-14 text-neutral-500 text-base font-medium leading-6"
+                className="px-5 py-3 outline -outline-offset-1 outline-neutral-500 inline-flex justify-center items-center gap-14 text-neutral-500 text-base font-medium leading-6"
               >
                 Video meeting
               </a>

@@ -25,12 +25,12 @@ const CaseStudies: React.FC<Props> = () => {
               Tailored consult service businesses, focusing on growth
               strategies. Sed velit dignissim sodales ut eu sminte
             </p>
-            <div className="size- inline-flex justify-start items-start gap-28 mt-15">
-              <div className="size- inline-flex flex-col justify-start items-start gap-3.5">
+            <div className="inline-flex justify-start items-start gap-28 mt-15">
+              <div className="inline-flex flex-col justify-start items-start gap-3.5">
                 <div className="justify-start text-neutral-500 text-sm font-semibold uppercase leading-6">
                   Services
                 </div>
-                <div className="size- flex flex-col justify-start items-start gap-3">
+                <div className="flex flex-col justify-start items-start gap-3">
                   <div className="justify-start text-gray-200 text-lg font-medium leading-7">
                     Migration
                   </div>
@@ -39,21 +39,21 @@ const CaseStudies: React.FC<Props> = () => {
                   </div>
                 </div>
               </div>
-              <div className="size- inline-flex flex-col justify-start items-start gap-3.5">
+              <div className="inline-flex flex-col justify-start items-start gap-3.5">
                 <div className="justify-start text-neutral-500 text-sm font-semibold uppercase leading-6">
                   Industry
                 </div>
-                <div className="size- flex flex-col justify-start items-start gap-3">
+                <div className="flex flex-col justify-start items-start gap-3">
                   <div className="justify-start text-gray-200 text-lg font-medium leading-7">
                     Beauty
                   </div>
                 </div>
               </div>
-              <div className="size- inline-flex flex-col justify-start items-start gap-3.5">
+              <div className="inline-flex flex-col justify-start items-start gap-3.5">
                 <div className="justify-start text-neutral-500 text-sm font-semibold uppercase leading-6">
                   Published
                 </div>
-                <div className="size- flex flex-col justify-start items-start gap-3">
+                <div className="flex flex-col justify-start items-start gap-3">
                   <div className="justify-start text-gray-200 text-lg font-medium leading-7">
                     2021
                   </div>

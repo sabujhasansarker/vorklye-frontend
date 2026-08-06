@@ -33,13 +33,13 @@ const Service: React.FC<Props> = () => {
               <div className="flex mt-7 gap-x-2 gap-y-3">
                 <a
                   href="#"
-                  className="size- px-5 py-3 bg-neutral-900 inline-flex justify-center items-center gap-14 text-gray-200 text-sm font-medium leading-6"
+                  className="px-5 py-3 bg-neutral-900 inline-flex justify-center items-center gap-14 text-gray-200 text-sm font-medium leading-6"
                 >
                   Shopify Store Setup
                 </a>
                 <a
                   href="#"
-                  className="size- px-5 py-3 bg-neutral-900 inline-flex justify-center items-center gap-14 text-gray-200 text-sm font-medium leading-6"
+                  className="px-5 py-3 bg-neutral-900 inline-flex justify-center items-center gap-14 text-gray-200 text-sm font-medium leading-6"
                 >
                   Custom Shopify Development
                 </a>

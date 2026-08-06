@@ -9,19 +9,16 @@ import Hero from "@/components/Hero";
 import Service from "@/components/Service";
 import Testimonial from "@/components/Testimonial";
 import WorkingProcess from "@/components/WorkingProcess";
+import { useEffect } from "react";
 import gsap from "gsap";
-import { ScrollSmoother, ScrollTrigger } from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Home = () => {
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-  const smoother = ScrollSmoother.create({
-    wrapper: "#smooth-wrapper",
-    content: "#smooth-content",
-    smooth: 2,
-    effects: true,
-    smoothTouch: false,
-    normalizeScroll: true,
-  });
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+  }, []);
   return (
     <div id="smooth-wrapper">
       <div id="smooth-content">
