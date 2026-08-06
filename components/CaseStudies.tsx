@@ -1,4 +1,4 @@
-import { ArrowDownRight } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import React from "react";
 
 type Props = {};
@@ -72,7 +72,7 @@ const CaseStudies: React.FC<Props> = () => {
       <div className="m-auto text-center mt-25">
         <a href="#" className="btn-primary">
           <span>More works</span>
-          <ArrowDownRight />
+          <ArrowUpRight />
         </a>
       </div>
     </div>
