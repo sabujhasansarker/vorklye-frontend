@@ -85,18 +85,3 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
-
-.px-blur-bottom {
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  bottom: 0;
-  flex: none;
-  height: 200px;
-  left: 0;
-  mask: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, black 100%);
-  overflow: visible;
-  position: fixed;
-  right: 0;
-  pointer-events: none;
-  z-index: 999;
-}

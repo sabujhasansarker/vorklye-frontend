@@ -41,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col font-sans">
         {children}
 
-        <div className="px-blur-bottom"></div>
+        <div className="fixed bottom-0 left-0 right-0 z-999 h-50 flex-none pointer-events-none overflow-visible backdrop-blur-md [mask:linear-gradient(180deg,rgba(0,0,0,0)_0%,black_100%)]"></div>
       </body>
     </html>
   );
