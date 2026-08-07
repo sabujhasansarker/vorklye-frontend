@@ -1,51 +1,62 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Service = {
-  number: string;
+type CaseStudy = {
+  id: number;
   title: string;
   description: string;
-  tags: string[];
+  services: string[];
+  industry: string;
+  published: string;
+  image: string;
 };
 
-const services: Service[] = [
+const caseStudies: CaseStudy[] = [
   {
-    number: "01",
-    title: "WordPress Development",
+    id: 1,
+    title: "Capital Growth Solutions",
     description:
-      "Custom Shopify and Shopify Plus builds designed for performance, flexibility, checkout, markets, and location-aware logic.",
-    tags: ["Shopify Store Setup", "Custom Shopify Development"],
+      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
+    services: ["Migration", "Integrations"],
+    industry: "Beauty",
+    published: "2021",
+    image: "/images/case-studies/1.png",
   },
   {
-    number: "02",
-    title: "WordPress Development 2",
+    id: 2,
+    title: "Rovero Commerce Platform",
     description:
-      "Custom Shopify and Shopify Plus builds designed for performance, flexibility, checkout, markets, and location-aware logic.",
-    tags: ["Shopify Store Setup", "Custom Shopify Development"],
+      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
+    services: ["Migration", "Integrations"],
+    industry: "Fashion",
+    published: "2023",
+    image: "/images/case-studies/1.png",
   },
   {
-    number: "03",
-    title: "WordPress Development 3",
+    id: 3,
+    title: "Rovero Commerce Platform",
     description:
-      "Custom Shopify and Shopify Plus builds designed for performance, flexibility, checkout, markets, and location-aware logic.",
-    tags: ["Shopify Store Setup", "Custom Shopify Development"],
+      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
+    services: ["Migration", "Integrations"],
+    industry: "Fashion",
+    published: "2023",
+    image: "/images/case-studies/1.png",
   },
 ];
 
-const ServiceSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+const CaseStudiesSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      const items = gsap.utils.toArray(".service-item");
-
+      const items = gsap.utils.toArray(".case-studie-item");
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: containerRef.current,
           start: "top 50px",
           end: () => `+=${items.length * 100}%`,
           pin: true,
@@ -60,91 +71,125 @@ const ServiceSection: React.FC = () => {
             item,
             {
               yPercent: 120,
-              opacity: 0,
               ease: "none",
             },
-            `service-${index}`,
+            `card-${index}`,
           ).to(
             items.slice(0, index),
             {
-              opacity: (i) => 1,
+              scale: (i) => 1 - (index - i) * 0.05,
+              opacity: (i) => 1 - (index - i) * 0.25,
               transformOrigin: "top center",
               ease: "none",
             },
-            `service-${index}`,
+            `card-${index}`,
           );
         }
       });
-    }, sectionRef);
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-35 border-b border-neutral-900 bg-black text-white relative"
-    >
-      <div className="container m-auto flex gap-8.75 items-start ">
-        <div className="max-w-156.25 sticky top-0">
-          <p className="text-gray-200 text-lg font-medium leading-8">
-            /What we build
-          </p>
-          <h2 className="section-title mt-7.5 text-4xl font-bold">
-            End-to-end Shopify systems, designed to scale the brand behind the
-            store.
+    <section className="py-35 bg-black border-b border-neutral-900 text-white relative">
+      <div className="container m-auto px-4">
+        <div className="max-w-156.25">
+          <p className="text-neutral-400 text-lg font-medium">/Case Studies</p>
+          <h2 className="text-4xl md:text-5xl font-bold mt-7.5 leading-tight">
+            Real stories, real results – see what we’ve made possible.
           </h2>
         </div>
 
-        {/* CSS Grid কন্টেইনার (এখানে grid ক্লাস ব্যবহার করা হয়েছে) */}
         <div
           ref={containerRef}
-          className="service-items w-full grid grid-cols-1 grid-rows-1 h-full"
+          className="casestudie-container w-full mt-25 relative h-[75vh]"
         >
-          {services.map(({ number, title, description, tags }, index) => {
+          {caseStudies.map((item, index) => {
+            const stepTop = index * 50;
             return (
               <div
-                key={number}
-                // col-start-1 এবং row-start-1 এর কারণে সবগুলো একই জায়গায় একটার ওপর আরেকটা বসবে
-                className="service-item col-start-1 row-start-1 p-10 border border-neutral-900 w-full bg-neutral-950 flex flex-col justify-between overflow-hidden"
+                key={item.id}
+                className="case-studie-item border-2 border-neutral-900 absolute left-0 w-full flex justify-between items-center bg-black overflow-hidden"
                 style={{
-                  transform: `translateY(${index * 100}px)`,
+                  top: `${stepTop}px`,
                   willChange: "transform, opacity",
                   zIndex: index + 1,
                 }}
               >
-                <div>
-                  <div className="flex gap-5 items-center">
-                    <span className="text-gray-400 text-base font-extrabold">
-                      {number}
-                    </span>
-                    <h4 className="text-gray-200 text-3xl font-semibold">
-                      {title}
-                    </h4>
-                  </div>
-                  <p className="max-w-136.25 text-neutral-400 text-base font-medium leading-7 mt-8">
-                    {description}
-                  </p>
-                </div>
+                <div className="p-15 w-1/2 h-full flex flex-col justify-center">
+                  <img src="images/brand/3.png" className="w-fit" alt="" />
 
-                <div className="flex flex-wrap mt-7 gap-2">
-                  {tags.map((tag) => (
-                    <a
-                      key={tag}
-                      href="#"
-                      className="px-5 py-3 bg-neutral-900 text-gray-200 text-sm font-medium rounded-md hover:bg-neutral-800 transition-colors"
-                    >
-                      {tag}
-                    </a>
-                  ))}
+                  {/* ডাইনামিক ডেটা বসানো হয়েছে */}
+                  <h4 className="text-gray-200 text-3xl font-semibold leading-9 my-5">
+                    {item.title}
+                  </h4>
+                  <p className="max-w-123.75 text-gray-200 text-lg font-medium leading-8">
+                    {item.description}
+                  </p>
+
+                  <div className="inline-flex justify-start items-start gap-28 mt-10">
+                    <div className="inline-flex flex-col justify-start items-start gap-3.5">
+                      <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
+                        Services
+                      </div>
+                      <div className="flex flex-col justify-start items-start gap-1">
+                        {item.services.map((service, sIndex) => (
+                          <div
+                            key={sIndex}
+                            className="text-gray-200 text-lg font-medium leading-7"
+                          >
+                            {service}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="inline-flex flex-col justify-start items-start gap-3.5">
+                      <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
+                        Industry
+                      </div>
+                      <div className="text-gray-200 text-lg font-medium leading-7 mt-1">
+                        {item.industry}
+                      </div>
+                    </div>
+
+                    <div className="inline-flex flex-col justify-start items-start gap-3.5">
+                      <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
+                        Published
+                      </div>
+                      <div className="text-gray-200 text-lg font-medium leading-7 mt-1">
+                        {item.published}
+                      </div>
+                    </div>
+                  </div>
+
+                  <a href="#" className="btn-underline mt-12 w-fit">
+                    <span>More about us</span>
+                    <ArrowDownRight />
+                  </a>
+                </div>
+                <div className="w-1/2 overflow-hidden">
+                  <img
+                    src={item.image}
+                    className="w-full h-full object-cover object-center"
+                    alt={item.title}
+                  />
                 </div>
               </div>
             );
           })}
+        </div>
+
+        <div className="m-auto text-center mt-25">
+          <a href="#" className="btn-primary">
+            <span>More works</span>
+            <ArrowUpRight />
+          </a>
         </div>
       </div>
     </section>
   );
 };
 
-export default ServiceSection;
+export default CaseStudiesSection;
