@@ -2,11 +2,11 @@
 import About from "@/components/About";
 import Activity from "@/components/Activity";
 import Brand from "@/components/Brand";
-import CaseStudies from "@/components/CaseStudies";
+import CaseStudiesSection from "@/components/CaseStudies";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import Service from "@/components/Service";
+import ServiceSection from "@/components/Service";
 import Testimonial from "@/components/Testimonial";
 import WorkingProcess from "@/components/WorkingProcess";
 import gsap from "gsap";
@@ -16,12 +16,10 @@ import { useEffect } from "react";
 
 const Home = () => {
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
     const ctx = gsap.context(() => {
-      ScrollSmoother.create({
+      const smoother = ScrollSmoother.create({
         smooth: 2,
         effects: true,
         normalizeScroll: true,
@@ -29,6 +27,7 @@ const Home = () => {
 
       const sectionTitles = gsap.utils.toArray<HTMLElement>(".section-title");
 
+      // Split title animation
       sectionTitles.forEach((title) => {
         const split = SplitText.create(title, {
           type: "words,chars",
@@ -48,6 +47,11 @@ const Home = () => {
           stagger: 0.02,
         });
       });
+
+      return () => {
+        smoother.kill();
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
     });
 
     return () => ctx.revert();
@@ -58,9 +62,9 @@ const Home = () => {
       <div id="smooth-content">
         <Hero />
         <About />
-        <CaseStudies />
+        <CaseStudiesSection />
         <Brand />
-        <Service />
+        <ServiceSection />
         <WorkingProcess />
         <FAQ />
         <Activity />
