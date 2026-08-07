@@ -10,7 +10,7 @@ const Testimonial: React.FC<Props> = () => {
           / Client Stories
         </p>
         <h2 className="section-title mt-4">
-          <span className="text-neutral-500">Success</span>
+          <span className="text-neutral-500">Success </span>
           Stories
           <br />
           That Inspire Us
