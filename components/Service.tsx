@@ -103,7 +103,7 @@ const ServiceSection: React.FC = () => {
             return (
               <div
                 key={number}
-                className="service-item p-10 border border-neutral-900 absolute left-0 w-full bg-neutral-950 shadow-2xl flex flex-col justify-between overflow-hidden"
+                className="service-item p-10 border border-neutral-900 absolute left-0 w-full bg-neutral-950 flex flex-col justify-between overflow-hidden"
                 style={{
                   top: `${stepTop}px`,
                   willChange: "transform, opacity",
