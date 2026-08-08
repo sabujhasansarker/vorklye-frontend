@@ -1,5 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
 import React from "react";
+import { ButtonUnderlineBig } from "./Button";
 
 type Props = {};
 
@@ -14,13 +14,7 @@ const About: React.FC<Props> = () => {
             className="text-center section-title"
             dangerouslySetInnerHTML={{ __html: aboutText }}
           ></p>
-          <a
-            href="#"
-            className="btn-underline mt-17.5 text-2xl font-semibold pb-2.5"
-          >
-            <span>More about us</span>
-            <ArrowUpRight size={20} />
-          </a>
+          <ButtonUnderlineBig />
         </div>
       </div>
     )

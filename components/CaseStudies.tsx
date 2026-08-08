@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import React, { useEffect, useRef } from "react";
+import Button, { ButtonUnderline } from "./Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -158,11 +158,7 @@ const CaseStudiesSection: React.FC = () => {
                       </div>
                     </div>
                   </div>
-
-                  <a href="#" className="btn-underline mt-12 w-fit">
-                    <span>More about us</span>
-                    <ArrowDownRight />
-                  </a>
+                  <ButtonUnderline text={"More about us"} />
                 </div>
                 <div className="w-1/2 overflow-hidden">
                   <img
@@ -177,10 +173,7 @@ const CaseStudiesSection: React.FC = () => {
         </div>
 
         <div className="m-auto text-center">
-          <a href="#" className="btn-primary">
-            <span>More works</span>
-            <ArrowUpRight />
-          </a>
+          <Button text="More works" />
         </div>
       </div>
     </section>

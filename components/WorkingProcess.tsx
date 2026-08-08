@@ -1,13 +1,13 @@
 "use client";
 
-import { ArrowDownRight } from "lucide-react";
 import React from "react";
+import Button from "./Button";
 
 type ProcessStep = {
   number: string;
   title: string;
   description: string;
-  tag: string;
+  tags: string[];
 };
 
 const processSteps: ProcessStep[] = [
@@ -16,28 +16,37 @@ const processSteps: ProcessStep[] = [
     title: "Discovery & Research",
     description:
       "We start by understanding your business, goals, target audience, and competitors to build a clear project foundation.",
-    tag: "Video meeting",
+    tags: [
+      "Video meeting",
+      "Discovery",
+      "Video meeting",
+      "Discovery",
+      "Video meeting",
+      "Discovery",
+      "Video meeting",
+      "Discovery",
+    ],
   },
   {
     number: "02",
     title: "Strategy & Design",
     description:
       "Crafting bespoke wireframes, interactive UI prototypes, and design systems tailored specifically for your brand identity.",
-    tag: "Figma & Wireframing",
+    tags: ["Video meeting"],
   },
   {
     number: "03",
     title: "Development & Build",
     description:
       "Converting designs into high-performance, pixel-perfect Shopify or WordPress stores with seamless integrations.",
-    tag: "Custom Development",
+    tags: ["Video meeting"],
   },
   {
     number: "04",
     title: "Scale & Optimization",
     description:
       "Rigorous testing, SEO optimization, speed enhancement, and ongoing support to ensure your store continues to grow.",
-    tag: "Launch & Support",
+    tags: ["Video meeting"],
   },
 ];
 
@@ -55,10 +64,7 @@ const WorkingProcess: React.FC = () => {
             </p>
             <h2 className="section-title mt-4">How it works</h2>
           </div>
-          <a href="#" className="btn-primary">
-            <span>Get in touch</span>
-            <ArrowDownRight />
-          </a>
+          <Button text="Get in touch" />
         </div>
       </div>
 
@@ -70,23 +76,27 @@ const WorkingProcess: React.FC = () => {
           {processSteps.map((step) => (
             <div
               key={step.number}
-              className="working-process-item shrink-0 w-[500px] p-8 border border-neutral-900 bg-neutral-950 rounded-2xl flex flex-col justify-between"
+              className="working-process-item shrink-0 w-125 p-8 border border-neutral-900 bg-neutral-950 flex flex-col justify-between"
             >
               <div>
-                <p className="justify-start text-neutral-500 text-2xl font-semibold leading-7">
+                <p className="text-neutral-500 text-2xl font-semibold leading-7">
                   {step.number}
                 </p>
-                <h4 className="text-gray-200 text-2xl font-semibold leading-8 mt-5">
+                <h4 className="text-gray-200 text-2xl font-semibold leading-8 mt-10">
                   {step.title}
                 </h4>
                 <p className="text-neutral-400 text-base font-medium leading-6 mt-6">
                   {step.description}
                 </p>
               </div>
-              <div className="flex mt-8">
-                <span className="px-5 py-2.5 outline -outline-offset-1 outline-neutral-700 inline-flex justify-center items-center text-neutral-300 text-sm font-medium leading-6 rounded-md">
-                  {step.tag}
-                </span>
+              <div className="flex mt-8 gap-x-5 gap-y-2 flex-wrap">
+                {step.tags &&
+                  step.tags.map((tag) => (
+                    <p className="inline-flex justify-center items-center gap-5 text-sm text-neutral-400 font-semibold leading-6">
+                      <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full"></span>{" "}
+                      {tag}
+                    </p>
+                  ))}
               </div>
             </div>
           ))}

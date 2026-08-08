@@ -101,7 +101,7 @@ const ServiceSection: React.FC = () => {
             return (
               <div
                 key={number}
-                className="service-item p-10 border border-neutral-900 absolute left-0 w-full bg-neutral-950 flex flex-col justify-between overflow-hidden"
+                className="service-item p-10 pt-8 border-2 border-neutral-900 absolute left-0 w-full bg-neutral-950 flex flex-col justify-between overflow-hidden"
                 style={{
                   top: `${stepTop}px`,
                   willChange: "transform, opacity",
@@ -109,13 +109,11 @@ const ServiceSection: React.FC = () => {
                 }}
               >
                 <div>
-                  <div className="flex gap-5 items-center">
-                    <span className="text-gray-400 text-base font-extrabold">
+                  <div className="flex gap-5 items-start">
+                    <span className="text-neutral-400 text-xl font-extrabold mt-1">
                       {number}
                     </span>
-                    <h4 className="text-gray-200 text-3xl font-semibold">
-                      {title}
-                    </h4>
+                    <h4 className="text-[26px] font-semibold">{title}</h4>
                   </div>
                   <p className="text-neutral-400 text-base font-medium leading-7 mt-8">
                     {description}
@@ -124,13 +122,12 @@ const ServiceSection: React.FC = () => {
 
                 <div className="flex flex-wrap mt-7 gap-2">
                   {tags.map((tag) => (
-                    <a
+                    <span
                       key={tag}
-                      href="#"
-                      className="px-5 py-3 bg-neutral-900 text-gray-200 text-sm font-medium rounded-md hover:bg-neutral-800 transition-colors"
+                      className="px-4 py-2 bg-neutral-900 text-gray-200 text-sm font-medium"
                     >
                       {tag}
-                    </a>
+                    </span>
                   ))}
                 </div>
               </div>

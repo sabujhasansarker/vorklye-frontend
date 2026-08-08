@@ -73,7 +73,9 @@ const FAQ: React.FC<Props> = () => {
                     </h4>
                     <ArrowUpRight
                       className={`shrink-0 transition-all duration-300 ${
-                        isActive ? "text-[#1B1B1B] rotate-90" : "text-[#1B1B1B]"
+                        isActive
+                          ? "text-neutral-300 rotate-90"
+                          : "text-[#1B1B1B]"
                       }`}
                     />
                   </button>
@@ -109,7 +111,7 @@ const FAQ: React.FC<Props> = () => {
             </h4>
             <a
               href="#"
-              className="mt-7 py-4 w-full relative bg-green-400 rounded-sm inline-flex justify-center items-center gap-2.5"
+              className="mt-7 py-4 w-full relative bg-green-400 inline-flex justify-center items-center gap-2.5"
             >
               <span className="text-black text-lg font-medium leading-7">
                 Ask Questions
