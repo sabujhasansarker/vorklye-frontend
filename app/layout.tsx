@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "swiper/css";
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${guminert.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
+        <Header />
         {children}
 
         <div className="fixed bottom-0 left-0 right-0 z-999 h-50 flex-none pointer-events-none overflow-visible backdrop-blur-md [mask:linear-gradient(180deg,rgba(0,0,0,0)_0%,black_100%)]"></div>

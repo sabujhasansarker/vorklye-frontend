@@ -91,8 +91,11 @@ const WorkingProcess: React.FC = () => {
               </div>
               <div className="flex mt-8 gap-x-5 gap-y-2 flex-wrap">
                 {step.tags &&
-                  step.tags.map((tag) => (
-                    <p className="inline-flex justify-center items-center gap-5 text-sm text-neutral-400 font-semibold leading-6">
+                  step.tags.map((tag, tagIndex) => (
+                    <p
+                      key={tagIndex}
+                      className="inline-flex justify-center items-center gap-5 text-sm text-neutral-400 font-semibold leading-6"
+                    >
                       <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full"></span>{" "}
                       {tag}
                     </p>

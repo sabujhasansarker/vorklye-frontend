@@ -24,6 +24,29 @@ const Button: React.FC<Props> = ({ text = "Button Title", href = "#" }) => {
   );
 };
 
+export const ButtonSm: React.FC<Props> = ({
+  text = "Button Title",
+  href = "#",
+}) => {
+  return (
+    <Fragment>
+      <Link
+        href={href}
+        className="btn-primary py-3 px-5 group text-[18px] leading-6 font-semibold"
+      >
+        <span className="btn-text">
+          <span>{text}</span>
+          <span>{text}</span>
+        </span>
+        <span className="btn-icon">
+          <ArrowUpRight />
+          <ArrowUpRight />
+        </span>
+      </Link>
+    </Fragment>
+  );
+};
+
 export default Button;
 
 export const ButtonUnderlineBig: React.FC<Props> = ({

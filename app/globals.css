@@ -31,13 +31,15 @@ body {
 
     &::before {
       content: "";
-      @apply w-full h-[1.5px] bg-gray-200 absolute transition-all duration-600 bottom-0 left-0;
+      @apply w-full h-[1.5px] bg-gray-200 absolute bottom-0 left-0;
+      transform-origin: right;
+      transform: scaleX(1) translateZ(0);
+      backface-visibility: hidden;
+      will-change: transform;
     }
-    &:hover {
-      &::before {
-        content: "";
-        @apply w-0;
-      }
+
+    &:hover::before {
+      animation: underline-sweep 0.8s ease-in-out;
     }
 
     .btn-text {
@@ -66,6 +68,25 @@ body {
       svg:last-child {
         @apply -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0;
       }
+    }
+  }
+
+  @keyframes underline-sweep {
+    0% {
+      transform-origin: right;
+      transform: scaleX(1) translateZ(0);
+    }
+    50% {
+      transform-origin: right;
+      transform: scaleX(0) translateZ(0);
+    }
+    50.01% {
+      transform-origin: left;
+      transform: scaleX(0) translateZ(0);
+    }
+    100% {
+      transform-origin: left;
+      transform: scaleX(1) translateZ(0);
     }
   }
 
@@ -139,4 +160,21 @@ body {
 
 .stat-item.is-active {
   opacity: 1;
+}
+
+.nav-link {
+  @apply relative inline-block pb-1;
+
+  &::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-full h-px bg-white;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  &:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
 }
