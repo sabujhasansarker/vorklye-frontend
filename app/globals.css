@@ -131,3 +131,12 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+.stat-item {
+  opacity: 0.2;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.stat-item.is-active {
+  opacity: 1;
+}

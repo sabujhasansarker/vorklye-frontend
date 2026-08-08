@@ -60,8 +60,8 @@ const FAQ: React.FC<Props> = () => {
                 <div
                   key={index}
                   className={`accordion-item border-b border-neutral-900  ${
-                    index !== 0 ? "py-8" : "pb-8"
-                  }`}
+                    index !== 0 ? "py-8" : "pb-8 "
+                  } ${index == faqItems.length - 1 ? "border-0! pb-0" : ""}`}
                 >
                   <button
                     type="button"
@@ -79,7 +79,6 @@ const FAQ: React.FC<Props> = () => {
                       }`}
                     />
                   </button>
-
                   <div
                     className="grid transition-all duration-300 ease-in-out"
                     style={{
@@ -98,9 +97,9 @@ const FAQ: React.FC<Props> = () => {
               );
             })}
           </div>
-          <div className="max-w-80 p-8 bg-neutral-900 inline-flex flex-col justify-start items-start shrink-0">
+          <div className="max-w-80 p-8 bg-neutral-900 inline-flex flex-col justify-start items-start shrink-0 rounded-sm">
             <img
-              className="size-16 relative"
+              className="size-16 relative rounded-sm"
               src="https://placehold.co/62x62"
               alt="Ariyan"
             />
@@ -111,9 +110,9 @@ const FAQ: React.FC<Props> = () => {
             </h4>
             <a
               href="#"
-              className="mt-7 py-4 w-full relative bg-green-400 inline-flex justify-center items-center gap-2.5"
+              className="mt-7 py-4 w-full relative rounded-sm bg-[#46E265] inline-flex justify-center items-center gap-2.5"
             >
-              <span className="text-black text-lg font-medium leading-7">
+              <span className="text-black text-lg font-semibold leading-7">
                 Ask Questions
               </span>
               <img

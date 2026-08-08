@@ -1,79 +1,129 @@
-import React from "react";
+"use client";
+
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Props = {};
 
-const Activity: React.FC<Props> = () => {
-  const col1 = [
-    {
-      value: "1.8M",
-      text: "We helped to get companies with $200M+ funding.",
-      active: true,
-    },
+type Stat = {
+  value: string;
+  text: string;
+};
+
+const stats: { col1: Stat[]; col2: Stat[] } = {
+  col1: [
+    { value: "1.8M", text: "We helped to get companies with $200M+ funding." },
     {
       value: "12+",
       text: "We have had quite a run in our 12+ years of working.",
     },
     { value: "99%", text: "Average 99% clients satisfaction with expertise." },
-  ];
-
-  const col2 = [
+  ],
+  col2: [
     { value: "260+", text: "Crafted responsive, user-centered website & app." },
     { value: "80+", text: "Professional skilled designers and developers." },
-  ];
+  ],
+};
+
+const StatCard: React.FC<{ stat: Stat }> = ({ stat }) => (
+  <div className="stat-item">
+    <h2 className="text-8xl font-medium leading-none text-white md:text-9xl">
+      {stat.value}
+    </h2>
+    <p className="mt-8 text-xl leading-8 text-neutral-400">{stat.text}</p>
+  </div>
+);
+
+const Activity: React.FC<Props> = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const rightColRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const section = sectionRef.current;
+      const title = titleRef.current;
+      const rightCol = rightColRef.current;
+      if (!section || !title || !rightCol) return;
+
+      const getDistance = () => rightCol.offsetHeight - title.offsetHeight;
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top -60px",
+        end: () => `+=${getDistance()}`,
+        pin: title,
+        pinType: "transform",
+        pinSpacing: false,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      });
+
+      const items = gsap.utils.toArray<HTMLElement>(".stat-item", rightCol);
+      if (items.length === 0) return;
+      const setActiveClosestToCenter = () => {
+        const centerY = window.innerHeight / 2;
+        let closestItem: HTMLElement | null = null;
+        let closestDistance = Infinity;
+
+        items.forEach((item) => {
+          const rect = item.getBoundingClientRect();
+          const itemCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(itemCenter - centerY);
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestItem = item;
+          }
+        });
+
+        items.forEach((item) => {
+          item.classList.toggle("is-active", item === closestItem);
+        });
+      };
+
+      ScrollTrigger.create({
+        trigger: rightCol,
+        start: "top bottom",
+        end: "bottom top",
+        onUpdate: setActiveClosestToCenter,
+        onRefresh: setActiveClosestToCenter,
+      });
+
+      setActiveClosestToCenter();
+    },
+    { scope: sectionRef },
+  );
+
   return (
-    <div className="bg-neutral-950 py-35">
+    <div className="bg-neutral-950">
       <div className="container m-auto">
-        <div className="flex gap-[200px]">
-          <h2 className="section-title">
+        <div ref={sectionRef} className="flex gap-50 relative">
+          <h2 ref={titleRef} className="section-title py-35 h-fit self-start">
             Perfect <br /> — activity
           </h2>
-          <div className="relative mx-auto max-w-[920px] py-20">
-            {/* Background Grid Lines (Total 8 Lines: 4 for Col 1, 4 for Col 2) */}
-            <div className="pointer-events-none absolute inset-0 grid grid-cols-2">
-              {/* Column 1 Background (4 vertical lines) */}
-              <div className="flex h-full justify-between border-x border-white/10 px-8">
-                <div className="w-px bg-white/10" />
-              </div>
 
-              {/* Column 2 Background (4 vertical lines) */}
-              <div className="flex h-full justify-between border-x border-white/10 px-8">
-                <div className="w-px bg-white/10" />
-                <div className="w-px bg-white/10" />
-              </div>
-            </div>
-
-            {/* Content (2 Columns Layout) */}
-            <div className="relative z-10 grid grid-cols-2 gap-12 px-8">
-              {/* Left Column (1.8M, 12+, 99%) */}
-              <div className="flex flex-col gap-32">
-                {col1.map((stat, i) => (
-                  <div
-                    key={i}
-                    className={stat.active ? "opacity-90" : "opacity-20"}
-                  >
-                    <h2 className="text-8xl font-medium leading-none text-white md:text-9xl">
-                      {stat.value}
-                    </h2>
-                    <p className="mt-8 text-xl leading-8 text-neutral-400">
-                      {stat.text}
-                    </p>
-                  </div>
+          <div
+            ref={rightColRef}
+            className="relative mx-auto max-w-230 border-l border-white/10 pl-8"
+          >
+            <div className="flex items-center border-x border-white/10 gap-8">
+              <div className="flex flex-col gap-100 py-35 px-8 border-r border-white/10">
+                {stats.col1.map((stat, i) => (
+                  <StatCard key={i} stat={stat} />
                 ))}
               </div>
-
-              {/* Right Column - Staggered offset downwards (260+, 80+) */}
-              <div className="flex flex-col gap-32 pt-32">
-                {col2.map((stat, i) => (
-                  <div key={i} className="opacity-20">
-                    <h2 className="text-8xl font-medium leading-none text-white md:text-9xl">
-                      {stat.value}
-                    </h2>
-                    <p className="mt-8 text-xl leading-8 text-neutral-400">
-                      {stat.text}
-                    </p>
-                  </div>
+              <div className="self-stretch w-px bg-white/10"></div>
+              <div className="flex flex-col gap-100 py-35 px-8">
+                {stats.col2.map((stat, i) => (
+                  <StatCard key={i} stat={stat} />
                 ))}
               </div>
+              <div className="self-stretch w-px bg-white/10 mr-8"></div>
             </div>
           </div>
         </div>
