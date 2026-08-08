@@ -48,6 +48,36 @@ const Home = () => {
         });
       });
 
+      // Horizontal scroll animation ONLY for Working Process section
+      const processSection =
+        document.querySelector<HTMLElement>("#working-process-section");
+      const processTrack =
+        document.querySelector<HTMLElement>("#working-process-track");
+      const processCards = document.querySelectorAll<HTMLElement>(
+        ".working-process-item",
+      );
+
+      if (processSection && processTrack && processCards.length > 0) {
+        const getDistance = () => {
+          const firstCard = processCards[0];
+          const lastCard = processCards[processCards.length - 1];
+          return lastCard.offsetLeft - firstCard.offsetLeft;
+        };
+
+        gsap.to(processTrack, {
+          x: () => -getDistance(),
+          ease: "none",
+          scrollTrigger: {
+            trigger: processSection,
+            start: "top top",
+            end: () => `+=${getDistance()}`,
+            pin: true,
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+      }
+
       return () => {
         smoother.kill();
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

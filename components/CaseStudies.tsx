@@ -71,6 +71,7 @@ const CaseStudiesSection: React.FC = () => {
             item,
             {
               yPercent: 120,
+              opacity: 0,
               ease: "none",
             },
             `card-${index}`,
