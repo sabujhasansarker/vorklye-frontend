@@ -1,9 +1,45 @@
+"use client";
+
 import { ArrowUpRight } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 type Props = {};
 
+const faqItems = [
+  {
+    question: "What are your focus areas as a UI/UX design agency?",
+    answer:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+  },
+  {
+    question: "How long does a typical project take to complete?",
+    answer:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+  },
+  {
+    question: "Do you offer support after the project is delivered?",
+    answer:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+  },
+  {
+    question: "What industries do you usually work with?",
+    answer:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+  },
+  {
+    question: "How much does it cost to work with your agency?",
+    answer:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+  },
+];
+
 const FAQ: React.FC<Props> = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+
+  const toggleAccordion = (index: number) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
+  };
+
   return (
     <div className="py-42.5 border-b border-neutral-900">
       <div className="container m-auto">
@@ -15,43 +51,61 @@ const FAQ: React.FC<Props> = () => {
             questions
           </span>
         </h2>
-        <div className="flex gap-10 mt-20 justify-between">
+        <div className="flex gap-20 mt-20 justify-between items-start">
           <div className="accordion-items w-full">
-            <div className="accordion-item border-b border-neutral-900 py-8">
-              <div className="accordion-item-title flex justify-between w-full">
-                <h4 className="text-gray-200 text-xl font-semibold leading-7">
-                  What are your focus areas as a UI/UX design agency?
-                </h4>
-                <ArrowUpRight className="text-[#1B1B1B]" />
-              </div>
-            </div>
-            <div className="accordion-item border-b border-neutral-900 py-8">
-              <div className="accordion-item-title flex justify-between w-full pb-8">
-                <h4 className="text-gray-200 text-xl font-semibold leading-7">
-                  What are your focus areas as a UI/UX design agency?
-                </h4>
-                <ArrowUpRight className="text-[#1B1B1B]" />
-              </div>
-              <div className="accordion-item-content">
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea
-                  eius iure dignissimos? Maxime necessitatibus magnam quam
-                  consectetur inventore placeat, delectus enim officiis
-                  reprehenderit itaque voluptate consequatur nobis libero totam
-                  ipsum.
-                </p>
-              </div>
-            </div>
+            {faqItems.map((item, index) => {
+              const isActive = activeIndex === index;
+
+              return (
+                <div
+                  key={index}
+                  className={`accordion-item border-b border-neutral-900  ${
+                    index !== 0 ? "py-8" : "pb-8"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleAccordion(index)}
+                    className="accordion-item-title flex justify-between items-center w-full text-left cursor-pointer"
+                  >
+                    <h4 className="text-gray-200 text-xl font-semibold leading-7">
+                      {item.question}
+                    </h4>
+                    <ArrowUpRight
+                      className={`shrink-0 transition-all duration-300 ${
+                        isActive ? "text-[#1B1B1B] rotate-90" : "text-[#1B1B1B]"
+                      }`}
+                    />
+                  </button>
+
+                  <div
+                    className="grid transition-all duration-300 ease-in-out"
+                    style={{
+                      gridTemplateRows: isActive ? "1fr" : "0fr",
+                    }}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="accordion-item-content pt-8">
+                        <p className="text-neutral-500 leading-7">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <div className="max-w-80 p-8 bg-neutral-900 inline-flex flex-col justify-start items-start">
+          <div className="max-w-80 p-8 bg-neutral-900 inline-flex flex-col justify-start items-start shrink-0">
             <img
               className="size-16 relative"
               src="https://placehold.co/62x62"
+              alt="Ariyan"
             />
             <h4 className="text-white text-lg font-medium leading-7 mt-4">
-              Hi, I&apos;m Ariyan, the CEO and Founder of Vorklye. Don’t
-              hesitate to reach out to me anytime – I’m here to answer all your
-              questions!
+              Hi, I&apos;m Ariyan, the CEO and Founder of Vorklye. Don&apos;t
+              hesitate to reach out to me anytime – I&apos;m here to answer all
+              your questions!
             </h4>
             <a
               href="#"
@@ -63,6 +117,7 @@ const FAQ: React.FC<Props> = () => {
               <img
                 className="self-stretch h-6 relative"
                 src="/images/whatapp-icon.png"
+                alt="WhatsApp"
               />
             </a>
           </div>
