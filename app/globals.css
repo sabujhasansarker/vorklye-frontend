@@ -60,15 +60,14 @@ body {
   }
 
   .section-title {
-    @apply text-gray-200 text-5xl font-extrabold leading-19.5 tracking-wide;
+    @apply text-gray-200 text-5xl font-extrabold leading-19.5 tracking-wide overflow-hidden;
     span {
       @apply text-neutral-500;
     }
   }
 
-  .split-word {
-    display: inline-block;
-    white-space: nowrap;
+  .lines {
+    overflow: hidden;
   }
 }
 

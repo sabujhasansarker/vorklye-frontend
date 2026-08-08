@@ -30,29 +30,34 @@ const Home = () => {
       // Split title animation
       sectionTitles.forEach((title) => {
         const split = SplitText.create(title, {
-          type: "words,chars",
-          wordsClass: "split-word",
+          type: "words,chars,lines",
+          linesClass: "lines",
+          wordsClass: "words",
+          charsClass: "chars",
         });
 
         gsap.from(split.words, {
+          y: "80",
+          duration: 0.5,
+          stagger: 0.02,
+          opacity: 0,
+          delay: 0.15,
+          ease: "circ.out",
           scrollTrigger: {
             trigger: title,
             start: "top 85%",
             toggleActions: "play none none reverse",
           },
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          stagger: 0.02,
         });
       });
 
       // Horizontal scroll animation ONLY for Working Process section
-      const processSection =
-        document.querySelector<HTMLElement>("#working-process-section");
-      const processTrack =
-        document.querySelector<HTMLElement>("#working-process-track");
+      const processSection = document.querySelector<HTMLElement>(
+        "#working-process-section",
+      );
+      const processTrack = document.querySelector<HTMLElement>(
+        "#working-process-track",
+      );
       const processCards = document.querySelectorAll<HTMLElement>(
         ".working-process-item",
       );

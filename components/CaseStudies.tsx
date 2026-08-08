@@ -57,7 +57,7 @@ const CaseStudiesSection: React.FC = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 50px",
+          start: "top 20px",
           end: () => `+=${items.length * 100}%`,
           pin: true,
           scrub: true,
@@ -71,7 +71,6 @@ const CaseStudiesSection: React.FC = () => {
             item,
             {
               yPercent: 120,
-              opacity: 0,
               ease: "none",
             },
             `card-${index}`,
@@ -79,7 +78,6 @@ const CaseStudiesSection: React.FC = () => {
             items.slice(0, index),
             {
               scale: (i) => 1 - (index - i) * 0.05,
-              opacity: (i) => 1 - (index - i) * 0.25,
               transformOrigin: "top center",
               ease: "none",
             },
@@ -94,18 +92,15 @@ const CaseStudiesSection: React.FC = () => {
 
   return (
     <section className="py-35 bg-black border-b border-neutral-900 text-white relative">
-      <div className="container m-auto px-4">
-        <div className="max-w-156.25">
+      <div ref={containerRef} className="container m-auto px-4">
+        <div className="max-w-200">
           <p className="text-neutral-400 text-lg font-medium">/Case Studies</p>
-          <h2 className="text-4xl md:text-5xl font-bold mt-7.5 leading-tight">
+          <h2 className="section-title">
             Real stories, real results – see what we’ve made possible.
           </h2>
         </div>
 
-        <div
-          ref={containerRef}
-          className="casestudie-container w-full mt-25 relative h-[75vh]"
-        >
+        <div className="casestudie-container w-full mt-15 relative min-h-[75vh] mb-10 overflow-hidden">
           {caseStudies.map((item, index) => {
             const stepTop = index * 50;
             return (
@@ -121,7 +116,6 @@ const CaseStudiesSection: React.FC = () => {
                 <div className="p-15 w-1/2 h-full flex flex-col justify-center">
                   <img src="images/brand/3.png" className="w-fit" alt="" />
 
-                  {/* ডাইনামিক ডেটা বসানো হয়েছে */}
                   <h4 className="text-gray-200 text-3xl font-semibold leading-9 my-5">
                     {item.title}
                   </h4>
@@ -182,7 +176,7 @@ const CaseStudiesSection: React.FC = () => {
           })}
         </div>
 
-        <div className="m-auto text-center mt-25">
+        <div className="m-auto text-center">
           <a href="#" className="btn-primary">
             <span>More works</span>
             <ArrowUpRight />

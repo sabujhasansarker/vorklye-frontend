@@ -36,17 +36,15 @@ const services: Service[] = [
 ];
 
 const ServiceSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
       const items = gsap.utils.toArray(".service-item");
-
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 50px",
+          trigger: containerRef.current,
+          start: "top 200px",
           end: () => `+=${items.length * 100}%`,
           pin: true,
           scrub: true,
@@ -63,40 +61,40 @@ const ServiceSection: React.FC = () => {
               opacity: 0,
               ease: "none",
             },
-            `service-${index}`,
+            `card-${index}`,
           ).to(
             items.slice(0, index),
             {
-              opacity: 1,
               transformOrigin: "top center",
+              opacity: 1,
               ease: "none",
             },
-            `service-${index}`,
+            `card-${index}`,
           );
         }
       });
-    }, sectionRef);
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-35 border-b border-neutral-900 bg-black text-white relative"
-    >
-      <div className="container m-auto flex gap-8.75 items-start">
-        <div className="max-w-156.25 sticky top-0">
+    <section className="py-35 overflow-hidden border-b border-neutral-900 bg-black text-white relative">
+      <div
+        ref={containerRef}
+        className="container m-auto flex gap-20 items-start"
+      >
+        <div className="w-1/2 sticky top-0">
           <p className="text-gray-200 text-lg font-medium leading-8">
             /What we build
           </p>
-          <h2 className="section-title mt-7.5 text-4xl font-bold">
+          <h2 className="section-title mt-7.5 font-bold">
             End-to-end Shopify systems, designed to scale the brand behind the
             store.
           </h2>
         </div>
 
-        <div ref={containerRef} className="service-items w-full relative">
+        <div className="w-1/2 service-items relative pb-110">
           {services.map(({ number, title, description, tags }, index) => {
             const stepTop = index * 100;
 
@@ -119,7 +117,7 @@ const ServiceSection: React.FC = () => {
                       {title}
                     </h4>
                   </div>
-                  <p className="max-w-136.25 text-neutral-400 text-base font-medium leading-7 mt-8">
+                  <p className="text-neutral-400 text-base font-medium leading-7 mt-8">
                     {description}
                   </p>
                 </div>
