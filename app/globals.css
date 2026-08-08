@@ -70,7 +70,7 @@ body {
   }
 
   .btn-primary {
-    @apply px-7 py-4 bg-white text-black inline-flex justify-center items-center gap-5 text-xl font-semibold transition-all duration-300;
+    @apply px-7 py-4 rounded-sm bg-white text-black inline-flex justify-center items-center gap-5 text-xl font-semibold transition-all duration-300;
 
     .btn-text {
       @apply relative inline-block overflow-hidden h-8 leading-8;

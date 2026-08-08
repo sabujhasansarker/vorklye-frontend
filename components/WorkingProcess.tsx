@@ -76,7 +76,7 @@ const WorkingProcess: React.FC = () => {
           {processSteps.map((step) => (
             <div
               key={step.number}
-              className="working-process-item shrink-0 w-125 p-8 border border-neutral-900 bg-neutral-950 flex flex-col justify-between"
+              className="working-process-item rounded-sm shrink-0 w-125 p-8 border border-neutral-900 bg-neutral-950 flex flex-col justify-between"
             >
               <div>
                 <p className="text-neutral-500 text-2xl font-semibold leading-7">

@@ -106,7 +106,7 @@ const CaseStudiesSection: React.FC = () => {
             return (
               <div
                 key={item.id}
-                className="case-studie-item border-2 border-neutral-900 absolute left-0 w-full flex justify-between items-center bg-black overflow-hidden"
+                className="case-studie-item rounded-sm border-2 border-neutral-900 absolute left-0 w-full flex justify-between items-center bg-black overflow-hidden"
                 style={{
                   top: `${stepTop}px`,
                   willChange: "transform, opacity",
