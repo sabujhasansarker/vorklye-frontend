@@ -1,4 +1,5 @@
 export * from "./useActiveClosestToCenter";
+export * from "./useFitText";
 export * from "./useHeaderFixedOnScrollUp";
 export * from "./useHorizontalPinScroll";
 export * from "./useScrollSmootherSetup";
