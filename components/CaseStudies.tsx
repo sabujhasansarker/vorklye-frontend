@@ -50,13 +50,10 @@ const caseStudies: CaseStudy[] = [
 const CaseStudiesSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useStackScroll(
-    containerRef,
-    ".case-studie-item",
-    "top 20px",
-    (i, index) => 1 - (index - i) * 0.05,
-  );
-
+  useStackScroll(containerRef, ".case-studie-item", "top 20px", {
+    useOpacity: false,
+    itemScale: (i, index) => 1 - (index - i) * 0.05,
+  });
   return (
     <section className="py-35 bg-black border-b border-neutral-900 text-white relative">
       <div ref={containerRef} className="container m-auto px-4">

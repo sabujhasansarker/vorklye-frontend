@@ -1,39 +1,34 @@
 // utility/useStackScroll.ts
 "use client";
 
-import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { RefObject } from "react";
-import { useSmootherReady } from "./useSmootherReady";
+import { RefObject, useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * card গুলো একটার উপর একটা stack হয়ে scrub-scroll এ reveal হওয়ার
- * animation — CaseStudies ও Service দুটোতেই ব্যবহার হয়।
- */
+type UseStackScrollOptions = {
+  useOpacity?: boolean; // true হলে opacity fade + slide, false হলে শুধু slide
+  yPercentFrom?: number; // কতটা নিচ থেকে item টা উঠে আসবে (default 120)
+  itemScale?: (i: number, index: number) => number; // 👈 নতুন: পিছনের item গুলো কতটা ছোট হবে
+};
+
 export function useStackScroll(
-  containerRef: RefObject<HTMLElement | null>,
+  sectionRef: RefObject<HTMLElement | null>,
   itemSelector: string,
   triggerStart: string,
-  itemScale?: (i: number, index: number) => number,
+  options: UseStackScrollOptions = {},
 ) {
-  const ready = useSmootherReady();
+  const { useOpacity = true, yPercentFrom = 120, itemScale } = options;
 
-  useGSAP(
-    () => {
-      if (!ready || !containerRef.current) return;
-
-      const items = gsap.utils.toArray<HTMLElement>(
-        itemSelector,
-        containerRef.current,
-      );
-      if (items.length === 0) return;
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray<HTMLElement>(itemSelector);
+      if (!items.length) return;
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: containerRef.current,
+          trigger: sectionRef.current,
           start: triggerStart,
           end: () => `+=${items.length * 100}%`,
           pin: true,
@@ -44,20 +39,52 @@ export function useStackScroll(
 
       items.forEach((item, index) => {
         if (index === 0) return;
-        tl.from(item, { yPercent: 120, ease: "none" }, `card-${index}`);
+
+        tl.from(
+          item,
+          {
+            yPercent: yPercentFrom,
+            ...(useOpacity ? { opacity: 0 } : {}),
+            ease: "none",
+          },
+          `item-${index}`,
+        );
+
+        if (useOpacity) {
+          tl.to(
+            items.slice(0, index),
+            {
+              opacity: 1,
+              transformOrigin: "top center",
+              ease: "none",
+            },
+            `item-${index}`,
+          );
+        }
+
+        // 👇 নতুন: scale animation, শুধু itemScale দেওয়া থাকলেই চলবে
         if (itemScale) {
           tl.to(
             items.slice(0, index),
             {
               scale: (i) => itemScale(i, index),
               transformOrigin: "top center",
+              duration: 0.5,
               ease: "none",
             },
-            `card-${index}`,
+            `item-${index}`,
           );
         }
       });
-    },
-    { scope: containerRef, dependencies: [ready] },
-  );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [
+    sectionRef,
+    itemSelector,
+    triggerStart,
+    useOpacity,
+    yPercentFrom,
+    itemScale,
+  ]);
 }

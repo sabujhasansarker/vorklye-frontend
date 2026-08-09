@@ -77,6 +77,7 @@ const ServiceSection: React.FC = () => {
                   {description}
                 </p>
               </div>
+
               <div className="flex flex-wrap mt-7 gap-2">
                 {tags.map((tag) => (
                   <span
