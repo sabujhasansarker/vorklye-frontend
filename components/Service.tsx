@@ -1,6 +1,6 @@
 "use client";
 
-import { useStackScroll } from "@/utility/useStackScroll";
+import { useStackScroll } from "@/utility";
 import React, { useRef } from "react";
 
 type Service = {

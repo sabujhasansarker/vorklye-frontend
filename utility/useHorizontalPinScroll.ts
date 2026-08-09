@@ -1,4 +1,3 @@
-// utility/useHorizontalPinScroll.ts
 "use client";
 
 import { useGSAP } from "@gsap/react";

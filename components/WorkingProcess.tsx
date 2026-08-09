@@ -1,6 +1,6 @@
 "use client";
 
-import { useHorizontalPinScroll } from "@/utility/useHorizontalPinScroll";
+import { useHorizontalPinScroll } from "@/utility";
 import React, { useRef } from "react";
 import Button from "./Button";
 

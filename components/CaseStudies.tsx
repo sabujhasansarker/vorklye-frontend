@@ -1,6 +1,6 @@
 "use client";
 
-import { useStackScroll } from "@/utility/useStackScroll";
+import { useStackScroll } from "@/utility";
 import React, { useRef } from "react";
 import Button, { ButtonUnderline } from "./Button";
 
@@ -54,6 +54,7 @@ const CaseStudiesSection: React.FC = () => {
     useOpacity: false,
     itemScale: (i, index) => 1 - (index - i) * 0.05,
   });
+
   return (
     <section className="py-35 bg-black border-b border-neutral-900 text-white relative">
       <div ref={containerRef} className="container m-auto px-4">

@@ -1,4 +1,3 @@
-// lib/useSmootherReady.ts
 "use client";
 
 import { ScrollSmoother } from "gsap/all";
@@ -8,20 +7,12 @@ export function useSmootherReady() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    // ইতিমধ্যে তৈরি হয়ে থাকলে সাথে সাথেই true
-    if (ScrollSmoother.get()) {
-      setReady(true);
-      return;
-    }
-    // না হলে poll করে wait করো (খুব হালকা, কয়েক ফ্রেমের মধ্যেই resolve হবে)
+    if (ScrollSmoother.get()) return setReady(true);
     let raf: number;
-    const check = () => {
-      if (ScrollSmoother.get()) {
-        setReady(true);
-      } else {
-        raf = requestAnimationFrame(check);
-      }
-    };
+    const check = () =>
+      ScrollSmoother.get()
+        ? setReady(true)
+        : (raf = requestAnimationFrame(check));
     raf = requestAnimationFrame(check);
     return () => cancelAnimationFrame(raf);
   }, []);

@@ -1,4 +1,3 @@
-// utility/useActiveClosestToCenter.ts
 "use client";
 
 import { useGSAP } from "@gsap/react";
@@ -8,7 +7,6 @@ import { RefObject } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/** rightCol এর ভিতরের item গুলোর মধ্যে যেটা viewport-center এর সবচেয়ে কাছে, তাতে .is-active class দেয় */
 export function useActiveClosestToCenter(
   containerRef: RefObject<HTMLElement | null>,
   itemSelector: string,

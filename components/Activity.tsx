@@ -1,7 +1,5 @@
 "use client";
-
-import { useActiveClosestToCenter } from "@/utility/useActiveClosestToCenter";
-import { useTitlePinScroll } from "@/utility/useTitlePinScroll";
+import { useActiveClosestToCenter, useTitlePinScroll } from "@/utility";
 import React, { useRef } from "react";
 
 type Stat = { value: string; text: string };
