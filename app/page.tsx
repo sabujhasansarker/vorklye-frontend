@@ -12,84 +12,65 @@ import WorkingProcess from "@/components/WorkingProcess";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother, SplitText } from "gsap/all";
-import { useEffect } from "react";
+import { useLayoutEffect, useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 const Home = () => {
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+  const smootherRef = useRef<ScrollSmoother | null>(null);
 
-    const ctx = gsap.context(() => {
-      const smoother = ScrollSmoother.create({
-        smooth: 2,
-        effects: true,
-        normalizeScroll: true,
-      });
-
-      const sectionTitles = gsap.utils.toArray<HTMLElement>(".section-title");
-
-      // Split title animation
-      sectionTitles.forEach((title) => {
-        const split = SplitText.create(title, {
-          type: "words,chars,lines",
-          linesClass: "lines",
-          wordsClass: "words",
-          charsClass: "chars",
-        });
-
-        gsap.from(split.words, {
-          y: "80",
-          duration: 0.5,
-          stagger: 0.02,
-          opacity: 0,
-          delay: 0.15,
-          ease: "circ.out",
-          scrollTrigger: {
-            trigger: title,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        });
-      });
-
-      // Horizontal scroll animation ONLY for Working Process section
-      const processSection = document.querySelector<HTMLElement>(
-        "#working-process-section",
-      );
-      const processTrack = document.querySelector<HTMLElement>(
-        "#working-process-track",
-      );
-      const processCards = document.querySelectorAll<HTMLElement>(
-        ".working-process-item",
-      );
-
-      if (processSection && processTrack && processCards.length > 0) {
-        const getDistance = () => {
-          const firstCard = processCards[0];
-          const lastCard = processCards[processCards.length - 1];
-          return lastCard.offsetLeft - firstCard.offsetLeft;
-        };
-
-        gsap.to(processTrack, {
-          x: () => -getDistance(),
-          ease: "none",
-          scrollTrigger: {
-            trigger: processSection,
-            start: "top top",
-            end: () => `+=${getDistance()}`,
-            pin: true,
-            scrub: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-      }
-
-      return () => {
-        smoother.kill();
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      };
+  // useLayoutEffect + empty dep, কিন্তু আসল কথা হলো এই component
+  // parent, তাই এর effect শেষে চলবে — সেটা মেনে নিয়েই নিচের ধাপে
+  // fix করা হচ্ছে: শুধু smoother বানানো, refresh centralize করা
+  useLayoutEffect(() => {
+    smootherRef.current = ScrollSmoother.create({
+      smooth: 2,
+      effects: true,
+      normalizeScroll: true,
     });
 
-    return () => ctx.revert();
+    const sectionTitles = gsap.utils.toArray<HTMLElement>(".section-title");
+    sectionTitles.forEach((title) => {
+      const split = SplitText.create(title, {
+        type: "words,chars,lines",
+        linesClass: "lines",
+        wordsClass: "words",
+        charsClass: "chars",
+      });
+      gsap.from(split.words, {
+        y: "80",
+        duration: 0.5,
+        stagger: 0.02,
+        opacity: 0,
+        delay: 0.15,
+        ease: "circ.out",
+        scrollTrigger: {
+          trigger: title,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+
+    // সব section মাউন্ট + fonts ready হওয়ার পর ফাইনাল, একবারই refresh
+    const refreshAll = () => ScrollTrigger.refresh();
+    const raf1 = requestAnimationFrame(() => {
+      const raf2 = requestAnimationFrame(refreshAll);
+      (window as any).__rafCleanup = () => cancelAnimationFrame(raf2);
+    });
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(refreshAll);
+    }
+    window.addEventListener("load", refreshAll);
+
+    return () => {
+      cancelAnimationFrame(raf1);
+      (window as any).__rafCleanup?.();
+      window.removeEventListener("load", refreshAll);
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      smootherRef.current?.kill();
+    };
   }, []);
 
   return (

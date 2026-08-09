@@ -1,6 +1,10 @@
+"use client";
+
+import { useSmootherReady } from "@/utility/useSmootherReady";
+import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import Button, { ButtonUnderline } from "./Button";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -50,9 +54,12 @@ const caseStudies: CaseStudy[] = [
 
 const CaseStudiesSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const ready = useSmootherReady();
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
+  useGSAP(
+    () => {
+      if (!ready) return; // ⬅️ smoother তৈরি না হওয়া পর্যন্ত কিছুই করবে না
+
       const items = gsap.utils.toArray(".case-studie-item");
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -85,10 +92,9 @@ const CaseStudiesSection: React.FC = () => {
           );
         }
       });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    { scope: containerRef, dependencies: [ready] }, // এখন এটা কাজ করবে — useGSAP dependencies সাপোর্ট করে
+  );
 
   return (
     <section className="py-35 bg-black border-b border-neutral-900 text-white relative">
