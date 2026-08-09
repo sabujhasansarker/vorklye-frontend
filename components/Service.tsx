@@ -1,8 +1,7 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import React, { useEffect, useRef } from "react";
+"use client";
 
-gsap.registerPlugin(ScrollTrigger);
+import { useStackScroll } from "@/utility/useStackScroll";
+import React, { useRef } from "react";
 
 type Service = {
   number: string;
@@ -38,45 +37,7 @@ const services: Service[] = [
 const ServiceSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      const items = gsap.utils.toArray(".service-item");
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 200px",
-          end: () => `+=${items.length * 100}%`,
-          pin: true,
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      items.forEach((item: any, index: number) => {
-        if (index > 0) {
-          tl.from(
-            item,
-            {
-              yPercent: 120,
-              opacity: 0,
-              ease: "none",
-            },
-            `card-${index}`,
-          ).to(
-            items.slice(0, index),
-            {
-              transformOrigin: "top center",
-              opacity: 1,
-              ease: "none",
-            },
-            `card-${index}`,
-          );
-        }
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  useStackScroll(containerRef, ".service-item", "top 200px");
 
   return (
     <section className="py-35 overflow-hidden border-b border-neutral-900 bg-black text-white relative">
@@ -84,7 +45,7 @@ const ServiceSection: React.FC = () => {
         ref={containerRef}
         className="container m-auto flex gap-20 items-start"
       >
-        <div className="w-1/2 sticky top-0">
+        <div className="w-1/2">
           <p className="text-gray-200 text-lg font-medium leading-8">
             /What we build
           </p>
@@ -95,44 +56,39 @@ const ServiceSection: React.FC = () => {
         </div>
 
         <div className="w-1/2 service-items relative pb-110">
-          {services.map(({ number, title, description, tags }, index) => {
-            const stepTop = index * 100;
-
-            return (
-              <div
-                key={number}
-                className="service-item rounded-sm p-10 pt-8 border-2 border-neutral-900 absolute left-0 w-full bg-neutral-950 flex flex-col justify-between overflow-hidden"
-                style={{
-                  top: `${stepTop}px`,
-                  willChange: "transform, opacity",
-                  zIndex: index + 1,
-                }}
-              >
-                <div>
-                  <div className="flex gap-5 items-start">
-                    <span className="text-neutral-400 text-xl font-extrabold mt-1">
-                      {number}
-                    </span>
-                    <h4 className="text-[26px] font-semibold">{title}</h4>
-                  </div>
-                  <p className="text-neutral-400 text-base font-medium leading-7 mt-8">
-                    {description}
-                  </p>
+          {services.map(({ number, title, description, tags }, index) => (
+            <div
+              key={number}
+              className="service-item rounded-sm p-10 pt-8 border-2 border-neutral-900 absolute left-0 w-full bg-neutral-950 flex flex-col justify-between overflow-hidden"
+              style={{
+                top: `${index * 100}px`,
+                willChange: "transform, opacity",
+                zIndex: index + 1,
+              }}
+            >
+              <div>
+                <div className="flex gap-5 items-start">
+                  <span className="text-neutral-400 text-xl font-extrabold mt-1">
+                    {number}
+                  </span>
+                  <h4 className="text-[26px] font-semibold">{title}</h4>
                 </div>
-
-                <div className="flex flex-wrap mt-7 gap-2">
-                  {tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-2 bg-neutral-900 text-gray-200 text-sm font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-neutral-400 text-base font-medium leading-7 mt-8">
+                  {description}
+                </p>
               </div>
-            );
-          })}
+              <div className="flex flex-wrap mt-7 gap-2">
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-4 py-2 bg-neutral-900 text-gray-200 text-sm font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

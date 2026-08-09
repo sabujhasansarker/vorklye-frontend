@@ -1,18 +1,10 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useActiveClosestToCenter } from "@/utility/useActiveClosestToCenter";
+import { useTitlePinScroll } from "@/utility/useTitlePinScroll";
 import React, { useRef } from "react";
 
-gsap.registerPlugin(ScrollTrigger);
-
-type Props = {};
-
-type Stat = {
-  value: string;
-  text: string;
-};
+type Stat = { value: string; text: string };
 
 const stats: { col1: Stat[]; col2: Stat[] } = {
   col1: [
@@ -38,66 +30,13 @@ const StatCard: React.FC<{ stat: Stat }> = ({ stat }) => (
   </div>
 );
 
-const Activity: React.FC<Props> = () => {
+const Activity: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const rightColRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      const section = sectionRef.current;
-      const title = titleRef.current;
-      const rightCol = rightColRef.current;
-      if (!section || !title || !rightCol) return;
-
-      const getDistance = () => rightCol.offsetHeight - title.offsetHeight;
-
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top -60px",
-        end: () => `+=${getDistance()}`,
-        pin: title,
-        pinType: "transform",
-        pinSpacing: false,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      });
-
-      const items = gsap.utils.toArray<HTMLElement>(".stat-item", rightCol);
-      if (items.length === 0) return;
-      const setActiveClosestToCenter = () => {
-        const centerY = window.innerHeight / 2;
-        let closestItem: HTMLElement | null = null;
-        let closestDistance = Infinity;
-
-        items.forEach((item) => {
-          const rect = item.getBoundingClientRect();
-          const itemCenter = rect.top + rect.height / 2;
-          const distance = Math.abs(itemCenter - centerY);
-
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestItem = item;
-          }
-        });
-
-        items.forEach((item) => {
-          item.classList.toggle("is-active", item === closestItem);
-        });
-      };
-
-      ScrollTrigger.create({
-        trigger: rightCol,
-        start: "top bottom",
-        end: "bottom top",
-        onUpdate: setActiveClosestToCenter,
-        onRefresh: setActiveClosestToCenter,
-      });
-
-      setActiveClosestToCenter();
-    },
-    { scope: sectionRef },
-  );
+  useTitlePinScroll(sectionRef, titleRef, rightColRef);
+  useActiveClosestToCenter(rightColRef, ".stat-item");
 
   return (
     <div className="bg-neutral-950">

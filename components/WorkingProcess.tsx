@@ -1,13 +1,8 @@
 "use client";
 
-import { useSmootherReady } from "@/utility/useSmootherReady";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useHorizontalPinScroll } from "@/utility/useHorizontalPinScroll";
 import React, { useRef } from "react";
 import Button from "./Button";
-
-gsap.registerPlugin(ScrollTrigger);
 
 type ProcessStep = {
   number: string;
@@ -59,49 +54,12 @@ const processSteps: ProcessStep[] = [
 const WorkingProcess: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const ready = useSmootherReady();
 
-  useGSAP(
-    () => {
-      if (!ready) return;
-
-      const track = trackRef.current;
-      if (!track) return;
-
-      const cards = gsap.utils.toArray<HTMLElement>(
-        ".working-process-item",
-        track,
-      );
-      if (cards.length === 0) return;
-
-      const getDistance = () => {
-        const first = cards[0];
-        const last = cards[cards.length - 1];
-        const raw = last.offsetLeft - first.offsetLeft;
-        return raw > 0 ? raw : window.innerWidth;
-      };
-
-      gsap.to(track, {
-        x: () => -getDistance(),
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: () => `+=${getDistance()}`,
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          anticipatePin: 1,
-        },
-      });
-    },
-    { scope: sectionRef, dependencies: [ready] },
-  );
+  useHorizontalPinScroll(sectionRef, trackRef, ".working-process-item");
 
   return (
     <section
       ref={sectionRef}
-      id="working-process-section"
       className="h-screen bg-black border-b border-neutral-900 overflow-hidden relative flex flex-col justify-center py-12"
     >
       <div className="container mx-auto px-4">
@@ -119,7 +77,6 @@ const WorkingProcess: React.FC = () => {
       <div className="working-process-items mt-12 overflow-hidden w-full">
         <div
           ref={trackRef}
-          id="working-process-track"
           className="flex gap-8 w-max pl-[calc(50vw-250px)] pr-[calc(50vw-250px)]"
         >
           {processSteps.map((step) => (
@@ -139,16 +96,15 @@ const WorkingProcess: React.FC = () => {
                 </p>
               </div>
               <div className="flex mt-8 gap-x-5 gap-y-2 flex-wrap">
-                {step.tags &&
-                  step.tags.map((tag, tagIndex) => (
-                    <p
-                      key={tagIndex}
-                      className="inline-flex justify-center items-center gap-5 text-sm text-neutral-400 font-semibold leading-6"
-                    >
-                      <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full"></span>{" "}
-                      {tag}
-                    </p>
-                  ))}
+                {step.tags.map((tag, tagIndex) => (
+                  <p
+                    key={tagIndex}
+                    className="inline-flex justify-center items-center gap-5 text-sm text-neutral-400 font-semibold leading-6"
+                  >
+                    <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full"></span>{" "}
+                    {tag}
+                  </p>
+                ))}
               </div>
             </div>
           ))}
