@@ -152,10 +152,14 @@ body {
   }
 
   .section-title {
-    @apply text-gray-200 text-5xl font-extrabold leading-19.5 tracking-wide overflow-hidden;
+    @apply text-gray-200 text-5xl font-extrabold leading-19.5 tracking-tight overflow-hidden;
     span {
       @apply text-neutral-500;
     }
+  }
+
+  .sub-title {
+    @apply text-neutral-200 text-lg font-semibold mb-4;
   }
 
   .lines {

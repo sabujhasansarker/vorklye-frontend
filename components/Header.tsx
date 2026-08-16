@@ -1,6 +1,7 @@
 "use client";
 
 import { useHeaderFixedOnScrollUp } from "@/utility";
+import Link from "next/link";
 import React, { useRef } from "react";
 import { ButtonSm } from "./Button";
 
@@ -13,10 +14,10 @@ const Header: React.FC = () => {
   );
 
   const menus = [
+    { id: 4, label: "About", link: "/about" },
     { id: 1, label: "Work", link: "#" },
     { id: 2, label: "Services", link: "#" },
     { id: 3, label: "Industries", link: "#" },
-    { id: 4, label: "About", link: "#" },
     { id: 5, label: "Insights", link: "#" },
   ];
 
@@ -31,9 +32,9 @@ const Header: React.FC = () => {
         <div className="container m-auto">
           <div className="flex justify-between">
             <div className="flex items-center gap-7.5">
-              <a href="#">
+              <Link href="/">
                 <img src="/images/logo.png" alt="" />
-              </a>
+              </Link>
               <div className="w-[1.70px] h-7 bg-gray-200" />
               <a href="#">
                 <img ref={logoRef} src="/images/shopify-patner.png" alt="" />
@@ -42,12 +43,12 @@ const Header: React.FC = () => {
             <ul className="flex items-center gap-10">
               {menus.map((menu) => (
                 <li key={menu.id}>
-                  <a
+                  <Link
                     href={menu.link}
                     className="nav-link justify-start text-white font-semibold leading-7"
                   >
                     {menu.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

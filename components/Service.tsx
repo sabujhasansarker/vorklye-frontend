@@ -141,9 +141,7 @@ const ServiceSection: React.FC = () => {
     >
       <div className="container m-auto flex gap-30 items-start px-6 relative">
         <div className="w-1/2 sticky top-0" ref={leftRef}>
-          <p className="text-gray-200 text-lg font-medium leading-8">
-            /What we build
-          </p>
+          <p className="sub-title">/What we build</p>
           <h2 className="section-title">
             End-to-end Shopify systems, designed to scale the brand behind the
             store.

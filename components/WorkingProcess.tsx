@@ -122,10 +122,8 @@ const WorkingProcess: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <div>
-            <p className="justify-start text-gray-200 text-lg font-medium leading-8">
-              / Working process
-            </p>
-            <h2 className="section-title mt-4">How it works</h2>
+            <p className="sub-title">/ Working process</p>
+            <h2 className="section-title">How it works</h2>
           </div>
           <Button text="Get in touch" />
         </div>

@@ -105,7 +105,7 @@ const CaseStudiesSection: React.FC = () => {
     <section className="py-35 bg-black border-b border-neutral-900 text-white relative">
       <div className="container m-auto px-4" ref={containerRef}>
         <div className="max-w-200">
-          <p className="text-neutral-400 text-lg font-medium">/Case Studies</p>
+          <p className="sub-title">/Case Studies</p>
           <h2 className="section-title">
             Real stories, real results – see what we’ve made possible.
           </h2>

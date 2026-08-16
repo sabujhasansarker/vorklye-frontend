@@ -98,10 +98,8 @@ const Testimonial: React.FC<Props> = () => {
   return (
     <div className="py-35">
       <div className="container m-auto">
-        <p className="text-gray-200 text-lg font-medium leading-8">
-          / Client Stories
-        </p>
-        <h2 className="section-title mt-4">
+        <p className="sub-title">/ Client Stories</p>
+        <h2 className="section-title">
           <span className="text-neutral-500">Success </span>
           Stories
           <br />

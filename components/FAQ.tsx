@@ -86,8 +86,8 @@ const FAQ: React.FC<Props> = () => {
                     }}
                   >
                     <div className="overflow-hidden">
-                      <div className="accordion-item-content pt-8">
-                        <p className="text-neutral-500 leading-7">
+                      <div className="accordion-item-content pt-6">
+                        <p className="text-neutral-500 leading-8 text-[17px] font-medium">
                           {item.answer}
                         </p>
                       </div>
