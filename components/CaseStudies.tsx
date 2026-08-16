@@ -71,6 +71,8 @@ const CaseStudiesSection: React.FC = () => {
       const cards = itemsRef.current.filter(Boolean);
 
       cards.forEach((card, index) => {
+        gsap.set(card, { zIndex: index + 1 });
+
         ScrollTrigger.create({
           trigger: card,
           start: "top 100px",
@@ -80,18 +82,21 @@ const CaseStudiesSection: React.FC = () => {
           pinSpacing: false,
           invalidateOnRefresh: true,
         });
+
         if (index < cards.length - 1) {
           const nextCard = cards[index + 1];
 
           gsap.to(card, {
             scale: 0.92,
-            yPercent: 0,
+            opacity: 0,
             ease: "none",
             scrollTrigger: {
               trigger: nextCard,
               start: "top 90%",
               end: "top 10%",
               scrub: true,
+              onLeave: () => gsap.set(card, { scale: 0.92, opacity: 0 }),
+              onLeaveBack: () => gsap.set(card, { scale: 1, opacity: 1 }),
             },
           });
         }

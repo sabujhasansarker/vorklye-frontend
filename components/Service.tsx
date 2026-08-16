@@ -91,6 +91,12 @@ const ServiceSection: React.FC = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
+      // permanently clip content so a collapsing item can never visually
+      // leak past height:0, even mid-animation
+      gsap.set(contentsRef.current, { overflow: "hidden" });
+      gsap.set(contentsRef.current.slice(1), { height: 0, opacity: 0 });
+      gsap.set(headersRef.current.slice(1), { color: "#404040" });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -101,9 +107,6 @@ const ServiceSection: React.FC = () => {
           invalidateOnRefresh: true,
         },
       });
-
-      gsap.set(contentsRef.current.slice(1), { height: 0, opacity: 0 });
-      gsap.set(headersRef.current.slice(1), { color: "#404040" });
 
       services.forEach((_, index) => {
         if (index === services.length - 1) return;
@@ -128,6 +131,15 @@ const ServiceSection: React.FC = () => {
             { color: "#ffffff", duration: 1 },
             `step-${index}`,
           );
+        tl.set(
+          contentsRef.current[index],
+          { height: 0, opacity: 0 },
+          `step-${index}+=1`,
+        ).set(
+          headersRef.current[index],
+          { color: "#404040" },
+          `step-${index}+=1`,
+        );
       });
     }, containerRef);
 
