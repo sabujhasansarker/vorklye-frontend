@@ -195,9 +195,9 @@ const ServiceSection: React.FC = () => {
                       {tag}
                     </p>
                   ))} */}
-                  <div className="mt-15">
-                    <ButtonNormal text="Learn More" />
-                  </div>
+                </div>
+                <div className="mt-15" data-cursor="Service Details">
+                  <ButtonNormal text="Learn More" />
                 </div>
               </div>
             </div>

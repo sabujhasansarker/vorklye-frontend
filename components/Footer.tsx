@@ -92,7 +92,7 @@ const FooterSectionBlock: React.FC<{
         <li key={item.label}>
           <a
             href={item.link}
-            className="text-zinc-400 text-base font-medium leading-5 tracking-tight"
+            className="text-zinc-400 hover:text-white text-base font-medium leading-5 tracking-tight"
           >
             {item.label}
           </a>
@@ -120,7 +120,10 @@ const Footer: React.FC<Props> = () => {
               href="#"
               className="pl-6 pr-2 py-2 bg-[#EBFE5B] rounded-sm inline-flex justify-center items-center gap-8 overflow-hidden mt-10"
             >
-              <span className="justify-start text-zinc-900 text-base font-bold leading-6">
+              <span
+                data-hover-text
+                className="justify-start text-zinc-900 text-base font-bold leading-6"
+              >
                 Company Deck
               </span>
               <span className="bg-zinc-900 size-9 flex items-center justify-center">
@@ -165,6 +168,7 @@ const Footer: React.FC<Props> = () => {
                   {footerContactInfo.heading}
                 </h6>
                 <a
+                  data-no-hover
                   href={`mailto:${footerContactInfo.email}`}
                   className="block mt-4 text-white text-base font-bold leading-5"
                 >

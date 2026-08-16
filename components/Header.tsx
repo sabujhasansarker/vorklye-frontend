@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   );
 
   const menus = [
-    { id: 1, label: "work", link: "#" },
+    { id: 1, label: "Work", link: "#" },
     { id: 2, label: "Services", link: "#" },
     { id: 3, label: "Industries", link: "#" },
     { id: 4, label: "About", link: "#" },
@@ -44,7 +44,7 @@ const Header: React.FC = () => {
                 <li key={menu.id}>
                   <a
                     href={menu.link}
-                    className="nav-link justify-start text-white font-semibold leading-7 capitalize"
+                    className="nav-link justify-start text-white font-semibold leading-7"
                   >
                     {menu.label}
                   </a>
