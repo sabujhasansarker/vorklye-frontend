@@ -1,7 +1,8 @@
 "use client";
 
-import { useStackScroll } from "@/utility";
-import React, { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef } from "react";
 import Button, { ButtonUnderline } from "./Button";
 
 type CaseStudy = {
@@ -37,6 +38,17 @@ const caseStudies: CaseStudy[] = [
       "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
   },
   {
+    id: 4,
+    title: "Rovero Commerce Platform",
+    description:
+      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
+    services: ["Migration", "Integrations"],
+    industry: "Fashion",
+    published: "2023",
+    image:
+      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
+  },
+  {
     id: 3,
     title: "Rovero Commerce Platform",
     description:
@@ -50,15 +62,48 @@ const caseStudies: CaseStudy[] = [
 
 const CaseStudiesSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const itemsRef = useRef<HTMLDivElement[]>([]);
 
-  useStackScroll(containerRef, ".case-studie-item", "top 20px", {
-    useOpacity: false,
-    itemScale: (i, index) => 1 - (index - i) * 0.005,
-  });
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const cards = itemsRef.current.filter(Boolean);
+
+      cards.forEach((card, index) => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 100px",
+          endTrigger: containerRef.current,
+          end: "bottom bottom",
+          pin: true,
+          pinSpacing: false,
+          invalidateOnRefresh: true,
+        });
+        if (index < cards.length - 1) {
+          const nextCard = cards[index + 1];
+
+          gsap.to(card, {
+            scale: 0.92,
+            yPercent: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: nextCard,
+              start: "top 90%",
+              end: "top 10%",
+              scrub: true,
+            },
+          });
+        }
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section className="py-35 bg-black border-b border-neutral-900 text-white relative">
-      <div ref={containerRef} className="container m-auto px-4">
+      <div className="container m-auto px-4" ref={containerRef}>
         <div className="max-w-200">
           <p className="text-neutral-400 text-lg font-medium">/Case Studies</p>
           <h2 className="section-title">
@@ -66,20 +111,18 @@ const CaseStudiesSection: React.FC = () => {
           </h2>
         </div>
 
-        <div className="casestudie-container w-full mt-15 relative min-h-[75vh] mb-10 overflow-hidden">
+        <div className="casestudie-container w-full mt-15 relative flex flex-col gap-10 mb-20">
           {caseStudies.map((item, index) => (
             <div
               key={item.id}
-              className="case-studie-item rounded-sm border-2 border-neutral-900 absolute left-0 w-full flex justify-between items-center bg-black overflow-hidden"
-              style={{
-                top: `${index * 50}px`,
-                willChange: "transform, opacity",
-                zIndex: index + 1,
+              ref={(el) => {
+                if (el) itemsRef.current[index] = el;
               }}
+              className="case-studie-item rounded-sm border-2 border-neutral-900 w-full flex justify-between items-center bg-black overflow-hidden sticky-card"
             >
               <div className="p-15 w-1/2 h-full flex flex-col justify-center">
                 <img src="images/brand/3.png" className="w-fit" alt="" />
-                <h4 className="text-gray-200 text-3xl font-semibold leading-9 my-5">
+                <h4 className="text-gray-200 text-3xl font-bold leading-9 my-5">
                   {item.title}
                 </h4>
                 <p className="max-w-123.75 text-gray-200 text-lg font-medium leading-8">
@@ -152,7 +195,6 @@ export const CaseStudiesSection2: React.FC = () => {
             Real stories, real results – see what we’ve made possible.
           </h2>
         </div>
-        {/* section */}
         <div className="case-studies-container flex gap-15 mt-12 flex-wrap">
           {caseStudies.map((item) => (
             <div className="w-full" key={item.id}>

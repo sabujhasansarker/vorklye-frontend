@@ -1,8 +1,11 @@
 "use client";
 
-import { useHorizontalPinScroll } from "@/utility";
-import React, { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef } from "react";
 import Button from "./Button";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type ProcessStep = {
   number: string;
@@ -17,16 +20,7 @@ const processSteps: ProcessStep[] = [
     title: "Discovery & Research",
     description:
       "We start by understanding your business, goals, target audience, and competitors to build a clear project foundation.",
-    tags: [
-      "Video meeting",
-      "Discovery",
-      "Video meeting",
-      "Discovery",
-      "Video meeting",
-      "Discovery",
-      "Video meeting",
-      "Discovery",
-    ],
+    tags: ["Video meeting", "Discovery"],
   },
   {
     number: "02",
@@ -53,14 +47,77 @@ const processSteps: ProcessStep[] = [
 
 const WorkingProcess: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<Array<HTMLDivElement | null>>([]);
 
-  useHorizontalPinScroll(sectionRef, trackRef, ".working-process-item");
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = cardsRef.current.filter(Boolean) as HTMLDivElement[];
+      const total = cards.length;
+
+      const setStartPositions = () => {
+        const containerWidth = containerRef.current?.offsetWidth ?? 0;
+        const cardWidth = cards[0]?.offsetWidth ?? 0;
+        const centerX = containerWidth / 2 - cardWidth / 2;
+
+        cards.forEach((card, i) => {
+          const naturalX =
+            (containerWidth / total) * i +
+            (containerWidth / total - cardWidth) / 2;
+          const offsetX = centerX - naturalX;
+          const rotate = (i - (total - 1) / 2) * 4;
+          const y = i % 2 === 0 ? -15 : 15;
+
+          gsap.set(card, {
+            x: offsetX,
+            y,
+            rotate,
+            zIndex: total - Math.abs(i - (total - 1) / 2),
+          });
+        });
+      };
+
+      setStartPositions();
+
+      const baseStart = 80;
+      const baseEnd = -20;
+      const tweens: gsap.core.Tween[] = [];
+
+      cards.forEach((card, i) => {
+        const startPct = baseStart - i * 6;
+        const tween = gsap.to(card, {
+          x: 0,
+          y: 0,
+          rotate: 0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: `top ${startPct}%`,
+            end: `top ${startPct + (baseEnd - baseStart)}%`,
+            scrub: 2.5,
+          },
+        });
+        tweens.push(tween);
+      });
+
+      const handleResize = () => {
+        ScrollTrigger.refresh();
+      };
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+        tweens.forEach((t) => t.kill());
+      };
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="h-screen bg-black border-b border-neutral-900 overflow-hidden relative flex flex-col justify-center py-12"
+      className="bg-black border-b border-neutral-900 overflow-hidden relative flex flex-col justify-center py-12"
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
@@ -74,15 +131,18 @@ const WorkingProcess: React.FC = () => {
         </div>
       </div>
 
-      <div className="working-process-items mt-12 overflow-hidden w-full">
-        <div
-          ref={trackRef}
-          className="flex gap-8 w-max pl-[calc(50vw-250px)] pr-[calc(50vw-250px)]"
-        >
-          {processSteps.map((step) => (
+      <div
+        ref={containerRef}
+        className="working-process-items mt-12 overflow-hidden w-full"
+      >
+        <div className="flex gap-8 container mx-auto px-4">
+          {processSteps.map((step, index) => (
             <div
               key={step.number}
-              className="working-process-item rounded-sm shrink-0 w-125 p-8 border border-neutral-900 bg-neutral-950 flex flex-col justify-between"
+              ref={(el) => {
+                cardsRef.current[index] = el;
+              }}
+              className="working-process-item rounded-sm w-1/4 p-8 border border-neutral-900 bg-neutral-950 flex flex-col justify-between h-130 will-change-transform"
             >
               <div>
                 <p className="text-neutral-500 text-2xl font-semibold leading-7">
