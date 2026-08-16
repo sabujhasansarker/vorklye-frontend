@@ -33,7 +33,8 @@ const caseStudies: CaseStudy[] = [
     services: ["Migration", "Integrations"],
     industry: "Fashion",
     published: "2023",
-    image: "/images/case-studies/1.png",
+    image:
+      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
   },
   {
     id: 3,
@@ -52,7 +53,7 @@ const CaseStudiesSection: React.FC = () => {
 
   useStackScroll(containerRef, ".case-studie-item", "top 20px", {
     useOpacity: false,
-    itemScale: (i, index) => 1 - (index - i) * 0.05,
+    itemScale: (i, index) => 1 - (index - i) * 0.005,
   });
 
   return (
@@ -123,7 +124,7 @@ const CaseStudiesSection: React.FC = () => {
               <div className="w-1/2 overflow-hidden">
                 <img
                   src={item.image}
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-140 object-cover object-center"
                   alt={item.title}
                 />
               </div>
@@ -140,3 +141,68 @@ const CaseStudiesSection: React.FC = () => {
 };
 
 export default CaseStudiesSection;
+
+export const CaseStudiesSection2: React.FC = () => {
+  return (
+    <div className="py-35">
+      <div className="container m-auto px-4">
+        <div className="max-w-200">
+          <p className="text-neutral-400 text-lg font-medium">/Case Studies</p>
+          <h2 className="section-title">
+            Real stories, real results – see what we’ve made possible.
+          </h2>
+        </div>
+        {/* section */}
+        <div className="case-studies-container flex gap-15 mt-12 flex-wrap">
+          {caseStudies.map((item) => (
+            <div className="w-full" key={item.id}>
+              <div className="flex gap-15">
+                <img
+                  src={item.image}
+                  className="w-6/12 h-150 object-cover"
+                  alt=""
+                />
+                <div className="mt-6">
+                  <h4 className="text-2xl font-semibold">{item.title}</h4>
+                  <div className="inline-flex justify-start items-start gap-28 mt-4">
+                    <div className="inline-flex flex-col justify-start items-start gap-2">
+                      <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
+                        Services
+                      </div>
+                      <div className="flex flex-col justify-start items-start gap-1">
+                        {item.services.map((service, sIndex) => (
+                          <div
+                            key={sIndex}
+                            className="text-gray-200 font-medium leading-7"
+                          >
+                            {service}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="inline-flex flex-col justify-start items-start gap-2">
+                      <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
+                        Industry
+                      </div>
+                      <div className="text-gray-200 font-medium leading-7 mt-1">
+                        {item.industry}
+                      </div>
+                    </div>
+                    <div className="inline-flex flex-col justify-start items-start gap-2">
+                      <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
+                        Published
+                      </div>
+                      <div className="text-gray-200 font-medium leading-7 mt-1">
+                        {item.published}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};

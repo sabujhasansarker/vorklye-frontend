@@ -55,7 +55,7 @@ const Hero: React.FC<Props> = () => {
         <img src="/images/shopifyplus.svg" alt="" />
         <div className="flex justify-between items-end">
           {title && (
-            <h1 className="max-w-225 justify-center text-white text-8xl font-extrabold leading-35 mt-18.25">
+            <h1 className="max-w-225 justify-center text-white text-8xl font-extrabold leading-35 mt-10">
               {title}
             </h1>
           )}
