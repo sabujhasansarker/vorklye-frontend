@@ -12,9 +12,9 @@ const ICONS = {
 const DEFAULT = {
   duration: 0.3,
   opacity: 0.5,
-  width: "20px",
-  height: "20px",
-  backgroundColor: "transparent",
+  width: "10px",
+  height: "10px",
+  backgroundColor: "#fff",
   borderWidth: "2px",
 };
 
