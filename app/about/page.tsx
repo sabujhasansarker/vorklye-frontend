@@ -1,4 +1,5 @@
 "use client";
+import { BrandShort } from "@/components/Brand";
 import Button, { ButtonSm } from "@/components/Button";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -119,30 +120,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="border-b border-neutral-900 py-30">
-          <div className="container m-auto">
-            <p className="sub-title text-center">/ Trusted by 550+ companies</p>
-            <div
-              className="grid transition-all duration-500 ease-in-out"
-              style={{
-                gridTemplateRows: "1fr",
-              }}
-            >
-              <div className="overflow-hidden">
-                <div className="grid grid-cols-7 gap-17.5 pt-17.5">
-                  {brands.map((brand, index) => (
-                    <img
-                      src={brand.image}
-                      key={brand.id}
-                      alt=""
-                      className="transition-all duration-500 ease-in-out"
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <BrandShort />
         <section className="border-b border-neutral-900 py-20">
           <div className="container m-auto">
             <div className="grid grid-cols-4 gap-30 flex-wrap">

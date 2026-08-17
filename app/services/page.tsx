@@ -1,7 +1,9 @@
 "use client";
+import { BrandShort } from "@/components/Brand";
 import { ButtonSm } from "@/components/Button";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import { ServiceItems } from "@/components/Service";
 import { useScrollSmootherSetup, useSplitTitleReveal } from "@/utility";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -20,16 +22,15 @@ const Home = () => {
           <div className="container m-auto pt-50">
             <div className="flex gap-50 items-end justify-between">
               <h1 className="w-2/4 justify-center text-white text-6xl font-extrabold leading-24 tracking-tight">
-                Careers At Boomdevs For The Wild Thinkers
+                Everything Your Brand Needs to Build, Grow and Scale
               </h1>
               <div className="w-1/3">
                 <p className="text-xl font-bold leading-9 mb-14">
-                  We’re more than a software company. We’re your strategic
-                  partner in building purposeful, high-impact digital products
-                  that grow with your business.{" "}
+                  From the first brand strategy session to the final line of
+                  code, we handle every dimension of your growth under one roof.
                 </p>
 
-                <ButtonSm text="Book a Free Strategy Call" />
+                <ButtonSm text="Let’s Discuss Your Project" />
               </div>
             </div>
             <div className="about-banner mt-20">
@@ -41,6 +42,8 @@ const Home = () => {
             </div>
           </div>
         </section>
+        <BrandShort />
+        <ServiceItems />
         <FAQ />
         <Footer />
       </div>
