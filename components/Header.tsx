@@ -16,9 +16,9 @@ const Header: React.FC = () => {
   const menus = [
     { id: 4, label: "About", link: "/about" },
     { id: 1, label: "Work", link: "#" },
-    { id: 2, label: "Services", link: "#" },
+    { id: 2, label: "Services", link: "/services" },
     { id: 3, label: "Industries", link: "#" },
-    { id: 5, label: "Insights", link: "#" },
+    { id: 5, label: "Career", link: "/career" },
   ];
 
   return (

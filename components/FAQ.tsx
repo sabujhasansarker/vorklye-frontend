@@ -129,3 +129,56 @@ const FAQ: React.FC<Props> = () => {
 };
 
 export default FAQ;
+
+export const FAQJob: React.FC<Props> = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+
+  const toggleAccordion = (index: number) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
+  };
+  return (
+    <div className="accordion-items w-full">
+      {faqItems.map((item, index) => {
+        const isActive = activeIndex === index;
+
+        return (
+          <div
+            key={index}
+            className={`accordion-item border-b border-neutral-900  ${
+              index !== 0 ? "py-8" : "pb-8 "
+            } ${index == faqItems.length - 1 ? "border-0! pb-0" : ""}`}
+          >
+            <button
+              type="button"
+              onClick={() => toggleAccordion(index)}
+              className="accordion-item-title flex justify-between items-center w-full text-left cursor-pointer"
+            >
+              <h4 className="text-gray-200 text-xl font-semibold leading-7">
+                {item.question}
+              </h4>
+              <ArrowUpRight
+                className={`shrink-0 transition-all duration-300 ${
+                  isActive ? "text-neutral-300 rotate-90" : "text-[#1B1B1B]"
+                }`}
+              />
+            </button>
+            <div
+              className="grid transition-all duration-300 ease-in-out"
+              style={{
+                gridTemplateRows: isActive ? "1fr" : "0fr",
+              }}
+            >
+              <div className="overflow-hidden">
+                <div className="accordion-item-content pt-6">
+                  <p className="text-neutral-500 leading-8 text-[17px] font-medium">
+                    {item.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
