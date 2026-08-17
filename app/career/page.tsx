@@ -3,11 +3,10 @@ import { ButtonNormal, ButtonSm } from "@/components/Button";
 import { FAQJob } from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import { useScrollSmootherSetup, useSplitTitleReveal } from "@/utility";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother, SplitText } from "gsap/all";
-import { Fragment, useRef } from "react";
+import { Fragment } from "react";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
@@ -92,92 +91,6 @@ const jobs = [
 const Home = () => {
   useScrollSmootherSetup();
   useSplitTitleReveal(".section-title");
-
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useGSAP(
-    () => {
-      console.log("itemRefs count:", itemRefs.current.filter(Boolean).length);
-      const cleanups: (() => void)[] = [];
-
-      itemRefs.current.forEach((el) => {
-        if (!el) return;
-
-        const bg = el.querySelector<HTMLDivElement>(".hover-bg");
-        const number = el.querySelector<HTMLParagraphElement>(".work-number");
-        const title = el.querySelector<HTMLHeadingElement>(".work-title");
-        const desc = el.querySelector<HTMLParagraphElement>(".work-desc");
-
-        if (!bg || !number || !title || !desc) {
-          return;
-        }
-
-        const tl = gsap.timeline({ paused: true });
-
-        tl.to(
-          bg,
-          {
-            scaleX: 1,
-            duration: 0.6,
-            ease: "power4.inOut",
-            border: "white",
-          },
-          0,
-        )
-          .fromTo(
-            number,
-            { color: "rgb(163, 163, 163)" },
-            {
-              color: "rgb(23, 23, 23)",
-              x: 10,
-              duration: 0.5,
-              ease: "power3.out",
-            },
-            0.05,
-          )
-          .fromTo(
-            title,
-            { color: "rgb(255, 255, 255)" },
-            {
-              color: "rgb(23, 23, 23)",
-              x: 10,
-              duration: 0.5,
-              ease: "power3.out",
-            },
-            0.05,
-          )
-          .fromTo(
-            desc,
-            { color: "rgb(115, 115, 115)" },
-            {
-              color: "rgb(23, 23, 23)",
-              x: 10,
-              duration: 0.5,
-              ease: "power3.out",
-            },
-            0.05,
-          );
-
-        const handleEnter = () => tl.play();
-        const handleLeave = () => tl.reverse();
-
-        el.addEventListener("mouseenter", handleEnter);
-        el.addEventListener("mouseleave", handleLeave);
-
-        cleanups.push(() => {
-          el.removeEventListener("mouseenter", handleEnter);
-          el.removeEventListener("mouseleave", handleLeave);
-          tl.kill();
-        });
-      });
-
-      return () => {
-        cleanups.forEach((fn) => fn());
-      };
-    },
-    { scope: undefined, dependencies: [] },
-  );
-
   return (
     <div id="smooth-wrapper">
       <div id="smooth-content">
@@ -215,24 +128,21 @@ const Home = () => {
               {whyWorks.map((work, index) => (
                 <div
                   key={work.id}
-                  ref={(el) => {
-                    itemRefs.current[index] = el;
-                  }}
-                  className="relative flex py-10 px-5 justify-between w-full items-center border-y border-neutral-900 cursor-pointer overflow-hidden"
+                  className="relative flex py-10 justify-between w-full items-center border-y border-neutral-900 cursor-pointer overflow-hidden group/work"
                 >
-                  <div className="hover-bg absolute inset-0 bg-white origin-left scale-x-0 pointer-events-none" />
+                  <div className="hover-bg absolute left-0 bottom-0 w-full h-0 bg-white transition-[height] duration-300 ease-out group-hover/work:h-full" />
 
-                  <div className="relative flex items-center">
-                    <p className="work-number text-xl font-bold text-neutral-400">
+                  <div className="relative flex items-center group-hover/work:pl-5 duration-300 ease-out">
+                    <p className="work-number text-xl font-bold text-neutral-400 group-hover/work:text-neutral-600 duration-300 ease-out">
                       {index + 1 <= 9 ? `0${index + 1}` : index + 1}
                     </p>
-                    <h6 className="work-title text-3xl font-bold ml-5 text-white">
+                    <h6 className="work-title text-3xl font-bold ml-5 text-white group-hover/work:text-neutral-800 duration-300 ease-out">
                       {work.title}
                     </h6>
                   </div>
 
-                  <div className="relative flex items-center gap-6">
-                    <p className="work-desc text-[18px] font-medium text-neutral-500 max-w-120 leading-7.5">
+                  <div className="relative flex items-center gap-6 duration-300 ease-out group-hover/work:pr-5 transition-[padding]">
+                    <p className="work-desc text-[18px] font-medium text-neutral-500 max-w-120 leading-7.5 group-hover/work:text-neutral-600 duration-300 ease-out">
                       {work.description}
                     </p>
                   </div>
@@ -241,7 +151,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="py-40 border-b border-neutral-900">
+        <section className="py-40 border-b border-neutral-900" id="openroles">
           <div className="container m-auto">
             <div className="flex items-center gap-20">
               <p className="sub-title mb-0!">/Position</p>
