@@ -8,6 +8,7 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { ButtonNormal } from "./Button";
 
@@ -134,7 +135,7 @@ const ServiceSection: React.FC = () => {
                   ))} */}
                 </div>
                 <div className="mt-15" data-cursor="Service Details">
-                  <ButtonNormal text={serviceSectionData.ctaText} />
+                  <ButtonNormal text={serviceSectionData.ctaText} href="/services" />
                 </div>
               </div>
             </div>
@@ -387,7 +388,9 @@ export const ServiceItems: React.FC = () => {
                   >
                     <div>
                       <h4 className="text-3xl font-bold leading-9 text-gray-200">
-                        {item.title}
+                        <Link href={`/services/${item.slug}`} className="hover:text-white transition-colors">
+                          {item.title}
+                        </Link>
                       </h4>
 
                       <p className="my-5 text-[18px] font-medium leading-8 text-neutral-400">

@@ -267,68 +267,182 @@ export const teamMembers: TeamMember[] = [
   },
 ];
 
-// ==========================================
-// 6. CASE STUDIES DATA
-// ==========================================
+export type CaseStudyResult = {
+  label: string;
+  value: string;
+};
+
 export type CaseStudy = {
   id: number;
+  slug: string;
   title: string;
+  client: string;
   description: string;
   services: string[];
   industry: string;
   published: string;
   image: string;
   logo?: string;
+  websiteUrl?: string;
+  challenge: string;
+  solution: string;
+  results: CaseStudyResult[];
+  galleryImages: string[];
+  testimonial?: {
+    quote: string;
+    author: string;
+    role: string;
+  };
 };
 
 export const caseStudies: CaseStudy[] = [
   {
     id: 1,
+    slug: "capital-growth-solutions",
     title: "Capital Growth Solutions",
+    client: "Capital Growth Inc.",
     description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Beauty",
-    published: "2021",
+      "A complete headless digital commerce overhaul designed to accelerate client conversions and scale operational capacity across global markets.",
+    services: ["Shopify Plus", "Migration", "UI/UX Design", "Custom Integrations"],
+    industry: "Fintech & Consulting",
+    published: "2024",
     image: "/images/case-studies/1.png",
     logo: "/images/brand/3.png",
+    websiteUrl: "https://example.com/capital-growth",
+    challenge:
+      "Capital Growth needed to modernize their outdated legacy commerce architecture which was causing slow page speeds (4.8s TTFB), disjointed checkout journeys, and poor mobile conversion rates that hindered international expansion.",
+    solution:
+      "We engineered a custom headless Shopify storefront integrated with real-time inventory management, a modular design system, and multi-currency checkout, cutting latency by 72% and streamlining customer flows.",
+    results: [
+      { label: "Conversion Rate Increase", value: "+148%" },
+      { label: "Page Load Acceleration", value: "3.2x Faster" },
+      { label: "Annual Revenue Growth", value: "+210%" },
+      { label: "Mobile Bounce Rate", value: "-42%" },
+    ],
+    galleryImages: [
+      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422ed8ffd5696dac6a4_UX%20Design-p-1080.webp",
+      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422a7f442bbf1487074_Web%20Design-p-1080.webp",
+      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c4229130cd923555f69b_Mobile%20App%20Design-p-1080.webp",
+    ],
+    testimonial: {
+      quote:
+        "The team at Vorklye transformed our entire digital ecosystem. Our store is faster, more engaging, and our conversion rate doubled within three months of launch.",
+      author: "Marcus Vance",
+      role: "VP of Digital @ Capital Growth",
+    },
   },
   {
     id: 2,
+    slug: "rovero-commerce-platform",
     title: "Rovero Commerce Platform",
+    client: "Rovero Lifestyle",
     description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Fashion",
+      "Crafting an immersive high-end fashion experience with responsive 3D lookbooks and seamless omnichannel checkout for modern luxury buyers.",
+    services: ["UI/UX Redesign", "Shopify Theme Development", "CRO Strategy"],
+    industry: "Luxury Fashion & Apparel",
     published: "2023",
     image:
       "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
     logo: "/images/brand/4.png",
-  },
-  {
-    id: 4,
-    title: "Rovero Commerce Platform",
-    description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Fashion",
-    published: "2023",
-    image:
+    websiteUrl: "https://example.com/rovero",
+    challenge:
+      "Rovero was struggling to replicate the premium in-store luxury boutique feel on digital screens. Customer sessions were dropping off prematurely on product detail pages, and checkout abandonment was above 75%.",
+    solution:
+      "We designed an editorial-grade aesthetic with high-fidelity visual storytelling, interactive lookbooks, one-click checkout, and AI-driven sizing guidance that instilled confidence in shoppers.",
+    results: [
+      { label: "Average Order Value (AOV)", value: "+38%" },
+      { label: "Checkout Completion Rate", value: "+86%" },
+      { label: "Engagement Time On Site", value: "+2.4x" },
+      { label: "Return Rate Reduction", value: "-24%" },
+    ],
+    galleryImages: [
       "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-    logo: "/images/brand/5.png",
+      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422529dc0db1881445e_Branding%20%26%20Identity-p-1080.webp",
+      "/images/case-studies/1.png",
+    ],
+    testimonial: {
+      quote:
+        "Our digital flagship now feels as exclusive and refined as our Madison Avenue store. Vorklye's attention to detail is truly world-class.",
+      author: "Elena Rostova",
+      role: "Creative Director @ Rovero",
+    },
   },
   {
     id: 3,
-    title: "Rovero Commerce Platform",
+    slug: "lumina-skincare-experience",
+    title: "Lumina Skincare Experience",
+    client: "Lumina Botanicals",
     description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Fashion",
+      "Transforming a clean beauty DTC brand with custom skin-diagnostic quizzes, recurring subscription models, and personalized product bundles.",
+    services: ["Custom App Setup", "Subscription Commerce", "Design System"],
+    industry: "Beauty & Personal Care",
     published: "2023",
     image: "/images/case-studies/1.png",
+    logo: "/images/brand/5.png",
+    websiteUrl: "https://example.com/lumina",
+    challenge:
+      "Lumina needed to boost recurring customer lifetime value (LTV) and educate users on complex botanical regimens without cluttering the mobile shopping experience.",
+    solution:
+      "We built an interactive skincare quiz that automatically generates custom routine bundles, alongside a frictionless Recharge subscription workflow that increased subscriber retention.",
+    results: [
+      { label: "Subscription Revenue Share", value: "46% of Total" },
+      { label: "Customer Lifetime Value (LTV)", value: "+92%" },
+      { label: "Quiz Completion Rate", value: "78%" },
+      { label: "Repeat Purchase Rate", value: "3.1x" },
+    ],
+    galleryImages: [
+      "/images/case-studies/1.png",
+      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422ed8ffd5696dac6a4_UX%20Design-p-1080.webp",
+      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
+    ],
+    testimonial: {
+      quote:
+        "The routine quiz and subscription experience developed by Vorklye became our primary growth lever overnight. We couldn't be happier.",
+      author: "Chloe Bennett",
+      role: "Co-Founder @ Lumina Botanicals",
+    },
+  },
+  {
+    id: 4,
+    slug: "apex-gear-shopify-plus",
+    title: "Apex Outdoor Equipment",
+    client: "Apex Gear International",
+    description:
+      "Enterprise multi-warehouse B2B and DTC unified commerce platform built for extreme catalog complexity and wholesale volume discounts.",
+    services: ["Shopify Plus B2B", "ERP Integration", "Headless Architecture"],
+    industry: "Sports & Outdoor Equipment",
+    published: "2024",
+    image:
+      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
     logo: "/images/brand/6.png",
+    websiteUrl: "https://example.com/apex-gear",
+    challenge:
+      "Apex handled 12,000+ SKUs across 8 regional warehouses, needing tiered wholesale pricing, instant quote generation, and rapid consumer order fulfillment on a single platform.",
+    solution:
+      "We architected a unified Shopify Plus B2B & DTC platform connected to their NetSuite ERP with custom tier pricing logic, faceted search filters, and instant shipping calculation.",
+    results: [
+      { label: "Wholesale Order Efficiency", value: "+320%" },
+      { label: "Catalog Search Speed", value: "45ms" },
+      { label: "Enterprise Sales Velocity", value: "+175%" },
+      { label: "Manual Order Processing Time", value: "-80%" },
+    ],
+    galleryImages: [
+      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
+      "/images/case-studies/1.png",
+      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422a7f442bbf1487074_Web%20Design-p-1080.webp",
+    ],
+    testimonial: {
+      quote:
+        "Vorklye solved complex enterprise B2B logistics that other agencies declared impossible on Shopify. They are absolute technical wizards.",
+      author: "David Sterling",
+      role: "Chief Operating Officer @ Apex Gear",
+    },
   },
 ];
+
+export const getCaseStudyBySlug = (slug: string): CaseStudy | undefined => {
+  return caseStudies.find((c) => c.slug === slug);
+};
 
 // ==========================================
 // 7. BRAND DATA
@@ -459,6 +573,22 @@ export const serviceSectionData = {
   services,
 };
 
+export type ServiceMetric = {
+  value: string;
+  label: string;
+};
+
+export type ServiceDeliverable = {
+  title: string;
+  description: string;
+};
+
+export type ServiceProcessStep = {
+  step: string;
+  title: string;
+  description: string;
+};
+
 export type DetailedSubService = {
   id: number;
   title: string;
@@ -466,21 +596,32 @@ export type DetailedSubService = {
 };
 
 export type DetailedServiceItem = {
+  slug: string;
   title: string;
+  heroTagline?: string;
   image: string;
   bottomImage?: string;
   des: string;
+  overview?: string;
   services: DetailedSubService[];
+  deliverables?: ServiceDeliverable[];
+  process?: ServiceProcessStep[];
+  metrics?: ServiceMetric[];
+  faqs?: FAQItem[];
 };
 
 export const detailedServiceItems: DetailedServiceItem[] = [
   {
+    slug: "ui-ux-design",
     title: "UI/UX Design",
+    heroTagline: "Designing intuitive, brand-defining interfaces that convert visitors into loyal customers.",
     image:
       "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422ed8ffd5696dac6a4_UX%20Design-p-1080.webp",
     bottomImage:
       "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/67a0fbbe15bf58f5b51affcf_Frame%201618871790%20(5).avif",
     des: "Your users will find the app easy to use. Our UI and UX services ensure your product is user-friendly so that it appeals to and catches the hearts of users on any device.",
+    overview:
+      "We believe that exceptional digital design sits at the intersection of aesthetic beauty, technical performance, and behavioral psychology. Our UI/UX design practice transforms complex user journeys into effortless, high-converting digital interactions tailored specifically for Shopify and modern SaaS brands.",
     services: [
       { id: 1, title: "UX Research Service", href: "#ux-research-service" },
       { id: 2, title: "UX Audit & Strategy", href: "#ux-audit-strategy" },
@@ -496,14 +637,57 @@ export const detailedServiceItems: DetailedServiceItem[] = [
       },
       { id: 9, title: "UI UX Redesign", href: "#ui-ux-redesign" },
     ],
+    deliverables: [
+      {
+        title: "Full Figma Design System",
+        description: "Comprehensive tokenized component libraries, typography scale, color tokens, and responsive layout grids.",
+      },
+      {
+        title: "Interactive Prototypes",
+        description: "High-fidelity micro-interaction prototypes ready for usability testing and stakeholder validation.",
+      },
+      {
+        title: "User Journey & Wireframes",
+        description: "Low and mid-fidelity architecture mappings focusing on conversion friction removal.",
+      },
+      {
+        title: "Developer Hand-off Documentation",
+        description: "Pixel-perfect asset exports, motion specs, and responsive breakpoint guides for engineering teams.",
+      },
+    ],
+    process: [
+      { step: "01", title: "Empathize & Research", description: "Deep-dive stakeholder interviews, competitor benchmarking, and heat-map analytics audit." },
+      { step: "02", title: "Information Architecture", description: "Structuring intuitive sitemaps, user task flows, and mobile-first wireframe skeletons." },
+      { step: "03", title: "Visual UI Design", description: "Applying brand identities into immersive, accessible, and high-impact visual design layouts." },
+      { step: "04", title: "Prototype & User Test", description: "Interactive validation with real users to measure task completion speed and satisfaction." },
+    ],
+    metrics: [
+      { value: "+64%", label: "Average Mobile Conversion Uplift" },
+      { value: "4.9/5", label: "Client Usability Score" },
+      { value: "350+", label: "Figma Components Engineered" },
+    ],
+    faqs: [
+      {
+        question: "How long does a full UI/UX design project take?",
+        answer: "A standard brand redesign typically takes 3 to 6 weeks, depending on the scope of pages, device requirements, and interactive prototype complexity.",
+      },
+      {
+        question: "Do you deliver design systems in Figma?",
+        answer: "Yes, 100% of our UI/UX deliverables are built in Figma using modern auto-layout, variables, component properties, and tokenized design systems.",
+      },
+    ],
   },
   {
+    slug: "shopify-development",
     title: "Shopify Development",
+    heroTagline: "Building lightning-fast, high-converting custom Shopify and Shopify Plus storefronts.",
     image:
       "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422a7f442bbf1487074_Web%20Design-p-1080.webp",
     bottomImage:
       "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/67a0fbbe15bf58f5b51affcf_Frame%201618871790%20(5).avif",
     des: "Build high-converting e-commerce storefronts. Our Shopify development services focus on speed, responsiveness, and scalable architectures tailored to your brand.",
+    overview:
+      "As accredited Shopify Partners, we develop custom Liquid themes, headless storefronts (Next.js + Hydrogen), and private application integrations engineered for ultra-fast performance, sub-second TTFB, and peak holiday traffic surges.",
     services: [
       {
         id: 1,
@@ -522,14 +706,57 @@ export const detailedServiceItems: DetailedServiceItem[] = [
       },
       { id: 4, title: "Headless Shopify Commerce", href: "#shopify-headless" },
     ],
+    deliverables: [
+      {
+        title: "Bespoke Custom Liquid Theme",
+        description: "Zero-bloat, custom Shopify OS 2.0 theme built from scratch with modular dynamic sections.",
+      },
+      {
+        title: "90+ PageSpeed Optimization",
+        description: "Asset prefetching, script minimization, and modern image formats to maximize Core Web Vitals.",
+      },
+      {
+        title: "App & ERP Custom Integrations",
+        description: "Custom connectors for Klaviyo, Recharge, Gorgias, NetSuite, and 3PL fulfillment platforms.",
+      },
+      {
+        title: "Internationalization & Multi-Currency",
+        description: "Shopify Markets setup with localized currencies, languages, and geo-targeted pricing.",
+      },
+    ],
+    process: [
+      { step: "01", title: "Technical Blueprint", description: "Architecture mapping, app stack audit, and data schema design for Shopify OS 2.0." },
+      { step: "02", title: "Sprint-Based Development", description: "Clean, componentized Liquid or Headless development in Git-versioned staging stores." },
+      { step: "03", title: "QA & Performance Testing", description: "Cross-browser testing, accessibility audit, payment gateway testing, and load speed optimization." },
+      { step: "04", title: "Zero-Downtime Launch", description: "DNS switch, domain verification, 301 redirect validation, and real-time order monitoring." },
+    ],
+    metrics: [
+      { value: "95+", label: "Google Lighthouse Mobile Score" },
+      { value: "< 1.2s", label: "Average Page Load Time" },
+      { value: "100%", label: "Zero Downtime Launch Record" },
+    ],
+    faqs: [
+      {
+        question: "Can you build headless Shopify stores with Next.js?",
+        answer: "Yes, we specialize in Headless Shopify architectures combining Shopify Storefront API with Next.js for instant page loads and total frontend flexibility.",
+      },
+      {
+        question: "Do you handle custom app integrations?",
+        answer: "Yes, we build and configure custom Shopify apps and private webhooks to connect your ERP, CRM, and fulfillment tools.",
+      },
+    ],
   },
   {
+    slug: "platform-migration",
     title: "Platform Migration",
+    heroTagline: "Flawless zero-downtime store migrations with 100% SEO ranking and data preservation.",
     image:
       "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c4229130cd923555f69b_Mobile%20App%20Design-p-1080.webp",
     bottomImage:
       "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/67a0fbbe15bf58f5b51affcf_Frame%201618871790%20(5).avif",
     des: "Seamlessly transition your business infrastructure. We migrate data, logic, and designs securely without downtime, preserving your SEO rankings.",
+    overview:
+      "Migrating to Shopify Plus from Magento, WooCommerce, BigCommerce, or custom legacy CMS platforms requires precision engineering. We migrate your product catalogs, order history, customer accounts, and 301 redirect trees with zero traffic loss.",
     services: [
       { id: 1, title: "WooCommerce to Shopify", href: "#woo-to-shopify" },
       { id: 2, title: "Custom CMS Migration", href: "#custom-cms-migration" },
@@ -539,14 +766,53 @@ export const detailedServiceItems: DetailedServiceItem[] = [
         href: "#seo-preservation",
       },
     ],
+    deliverables: [
+      {
+        title: "Full Data Migration & Validation",
+        description: "Automated ETL migration of products, variants, metadata, customer lists, and past order history.",
+      },
+      {
+        title: "Comprehensive 301 Redirect Mapping",
+        description: "1-to-1 URL redirect architecture to guarantee zero loss of organic search traffic and search rankings.",
+      },
+      {
+        title: "Payment & Gateway Reconnection",
+        description: "Setting up Stripe, PayPal, Apple Pay, Klarna, and tokenized customer checkout credentials.",
+      },
+    ],
+    process: [
+      { step: "01", title: "Data Audit & Mapping", description: "Catalog structure analysis, custom field taxonomy, and database cleanup strategy." },
+      { step: "02", title: "Staging Migration Run", description: "Dry-run migration in private environment with automated verification scripts." },
+      { step: "03", title: "Delta Sync", description: "Syncing newly created orders and customers right before the go-live transition." },
+      { step: "04", title: "Go-Live & Post-Migration Watch", description: "DNS changeover with 24/7 technical monitoring and error logging." },
+    ],
+    metrics: [
+      { value: "0", label: "Downtime Minutes During Migration" },
+      { value: "100%", label: "SEO Equity & Traffic Maintained" },
+      { value: "1M+", label: "Records Migrated Successfully" },
+    ],
+    faqs: [
+      {
+        question: "Will our customers lose their purchase history or passwords?",
+        answer: "We migrate complete customer order history. For password security, we implement automated account activation invites so customers can seamlessly resume shopping.",
+      },
+      {
+        question: "Will our Google search rankings drop after migrating?",
+        answer: "No. By meticulously mapping 301 redirects and preserving meta titles, schema markup, and canonical URLs, we protect and often improve organic SEO performance.",
+      },
+    ],
   },
   {
+    slug: "growth-optimization",
     title: "Growth & Optimization",
+    heroTagline: "Data-driven conversion rate optimization and performance tuning that multiplies revenue.",
     image:
       "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422529dc0db1881445e_Branding%20%26%20Identity-p-1080.webp",
     bottomImage:
       "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/67a0fbbe15bf58f5b51affcf_Frame%201618871790%20(5).avif",
     des: "Scale your revenue and digital footprints. We analyze user journeys and execute optimization strategies to turn current traffic into customer loops.",
+    overview:
+      "Traffic is only half the battle. Our conversion rate optimization (CRO) methodology combines deep behavioral analytics, session heatmaps, user interviews, and iterative A/B testing to turn existing website visitors into high-value repeat purchasers.",
     services: [
       {
         id: 1,
@@ -564,8 +830,49 @@ export const detailedServiceItems: DetailedServiceItem[] = [
         href: "#ab-testing-analytics",
       },
     ],
+    deliverables: [
+      {
+        title: "Full Funnel CRO Audit",
+        description: "Identifying high-friction drop-off points across home, category, product, cart, and checkout pages.",
+      },
+      {
+        title: "Hypothesis-Driven A/B Testing",
+        description: "Deploying high-confidence statistically significant split tests to validate design changes.",
+      },
+      {
+        title: "Average Order Value (AOV) Boosters",
+        description: "In-cart upsells, dynamic bundle builders, and free shipping tier progress bars.",
+      },
+    ],
+    process: [
+      { step: "01", title: "Quantitative Analytics", description: "Google Analytics 4, heatmaps, scroll depth, and micro-conversion funnel analysis." },
+      { step: "02", title: "Hypothesis Formation", description: "Formulating prioritized test roadmaps using the ICE (Impact, Confidence, Ease) framework." },
+      { step: "03", title: "Experimentation Sprint", description: "Designing and coding variant experiences with statistical significance monitoring." },
+      { step: "04", title: "Implementation & Scaling", description: "Hardcoding winning variations and launching next-tier optimization loops." },
+    ],
+    metrics: [
+      { value: "+32%", label: "Average AOV Increase" },
+      { value: "4.2x", label: "Average ROI on CRO Engagements" },
+      { value: "85%", label: "Test Hypothesis Success Rate" },
+    ],
+    faqs: [
+      {
+        question: "What minimum traffic do we need for A/B testing?",
+        answer: "We recommend at least 25,000 monthly visitors or 500+ monthly orders to achieve statistical confidence within 2 to 4 weeks.",
+      },
+      {
+        question: "How do you measure success in CRO?",
+        answer: "We measure success directly through revenue per visitor (RPV), conversion rate (CR), and average order value (AOV) tracked in GA4 and Shopify analytics.",
+      },
+    ],
   },
 ];
+
+export const getServiceBySlug = (
+  slug: string,
+): DetailedServiceItem | undefined => {
+  return detailedServiceItems.find((s) => s.slug === slug);
+};
 
 // ==========================================
 // 9. WORKING PROCESS DATA

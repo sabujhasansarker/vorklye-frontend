@@ -8,6 +8,7 @@ import { useScrollSmootherSetup, useSplitTitleReveal } from "@/utility";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother, SplitText } from "gsap/all";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
@@ -47,17 +48,21 @@ const Home = () => {
             </ul>
             <div className="grid grid-cols-3 gap-6 gap-y-25 mt-10">
               {caseStudies.map((item) => (
-                <div key={item.id}>
-                  <img
-                    src={item.image}
-                    className="w-full h-150 object-cover rounded-sm"
-                    alt=""
-                  />
-                  <p className="text-sm font-bold mt-6 uppercase">
+                <div key={item.id} className="group">
+                  <Link href={`/case-studies/${item.slug}`} className="block overflow-hidden rounded-sm mb-6">
+                    <img
+                      src={item.image}
+                      className="w-full h-150 object-cover rounded-sm group-hover:scale-105 transition-transform duration-500"
+                      alt={item.title}
+                    />
+                  </Link>
+                  <p className="text-sm font-bold uppercase text-neutral-400">
                     {item.industry}
                   </p>
                   <h4 className="text-2xl font-semibold mt-4 tracking-tight">
-                    {item.title}
+                    <Link href={`/case-studies/${item.slug}`} className="hover:text-neutral-200 transition-colors">
+                      {item.title}
+                    </Link>
                   </h4>
                   <p className="text-[18px] leading-8 font-medium text-neutral-400 mt-3">
                     {item.description}

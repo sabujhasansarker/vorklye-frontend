@@ -3,6 +3,7 @@
 import { caseStudies, caseStudiesSectionData, type CaseStudy } from "@/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import Button, { ButtonUnderline } from "./Button";
 
@@ -74,7 +75,9 @@ const CaseStudiesSection: React.FC = () => {
               <div className="p-15 w-1/2 h-full flex flex-col justify-center">
                 {item.logo && <img src={item.logo} className="w-fit" alt={item.title} />}
                 <h4 className="text-gray-200 text-3xl font-bold leading-9 my-5">
-                  {item.title}
+                  <Link href={`/case-studies/${item.slug}`} className="hover:text-white transition-colors">
+                    {item.title}
+                  </Link>
                 </h4>
                 <p className="max-w-123.75 text-gray-200 text-lg font-medium leading-8">
                   {item.description}
@@ -113,21 +116,26 @@ const CaseStudiesSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <ButtonUnderline text={caseStudiesSectionData.viewMoreText} />
+                <ButtonUnderline
+                  text={caseStudiesSectionData.viewMoreText}
+                  href={`/case-studies/${item.slug}`}
+                />
               </div>
               <div className="w-1/2 overflow-hidden">
-                <img
-                  src={item.image}
-                  className="w-full h-140 object-cover object-center"
-                  alt={item.title}
-                />
+                <Link href={`/case-studies/${item.slug}`}>
+                  <img
+                    src={item.image}
+                    className="w-full h-140 object-cover object-center hover:scale-105 transition-transform duration-500"
+                    alt={item.title}
+                  />
+                </Link>
               </div>
             </div>
           ))}
         </div>
 
         <div className="m-auto text-center">
-          <Button text={caseStudiesSectionData.ctaText} />
+          <Button text={caseStudiesSectionData.ctaText} href="/case-studies" />
         </div>
       </div>
     </section>
@@ -150,13 +158,19 @@ export const CaseStudiesSection2: React.FC = () => {
           {caseStudies.map((item) => (
             <div className="w-full" key={item.id}>
               <div className="flex gap-15">
-                <img
-                  src={item.image}
-                  className="w-6/12 h-150 object-cover"
-                  alt=""
-                />
+                <Link href={`/case-studies/${item.slug}`} className="w-6/12 h-150 overflow-hidden block">
+                  <img
+                    src={item.image}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    alt={item.title}
+                  />
+                </Link>
                 <div className="mt-6">
-                  <h4 className="text-2xl font-semibold">{item.title}</h4>
+                  <h4 className="text-2xl font-semibold">
+                    <Link href={`/case-studies/${item.slug}`} className="hover:text-white transition-colors">
+                      {item.title}
+                    </Link>
+                  </h4>
                   <div className="inline-flex justify-start items-start gap-28 mt-4">
                     <div className="inline-flex flex-col justify-start items-start gap-2">
                       <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
