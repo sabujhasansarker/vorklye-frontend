@@ -399,24 +399,25 @@ export const ServiceItems: React.FC = () => {
 
                       <div className="mt-10">
                         {item.services.map((service) => (
-                          <div
+                          <Link
                             key={service.id}
-                            className="flex justify-between border-b border-neutral-900 py-5"
+                            href={`/services/${item.slug}/${service.slug}`}
+                            className="group flex justify-between border-b border-neutral-900 py-5 hover:border-neutral-700 transition-colors"
                           >
-                            <div className="flex gap-5">
-                              <p className="text-lg font-bold leading-5 text-zinc-500">
+                            <div className="flex gap-5 items-center">
+                              <p className="text-lg font-bold leading-5 text-zinc-600 group-hover:text-zinc-400 transition-colors">
                                 {service.id <= 9
                                   ? `0${service.id}`
                                   : service.id}
                               </p>
 
-                              <h4 className="text-[19px] font-semibold leading-6 text-neutral-300">
+                              <h4 className="text-[19px] font-semibold leading-6 text-neutral-400 group-hover:text-white transition-colors">
                                 {service.title}
                               </h4>
                             </div>
 
-                            <ArrowUpRight className="shrink-0 text-zinc-500" />
-                          </div>
+                            <ArrowUpRight className="shrink-0 text-zinc-600 group-hover:text-white transition-colors" />
+                          </Link>
                         ))}
                       </div>
                     </div>

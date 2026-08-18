@@ -591,8 +591,13 @@ export type ServiceProcessStep = {
 
 export type DetailedSubService = {
   id: number;
+  slug: string;
   title: string;
   href: string;
+  tagline?: string;
+  description?: string;
+  deliverables?: string[];
+  process?: { step: string; title: string; description: string }[];
 };
 
 export type DetailedServiceItem = {
@@ -623,19 +628,141 @@ export const detailedServiceItems: DetailedServiceItem[] = [
     overview:
       "We believe that exceptional digital design sits at the intersection of aesthetic beauty, technical performance, and behavioral psychology. Our UI/UX design practice transforms complex user journeys into effortless, high-converting digital interactions tailored specifically for Shopify and modern SaaS brands.",
     services: [
-      { id: 1, title: "UX Research Service", href: "#ux-research-service" },
-      { id: 2, title: "UX Audit & Strategy", href: "#ux-audit-strategy" },
-      { id: 3, title: "UX Usability Testing", href: "#ux-usability-testing" },
-      { id: 4, title: "UI UX Consulting", href: "#ui-ux-consulting" },
-      { id: 5, title: "UI UX Design", href: "#ui-ux-design" },
-      { id: 6, title: "AI UI UX Design", href: "#ai-ui-ux-design" },
-      { id: 7, title: "Design System", href: "#design-system" },
+      {
+        id: 1,
+        slug: "ux-research",
+        title: "UX Research Service",
+        href: "/services/ui-ux-design/ux-research",
+        tagline: "Uncover deep user insights that drive conversion-focused design decisions.",
+        description: "We conduct in-depth user research through interviews, surveys, behavioral analytics, and competitor audits to understand exactly what your customers need — before a single pixel is designed.",
+        deliverables: ["User Interview Recordings & Synthesis", "Affinity Diagrams & Persona Maps", "Competitor UX Benchmark Report", "Jobs-to-be-Done Framework", "Research Insights Deck"],
+        process: [
+          { step: "01", title: "Stakeholder Alignment", description: "Define research goals, success metrics, and target user profiles." },
+          { step: "02", title: "Qualitative Research", description: "1-on-1 user interviews, contextual inquiry, and usability observation sessions." },
+          { step: "03", title: "Quantitative Analysis", description: "Heatmaps, click-tracking, session replays, and funnel analytics." },
+          { step: "04", title: "Insights Synthesis", description: "Distilling raw data into actionable design opportunities and priority recommendations." },
+        ],
+      },
+      {
+        id: 2,
+        slug: "ux-audit",
+        title: "UX Audit & Strategy",
+        href: "/services/ui-ux-design/ux-audit",
+        tagline: "Identify every friction point draining your conversion rate and fix it.",
+        description: "A comprehensive heuristic evaluation of your existing digital product — mapping every drop-off, confusion point, and missed opportunity across the user journey with prioritized recommendations.",
+        deliverables: ["Full Heuristic Evaluation Report", "Annotated UX Audit Slides", "Prioritized Issue Matrix (High/Medium/Low)", "Quick-Win Fix List", "6-Month UX Roadmap"],
+        process: [
+          { step: "01", title: "Audit Scope Definition", description: "Map the key user journeys and define evaluation criteria." },
+          { step: "02", title: "Heuristic Review", description: "Evaluate against Nielsen's 10 heuristics + ecommerce-specific principles." },
+          { step: "03", title: "Data Cross-Reference", description: "Layer analytics data to validate severity of identified issues." },
+          { step: "04", title: "Strategic Roadmap", description: "Deliver a phased action plan with business-impact projections." },
+        ],
+      },
+      {
+        id: 3,
+        slug: "usability-testing",
+        title: "UX Usability Testing",
+        href: "/services/ui-ux-design/usability-testing",
+        tagline: "Validate designs with real users before shipping — and eliminate guesswork.",
+        description: "Moderated and unmoderated usability tests that reveal how real users interact with your product, where they struggle, and how to optimize for task completion and satisfaction.",
+        deliverables: ["Test Plan & Screener", "Recorded Session Videos", "Annotated Findings Report", "Usability Score (SUS)", "Design Iteration Recommendations"],
+        process: [
+          { step: "01", title: "Test Plan Design", description: "Define tasks, success criteria, and participant recruitment criteria." },
+          { step: "02", title: "Participant Recruitment", description: "Screen and schedule participants matching your real user demographics." },
+          { step: "03", title: "Test Facilitation", description: "Conduct moderated sessions via Maze, Lookback, or in-person." },
+          { step: "04", title: "Report & Iterations", description: "Synthesize findings into actionable redesign recommendations with severity ratings." },
+        ],
+      },
+      {
+        id: 4,
+        slug: "ux-consulting",
+        title: "UI UX Consulting",
+        href: "/services/ui-ux-design/ux-consulting",
+        tagline: "Expert strategic guidance to align your product team around user-centred growth.",
+        description: "Strategic UX consulting sessions with senior designers who bridge business objectives, user needs, and technical constraints to define a scalable digital product strategy.",
+        deliverables: ["Product Strategy Workshop", "UX Maturity Assessment", "Design System Governance Plan", "Team Workflow Optimization Guide", "Quarterly OKR Alignment"],
+        process: [
+          { step: "01", title: "Discovery Workshop", description: "Half-day facilitated session to map business goals, constraints, and user needs." },
+          { step: "02", title: "Current State Audit", description: "Assess team structure, tools, and existing design process maturity." },
+          { step: "03", title: "Strategy Definition", description: "Co-create a prioritized UX strategy aligned with product roadmap." },
+          { step: "04", title: "Ongoing Advisory", description: "Monthly check-ins, design reviews, and stakeholder presentation support." },
+        ],
+      },
+      {
+        id: 5,
+        slug: "ui-ux-design",
+        title: "UI UX Design",
+        href: "/services/ui-ux-design/ui-ux-design",
+        tagline: "Pixel-perfect, brand-aligned interfaces that are as beautiful as they are functional.",
+        description: "Full end-to-end interface design for web, mobile, and e-commerce platforms — from initial wireframes to pixel-perfect visual design, micro-interactions, and developer-ready handoffs.",
+        deliverables: ["High-Fidelity Screen Designs", "Responsive Breakpoint Layouts", "Interaction Design Specs", "Brand-Aligned Component Library", "Annotated Developer Handoff"],
+        process: [
+          { step: "01", title: "Wireframe Architecture", description: "Low-fidelity skeleton layouts focusing on content hierarchy and conversion flow." },
+          { step: "02", title: "Visual Design Language", description: "Typography, color, spacing, and brand token application across all screens." },
+          { step: "03", title: "Interaction Design", description: "Micro-animations, state transitions, and hover behavior specifications." },
+          { step: "04", title: "Developer Handoff", description: "Zeplin or Figma inspect-ready files with all tokens, assets, and specs exported." },
+        ],
+      },
+      {
+        id: 6,
+        slug: "ai-ui-ux-design",
+        title: "AI UI UX Design",
+        href: "/services/ui-ux-design/ai-ui-ux-design",
+        tagline: "Intelligent interfaces powered by AI — personalized, adaptive, and conversion-optimized.",
+        description: "Designing AI-native product experiences: conversational UI, recommendation engines, dynamic personalization layers, and predictive interface components that learn and adapt in real time.",
+        deliverables: ["AI Component Design Patterns", "Conversational UI Flows", "Personalization Architecture", "Error State & Fallback Designs", "AI Transparency Guidelines"],
+        process: [
+          { step: "01", title: "AI Use Case Mapping", description: "Identify high-value AI integration points across the customer journey." },
+          { step: "02", title: "Data-Flow Design", description: "Design how AI outputs surface in the interface without overwhelming users." },
+          { step: "03", title: "Adaptive UI Patterns", description: "Build component libraries that respond dynamically to AI-generated content." },
+          { step: "04", title: "Trust & Transparency", description: "Ensure AI explanations, confidence levels, and opt-outs are clearly surfaced." },
+        ],
+      },
+      {
+        id: 7,
+        slug: "design-system",
+        title: "Design System",
+        href: "/services/ui-ux-design/design-system",
+        tagline: "A scalable, tokenized design system that accelerates your entire product team.",
+        description: "We architect and build production-ready design systems in Figma — including component libraries, design tokens, documentation sites, and governance workflows for cross-functional teams.",
+        deliverables: ["Figma Token Architecture", "Core Component Library (50–300+ Components)", "Documentation & Usage Guidelines", "Dark/Light Mode Variants", "Storybook Integration Support"],
+        process: [
+          { step: "01", title: "Design Token Definition", description: "Establish semantic token layers for color, typography, spacing, and elevation." },
+          { step: "02", title: "Component Architecture", description: "Build atomic, molecule, and organism components with full variant coverage." },
+          { step: "03", title: "Documentation", description: "Write usage guidelines, do/don't examples, and accessibility notes for every component." },
+          { step: "04", title: "Governance Setup", description: "Establish contribution workflows, versioning, and sync with engineering tokens." },
+        ],
+      },
       {
         id: 8,
+        slug: "wireframing-prototyping",
         title: "Wireframing and Prototyping",
-        href: "#wireframing-prototyping",
+        href: "/services/ui-ux-design/wireframing-prototyping",
+        tagline: "Rapid structural blueprints and interactive prototypes to validate before you build.",
+        description: "From low-fidelity wireframes to high-fidelity interactive prototypes, we rapidly visualize and validate your product concepts — saving development time and de-risking major decisions early.",
+        deliverables: ["Lo-Fi Wireframe Sketches", "Mid-Fi Clickable Wireframes", "Hi-Fi Interactive Prototype", "User Flow Diagrams", "Prototype Test Report"],
+        process: [
+          { step: "01", title: "Content Mapping", description: "Define content priority, page hierarchy, and navigation architecture." },
+          { step: "02", title: "Lo-Fi Exploration", description: "Rapid sketch-level wireframes exploring multiple layout directions." },
+          { step: "03", title: "Hi-Fi Prototype", description: "Figma prototype with realistic interactions and transition animations." },
+          { step: "04", title: "Validation & Iteration", description: "User test the prototype and iterate until task completion rates meet targets." },
+        ],
       },
-      { id: 9, title: "UI UX Redesign", href: "#ui-ux-redesign" },
+      {
+        id: 9,
+        slug: "ui-ux-redesign",
+        title: "UI UX Redesign",
+        href: "/services/ui-ux-design/ui-ux-redesign",
+        tagline: "Transform an outdated product into a modern, high-converting digital experience.",
+        description: "Full product redesigns that modernize visual aesthetics, simplify navigation, eliminate friction, and align every touchpoint with your updated brand identity and conversion goals.",
+        deliverables: ["Before/After Design Comparison", "Redesigned Full Page Layouts", "Component Migration Plan", "Brand Refresh Integration", "Launch-Ready Figma Files"],
+        process: [
+          { step: "01", title: "Legacy Audit", description: "Document all existing screens, flows, and components needing redesign." },
+          { step: "02", title: "New Design Direction", description: "Establish updated visual language, typography, and layout principles." },
+          { step: "03", title: "Phased Redesign", description: "Redesign screens in prioritized sprints — highest-impact pages first." },
+          { step: "04", title: "Handoff & Migration", description: "Deliver final files with a migration plan to transition without disruption." },
+        ],
+      },
     ],
     deliverables: [
       {
@@ -691,20 +818,64 @@ export const detailedServiceItems: DetailedServiceItem[] = [
     services: [
       {
         id: 1,
+        slug: "custom-theme-development",
         title: "Custom Theme Development",
-        href: "#shopify-custom-theme",
+        href: "/services/shopify-development/custom-theme-development",
+        tagline: "Zero-bloat, bespoke Shopify themes engineered to convert at every scroll.",
+        description: "We build fully custom Shopify OS 2.0 Liquid themes from scratch — no template shortcuts, no bloat. Every section is modular, editable in the theme editor, and optimized for sub-1-second load times.",
+        deliverables: ["Custom Shopify OS 2.0 Liquid Theme", "Merchant-Editable Dynamic Sections", "Mobile-First Responsive Layouts", "Schema Markup & SEO Meta Integration", "Performance Audit Report"],
+        process: [
+          { step: "01", title: "Design-to-Dev Handoff", description: "Convert Figma designs into precise technical specifications and component breakdowns." },
+          { step: "02", title: "Section Architecture", description: "Build modular Liquid sections with full Schema editor customization." },
+          { step: "03", title: "Performance Build", description: "Implement lazy loading, critical CSS, and asset optimization throughout." },
+          { step: "04", title: "QA & Merchant Review", description: "Cross-browser testing and merchant walkthrough before go-live." },
+        ],
       },
       {
         id: 2,
+        slug: "app-integration",
         title: "App Integration & Setup",
-        href: "#shopify-app-integration",
+        href: "/services/shopify-development/app-integration",
+        tagline: "Seamlessly connect your tech stack — CRM, ERP, loyalty, and fulfillment — with Shopify.",
+        description: "We configure and deeply customize Shopify apps and build private API integrations to connect your store with Klaviyo, Recharge, Gorgias, NetSuite, 3PLs, and any custom internal tools.",
+        deliverables: ["Custom App Configuration", "API Integration Documentation", "Webhook Setup & Error Monitoring", "Data Sync Validation Report", "Post-Launch App Support"],
+        process: [
+          { step: "01", title: "Tech Stack Audit", description: "Map all existing tools and define integration data flows and API requirements." },
+          { step: "02", title: "Integration Build", description: "Develop and test API connectors, webhooks, and data sync pipelines." },
+          { step: "03", title: "Staging Validation", description: "Full end-to-end data flow testing in a Shopify development store." },
+          { step: "04", title: "Production Deploy", description: "Monitored rollout with error alerting and integration health checks." },
+        ],
       },
       {
         id: 3,
+        slug: "store-setup",
         title: "Store Setup & Configuration",
-        href: "#shopify-store-setup",
+        href: "/services/shopify-development/store-setup",
+        tagline: "A perfectly configured Shopify store ready to sell from day one.",
+        description: "Complete Shopify store setup including product catalog configuration, payment gateways, shipping zones, taxes, legal pages, and all merchant settings — ready to launch on schedule.",
+        deliverables: ["Configured Shopify Store", "Payment Gateway Setup", "Shipping Zone & Tax Configuration", "Legal Pages (Privacy, T&Cs, Returns)", "Merchant Training Session"],
+        process: [
+          { step: "01", title: "Scope & Requirements", description: "Define product catalog size, markets, payment methods, and business rules." },
+          { step: "02", title: "Store Configuration", description: "Set up all Shopify settings, shipping zones, tax rules, and payment gateways." },
+          { step: "03", title: "Catalog Import", description: "Bulk-import products, collections, metafields, and media assets." },
+          { step: "04", title: "Pre-Launch Checklist", description: "Complete a 50-point launch checklist and train the merchant team." },
+        ],
       },
-      { id: 4, title: "Headless Shopify Commerce", href: "#shopify-headless" },
+      {
+        id: 4,
+        slug: "headless-shopify",
+        title: "Headless Shopify Commerce",
+        href: "/services/shopify-development/headless-shopify",
+        tagline: "Blazing-fast storefronts decoupled from Shopify's backend — ultimate frontend freedom.",
+        description: "We architect headless Shopify storefronts using Next.js and the Shopify Storefront API — delivering instantaneous page loads, fully custom UX, and unlimited frontend flexibility.",
+        deliverables: ["Next.js Headless Storefront", "Shopify Storefront API Integration", "Custom Cart & Checkout Flow", "ISR/SSG Performance Architecture", "Deployment & CDN Configuration"],
+        process: [
+          { step: "01", title: "Architecture Design", description: "Define data fetching strategy (SSG/ISR/SSR), caching layers, and API schema." },
+          { step: "02", title: "Frontend Build", description: "Develop Next.js storefront with custom components, cart logic, and search." },
+          { step: "03", title: "Shopify Integration", description: "Connect Storefront API, handle variants, metafields, and customer accounts." },
+          { step: "04", title: "Performance & Deploy", description: "Optimize Core Web Vitals and deploy to Vercel or custom infrastructure." },
+        ],
+      },
     ],
     deliverables: [
       {
@@ -758,12 +929,50 @@ export const detailedServiceItems: DetailedServiceItem[] = [
     overview:
       "Migrating to Shopify Plus from Magento, WooCommerce, BigCommerce, or custom legacy CMS platforms requires precision engineering. We migrate your product catalogs, order history, customer accounts, and 301 redirect trees with zero traffic loss.",
     services: [
-      { id: 1, title: "WooCommerce to Shopify", href: "#woo-to-shopify" },
-      { id: 2, title: "Custom CMS Migration", href: "#custom-cms-migration" },
+      {
+        id: 1,
+        slug: "woocommerce-to-shopify",
+        title: "WooCommerce to Shopify",
+        href: "/services/platform-migration/woocommerce-to-shopify",
+        tagline: "Migrate from WooCommerce to Shopify Plus with zero data loss and zero downtime.",
+        description: "We handle the complete WooCommerce to Shopify migration — products, customers, orders, SEO redirects, and all metafields — with automated validation scripts to guarantee 100% data integrity.",
+        deliverables: ["Product & Variant Migration", "Customer & Order History Transfer", "301 SEO Redirect Map", "Metafield Migration", "Post-Migration QA Report"],
+        process: [
+          { step: "01", title: "Data Audit", description: "Catalogue all WooCommerce data structures, custom fields, and plugin dependencies." },
+          { step: "02", title: "Staging Migration", description: "Run full migration on a Shopify development store and verify all records." },
+          { step: "03", title: "Delta Sync", description: "Capture and sync orders and customers created during the migration window." },
+          { step: "04", title: "Go-Live & Monitor", description: "Switch DNS and monitor for 48 hours with rollback plan ready." },
+        ],
+      },
+      {
+        id: 2,
+        slug: "custom-cms-migration",
+        title: "Custom CMS Migration",
+        href: "/services/platform-migration/custom-cms-migration",
+        tagline: "Migrate from any legacy CMS or custom platform to Shopify — cleanly and completely.",
+        description: "We migrate stores from Magento, BigCommerce, Squarespace, custom PHP/Laravel platforms, and any bespoke ecommerce system to Shopify Plus with custom ETL pipelines built specifically for your data structure.",
+        deliverables: ["Custom ETL Migration Scripts", "Data Mapping Documentation", "Media Asset Migration", "Content & Blog Migration", "Validation & QA Report"],
+        process: [
+          { step: "01", title: "Source Audit", description: "Analyze the legacy platform's database schema, file structure, and API availability." },
+          { step: "02", title: "ETL Pipeline Build", description: "Develop custom extraction, transformation, and loading scripts for the specific platform." },
+          { step: "03", title: "Test Migration", description: "Execute staging migration and validate all data counts and content integrity." },
+          { step: "04", title: "Production Cutover", description: "Execute production migration with delta sync and 24-hour monitoring." },
+        ],
+      },
       {
         id: 3,
+        slug: "seo-preservation",
         title: "Database & SEO Preservation",
-        href: "#seo-preservation",
+        href: "/services/platform-migration/seo-preservation",
+        tagline: "Protect every organic ranking point during your platform migration.",
+        description: "Our SEO-first migration approach ensures every URL, meta tag, canonical, structured data schema, and internal link is mapped and preserved — so your Google rankings improve, not drop, after launch.",
+        deliverables: ["Complete 301 Redirect Map", "Meta Title & Description Migration", "Structured Data Schema Setup", "Internal Link Audit", "Post-Launch SEO Health Check"],
+        process: [
+          { step: "01", title: "URL Inventory", description: "Crawl and document every indexed URL on the existing platform." },
+          { step: "02", title: "Redirect Architecture", description: "Build a comprehensive 1-to-1 redirect map for every old URL to its new destination." },
+          { step: "03", title: "On-Page Migration", description: "Transfer all meta titles, descriptions, alt tags, and schema markup." },
+          { step: "04", title: "Post-Launch Audit", description: "Monitor Search Console for crawl errors, ranking changes, and fix any issues within 48 hours." },
+        ],
       },
     ],
     deliverables: [
@@ -816,18 +1025,48 @@ export const detailedServiceItems: DetailedServiceItem[] = [
     services: [
       {
         id: 1,
+        slug: "cro",
         title: "Conversion Rate Optimization (CRO)",
-        href: "#cro-optimization",
+        href: "/services/growth-optimization/cro",
+        tagline: "Turn existing traffic into exponential revenue — without increasing ad spend.",
+        description: "We run data-driven CRO programs that systematically identify friction across your funnel and eliminate it — using heatmaps, session replays, user interviews, and iterative A/B testing.",
+        deliverables: ["Full Funnel CRO Audit", "Prioritized Test Backlog", "A/B Test Results Report", "Winning Variant Implementation", "CRO Performance Dashboard"],
+        process: [
+          { step: "01", title: "Baseline Audit", description: "Analyse GA4, heatmaps, and session recordings to identify highest-priority drop-off points." },
+          { step: "02", title: "Hypothesis Design", description: "Formulate ICE-scored test hypotheses with clear success metrics." },
+          { step: "03", title: "A/B Test Execution", description: "Deploy split tests via VWO or Optimizely and monitor for statistical significance." },
+          { step: "04", title: "Scale & Iterate", description: "Implement winning variants and feed insights into the next test cycle." },
+        ],
       },
       {
         id: 2,
+        slug: "seo-strategy",
         title: "SEO Strategy & Marketing",
-        href: "#seo-marketing-strategy",
+        href: "/services/growth-optimization/seo-strategy",
+        tagline: "Build organic authority that compounds month after month.",
+        description: "Technical SEO audits, content strategy, backlink acquisition, and ongoing keyword optimization to drive qualified organic traffic that converts to revenue — not just impressions.",
+        deliverables: ["Technical SEO Audit", "Keyword Research & Content Map", "On-Page Optimization", "Monthly Backlink Report", "Organic Revenue Attribution"],
+        process: [
+          { step: "01", title: "Technical Audit", description: "Crawl-based analysis of site speed, indexability, structured data, and Core Web Vitals." },
+          { step: "02", title: "Keyword Strategy", description: "Intent-mapped keyword research aligned to your product categories and buyer stages." },
+          { step: "03", title: "Content & On-Page", description: "Optimize existing pages and create new high-intent content targeting commercial keywords." },
+          { step: "04", title: "Link Acquisition", description: "Earned backlink campaigns through digital PR, partnerships, and resource link building." },
+        ],
       },
       {
         id: 3,
+        slug: "ab-testing",
         title: "A/B Testing & Analytics",
-        href: "#ab-testing-analytics",
+        href: "/services/growth-optimization/ab-testing",
+        tagline: "Let data choose your winners — scientifically validated experiments at scale.",
+        description: "End-to-end A/B and multivariate testing programs backed by statistical rigor — from hypothesis design and variant creation to analysis and winning-variant deployment.",
+        deliverables: ["Testing Roadmap & Calendar", "Variant Design & Development", "Statistical Analysis Report", "GA4 & Shopify Analytics Setup", "Experiment Documentation"],
+        process: [
+          { step: "01", title: "Analytics Setup", description: "Configure GA4 event tracking, Shopify analytics, and heatmap tools for accurate data collection." },
+          { step: "02", title: "Experiment Design", description: "Define hypothesis, control vs variant, success metrics, and minimum detectable effect." },
+          { step: "03", title: "Test Execution", description: "Develop variant experiences and run tests to statistical significance (95%+ confidence)." },
+          { step: "04", title: "Analysis & Action", description: "Report findings, implement winners, and archive insights for future test planning." },
+        ],
       },
     ],
     deliverables: [
@@ -872,6 +1111,23 @@ export const getServiceBySlug = (
   slug: string,
 ): DetailedServiceItem | undefined => {
   return detailedServiceItems.find((s) => s.slug === slug);
+};
+
+export const getSubServiceBySlug = (
+  serviceSlug: string,
+  subSlug: string,
+): DetailedSubService | undefined => {
+  const service = getServiceBySlug(serviceSlug);
+  return service?.services.find((sub) => sub.slug === subSlug);
+};
+
+export const getAllSubServiceParams = () => {
+  return detailedServiceItems.flatMap((service) =>
+    service.services.map((sub) => ({
+      slug: service.slug,
+      subSlug: sub.slug,
+    }))
+  );
 };
 
 // ==========================================

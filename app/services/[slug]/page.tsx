@@ -10,9 +10,9 @@ import {
 } from "@/data";
 import {
   ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
   CheckCircle2,
-  Sparkles,
   Zap,
 } from "lucide-react";
 import Link from "next/link";
@@ -26,10 +26,10 @@ export default function ServiceDetailPage({
 }) {
   const { slug } = use(params);
   const service = getServiceBySlug(slug);
-
   if (!service) notFound();
-
   const s = service!;
+
+  const currentIdx = detailedServiceItems.findIndex((x) => x.slug === slug);
   const otherServices = detailedServiceItems.filter((x) => x.slug !== slug);
   const relatedCaseStudies = caseStudies.slice(0, 2);
 
@@ -37,9 +37,8 @@ export default function ServiceDetailPage({
     <div className="bg-black text-white min-h-screen antialiased">
       <Header />
 
-      {/* ─── HERO ──────────────────────────────────────────────────── */}
+      {/* ─── HERO ─────────────────────────────────────────────────── */}
       <section className="relative pt-40 pb-0 overflow-hidden">
-        {/* subtle grid bg */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.03]"
@@ -49,9 +48,8 @@ export default function ServiceDetailPage({
             backgroundSize: "60px 60px",
           }}
         />
-
         <div className="container mx-auto px-4 relative z-10">
-          {/* breadcrumb */}
+          {/* back link */}
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-neutral-500 hover:text-white transition-colors mb-14"
@@ -61,31 +59,24 @@ export default function ServiceDetailPage({
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end pb-16 border-b border-neutral-900">
-            {/* left – headline */}
             <div>
-              <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-yellow-400 mb-6">
-                <Sparkles className="size-3" />
+              <span className="inline-block text-[11px] font-black uppercase tracking-[0.2em] text-yellow-400 mb-6">
                 Specialized Capability
               </span>
-              <h1 className="text-6xl sm:text-7xl xl:text-[6rem] font-black tracking-tight leading-[0.95] text-white">
+              <h1 className="text-6xl sm:text-7xl xl:text-[6rem] font-black tracking-tight leading-[0.93] text-white">
                 {s.title}
               </h1>
             </div>
-
-            {/* right – tagline + cta */}
             <div className="flex flex-col gap-8">
               <p className="text-xl text-neutral-400 font-medium leading-relaxed">
                 {s.heroTagline || s.des}
               </p>
               <div className="flex flex-wrap items-center gap-4">
                 <ButtonSm text="Discuss Project" href="/contact" />
-                <a
-                  href="#deliverables"
-                  className="group btn-normal text-[15px]"
-                >
+                <a href="#deliverables" className="group btn-normal text-[15px]">
                   <span className="btn-text">
-                    <span>Explore Deliverables</span>
-                    <span>Explore Deliverables</span>
+                    <span>View Deliverables</span>
+                    <span>View Deliverables</span>
                   </span>
                   <span className="btn-icon">
                     <ArrowUpRight className="size-4" />
@@ -96,17 +87,14 @@ export default function ServiceDetailPage({
             </div>
           </div>
 
-          {/* hero image – full bleed */}
-          <div className="relative mt-14 h-[55vw] max-h-[680px] min-h-[340px] overflow-hidden rounded-sm">
+          {/* hero image */}
+          <div className="mt-14 relative h-[55vw] max-h-[680px] min-h-[340px] overflow-hidden rounded-sm">
             <img
               src={s.image}
               alt={s.title}
               className="absolute inset-0 w-full h-full object-cover object-center scale-[1.02]"
             />
-            {/* dark gradient bottom */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
-
-            {/* floating badge */}
             {s.bottomImage && (
               <div className="absolute bottom-8 right-8 backdrop-blur-xl bg-white/5 border border-white/10 rounded-sm p-4">
                 <img src={s.bottomImage} alt="" className="w-52" />
@@ -116,17 +104,17 @@ export default function ServiceDetailPage({
         </div>
       </section>
 
-      {/* ─── METRICS BAR ───────────────────────────────────────────── */}
+      {/* ─── METRICS BAR ──────────────────────────────────────────── */}
       {s.metrics && s.metrics.length > 0 && (
         <section className="border-b border-neutral-900">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-900">
-              {s.metrics!.map((m, i) => (
+              {s.metrics.map((m, i) => (
                 <div key={i} className="py-14 px-8 sm:px-12">
-                  <span className="text-6xl xl:text-7xl font-black text-white tracking-tight tabular-nums">
+                  <span className="text-6xl xl:text-7xl font-black text-white tracking-tight tabular-nums block">
                     {m.value}
                   </span>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-500 mt-4">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-600 mt-4">
                     {m.label}
                   </p>
                 </div>
@@ -136,12 +124,11 @@ export default function ServiceDetailPage({
         </section>
       )}
 
-      {/* ─── OVERVIEW + CAPABILITIES ───────────────────────────────── */}
+      {/* ─── OVERVIEW + SUB-SERVICES ──────────────────────────────── */}
       <section className="py-32 border-b border-neutral-900">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24">
-            {/* overview */}
-            <div className="lg:col-span-5 xl:col-span-4">
+            <div className="lg:col-span-4">
               <p className="sub-title">/ Overview</p>
               <h2 className="text-4xl font-black tracking-tight leading-tight text-white mt-2 mb-8">
                 Built for measurable commercial impact.
@@ -154,25 +141,25 @@ export default function ServiceDetailPage({
               </div>
             </div>
 
-            {/* capabilities grid */}
-            <div className="lg:col-span-7 xl:col-span-8">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-600 mb-6">
+            <div className="lg:col-span-8">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-700 mb-6">
                 Sub-Services & Capabilities
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {s.services.map((sub) => (
-                  <div
+                  <Link
                     key={sub.id}
-                    className="group flex items-center justify-between gap-4 px-6 py-5 rounded-sm bg-neutral-950 border border-neutral-900 hover:border-neutral-700 hover:bg-neutral-900/60 transition-all duration-300"
+                    href={`/services/${slug}/${sub.slug}`}
+                    className="group flex items-center justify-between gap-4 px-6 py-5 rounded-sm bg-neutral-950 border border-neutral-900 hover:border-neutral-600 hover:bg-neutral-900/50 transition-all duration-300"
                   >
                     <div className="flex items-center gap-4">
-                      <CheckCircle2 className="size-4 text-neutral-600 group-hover:text-white transition-colors shrink-0" />
+                      <CheckCircle2 className="size-4 text-neutral-700 group-hover:text-white transition-colors shrink-0" />
                       <span className="text-[15px] font-semibold text-neutral-300 group-hover:text-white transition-colors">
                         {sub.title}
                       </span>
                     </div>
                     <ArrowUpRight className="size-4 text-neutral-700 group-hover:text-white transition-colors shrink-0" />
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -180,38 +167,42 @@ export default function ServiceDetailPage({
         </div>
       </section>
 
-      {/* ─── DELIVERABLES ──────────────────────────────────────────── */}
+      {/* ─── DELIVERABLES ─────────────────────────────────────────── */}
       {s.deliverables && s.deliverables.length > 0 && (
         <section id="deliverables" className="py-32 border-b border-neutral-900 bg-neutral-950">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
-              <div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-20">
+              <div className="lg:col-span-4">
                 <p className="sub-title">/ Deliverables</p>
-                <h2 className="section-title">What You Walk Away With</h2>
+                <h2 className="text-4xl font-black tracking-tight leading-tight text-white mt-2">
+                  What you walk<br />away with.
+                </h2>
+              </div>
+              <div className="lg:col-span-8">
+                <p className="text-lg text-neutral-500 leading-relaxed">
+                  Every project includes tangible, documented deliverables — no vague promises, no scope creep.
+                </p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-900">
-              {s.deliverables!.map((item, idx) => (
+              {s.deliverables.map((item, idx) => (
                 <div
                   key={idx}
                   className="bg-black p-10 xl:p-14 flex flex-col justify-between hover:bg-neutral-950 transition-colors group"
                 >
                   <div>
-                    <span className="text-[11px] font-black uppercase tracking-[0.22em] text-neutral-700 group-hover:text-neutral-500 transition-colors">
+                    <span className="text-[11px] font-black uppercase tracking-[0.22em] text-neutral-800 group-hover:text-neutral-600 transition-colors block mb-5">
                       0{idx + 1}
                     </span>
-                    <h3 className="text-2xl xl:text-3xl font-bold text-white mt-5 mb-4 leading-tight">
+                    <h3 className="text-2xl xl:text-3xl font-bold text-white leading-tight mb-4">
                       {item.title}
                     </h3>
                     <p className="text-neutral-500 leading-relaxed text-[15px]">
                       {item.description}
                     </p>
                   </div>
-                  <div className="flex items-center gap-3 mt-10">
-                    <div className="size-1.5 rounded-full bg-neutral-800 group-hover:bg-white transition-colors" />
-                    <div className="h-px flex-1 bg-neutral-900 group-hover:bg-neutral-700 transition-colors" />
-                  </div>
+                  <div className="mt-10 h-px w-12 bg-neutral-900 group-hover:w-full group-hover:bg-neutral-800 transition-all duration-500" />
                 </div>
               ))}
             </div>
@@ -219,22 +210,31 @@ export default function ServiceDetailPage({
         </section>
       )}
 
-      {/* ─── PROCESS ───────────────────────────────────────────────── */}
+      {/* ─── HOW WE WORK ──────────────────────────────────────────── */}
       {s.process && s.process.length > 0 && (
         <section className="py-32 border-b border-neutral-900">
           <div className="container mx-auto px-4">
-            <div className="mb-16">
-              <p className="sub-title">/ How We Work</p>
-              <h2 className="section-title">The Execution Process</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mb-20">
+              <div className="lg:col-span-4">
+                <p className="sub-title">/ How We Work</p>
+                <h2 className="text-4xl font-black tracking-tight leading-tight text-white mt-2">
+                  The execution<br />process.
+                </h2>
+              </div>
+              <div className="lg:col-span-8">
+                <p className="text-lg text-neutral-500 leading-relaxed">
+                  A proven 4-phase methodology refined across 150+ projects — delivering consistent, on-time results.
+                </p>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-900">
-              {s.process!.map((step, idx) => (
+              {s.process.map((step, idx) => (
                 <div
                   key={idx}
                   className="bg-black p-10 xl:p-12 flex flex-col hover:bg-neutral-950 transition-colors group"
                 >
-                  <span className="text-6xl font-black text-neutral-900 group-hover:text-neutral-800 transition-colors leading-none mb-8">
+                  <span className="text-7xl font-black leading-none text-neutral-900 group-hover:text-neutral-800 transition-colors block mb-8">
                     {step.step}
                   </span>
                   <h4 className="text-xl font-bold text-white mb-4 leading-tight">
@@ -243,7 +243,7 @@ export default function ServiceDetailPage({
                   <p className="text-neutral-500 text-sm leading-relaxed flex-1">
                     {step.description}
                   </p>
-                  <div className="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-neutral-700 group-hover:text-neutral-400 transition-colors">
+                  <div className="flex items-center gap-2 mt-8 text-[10px] font-black uppercase tracking-[0.18em] text-neutral-800 group-hover:text-neutral-600 transition-colors">
                     <Zap className="size-3" />
                     Phase {idx + 1}
                   </div>
@@ -254,7 +254,7 @@ export default function ServiceDetailPage({
         </section>
       )}
 
-      {/* ─── RELATED CASE STUDIES ──────────────────────────────────── */}
+      {/* ─── RELATED CASE STUDIES ─────────────────────────────────── */}
       <section className="py-32 border-b border-neutral-900 bg-neutral-950">
         <div className="container mx-auto px-4">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
@@ -307,7 +307,7 @@ export default function ServiceDetailPage({
         </div>
       </section>
 
-      {/* ─── FAQ ───────────────────────────────────────────────────── */}
+      {/* ─── FAQ ──────────────────────────────────────────────────── */}
       {s.faqs && s.faqs.length > 0 && (
         <section className="py-32 border-b border-neutral-900">
           <div className="container mx-auto px-4 max-w-4xl">
@@ -315,12 +315,11 @@ export default function ServiceDetailPage({
               <p className="sub-title">/ FAQ</p>
               <h2 className="section-title">Common Questions</h2>
             </div>
-
             <div className="divide-y divide-neutral-900">
-              {s.faqs!.map((faq, idx) => (
+              {s.faqs.map((faq, idx) => (
                 <div key={idx} className="py-10 group">
                   <div className="flex items-start gap-6">
-                    <span className="text-xs font-black text-neutral-700 tracking-[0.15em] pt-1 shrink-0">
+                    <span className="text-xs font-black text-neutral-800 tracking-[0.15em] pt-1 shrink-0 w-8">
                       0{idx + 1}
                     </span>
                     <div>
@@ -339,29 +338,44 @@ export default function ServiceDetailPage({
         </section>
       )}
 
-      {/* ─── OTHER SERVICES ────────────────────────────────────────── */}
+      {/* ─── OTHER CAPABILITIES ───────────────────────────────────── */}
       {otherServices.length > 0 && (
         <section className="py-24 border-b border-neutral-900 bg-neutral-950">
           <div className="container mx-auto px-4">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-neutral-600 text-center mb-10">
-              / Other Capabilities
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {otherServices.map((other) => (
+            <div className="flex items-end justify-between mb-10">
+              <div>
+                <p className="sub-title">/ Other Capabilities</p>
+                <h2 className="text-2xl font-black text-white tracking-tight">
+                  More ways we can help.
+                </h2>
+              </div>
+              <Link
+                href="/services"
+                className="hidden sm:flex items-center gap-2 text-sm font-bold text-neutral-500 hover:text-white transition-colors"
+              >
+                All Services <ArrowUpRight className="size-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-neutral-900">
+              {otherServices.map((svc) => (
                 <Link
-                  key={other.slug}
-                  href={`/services/${other.slug}`}
-                  className="group flex items-center justify-between px-7 py-6 rounded-sm bg-black border border-neutral-900 hover:border-neutral-600 hover:bg-neutral-900/40 transition-all duration-300"
+                  key={svc.slug}
+                  href={`/services/${svc.slug}`}
+                  className="group flex flex-col p-8 bg-black hover:bg-neutral-950 transition-colors"
                 >
-                  <div>
-                    <h4 className="text-base font-bold text-neutral-300 group-hover:text-white transition-colors">
-                      {other.title}
+                  <div className="flex items-start justify-between mb-4">
+                    <h4 className="text-xl font-bold text-neutral-300 group-hover:text-white transition-colors leading-tight">
+                      {svc.title}
                     </h4>
-                    <p className="text-xs text-neutral-600 mt-1 group-hover:text-neutral-500">
-                      Explore →
-                    </p>
+                    <ArrowUpRight className="size-5 text-neutral-700 group-hover:text-white transition-colors shrink-0 mt-1 ml-3" />
                   </div>
-                  <ArrowUpRight className="size-5 text-neutral-700 group-hover:text-white transition-colors shrink-0" />
+                  <p className="text-neutral-600 text-sm leading-relaxed line-clamp-2 group-hover:text-neutral-500 transition-colors flex-1">
+                    {svc.des}
+                  </p>
+                  <div className="flex items-center gap-2 mt-6 text-[10px] font-black uppercase tracking-[0.18em] text-neutral-700 group-hover:text-neutral-500 transition-colors">
+                    <span>{svc.services.length} sub-services</span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -369,21 +383,38 @@ export default function ServiceDetailPage({
         </section>
       )}
 
-      {/* ─── BOTTOM CTA ────────────────────────────────────────────── */}
-      <section className="py-32">
-        <div className="container mx-auto px-4 text-center max-w-3xl">
+      {/* ─── READY TO SCALE CTA ───────────────────────────────────── */}
+      <section className="relative py-40 overflow-hidden">
+        {/* large blurred glow */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 flex items-center justify-center"
+        >
+          <div className="w-[600px] h-[300px] bg-white/[0.03] rounded-full blur-[120px]" />
+        </div>
+
+        <div className="container mx-auto px-4 text-center max-w-3xl relative z-10">
           <span className="text-[11px] font-black uppercase tracking-[0.22em] text-neutral-600 block mb-6">
             / Ready to Scale?
           </span>
-          <h2 className="text-5xl sm:text-6xl font-black text-white leading-tight tracking-tight mb-8">
+          <h2 className="text-5xl sm:text-6xl xl:text-7xl font-black text-white leading-[0.95] tracking-tight mb-8">
             Let&apos;s build something{" "}
-            <span className="text-neutral-500">extraordinary</span> together.
+            <em className="not-italic text-neutral-500">extraordinary</em>{" "}
+            together.
           </h2>
-          <p className="text-neutral-500 text-lg mb-12 max-w-xl mx-auto">
+          <p className="text-neutral-500 text-lg mb-14 max-w-xl mx-auto leading-relaxed">
             Book a free strategy session and get a customized growth roadmap
             for your store — no commitment required.
           </p>
-          <ButtonNormal text="Book a Strategy Call" href="/contact" />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <ButtonNormal text="Book a Strategy Call" href="/contact" />
+            <Link
+              href="/case-studies"
+              className="text-sm font-bold text-neutral-500 hover:text-white transition-colors"
+            >
+              See Our Work →
+            </Link>
+          </div>
         </div>
       </section>
 
