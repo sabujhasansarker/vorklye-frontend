@@ -1514,25 +1514,231 @@ export const whyWorks: WhyWorkItem[] = [
 
 export type JobItem = {
   id: number;
+  slug: string;
   title: string;
+  department: string;
+  location: string;
+  type: string;
+  experience: string;
+  salary: string;
+  deadline: string;
+  status: "open" | "closed";
+  googleFormUrl?: string;
   link: string;
   tags: string[];
+  overview: string;
+  responsibilities: string[];
+  requirements: string[];
+  niceToHave?: string[];
+  benefits?: string[];
 };
 
 export const jobs: JobItem[] = [
   {
     id: 1,
+    slug: "senior-growth-executive",
     title: "Executive / Senior Executive, Growth",
-    link: "#",
-    tags: ["Uttara, Dhaka", "Full-Time"],
+    department: "Growth & Marketing",
+    location: "Uttara, Dhaka (Hybrid)",
+    type: "Full-Time",
+    experience: "3+ Years",
+    salary: "Competitive / Negotiable",
+    deadline: "Rolling Application",
+    status: "open",
+    googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc-example/viewform",
+    link: "/career/senior-growth-executive",
+    tags: ["Uttara, Dhaka", "Full-Time", "Growth & CRO"],
+    overview:
+      "We are looking for an ambitious and data-driven Growth Executive / Senior Executive to lead digital growth campaigns, client acquisition funnels, and performance optimization across our global ecommerce and tech clients.",
+    responsibilities: [
+      "Develop and execute end-to-end inbound & outbound growth strategies for global B2B clients.",
+      "Analyze full-funnel performance metrics, identifying leakages and executing high-impact conversion experiments.",
+      "Collaborate closely with UI/UX design and development teams to implement high-converting landing pages.",
+      "Manage multi-channel outreach, content syndication, and performance marketing campaigns.",
+      "Prepare data-backed weekly performance reports and client growth roadmaps.",
+    ],
+    requirements: [
+      "Minimum 3+ years of experience in digital growth, performance marketing, or agency account scaling.",
+      "Strong analytical skills with hands-on proficiency in GA4, Looker Studio, HubSpot, or similar tools.",
+      "Demonstrated track record of scaling pipeline revenue and improving conversion rates.",
+      "Exceptional English written and verbal communication skills for interacting with international clients.",
+      "Proactive self-starter mindset with strong project management capabilities.",
+    ],
+    niceToHave: [
+      "Experience with Shopify ecosystem, B2B SaaS marketing, or eCommerce CRO.",
+      "Familiarity with marketing automation tools like Klaviyo, ActiveCampaign, or Apollo.",
+    ],
+    benefits: [
+      "Competitive salary reviewed biannually based on merit and impact.",
+      "Two festival bonuses and performance-driven annual incentives.",
+      "Flexible hybrid working schedule with state-of-the-art office workspace in Uttara.",
+      "Comprehensive paid leaves including annual, medical, and paternity/maternity leaves.",
+      "Continuous learning budget for courses, books, and international certifications.",
+    ],
   },
   {
     id: 2,
-    title: "Executive / Senior Executive, Growth",
-    link: "#",
-    tags: ["Uttara, Dhaka", "Full-Time"],
+    slug: "lead-ui-ux-designer",
+    title: "Lead UI / UX Designer",
+    department: "Design & Creative",
+    location: "Uttara, Dhaka (Hybrid / Remote)",
+    type: "Full-Time",
+    experience: "4+ Years",
+    salary: "Competitive",
+    deadline: "Rolling Application",
+    status: "open",
+    googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc-example/viewform",
+    link: "/career/lead-ui-ux-designer",
+    tags: ["Uttara, Dhaka", "Full-Time", "Figma Expert"],
+    overview:
+      "Join our award-winning design studio to craft world-class ecommerce storefronts, complex web applications, and scalable design systems for top-tier global brands.",
+    responsibilities: [
+      "Lead end-to-end product design from user research and wireframing to high-fidelity Figma design systems.",
+      "Design responsive, accessible, and high-converting interfaces optimized for Shopify OS 2.0 and modern web apps.",
+      "Conduct heuristic evaluations, user testing sessions, and interactive prototyping.",
+      "Mentor junior and mid-level designers, fostering a culture of design excellence and attention to detail.",
+      "Present design rationale clearly to founders, product managers, and executive stakeholders.",
+    ],
+    requirements: [
+      "4+ years of professional experience in product design, UI/UX, or digital agency environments.",
+      "Mastery of Figma (auto-layout, components, variables, interactive prototyping, and tokens).",
+      "A strong, clean portfolio showcasing modern aesthetics, typography mastery, and conversion thinking.",
+      "Solid understanding of frontend feasibility (HTML/CSS, responsive breakpoints, design handoff).",
+      "Fluent English communication skills for collaborating with global design teams.",
+    ],
+    niceToHave: [
+      "Experience designing for eCommerce brands, luxury aesthetics, or SaaS dashboards.",
+      "Working knowledge of motion design (Framer, After Effects, or Lottie).",
+    ],
+    benefits: [
+      "Top-tier compensation package with performance bonuses.",
+      "Latest Apple M-series hardware provided.",
+      "Hybrid/flexible remote working options.",
+      "Two festival bonuses and full paid leave coverage.",
+      "Collaborative, ego-free team environment with global exposure.",
+    ],
+  },
+  {
+    id: 3,
+    slug: "senior-shopify-developer",
+    title: "Senior Shopify & Full-Stack Developer",
+    department: "Engineering",
+    location: "Uttara, Dhaka (Hybrid)",
+    type: "Full-Time",
+    experience: "3+ Years",
+    salary: "Competitive / Negotiable",
+    deadline: "Rolling Application",
+    status: "open",
+    googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc-example/viewform",
+    link: "/career/senior-shopify-developer",
+    tags: ["Uttara, Dhaka", "Full-Time", "Liquid & React"],
+    overview:
+      "We are seeking a seasoned Shopify Developer who takes pride in pixel-perfect implementation, blazing-fast speed scores, and modular Shopify OS 2.0 architecture.",
+    responsibilities: [
+      "Build custom, zero-bloat Shopify OS 2.0 themes from Figma designs using Liquid, TailwindCSS, and JavaScript.",
+      "Develop headless commerce frontends with Next.js, TypeScript, and Shopify Storefront GraphQL API.",
+      "Optimize web performance to achieve 90+ mobile Google PageSpeed scores.",
+      "Integrate complex third-party apps, custom webhooks, ERP connectors, and payment gateways.",
+      "Conduct code reviews and ensure engineering best practices across Git repositories.",
+    ],
+    requirements: [
+      "3+ years of hands-on experience building custom Shopify themes and apps.",
+      "Deep expertise in Liquid, HTML5, CSS3/Tailwind, JavaScript (ES6+), and React/Next.js.",
+      "Proven track record of optimizing Core Web Vitals and performance benchmarks.",
+      "Strong understanding of Shopify APIs, Metafields, Storefront API, and checkout extensions.",
+      "Good communication skills and experience with Git workflows.",
+    ],
+    niceToHave: [
+      "Experience with Hydrogen/Remix or headless commerce setups.",
+      "Experience building custom Shopify Public or Custom Apps using Node.js / Python.",
+    ],
+    benefits: [
+      "Industry-leading salary package with biannual reviews.",
+      "Two festival bonuses and project milestone bonuses.",
+      "High-end development machine (Apple Silicon).",
+      "Festival bonuses, sick leaves, and annual paid time off.",
+      "Paid certifications and technical conference sponsorships.",
+    ],
+  },
+  {
+    id: 4,
+    slug: "senior-motion-graphics-designer",
+    title: "Senior Motion Graphics Designer",
+    department: "Design & Creative",
+    location: "Uttara, Dhaka (On-Site)",
+    type: "Full-Time",
+    experience: "3+ Years",
+    salary: "BDT 70,000 – 90,000",
+    deadline: "Position Filled",
+    status: "closed",
+    link: "/career/senior-motion-graphics-designer",
+    tags: ["Uttara, Dhaka", "Full-Time", "Closed"],
+    overview:
+      "This role focused on creating 3D product animations, micro-interaction showreels, and dynamic marketing video assets for our international commerce clients.",
+    responsibilities: [
+      "Create high-end 3D product renders and animations using Blender / Cinema 4D and After Effects.",
+      "Collaborate with brand designers to bring static vector brand identities to life with fluid motion.",
+      "Produce engaging social media reels, website hero video loops, and case study animations.",
+    ],
+    requirements: [
+      "3+ years of motion graphics experience in agency or production house environments.",
+      "Proficiency in Adobe After Effects, Premiere Pro, and 3D software (Blender/C4D).",
+      "Strong understanding of timing, easing, typography animation, and sound design.",
+    ],
+    benefits: [
+      "Competitive salary with performance bonuses.",
+      "High-performance workstation with dual 4K monitors.",
+      "Comprehensive medical coverage and paid leaves.",
+    ],
+  },
+  {
+    id: 5,
+    slug: "junior-frontend-developer",
+    title: "Junior Frontend Engineer (React/Next.js)",
+    department: "Engineering",
+    location: "Uttara, Dhaka (Hybrid)",
+    type: "Full-Time",
+    experience: "1+ Year",
+    salary: "BDT 35,000 – 50,000",
+    deadline: "Position Filled",
+    status: "closed",
+    link: "/career/junior-frontend-developer",
+    tags: ["Uttara, Dhaka", "Full-Time", "Closed"],
+    overview:
+      "This position focused on developing interactive React components, responsive layouts, and animations under the mentorship of senior engineers.",
+    responsibilities: [
+      "Implement responsive UI components from Figma using TailwindCSS, React, and Next.js.",
+      "Ensure cross-browser compatibility and smooth 60fps micro-animations.",
+      "Work with REST and GraphQL APIs to fetch and render dynamic catalog data.",
+    ],
+    requirements: [
+      "1+ year of experience with React, TypeScript, and TailwindCSS.",
+      "Solid understanding of semantic HTML, CSS flex/grid, and JavaScript basics.",
+      "Eagerness to learn Shopify ecosystem and headless commerce.",
+    ],
+    benefits: [
+      "Dedicated senior mentorship and accelerated career progression.",
+      "Subsidized team lunches and snacks.",
+      "Flexible hybrid working schedule.",
+    ],
   },
 ];
+
+export const getJobBySlug = (slug: string): JobItem | undefined => {
+  return jobs.find((job) => job.slug === slug);
+};
+
+export const getOpenJobs = (): JobItem[] => {
+  return jobs.filter((job) => job.status === "open");
+};
+
+export const getClosedJobs = (): JobItem[] => {
+  return jobs.filter((job) => job.status === "closed");
+};
+
+export const getAllJobParams = () => {
+  return jobs.map((job) => ({ slug: job.slug }));
+};
 
 // ==========================================
 // 15. CONTACT FORM OPTIONS & PAGE DATA
