@@ -1,86 +1,15 @@
 "use client";
 
+import {
+  detailedServiceItems as serviceItems,
+  serviceSectionData,
+  services,
+} from "@/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { ButtonNormal } from "./Button";
-
-type Service = {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  tags: string[];
-};
-
-const services: Service[] = [
-  {
-    id: "01",
-    title: "Brand Strategy",
-    subtitle: "Define who you are. Shape how the world sees you.",
-    description:
-      "We uncover what makes your brand meaningful and build a strategic foundation that drives long-term impact. Through deep discovery and positioning, we create clarity and purpose.",
-    tags: [
-      "Brand Discovery",
-      "Research",
-      "Brand Positioning",
-      "Messaging Framework",
-    ],
-  },
-  {
-    id: "02",
-    title: "Marketing",
-    subtitle: "Define who you are. Shape how the world sees you.",
-    description:
-      "We uncover what makes your brand meaningful and build a strategic foundation that drives long-term impact. Through deep discovery and positioning, we create clarity and purpose.",
-    tags: [
-      "Brand Discovery",
-      "Research",
-      "Brand Positioning",
-      "Messaging Framework",
-    ],
-  },
-  {
-    id: "03",
-    title: "Web Design",
-    subtitle: "Define who you are. Shape how the world sees you.",
-    description:
-      "We uncover what makes your brand meaningful and build a strategic foundation that drives long-term impact. Through deep discovery and positioning, we create clarity and purpose.",
-    tags: [
-      "Brand Discovery",
-      "Research",
-      "Brand Positioning",
-      "Messaging Framework",
-    ],
-  },
-  {
-    id: "04",
-    title: "UI/UX Design",
-    subtitle: "Define who you are. Shape how the world sees you.",
-    description:
-      "We uncover what makes your brand meaningful and build a strategic foundation that drives long-term impact. Through deep discovery and positioning, we create clarity and purpose.",
-    tags: [
-      "Brand Discovery",
-      "Research",
-      "Brand Positioning",
-      "Messaging Framework",
-    ],
-  },
-  {
-    id: "05",
-    title: "Social Media",
-    subtitle: "Define who you are. Shape how the world sees you.",
-    description:
-      "We uncover what makes your brand meaningful and build a strategic foundation that drives long-term impact. Through deep discovery and positioning, we create clarity and purpose.",
-    tags: [
-      "Brand Discovery",
-      "Research",
-      "Brand Positioning",
-      "Messaging Framework",
-    ],
-  },
-];
 
 const ServiceSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -154,11 +83,8 @@ const ServiceSection: React.FC = () => {
     >
       <div className="container m-auto flex gap-30 items-start px-6 relative">
         <div className="w-1/2 sticky top-0" ref={leftRef}>
-          <p className="sub-title">/What we build</p>
-          <h2 className="section-title">
-            End-to-end Shopify systems, designed to scale the brand behind the
-            store.
-          </h2>
+          <p className="sub-title">{serviceSectionData.subtitle}</p>
+          <h2 className="section-title">{serviceSectionData.title}</h2>
         </div>
 
         <div className="w-1/2 flex flex-col justify-start">
@@ -208,7 +134,7 @@ const ServiceSection: React.FC = () => {
                   ))} */}
                 </div>
                 <div className="mt-15" data-cursor="Service Details">
-                  <ButtonNormal text="Learn More" />
+                  <ButtonNormal text={serviceSectionData.ctaText} />
                 </div>
               </div>
             </div>
@@ -220,92 +146,6 @@ const ServiceSection: React.FC = () => {
 };
 
 export default ServiceSection;
-
-const serviceItems = [
-  {
-    title: "UI/UX Design",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422ed8ffd5696dac6a4_UX%20Design-p-1080.webp",
-    des: "Your users will find the app easy to use. Our UI and UX services ensure your product is user-friendly so that it appeals to and catches the hearts of users on any device.",
-    services: [
-      { id: 1, title: "UX Research Service", href: "#ux-research-service" },
-      { id: 2, title: "UX Audit & Strategy", href: "#ux-audit-strategy" },
-      { id: 3, title: "UX Usability Testing", href: "#ux-usability-testing" },
-      { id: 4, title: "UI UX Consulting", href: "#ui-ux-consulting" },
-      { id: 5, title: "UI UX Design", href: "#ui-ux-design" },
-      { id: 6, title: "AI UI UX Design", href: "#ai-ui-ux-design" },
-      { id: 7, title: "Design System", href: "#design-system" },
-      {
-        id: 8,
-        title: "Wireframing and Prototyping",
-        href: "#wireframing-prototyping",
-      },
-      { id: 9, title: "UI UX Redesign", href: "#ui-ux-redesign" },
-    ],
-  },
-  {
-    title: "Shopify Development",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422a7f442bbf1487074_Web%20Design-p-1080.webp",
-    des: "Build high-converting e-commerce storefronts. Our Shopify development services focus on speed, responsiveness, and scalable architectures tailored to your brand.",
-    services: [
-      {
-        id: 1,
-        title: "Custom Theme Development",
-        href: "#shopify-custom-theme",
-      },
-      {
-        id: 2,
-        title: "App Integration & Setup",
-        href: "#shopify-app-integration",
-      },
-      {
-        id: 3,
-        title: "Store Setup & Configuration",
-        href: "#shopify-store-setup",
-      },
-      { id: 4, title: "Headless Shopify Commerce", href: "#shopify-headless" },
-    ],
-  },
-  {
-    title: "Platform Migration",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c4229130cd923555f69b_Mobile%20App%20Design-p-1080.webp",
-    des: "Seamlessly transition your business infrastructure. We migrate data, logic, and designs securely without downtime, preserving your SEO rankings.",
-    services: [
-      { id: 1, title: "WooCommerce to Shopify", href: "#woo-to-shopify" },
-      { id: 2, title: "Custom CMS Migration", href: "#custom-cms-migration" },
-      {
-        id: 3,
-        title: "Database & SEO Preservation",
-        href: "#seo-preservation",
-      },
-    ],
-  },
-  {
-    title: "Growth & Optimization",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422529dc0db1881445e_Branding%20%26%20Identity-p-1080.webp",
-    des: "Scale your revenue and digital footprints. We analyze user journeys and execute optimization strategies to turn current traffic into customer loops.",
-    services: [
-      {
-        id: 1,
-        title: "Conversion Rate Optimization (CRO)",
-        href: "#cro-optimization",
-      },
-      {
-        id: 2,
-        title: "SEO Strategy & Marketing",
-        href: "#seo-marketing-strategy",
-      },
-      {
-        id: 3,
-        title: "A/B Testing & Analytics",
-        href: "#ab-testing-analytics",
-      },
-    ],
-  },
-];
 
 export const ServiceItems: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -578,11 +418,13 @@ export const ServiceItems: React.FC = () => {
                       </div>
                     </div>
 
-                    <img
-                      src="https://cdn.prod.website-files.com/674703d2af36853f65da67e0/67a0fbbe15bf58f5b51affcf_Frame%201618871790%20(5).avif"
-                      alt=""
-                      className="w-60 shrink-0"
-                    />
+                    {item.bottomImage && (
+                      <img
+                        src={item.bottomImage}
+                        alt={item.title}
+                        className="w-60 shrink-0"
+                      />
+                    )}
                   </div>
                 </div>
               </div>

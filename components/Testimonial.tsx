@@ -1,110 +1,23 @@
+import {
+  testimonials,
+  testimonialSectionData,
+  type TestimonialItem as Testimonial,
+} from "@/data";
 import { sliderProps } from "@/utility/sliderProps";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 type Props = {};
-type Testimonial = {
-  id: number;
-  video: string;
-  logo: string;
-  quote: string;
-  name: string;
-  role: string;
-};
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    video:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    logo: "/images/brand/3.png",
-    quote:
-      "Design Monks did an amazing job bringing my brand to life. From the",
-    name: "Tommy Lu",
-    role: "Founder @ GoodGenes",
-  },
-  {
-    id: 2,
-    video:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    logo: "/images/brand/4.png",
-    quote:
-      "The team really understood our vision and delivered beyond what we expected.",
-    name: "Sarah Kim",
-    role: "CEO @ Nova Studio",
-  },
-  {
-    id: 3,
-    video:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    logo: "/images/brand/5.png",
-    quote:
-      "Communication was smooth throughout the project and the results speak for themselves.",
-    name: "James Carter",
-    role: "Founder @ Blume",
-  },
-  {
-    id: 4,
-    video:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    logo: "/images/brand/6.png",
-    quote:
-      "Professional, fast, and genuinely invested in our success. Highly recommend.",
-    name: "Elena Marsh",
-    role: "CMO @ Fenix",
-  },
-  {
-    id: 5,
-    video:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    logo: "/images/brand/3.png",
-    quote:
-      "Design Monks did an amazing job bringing my brand to life. From the",
-    name: "Tommy Lu",
-    role: "Founder @ GoodGenes",
-  },
-  {
-    id: 6,
-    video:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    logo: "/images/brand/4.png",
-    quote:
-      "The team really understood our vision and delivered beyond what we expected.",
-    name: "Sarah Kim",
-    role: "CEO @ Nova Studio",
-  },
-  {
-    id: 7,
-    video:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    logo: "/images/brand/5.png",
-    quote:
-      "Communication was smooth throughout the project and the results speak for themselves.",
-    name: "James Carter",
-    role: "Founder @ Blume",
-  },
-  {
-    id: 8,
-    video:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    logo: "/images/brand/6.png",
-    quote:
-      "Professional, fast, and genuinely invested in our success. Highly recommend.",
-    name: "Elena Marsh",
-    role: "CMO @ Fenix",
-  },
-];
 
 const Testimonial: React.FC<Props> = () => {
   return (
     <div className="py-35">
       <div className="container m-auto">
-        <p className="sub-title">/ Client Stories</p>
-        <h2 className="section-title">
-          <span className="text-neutral-500">Success </span>
-          Stories
-          <br />
-          That Inspire Us
-        </h2>
+        <p className="sub-title">{testimonialSectionData.subtitle}</p>
+        <h2
+          className="section-title"
+          dangerouslySetInnerHTML={{ __html: testimonialSectionData.title }}
+        />
       </div>
       <Swiper {...sliderProps.testimonial} className="slider-items mt-18.75">
         {testimonials.map((item) => (
@@ -118,7 +31,7 @@ const Testimonial: React.FC<Props> = () => {
               alt={item.name}
             />
             <a
-              href="#"
+              href={item.videoLink || "#"}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             >
               <svg

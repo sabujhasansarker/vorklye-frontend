@@ -1,36 +1,10 @@
-"use client";
+import { heroData, siteConfig, type HeroData } from "@/data";
 import React, { Fragment } from "react";
 
 type Props = {};
 
-type HeroData = {
-  brands: {
-    id: number;
-    image: string;
-  }[];
-  title?: string;
-  description?: string;
-  brandText?: string;
-  videoBg?: string;
-};
-
 const Hero: React.FC<Props> = () => {
-  const heroData: HeroData = {
-    brandText: "Shopify partner trusted by great clients",
-    brands: [
-      { id: 1, image: "/images/brand/1.png" },
-      { id: 2, image: "/images/brand/2.png" },
-      { id: 3, image: "/images/brand/3.png" },
-      { id: 4, image: "/images/brand/4.png" },
-      { id: 5, image: "/images/brand/5.png" },
-    ],
-    title: "We design, develop and build",
-    description:
-      "We're a design and development agency since 2017 who craft digital masterpiece products.",
-    videoBg: "/images/hero-video.mp4",
-  };
-
-  const { title, description, brands, brandText, videoBg } = heroData;
+  const { title, description, icon, brands, brandText, videoBg } = heroData;
 
   return (
     <div className="relative pt-77.5 min-h-screen overflow-hidden">
@@ -52,7 +26,7 @@ const Hero: React.FC<Props> = () => {
 
       {/* Content */}
       <div className="relative z-10 container m-auto">
-        <img src="/images/shopifyplus.svg" alt="" />
+        <img src={siteConfig.shopifyBadge} alt="Shopify Plus" />
         <div className="flex justify-between items-end">
           {title && (
             <h1 className="max-w-225 justify-center text-white text-8xl font-extrabold leading-35 mt-10">
@@ -61,11 +35,13 @@ const Hero: React.FC<Props> = () => {
           )}
           {description && (
             <div className="inline-flex justify-start items-start gap-5 max-w-100 mb-5">
-              <img
-                className="size-4 mt-2.5"
-                src="/images/hero-icon.svg"
-                alt=""
-              />
+              {icon && (
+                <img
+                  className="size-4 mt-2.5"
+                  src={icon}
+                  alt=""
+                />
+              )}
               <p className="justify-center text-gray-200 text-xl font-normal leading-9">
                 {description}
               </p>

@@ -1,49 +1,12 @@
 "use client";
 
+import { processSteps, workingProcessSectionData, type ProcessStep } from "@/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
 import Button from "./Button";
 
 gsap.registerPlugin(ScrollTrigger);
-
-type ProcessStep = {
-  number: string;
-  title: string;
-  description: string;
-  tags: string[];
-};
-
-const processSteps: ProcessStep[] = [
-  {
-    number: "01",
-    title: "Discovery & Research",
-    description:
-      "We start by understanding your business, goals, target audience, and competitors to build a clear project foundation.",
-    tags: ["Video meeting", "Discovery"],
-  },
-  {
-    number: "02",
-    title: "Strategy & Design",
-    description:
-      "Crafting bespoke wireframes, interactive UI prototypes, and design systems tailored specifically for your brand identity.",
-    tags: ["Video meeting"],
-  },
-  {
-    number: "03",
-    title: "Development & Build",
-    description:
-      "Converting designs into high-performance, pixel-perfect Shopify or WordPress stores with seamless integrations.",
-    tags: ["Video meeting"],
-  },
-  {
-    number: "04",
-    title: "Scale & Optimization",
-    description:
-      "Rigorous testing, SEO optimization, speed enhancement, and ongoing support to ensure your store continues to grow.",
-    tags: ["Video meeting"],
-  },
-];
 
 const WorkingProcess: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -122,10 +85,10 @@ const WorkingProcess: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <div>
-            <p className="sub-title">/ Working process</p>
-            <h2 className="section-title">How it works</h2>
+            <p className="sub-title">{workingProcessSectionData.subtitle}</p>
+            <h2 className="section-title">{workingProcessSectionData.title}</h2>
           </div>
-          <Button text="Get in touch" />
+          <Button text={workingProcessSectionData.ctaText} />
         </div>
       </div>
 

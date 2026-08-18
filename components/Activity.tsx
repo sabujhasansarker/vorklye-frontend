@@ -1,23 +1,8 @@
 "use client";
+
+import { activitySectionData, activityStats as stats, type StatItem as Stat } from "@/data";
 import { useActiveClosestToCenter, useTitlePinScroll } from "@/utility";
 import React, { useRef } from "react";
-
-type Stat = { value: string; text: string };
-
-const stats: { col1: Stat[]; col2: Stat[] } = {
-  col1: [
-    { value: "1.8M", text: "We helped to get companies with $200M+ funding." },
-    {
-      value: "12+",
-      text: "We have had quite a run in our 12+ years of working.",
-    },
-    { value: "99%", text: "Average 99% clients satisfaction with expertise." },
-  ],
-  col2: [
-    { value: "260+", text: "Crafted responsive, user-centered website & app." },
-    { value: "80+", text: "Professional skilled designers and developers." },
-  ],
-};
 
 const StatCard: React.FC<{ stat: Stat }> = ({ stat }) => (
   <div className="stat-item">
@@ -40,9 +25,11 @@ const Activity: React.FC = () => {
     <div className="bg-neutral-950">
       <div className="container m-auto">
         <div ref={sectionRef} className="flex gap-50 relative">
-          <h2 ref={titleRef} className="section-title py-35 h-fit self-start">
-            Perfect <br /> — activity
-          </h2>
+          <h2
+            ref={titleRef}
+            className="section-title py-35 h-fit self-start"
+            dangerouslySetInnerHTML={{ __html: activitySectionData.title }}
+          />
 
           <div
             ref={rightColRef}

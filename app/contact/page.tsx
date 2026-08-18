@@ -3,6 +3,7 @@ import { BrandShort } from "@/components/Brand";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import { contactPageData } from "@/data";
 import { useScrollSmootherSetup, useSplitTitleReveal } from "@/utility";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -22,18 +23,17 @@ const Home = () => {
             <div className="flex gap-60">
               <div className="max-w-140">
                 <div className="">
-                  <h2 className="section-title text-6xl leading-22">
-                    Talk Directly with <span>Our Experts</span>
-                  </h2>
+                  <h2
+                    className="section-title text-6xl leading-22"
+                    dangerouslySetInnerHTML={{ __html: contactPageData.title }}
+                  />
                   <img
-                    src="https://notionhive.com/_next/image?url=https%3A%2F%2Fcms.notionhive.com%2Fwp-content%2Fuploads%2F2026%2F05%2FFrame-2147223905-1.png&w=1080&q=75"
+                    src={contactPageData.bannerImage}
                     alt=""
                     className="my-10 h-20"
                   />
                   <p className="text-[18px] font-semibold text-neutral-400">
-                    You’ve scrolled this far, so we clearly have your attention.
-                    Now, let’s help you grab your customers' attention with
-                    something they can't ignore.
+                    {contactPageData.description}
                   </p>
                 </div>
               </div>

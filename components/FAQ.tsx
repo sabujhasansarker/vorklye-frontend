@@ -1,37 +1,10 @@
 "use client";
 
+import { faqCeoCard, faqItems, faqSectionData, type FAQItem } from "@/data";
 import { ArrowUpRight } from "lucide-react";
 import React, { useState } from "react";
 
 type Props = {};
-
-const faqItems = [
-  {
-    question: "What are your focus areas as a UI/UX design agency?",
-    answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
-  },
-  {
-    question: "How long does a typical project take to complete?",
-    answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
-  },
-  {
-    question: "Do you offer support after the project is delivered?",
-    answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
-  },
-  {
-    question: "What industries do you usually work with?",
-    answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
-  },
-  {
-    question: "How much does it cost to work with your agency?",
-    answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
-  },
-];
 
 const FAQ: React.FC<Props> = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
@@ -43,14 +16,10 @@ const FAQ: React.FC<Props> = () => {
   return (
     <div className="py-42.5 border-b border-neutral-900">
       <div className="container m-auto">
-        <h2 className="section-title">
-          Frequently{" "}
-          <span className="text-neutral-500">
-            asked
-            <br />
-            questions
-          </span>
-        </h2>
+        <h2
+          className="section-title"
+          dangerouslySetInnerHTML={{ __html: faqSectionData.title }}
+        />
         <div className="flex gap-20 mt-20 justify-between items-start">
           <div className="accordion-items w-full">
             {faqItems.map((item, index) => {
@@ -100,24 +69,22 @@ const FAQ: React.FC<Props> = () => {
           <div className="max-w-80 p-8 bg-neutral-900 inline-flex flex-col justify-start items-start shrink-0 rounded-sm">
             <img
               className="size-16 relative rounded-sm"
-              src="https://placehold.co/62x62"
-              alt="Ariyan"
+              src={faqCeoCard.avatar}
+              alt={faqCeoCard.name}
             />
             <h4 className="text-white text-lg font-medium leading-7 mt-4">
-              Hi, I&apos;m Ariyan, the CEO and Founder of Vorklye. Don&apos;t
-              hesitate to reach out to me anytime – I&apos;m here to answer all
-              your questions!
+              {faqCeoCard.message}
             </h4>
             <a
-              href="#"
+              href={faqCeoCard.whatsappLink}
               className="mt-7 py-4 w-full relative rounded-sm bg-[#46E265] inline-flex justify-center items-center gap-2.5"
             >
               <span className="text-black text-lg font-semibold leading-7">
-                Ask Questions
+                {faqCeoCard.buttonLabel}
               </span>
               <img
                 className="self-stretch h-6 relative"
-                src="/images/whatapp-icon.png"
+                src={faqCeoCard.whatsappIcon}
                 alt="WhatsApp"
               />
             </a>

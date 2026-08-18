@@ -1,5 +1,11 @@
 "use client";
 
+import {
+  budgetOptions,
+  contactPageData,
+  hearAboutUsOptions,
+  serviceTags,
+} from "@/data";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 
@@ -20,34 +26,6 @@ const initialFormData: FormData = {
   message: "",
   services: [],
 };
-
-const budgetOptions = [
-  "Under $5,000",
-  "$5,000 – $10,000",
-  "$10,000 – $25,000",
-  "$25,000 – $50,000",
-  "$50,000+",
-];
-
-const hearAboutUsOptions = [
-  "Google Search",
-  "Instagram",
-  "LinkedIn",
-  "Referral",
-  "Twitter / X",
-  "Other",
-];
-
-const serviceTags = [
-  "UI/UX Design",
-  "SaaS Design",
-  "Branding",
-  "CRO",
-  "Mobile app",
-  "Development",
-  "MVP Development",
-  "Web Design",
-];
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
@@ -114,7 +92,7 @@ const ContactForm: React.FC = () => {
             id="email"
             name="email"
             type="email"
-            placeholder="Email"
+            placeholder={contactPageData.emailPlaceholder}
             value={formData.email}
             onChange={handleChange}
             className={inputClass}
@@ -123,7 +101,7 @@ const ContactForm: React.FC = () => {
             id="fullName"
             name="fullName"
             type="text"
-            placeholder="Full name"
+            placeholder={contactPageData.namePlaceholder}
             value={formData.fullName}
             onChange={handleChange}
             className={inputClass}
@@ -142,7 +120,7 @@ const ContactForm: React.FC = () => {
               }`}
             >
               <option value="" disabled>
-                Project budget
+                {contactPageData.budgetPlaceholder}
               </option>
               {budgetOptions.map((option) => (
                 <option
@@ -170,7 +148,7 @@ const ContactForm: React.FC = () => {
               }`}
             >
               <option value="" disabled>
-                How did you hear about us?
+                {contactPageData.hearAboutUsPlaceholder}
               </option>
               {hearAboutUsOptions.map((option) => (
                 <option
@@ -192,7 +170,7 @@ const ContactForm: React.FC = () => {
           id="message"
           name="message"
           rows={5}
-          placeholder="Tell us about your product and goals."
+          placeholder={contactPageData.messagePlaceholder}
           value={formData.message}
           onChange={handleChange}
           className={`${inputClass} resize-none`}
@@ -200,7 +178,7 @@ const ContactForm: React.FC = () => {
 
         <div>
           <p className="text-white font-semibold text-lg mb-4">
-            How can we help you?
+            {contactPageData.servicesLabel}
           </p>
           <div className="flex flex-wrap gap-3">
             {serviceTags.map((tag) => {
@@ -243,10 +221,14 @@ const ContactForm: React.FC = () => {
           >
             <span className="btn-text">
               <span>
-                {status === "submitting" ? "Sending..." : "Send message"}
+                {status === "submitting"
+                  ? contactPageData.submittingText
+                  : contactPageData.submitButtonText}
               </span>
               <span>
-                {status === "submitting" ? "Sending..." : "Send message"}
+                {status === "submitting"
+                  ? contactPageData.submittingText
+                  : contactPageData.submitButtonText}
               </span>
             </span>
             <span className="btn-icon">
@@ -256,13 +238,13 @@ const ContactForm: React.FC = () => {
           </button>
 
           <p className="text-sm text-neutral-400 text-right font-semibold">
-            Prefer email?
+            {contactPageData.preferEmailLabel}
             <br />
             <a
-              href="mailto:hello@wavespace.agency"
+              href={contactPageData.emailHref}
               className="text-white text-[18px] font-semibold underline underline-offset-2 block mt-2"
             >
-              hello@vorkyle.com
+              {contactPageData.email}
             </a>
           </p>
         </div>

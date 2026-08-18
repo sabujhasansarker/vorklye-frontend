@@ -12,6 +12,7 @@ type IndustryCardProps = {
     title: string;
     des: string;
     image: string;
+    link?: string;
   };
 };
 
@@ -121,7 +122,7 @@ const IndustryCard: React.FC<IndustryCardProps> = ({ item }) => {
           </p>
 
           <a
-            href="#"
+            href={item.link || "#"}
             className="mt-8 flex size-13 items-center justify-center rounded-full bg-white text-black transition-transform duration-300 hover:scale-105"
           >
             <ArrowUpRight className="size-5" />

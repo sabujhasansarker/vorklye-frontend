@@ -1,83 +1,19 @@
+import {
+  footerBottomRow,
+  footerContactInfo,
+  footerData,
+  footerTopRow,
+  type FooterLink,
+  type FooterSection,
+} from "@/data";
 import { useFitText } from "@/utility";
 import { ArrowDown } from "lucide-react";
 import React, { useRef } from "react";
 
+export type { FooterLink, FooterSection };
+export { footerBottomRow, footerContactInfo, footerTopRow };
+
 type Props = {};
-
-export type FooterLink = {
-  label: string;
-  link: string;
-};
-
-export type FooterSection = {
-  title: string;
-  links: FooterLink[];
-};
-
-export const footerTopRow: FooterSection[] = [
-  {
-    title: "Design Services",
-    links: [
-      { label: "UI UX Design", link: "#" },
-      { label: "Web Design", link: "#" },
-      { label: "Mobile App Design", link: "#" },
-      { label: "SaaS Design", link: "#" },
-      { label: "Landing Page Design", link: "#" },
-      { label: "Brand Identity Design", link: "#" },
-    ],
-  },
-  {
-    title: "Strategy & Research",
-    links: [
-      { label: "UX Research", link: "#" },
-      { label: "UX Audit", link: "#" },
-      { label: "UX Consultancy", link: "#" },
-      { label: "Usability & User Testing", link: "#" },
-      { label: "CRO Service", link: "#" },
-    ],
-  },
-  {
-    title: "Development Services",
-    links: [
-      { label: "MVP Development", link: "#" },
-      { label: "Webflow Development", link: "#" },
-      { label: "AI MVP Development", link: "#" },
-      { label: "SaaS MVP Development", link: "#" },
-      { label: "Web App MVP Development", link: "#" },
-    ],
-  },
-];
-
-export const footerBottomRow: FooterSection[] = [
-  {
-    title: "Agency",
-    links: [
-      { label: "About Us", link: "#" },
-      { label: "Pricing", link: "#" },
-      { label: "Service", link: "#" },
-      { label: "Blog", link: "#" },
-      { label: "FAQs", link: "#" },
-      { label: "Case Studies", link: "#" },
-      { label: "Locations", link: "#" },
-    ],
-  },
-  {
-    title: "Contact",
-    links: [
-      { label: "Clutch", link: "#" },
-      { label: "Behance", link: "#" },
-      { label: "Dribbble", link: "#" },
-      { label: "Awwwards", link: "#" },
-    ],
-  },
-];
-
-export const footerContactInfo = {
-  heading: "Drop us a line",
-  email: "hello@wavespace.agency",
-  callLabel: "Call us",
-  phone: "+1 628-265-7462",
-};
 
 const FooterSectionBlock: React.FC<{
   title: string;
@@ -110,37 +46,34 @@ const Footer: React.FC<Props> = () => {
       <div className="container m-auto">
         <div className="flex gap-50">
           <div className="w-1/4">
-            <img className="w-35 relative" src="/images/logo.png" />
+            <img className="w-35 relative" src={footerData.logo} alt="Logo" />
             <p className="w-96 justify-start text-zinc-400 text-[18px] font-semibold leading-7 mt-7">
-              Wavespace is a global UI/UX design agency that boosts brand value
-              with user-friendly, effective designs for web, mobile, and SaaS
-              platforms.
+              {footerData.description}
             </p>
             <a
-              href="#"
+              href={footerData.deckLink}
               className="pl-6 pr-2 py-2 bg-[#EBFE5B] rounded-sm inline-flex justify-center items-center gap-8 overflow-hidden mt-10"
             >
               <span
                 data-hover-text
                 className="justify-start text-zinc-900 text-base font-bold leading-6"
               >
-                Company Deck
+                {footerData.deckLabel}
               </span>
               <span className="bg-zinc-900 size-9 flex items-center justify-center">
                 <ArrowDown />
               </span>
             </a>
             <div className="flex mt-13.5">
-              <a
-                href="#"
-                className="size-13 rounded-[48px] outline -outline-offset-1 outline-gray-200/20 inline-flex justify-center items-center"
-              >
-                <img
-                  src="https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6966148bb93b4207a29b9dc7_wavespace-facebook.png"
-                  alt=""
-                  className="size-5"
-                />
-              </a>
+              {footerData.socialLinks.map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.link}
+                  className="size-13 rounded-[48px] outline -outline-offset-1 outline-gray-200/20 inline-flex justify-center items-center"
+                >
+                  <img src={social.icon} alt={social.name} className="size-5" />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -183,9 +116,9 @@ const Footer: React.FC<Props> = () => {
                   className="flex gap-2 items-center mt-4 text-white text-base font-bold leading-5 "
                 >
                   <img
-                    src="https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/69c2734b70719aeb95273a22_WhatsApp.avif"
+                    src={footerData.whatsappIcon}
                     loading="lazy"
-                    alt="WhatsApp logo featuring a white phone icon inside a green speech bubble."
+                    alt="WhatsApp logo"
                     className="size-6"
                   />
                   {footerContactInfo.phone}
@@ -201,7 +134,7 @@ const Footer: React.FC<Props> = () => {
           className="logo-text font-black uppercase whitespace-nowrap leading-none -mb-50"
           style={{ fontSize: `${fontSize}px` }}
         >
-          Vorklye
+          {footerData.logoText}
         </p>
       </div>
     </footer>

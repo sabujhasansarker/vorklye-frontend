@@ -1,64 +1,10 @@
 "use client";
 
+import { caseStudies, caseStudiesSectionData, type CaseStudy } from "@/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
 import Button, { ButtonUnderline } from "./Button";
-
-type CaseStudy = {
-  id: number;
-  title: string;
-  description: string;
-  services: string[];
-  industry: string;
-  published: string;
-  image: string;
-};
-
-const caseStudies: CaseStudy[] = [
-  {
-    id: 1,
-    title: "Capital Growth Solutions",
-    description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Beauty",
-    published: "2021",
-    image: "/images/case-studies/1.png",
-  },
-  {
-    id: 2,
-    title: "Rovero Commerce Platform",
-    description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Fashion",
-    published: "2023",
-    image:
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-  },
-  {
-    id: 4,
-    title: "Rovero Commerce Platform",
-    description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Fashion",
-    published: "2023",
-    image:
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-  },
-  {
-    id: 3,
-    title: "Rovero Commerce Platform",
-    description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Fashion",
-    published: "2023",
-    image: "/images/case-studies/1.png",
-  },
-];
 
 const CaseStudiesSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -110,9 +56,9 @@ const CaseStudiesSection: React.FC = () => {
     <section className="py-35 bg-black border-b border-neutral-900 text-white relative">
       <div className="container m-auto px-4" ref={containerRef}>
         <div className="max-w-200">
-          <p className="sub-title">/Case Studies</p>
+          <p className="sub-title">{caseStudiesSectionData.subtitle}</p>
           <h2 className="section-title">
-            Real stories, real results – see what we’ve made possible.
+            {caseStudiesSectionData.title}
           </h2>
         </div>
 
@@ -126,7 +72,7 @@ const CaseStudiesSection: React.FC = () => {
               className="case-studie-item rounded-sm border-2 border-neutral-900 w-full flex justify-between items-center bg-black overflow-hidden sticky-card"
             >
               <div className="p-15 w-1/2 h-full flex flex-col justify-center">
-                <img src="images/brand/3.png" className="w-fit" alt="" />
+                {item.logo && <img src={item.logo} className="w-fit" alt={item.title} />}
                 <h4 className="text-gray-200 text-3xl font-bold leading-9 my-5">
                   {item.title}
                 </h4>
@@ -137,7 +83,7 @@ const CaseStudiesSection: React.FC = () => {
                 <div className="inline-flex justify-start items-start gap-28 mt-10">
                   <div className="inline-flex flex-col justify-start items-start gap-3.5">
                     <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
-                      Services
+                      {caseStudiesSectionData.servicesLabel}
                     </div>
                     <div className="flex flex-col justify-start items-start gap-1">
                       {item.services.map((service, sIndex) => (
@@ -152,7 +98,7 @@ const CaseStudiesSection: React.FC = () => {
                   </div>
                   <div className="inline-flex flex-col justify-start items-start gap-3.5">
                     <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
-                      Industry
+                      {caseStudiesSectionData.industryLabel}
                     </div>
                     <div className="text-gray-200 text-lg font-medium leading-7 mt-1">
                       {item.industry}
@@ -160,14 +106,14 @@ const CaseStudiesSection: React.FC = () => {
                   </div>
                   <div className="inline-flex flex-col justify-start items-start gap-3.5">
                     <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
-                      Published
+                      {caseStudiesSectionData.publishedLabel}
                     </div>
                     <div className="text-gray-200 text-lg font-medium leading-7 mt-1">
                       {item.published}
                     </div>
                   </div>
                 </div>
-                <ButtonUnderline text={"More about us"} />
+                <ButtonUnderline text={caseStudiesSectionData.viewMoreText} />
               </div>
               <div className="w-1/2 overflow-hidden">
                 <img
@@ -181,7 +127,7 @@ const CaseStudiesSection: React.FC = () => {
         </div>
 
         <div className="m-auto text-center">
-          <Button text="More works" />
+          <Button text={caseStudiesSectionData.ctaText} />
         </div>
       </div>
     </section>
@@ -195,9 +141,9 @@ export const CaseStudiesSection2: React.FC = () => {
     <div className="py-35">
       <div className="container m-auto px-4">
         <div className="max-w-200">
-          <p className="text-neutral-400 text-lg font-medium">/Case Studies</p>
+          <p className="text-neutral-400 text-lg font-medium">{caseStudiesSectionData.subtitle}</p>
           <h2 className="section-title">
-            Real stories, real results – see what we’ve made possible.
+            {caseStudiesSectionData.title}
           </h2>
         </div>
         <div className="case-studies-container flex gap-15 mt-12 flex-wrap">
@@ -214,7 +160,7 @@ export const CaseStudiesSection2: React.FC = () => {
                   <div className="inline-flex justify-start items-start gap-28 mt-4">
                     <div className="inline-flex flex-col justify-start items-start gap-2">
                       <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
-                        Services
+                        {caseStudiesSectionData.servicesLabel}
                       </div>
                       <div className="flex flex-col justify-start items-start gap-1">
                         {item.services.map((service, sIndex) => (
@@ -229,7 +175,7 @@ export const CaseStudiesSection2: React.FC = () => {
                     </div>
                     <div className="inline-flex flex-col justify-start items-start gap-2">
                       <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
-                        Industry
+                        {caseStudiesSectionData.industryLabel}
                       </div>
                       <div className="text-gray-200 font-medium leading-7 mt-1">
                         {item.industry}
@@ -237,7 +183,7 @@ export const CaseStudiesSection2: React.FC = () => {
                     </div>
                     <div className="inline-flex flex-col justify-start items-start gap-2">
                       <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
-                        Published
+                        {caseStudiesSectionData.publishedLabel}
                       </div>
                       <div className="text-gray-200 font-medium leading-7 mt-1">
                         {item.published}

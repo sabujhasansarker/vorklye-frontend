@@ -1,5 +1,6 @@
 "use client";
 
+import { headerData, headerMenus } from "@/data";
 import { useHeaderFixedOnScrollUp } from "@/utility";
 import Link from "next/link";
 import React, { useRef } from "react";
@@ -13,14 +14,7 @@ const Header: React.FC = () => {
     logoRef,
   );
 
-  const menus = [
-    { id: 4, label: "About", link: "/about" },
-    { id: 1, label: "Case Studies", link: "/case-studies" },
-    { id: 2, label: "Services", link: "/services" },
-    { id: 3, label: "Industries", link: "#" },
-    { id: 5, label: "Career", link: "/career" },
-    { id: 6, label: "Contact", link: "/contact" },
-  ];
+  const menus = headerMenus;
 
   return (
     <>
@@ -34,11 +28,15 @@ const Header: React.FC = () => {
           <div className="flex justify-between">
             <div className="flex items-center gap-7.5">
               <Link href="/">
-                <img src="/images/logo.png" alt="" />
+                <img src={headerData.logo} alt="Logo" />
               </Link>
               <div className="w-[1.70px] h-7 bg-gray-200" />
-              <a href="#">
-                <img ref={logoRef} src="/images/shopify-patner.png" alt="" />
+              <a href={headerData.shopifyPartnerLink}>
+                <img
+                  ref={logoRef}
+                  src={headerData.shopifyPartnerLogo}
+                  alt="Shopify Partner"
+                />
               </a>
             </div>
             <ul className="flex items-center gap-10">
@@ -53,7 +51,10 @@ const Header: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <ButtonSm text="Get in touch" />
+            <ButtonSm
+              text={headerData.ctaButton.label}
+              href={headerData.ctaButton.link}
+            />
           </div>
         </div>
       </header>

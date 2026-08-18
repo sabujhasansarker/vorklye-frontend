@@ -3,67 +3,13 @@ import { ButtonSm } from "@/components/Button";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Testimonial from "@/components/Testimonial";
+import { caseStudies, caseStudiesPageData, type CaseStudy } from "@/data";
 import { useScrollSmootherSetup, useSplitTitleReveal } from "@/utility";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother, SplitText } from "gsap/all";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
-
-type CaseStudy = {
-  id: number;
-  title: string;
-  description: string;
-  services: string[];
-  industry: string;
-  published: string;
-  image: string;
-};
-
-const caseStudies: CaseStudy[] = [
-  {
-    id: 1,
-    title: "Capital Growth Solutions",
-    description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Beauty",
-    published: "2021",
-    image: "/images/case-studies/1.png",
-  },
-  {
-    id: 2,
-    title: "Rovero Commerce Platform",
-    description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Fashion",
-    published: "2023",
-    image:
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-  },
-  {
-    id: 4,
-    title: "Rovero Commerce Platform",
-    description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Fashion",
-    published: "2023",
-    image:
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-  },
-  {
-    id: 3,
-    title: "Rovero Commerce Platform",
-    description:
-      "Tailored consult service businesses, focusing on growth strategies. Sed velit dignissim sodales ut eu sminte.",
-    services: ["Migration", "Integrations"],
-    industry: "Fashion",
-    published: "2023",
-    image: "/images/case-studies/1.png",
-  },
-];
 
 const Home = () => {
   useScrollSmootherSetup();
@@ -76,15 +22,13 @@ const Home = () => {
           <div className="container m-auto">
             <div className="flex gap-50 items-end justify-between">
               <h1 className="w-2/4 justify-center text-white text-6xl font-extrabold leading-24 tracking-tight">
-                Case Studies
+                {caseStudiesPageData.heroTitle}
               </h1>
               <div className="w-1/3">
                 <p className="text-xl font-bold leading-9 mb-14">
-                  We’re more than a software company. We’re your strategic
-                  partner in building purposeful, high-impact digital products
-                  that grow with your business.
+                  {caseStudiesPageData.heroSubtitle}
                 </p>
-                <ButtonSm text="Let’s Discuss Your Project" />
+                <ButtonSm text={caseStudiesPageData.heroCtaText} />
               </div>
             </div>
           </div>
@@ -92,21 +36,14 @@ const Home = () => {
         <section className="pb-30 pt-50 border-b border-neutral-900">
           <div className="container m-auto">
             <ul className="flex justify-start gap-30 text-xl font-semibold tracking-tight">
-              <li>
-                <a href="#" className="flex gap-4 items-center">
-                  <div className="size-2 bg-white rounded-full"></div> All
-                  projects
-                </a>
-              </li>
-              <li>
-                <a href="#">Home & Decor</a>
-              </li>
-              <li>
-                <a href="#">Fashion & Apparel</a>
-              </li>
-              <li>
-                <a href="#">Beauty & Cosmetics</a>
-              </li>
+              {caseStudiesPageData.filterCategories.map((cat, index) => (
+                <li key={index}>
+                  <a href={cat.href} className={index === 0 ? "flex gap-4 items-center" : ""}>
+                    {index === 0 && <div className="size-2 bg-white rounded-full"></div>}
+                    {cat.label}
+                  </a>
+                </li>
+              ))}
             </ul>
             <div className="grid grid-cols-3 gap-6 gap-y-25 mt-10">
               {caseStudies.map((item) => (
