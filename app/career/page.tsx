@@ -127,8 +127,8 @@ const CareerPage = () => {
                     <div className="group-hover/job:translate-x-7.5 transition-transform duration-500 ease-out">
                       <div className="flex items-center gap-3 mb-4">
                         {isOpen ? (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-[11px] font-bold text-yellow-400 tracking-wider uppercase">
-                            <span className="size-1.5 rounded-full bg-yellow-400 animate-pulse" />
+                          <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all cursor-pointer bg-white text-black shadow-sm">
+                            <span className="size-1.5 rounded-full bg-white" />
                             Open
                           </span>
                         ) : (
@@ -136,22 +136,19 @@ const CareerPage = () => {
                             Closed / Filled
                           </span>
                         )}
-                        <span className="text-xs font-semibold text-neutral-500">
-                          {job.department}
-                        </span>
                       </div>
 
-                      <h6 className="work-title text-3xl font-bold text-white mb-5 origin-left group-hover/job:scale-[0.85] transition-transform duration-500 ease-out">
+                      <h6 className="work-title text-3xl font-bold text-white mb-7 origin-left group-hover/job:scale-[0.85] transition-transform duration-500 ease-out">
                         <Link href={job.link} data-no-hover>
                           {job.title}
                         </Link>
                       </h6>
-                      <ul className="flex text-[18px] font-semibold items-center gap-6 text-neutral-400 flex-wrap">
+                      <ul className="flex text-[17px] font-semibold items-center gap-6 text-neutral-400 flex-wrap">
                         {job.tags.map((tag, index) => (
                           <Fragment key={index}>
                             <li>{tag}</li>
                             {index + 1 !== job.tags.length && (
-                              <div className="w-2 h-2 bg-neutral-400 rounded-full"></div>
+                              <div className="size-1.5 bg-neutral-400 rounded-full"></div>
                             )}
                           </Fragment>
                         ))}

@@ -1,16 +1,15 @@
 "use client";
 
-import Footer from "@/components/Footer";
+import Button from "@/components/Button";
+import VorklyeLayout from "@/components/VorklyeLayout";
 import { getJobBySlug, jobs } from "@/data";
 import {
   AlertCircle,
-  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   Briefcase,
   Calendar,
   CheckCircle2,
-  Clock,
   DollarSign,
   ExternalLink,
   FileText,
@@ -59,7 +58,7 @@ export default function SingleCareerPage({
   const otherJobs = jobs.filter((j) => j.slug !== slug);
 
   return (
-    <div className="bg-black text-white min-h-screen antialiased">
+    <VorklyeLayout>
       {/* ─── HERO SECTION ─────────────────────────────────────────── */}
       <section className="relative pt-40 pb-20 border-b border-neutral-900 overflow-hidden">
         {/* Subtle grid background */}
@@ -75,13 +74,16 @@ export default function SingleCareerPage({
 
         <div className="container mx-auto px-4 relative z-10">
           {/* Breadcrumb */}
-          <Link
-            href="/career"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-neutral-500 hover:text-white transition-colors mb-12"
-          >
-            <ArrowLeft className="size-3.5" />
-            All Careers & Roles
-          </Link>
+          <nav className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-neutral-600 mb-14 flex-wrap">
+            <Link
+              href="/services"
+              className="hover:text-white transition-colors"
+            >
+              Services
+            </Link>
+            <span>/</span>
+            <span className="text-neutral-300">{job.title}</span>
+          </nav>
 
           {/* Closed Alert Banner if closed */}
           {!isOpen && (
@@ -95,7 +97,9 @@ export default function SingleCareerPage({
                     This Position Is Currently Closed
                   </h4>
                   <p className="text-xs text-neutral-400 mt-0.5">
-                    We are no longer actively accepting new applications for this specific opening, but you can join our talent pool below.
+                    We are no longer actively accepting new applications for
+                    this specific opening, but you can join our talent pool
+                    below.
                   </p>
                 </div>
               </div>
@@ -110,29 +114,7 @@ export default function SingleCareerPage({
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-8">
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-semibold text-neutral-300">
-                  <Briefcase className="size-3.5 text-neutral-400" />
-                  {job.department}
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-semibold text-neutral-300">
-                  <Clock className="size-3.5 text-neutral-400" />
-                  {job.type}
-                </span>
-                {isOpen ? (
-                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-xs font-semibold text-yellow-400">
-                    <Sparkles className="size-3.5" />
-                    Now Hiring
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-semibold text-neutral-500">
-                    <Lock className="size-3.5" />
-                    Closed / Archived
-                  </span>
-                )}
-              </div>
-
-              <h1 className="text-5xl sm:text-6xl xl:text-7xl font-black tracking-tight leading-[1.02] text-white">
+              <h1 className="text-5xl sm:text-6xl xl:text-7xl max-w-200 font-black tracking-tight leading-normal text-white">
                 {job.title}
               </h1>
             </div>
@@ -143,19 +125,7 @@ export default function SingleCareerPage({
               </p>
               <div className="flex items-center gap-4">
                 {isOpen ? (
-                  <a
-                    href="#apply-form"
-                    className="btn-primary"
-                  >
-                    <span className="btn-text">
-                      <span>Apply Now</span>
-                      <span>Apply Now</span>
-                    </span>
-                    <span className="btn-icon">
-                      <ArrowUpRight className="size-5" />
-                      <ArrowUpRight className="size-5" />
-                    </span>
-                  </a>
+                  <Button text="Apply Now" />
                 ) : (
                   <a
                     href="#apply-form"
@@ -316,9 +286,7 @@ export default function SingleCareerPage({
                   <span className="text-xs font-black uppercase tracking-[0.2em] text-neutral-500 block mb-2">
                     Position Summary
                   </span>
-                  <h3 className="text-2xl font-bold text-white">
-                    {job.title}
-                  </h3>
+                  <h3 className="text-2xl font-bold text-white">{job.title}</h3>
                 </div>
 
                 <div className="divide-y divide-neutral-900 text-sm">
@@ -334,11 +302,15 @@ export default function SingleCareerPage({
                   </div>
                   <div className="py-3.5 flex justify-between">
                     <span className="text-neutral-500">Department</span>
-                    <span className="font-semibold text-white">{job.department}</span>
+                    <span className="font-semibold text-white">
+                      {job.department}
+                    </span>
                   </div>
                   <div className="py-3.5 flex justify-between">
                     <span className="text-neutral-500">Location</span>
-                    <span className="font-semibold text-white">{job.location}</span>
+                    <span className="font-semibold text-white">
+                      {job.location}
+                    </span>
                   </div>
                   <div className="py-3.5 flex justify-between">
                     <span className="text-neutral-500">Employment</span>
@@ -346,15 +318,20 @@ export default function SingleCareerPage({
                   </div>
                   <div className="py-3.5 flex justify-between">
                     <span className="text-neutral-500">Experience</span>
-                    <span className="font-semibold text-white">{job.experience}</span>
+                    <span className="font-semibold text-white">
+                      {job.experience}
+                    </span>
                   </div>
                   <div className="py-3.5 flex justify-between">
                     <span className="text-neutral-500">Compensation</span>
-                    <span className="font-semibold text-white">{job.salary}</span>
+                    <span className="font-semibold text-white">
+                      {job.salary}
+                    </span>
                   </div>
                 </div>
 
                 <a
+                  data-no-hover
                   href="#apply-form"
                   className={`w-full py-4 text-center rounded-sm font-bold text-sm transition-colors block uppercase tracking-wider ${
                     isOpen
@@ -379,7 +356,8 @@ export default function SingleCareerPage({
                 )}
 
                 <p className="text-xs text-neutral-500 text-center leading-relaxed">
-                  We review every application thoroughly and respond within 3–5 business days.
+                  We review every application thoroughly and respond within 3–5
+                  business days.
                 </p>
               </div>
             </div>
@@ -388,14 +366,19 @@ export default function SingleCareerPage({
       </section>
 
       {/* ─── APPLICATION FORM SECTION ─────────────────────────────── */}
-      <section id="apply-form" className="py-28 border-b border-neutral-900 bg-neutral-950">
+      <section
+        id="apply-form"
+        className="py-28 border-b border-neutral-900 bg-neutral-950"
+      >
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-12">
             <span className="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-400 block mb-4">
               {isOpen ? "/ Submit Application" : "/ Join Our Talent Pool"}
             </span>
             <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
-              {isOpen ? `Apply for ${job.title}` : "Join Vorklye Talent Network"}
+              {isOpen
+                ? `Apply for ${job.title}`
+                : "Join Vorklye Talent Network"}
             </h2>
             <p className="text-neutral-400 text-base mt-4 max-w-lg mx-auto">
               {isOpen
@@ -442,7 +425,8 @@ export default function SingleCareerPage({
                 Application Received!
               </h3>
               <p className="text-neutral-400 text-base max-w-md mx-auto mb-8">
-                Thank you for your interest in Vorklye. Our talent acquisition team will review your profile and get back to you shortly.
+                Thank you for your interest in Vorklye. Our talent acquisition
+                team will review your profile and get back to you shortly.
               </p>
               <Link
                 href="/career"
@@ -461,7 +445,9 @@ export default function SingleCareerPage({
                 Apply via Official Google Form
               </h3>
               <p className="text-neutral-400 text-sm max-w-md mx-auto mb-8 leading-relaxed">
-                Prefer using Google Forms? You can submit your resume, portfolio links, and responses directly through our Google Application Portal.
+                Prefer using Google Forms? You can submit your resume, portfolio
+                links, and responses directly through our Google Application
+                Portal.
               </p>
               <a
                 href={job.googleFormUrl || "https://docs.google.com/forms"}
@@ -490,7 +476,9 @@ export default function SingleCareerPage({
                 <div className="p-4 rounded-sm bg-neutral-950 border border-neutral-800 text-xs text-neutral-400 flex items-start gap-2.5 mb-2">
                   <AlertCircle className="size-4 text-yellow-400 shrink-0 mt-0.5" />
                   <span>
-                    You are applying to our <strong>General Talent Network</strong> for future openings related to <em>{job.title}</em>.
+                    You are applying to our{" "}
+                    <strong>General Talent Network</strong> for future openings
+                    related to <em>{job.title}</em>.
                   </span>
                 </div>
               )}
@@ -570,7 +558,10 @@ export default function SingleCareerPage({
                   <select
                     value={formData.experienceYears}
                     onChange={(e) =>
-                      setFormData({ ...formData, experienceYears: e.target.value })
+                      setFormData({
+                        ...formData,
+                        experienceYears: e.target.value,
+                      })
                     }
                     className="w-full px-4 py-3.5 rounded-sm bg-neutral-950 border border-neutral-800 text-white focus:outline-none focus:border-white transition-colors text-sm"
                   >
@@ -590,7 +581,10 @@ export default function SingleCareerPage({
                     placeholder="e.g. BDT 80,000 / mo"
                     value={formData.expectedSalary}
                     onChange={(e) =>
-                      setFormData({ ...formData, expectedSalary: e.target.value })
+                      setFormData({
+                        ...formData,
+                        expectedSalary: e.target.value,
+                      })
                     }
                     className="w-full px-4 py-3.5 rounded-sm bg-neutral-950 border border-neutral-800 text-white placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors text-sm"
                   />
@@ -630,7 +624,9 @@ export default function SingleCareerPage({
                   className="w-full px-4 py-3.5 rounded-sm bg-neutral-950 border border-neutral-800 text-white placeholder:text-neutral-600 focus:outline-none focus:border-white transition-colors text-sm"
                 />
                 <span className="text-[11px] text-neutral-500 mt-1.5 block">
-                  Please provide a publicly accessible link (Google Drive, Dropbox, Notion, or personal domain) containing your Resume & Portfolio.
+                  Please provide a publicly accessible link (Google Drive,
+                  Dropbox, Notion, or personal domain) containing your Resume &
+                  Portfolio.
                 </span>
               </div>
 
@@ -718,8 +714,6 @@ export default function SingleCareerPage({
           </div>
         </section>
       )}
-
-      <Footer />
-    </div>
+    </VorklyeLayout>
   );
 }
