@@ -4,9 +4,7 @@ import { faqCeoCard, faqItems, faqSectionData } from "@/data";
 import { ArrowUpRight } from "lucide-react";
 import React, { useState } from "react";
 
-type Props = {};
-
-const FAQ: React.FC<Props> = () => {
+const FAQ: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   const toggleAccordion = (index: number) => {
@@ -97,7 +95,7 @@ const FAQ: React.FC<Props> = () => {
 
 export default FAQ;
 
-export const FAQJob: React.FC<Props> = () => {
+export const FAQJob: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   const toggleAccordion = (index: number) => {

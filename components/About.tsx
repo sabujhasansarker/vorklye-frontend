@@ -2,9 +2,7 @@ import { aboutText } from "@/data";
 import React from "react";
 import { ButtonUnderlineBig } from "./Button";
 
-type Props = {};
-
-const About: React.FC<Props> = () => {
+const About: React.FC = () => {
   return (
     aboutText && (
       <div className="border-b border-neutral-900 py-42.5 text-center bg-background">

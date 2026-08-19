@@ -1,9 +1,7 @@
 import { heroData, siteConfig } from "@/data";
 import React, { Fragment } from "react";
 
-type Props = {};
-
-const Hero: React.FC<Props> = () => {
+const Hero: React.FC = () => {
   const { title, description, icon, brands, brandText, videoBg } = heroData;
 
   return (

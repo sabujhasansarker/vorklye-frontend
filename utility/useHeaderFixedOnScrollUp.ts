@@ -15,9 +15,9 @@ export function useHeaderFixedOnScrollUp(
 ) {
   const ready = useSmootherReady();
   const [height, setHeight] = useState(0);
-  const [scrolled, setScrolled] = useState(false); // 👈 নতুন: className sync করার জন্য state
-  const visibleRef = useRef(true); // show/hide (direction ভিত্তিক)
-  const compactRef = useRef(false); // ছোট/বড় (top-এ আছি কিনা তার ভিত্তিতে)
+  const [scrolled, setScrolled] = useState(false); // State to sync scrolled class name
+  const visibleRef = useRef(true); // Direction-based show/hide state
+  const compactRef = useRef(false); // Compact/expanded state based on top position
 
   useGSAP(
     () => {
@@ -25,7 +25,7 @@ export function useHeaderFixedOnScrollUp(
       const header = headerRef.current;
       const logo = logoRef.current;
 
-      // initial padding মান সেট করা (Tailwind এর py-10 = 40px এর সমতুল্য)
+      // Set initial padding values (equivalent to Tailwind py-10 = 40px)
       gsap.set(header, { paddingTop: 40, paddingBottom: 40 });
       if (logo) gsap.set(logo, { scale: 1, transformOrigin: "left center" });
 
@@ -54,8 +54,8 @@ export function useHeaderFixedOnScrollUp(
       const compact = () => {
         if (compactRef.current) return;
         compactRef.current = true;
-        header.classList.add("scrolled"); // 👈 class add
-        setScrolled(true); // 👈 React state ও sync (JSX থেকে দরকার হলে ব্যবহারের জন্য)
+        header.classList.add("scrolled");
+        setScrolled(true);
         gsap.to(header, {
           paddingTop: 16,
           paddingBottom: 16,
@@ -69,7 +69,7 @@ export function useHeaderFixedOnScrollUp(
       const expand = () => {
         if (!compactRef.current) return;
         compactRef.current = false;
-        header.classList.remove("scrolled"); // 👈 class remove
+        header.classList.remove("scrolled");
         setScrolled(false);
         gsap.to(header, {
           paddingTop: 40,
@@ -93,7 +93,7 @@ export function useHeaderFixedOnScrollUp(
             return;
           }
 
-          compact(); // top থেকে সরে গেলেই compact, direction যাই হোক না কেন
+          compact(); // Compact whenever scrolled away from top
           if (self.direction === -1) show();
           else hide();
         },
@@ -104,7 +104,7 @@ export function useHeaderFixedOnScrollUp(
     { scope: headerRef, dependencies: [ready, topThreshold] },
   );
 
-  // header এর height বদলালে (padding animate হওয়ার কারণে) স্পেসারও sync রাখা
+  // Sync spacer height when header dimensions change
   useEffect(() => {
     const header = headerRef.current;
     if (!header) return;
@@ -117,5 +117,5 @@ export function useHeaderFixedOnScrollUp(
     return () => ro.disconnect();
   }, [headerRef]);
 
-  return { spacerHeight: height, scrolled }; // 👈 scrolled রিটার্ন করছে
+  return { spacerHeight: height, scrolled };
 }

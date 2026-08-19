@@ -4,11 +4,9 @@ import { brands, brandSectionData } from "@/data";
 import { ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 
-type Props = {};
+const INITIAL_COUNT = 14; // Display 7 columns x 2 rows initially
 
-const INITIAL_COUNT = 14; // 7 columns x 2 rows প্রথমে দেখাবে
-
-const Brand: React.FC<Props> = () => {
+const Brand: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
 
   const initialBrands = brands.slice(0, INITIAL_COUNT);
@@ -23,7 +21,7 @@ const Brand: React.FC<Props> = () => {
           dangerouslySetInnerHTML={{ __html: brandSectionData.title }}
         />
 
-        {/* সবসময় visible brands */}
+        {/* Initial visible brands */}
         <div className="grid grid-cols-7 gap-17.5 mt-25">
           {initialBrands.map((brand) => (
             <img src={brand.image} key={brand.id} alt="" />
@@ -85,7 +83,7 @@ const Brand: React.FC<Props> = () => {
 
 export default Brand;
 
-export const BrandShort: React.FC<Props> = () => {
+export const BrandShort: React.FC = () => {
   return (
     <section className="border-b border-neutral-900 py-30">
       <div className="container m-auto">

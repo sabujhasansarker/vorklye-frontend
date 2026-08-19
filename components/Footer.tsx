@@ -12,11 +12,6 @@ import { useFitText } from "@/utility";
 import { ArrowDown } from "lucide-react";
 import React, { useRef } from "react";
 
-export type { FooterLink, FooterSection };
-export { footerBottomRow, footerContactInfo, footerTopRow };
-
-type Props = {};
-
 const FooterSectionBlock: React.FC<{
   title: string;
   links: { label: string; link: string }[];
@@ -40,7 +35,7 @@ const FooterSectionBlock: React.FC<{
   </div>
 );
 
-const Footer: React.FC<Props> = () => {
+const Footer: React.FC = () => {
   const textRef = useRef<HTMLParagraphElement>(null);
   const fontSize = useFitText(textRef);
   return (

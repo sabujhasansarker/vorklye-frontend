@@ -44,13 +44,13 @@ export function useFitText(
 
       if (naturalWidth === 0) return;
 
-      // ধাপ ১: শুধু width অনুযায়ী font-size বের করা
+      // Step 1: Calculate font size based on width
       const widthBasedSize = (targetWidth / naturalWidth) * referenceSize;
 
       let finalSize = widthBasedSize;
 
-      // ধাপ ২: height constraint থাকলে — actual DOM-এ বসিয়ে সরাসরি মেপে দেখা
-      // (formula দিয়ে অনুমান না করে, real rendered height ব্যবহার করা বেশি নির্ভরযোগ্য)
+      // Step 2: If height constraint exists, measure actual rendered height in DOM
+      // (Using real rendered height is more reliable than estimation)
       if (fitHeight && targetHeight > 0) {
         el.style.fontSize = `${widthBasedSize}px`;
         const renderedHeight = el.getBoundingClientRect().height;

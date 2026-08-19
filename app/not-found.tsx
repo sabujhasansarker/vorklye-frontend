@@ -11,31 +11,34 @@ import {
   Mail,
 } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 export default function NotFound() {
   const quickLinks = [
     {
       title: "Services",
-      description: "Explore our UI/UX, Shopify, Migration & Growth capabilities.",
+      description:
+        "Explore our UI/UX, Shopify, Migration & Growth capabilities.",
       href: "/services",
       icon: Layers,
     },
     {
       title: "Case Studies",
-      description: "Discover real results and case studies from our global clients.",
+      description:
+        "Discover real results and case studies from our global clients.",
       href: "/case-studies",
       icon: FolderGit2,
     },
     {
       title: "Careers",
-      description: "Join our team of designers, engineers, and growth strategists.",
+      description:
+        "Join our team of designers, engineers, and growth strategists.",
       href: "/career",
       icon: Briefcase,
     },
     {
       title: "Contact Us",
-      description: "Get in touch with our leadership to discuss your next project.",
+      description:
+        "Get in touch with our leadership to discuss your next project.",
       href: "/contact",
       icon: Mail,
     },
@@ -83,15 +86,13 @@ export default function NotFound() {
           </h1>
 
           <p className="text-neutral-400 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed mb-12">
-            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+            The page you are looking for might have been removed, had its name
+            changed, or is temporarily unavailable.
           </p>
 
           {/* Action buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4 mb-20">
-            <Link
-              href="/"
-              className="btn-primary"
-            >
+            <Link href="/" className="btn-primary">
               <span className="btn-text">
                 <span>Back to Homepage</span>
                 <span>Back to Homepage</span>
