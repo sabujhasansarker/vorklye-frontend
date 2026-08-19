@@ -1,12 +1,12 @@
 "use client";
 
 import { ButtonNormal } from "@/components/Button";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import VorklyeLayout from "@/components/VorklyeLayout";
 import { caseStudies, getCaseStudyBySlug } from "@/data";
 import {
   ArrowLeft,
   ArrowRight,
+  ChevronLeft,
   ExternalLink,
   Quote,
 } from "lucide-react";
@@ -31,9 +31,7 @@ export default function CaseStudyDetailPage({
     caseStudies[(currentIdx - 1 + caseStudies.length) % caseStudies.length];
 
   return (
-    <div className="bg-black text-white min-h-screen antialiased">
-      <Header />
-
+    <VorklyeLayout>
       {/* ─── HERO ──────────────────────────────────────────────────── */}
       <section className="relative pt-40 overflow-hidden">
         {/* subtle grid */}
@@ -51,19 +49,21 @@ export default function CaseStudyDetailPage({
           {/* breadcrumb */}
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-neutral-500 hover:text-white transition-colors mb-14"
+            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-white transition-colors mb-14"
           >
-            <ArrowLeft className="size-3.5" />
+            <div className="rounded-full size-10 bg-neutral-900 text-neutral-500 flex items-center justify-center">
+              <ChevronLeft size={20} />
+            </div>
             All Case Studies
           </Link>
 
           {/* title + summary row */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-end pb-14 border-b border-neutral-900">
             <div className="lg:col-span-8">
-              <span className="text-[11px] font-black uppercase tracking-[0.2em] text-neutral-500 block mb-5">
+              <span className="text-[14px] font-black uppercase tracking-[0.2em] text-neutral-500 block mb-10">
                 {s.industry} · {s.published}
               </span>
-              <h1 className="text-6xl sm:text-7xl xl:text-[6.5rem] font-black tracking-tight leading-[0.93] text-white">
+              <h1 className="text-6xl sm:text-5xl xl:text-6xl font-black tracking-tight leading-[0.93] text-white">
                 {s.title}
               </h1>
             </div>
@@ -78,7 +78,7 @@ export default function CaseStudyDetailPage({
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-neutral-300 transition-colors"
                 >
-                  Visit Live Store <ExternalLink className="size-3.5" />
+                  Visit Live Store <ExternalLink className="size-4" />
                 </a>
               )}
             </div>
@@ -93,11 +93,11 @@ export default function CaseStudyDetailPage({
               {
                 label: "Services",
                 value: (
-                  <span className="flex flex-wrap gap-1.5 mt-1">
+                  <span className="flex flex-wrap gap-2">
                     {s.services.map((srv, i) => (
                       <span
                         key={i}
-                        className="text-xs px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 font-semibold"
+                        className="text-sm px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 font-semibold"
                       >
                         {srv}
                       </span>
@@ -107,10 +107,10 @@ export default function CaseStudyDetailPage({
               },
             ].map((m, i) => (
               <div key={i} className="px-6 sm:px-8 py-8">
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-700 mb-2">
+                <p className="text-sm font-black uppercase tracking-widest text-neutral-700 mb-5">
                   {m.label}
                 </p>
-                <div className="text-base font-semibold text-neutral-200">
+                <div className="text-[18px] font-semibold text-neutral-200">
                   {m.value}
                 </div>
               </div>
@@ -120,16 +120,20 @@ export default function CaseStudyDetailPage({
 
         {/* full-bleed cover image */}
         <div className="container mx-auto px-4 mt-12">
-          <div className="relative h-[55vw] max-h-[700px] min-h-[380px] overflow-hidden rounded-sm">
+          <div className="relative h-[55vw] max-h-150 min-h-100 overflow-hidden rounded-sm">
             <img
               src={s.image}
               alt={s.title}
-              className="absolute inset-0 w-full h-full object-cover object-center scale-[1.02]"
+              className="absolute inset-0 w-full h-full object-cover object-top"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             {s.logo && (
-              <div className="absolute top-8 left-8 backdrop-blur-md bg-black/60 border border-white/10 rounded-sm px-4 py-2.5">
-                <img src={s.logo} alt={s.client} className="h-7 object-contain" />
+              <div className="absolute top-5 left-5 backdrop-blur-md bg-black/60 border border-white/10 rounded-sm px-4 py-2.5">
+                <img
+                  src={s.logo}
+                  alt={s.client}
+                  className="h-6 object-contain"
+                />
               </div>
             )}
           </div>
@@ -143,10 +147,10 @@ export default function CaseStudyDetailPage({
             <div className="grid grid-cols-2 lg:grid-cols-4 divide-y divide-x divide-neutral-900">
               {s.results.map((r, i) => (
                 <div key={i} className="py-14 px-8 xl:px-12 text-center">
-                  <span className="text-5xl xl:text-6xl font-black text-white tracking-tight tabular-nums block">
+                  <span className="text-3xl xl:text-4xl font-black text-white tracking-tight">
                     {r.value}
                   </span>
-                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-neutral-600 mt-4">
+                  <p className="text-sm font-black uppercase tracking-widest text-neutral-600 mt-6">
                     {r.label}
                   </p>
                 </div>
@@ -162,11 +166,11 @@ export default function CaseStudyDetailPage({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-neutral-900">
             {/* Challenge */}
             <div className="bg-black p-12 xl:p-16">
-              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-neutral-700 block mb-6">
-                01 / The Challenge
-              </span>
-              <h3 className="text-3xl xl:text-4xl font-bold text-white leading-tight mb-8">
-                What was holding<br />the brand back?
+              <p className="sub-title">01 / The Challenge</p>
+              <h3 className="text-4xl font-semibold leading-15 mb-10">
+                What was holding
+                <br />
+                the brand back?
               </h3>
               <p className="text-neutral-400 text-lg leading-relaxed">
                 {s.challenge}
@@ -175,11 +179,11 @@ export default function CaseStudyDetailPage({
 
             {/* Solution */}
             <div className="bg-neutral-950 p-12 xl:p-16">
-              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-neutral-700 block mb-6">
-                02 / The Solution
-              </span>
-              <h3 className="text-3xl xl:text-4xl font-bold text-white leading-tight mb-8">
-                How we engineered<br />the breakthrough.
+              <p className="sub-title">02 / The Solution</p>
+              <h3 className="text-4xl font-semibold leading-15 mb-10">
+                How we engineered
+                <br />
+                the breakthrough.
               </h3>
               <p className="text-neutral-400 text-lg leading-relaxed">
                 {s.solution}
@@ -314,8 +318,6 @@ export default function CaseStudyDetailPage({
           <ButtonNormal text="Book a Strategy Call" href="/contact" />
         </div>
       </section>
-
-      <Footer />
-    </div>
+    </VorklyeLayout>
   );
 }
