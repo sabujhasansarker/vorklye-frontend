@@ -98,7 +98,7 @@ export const BrandShort: React.FC<Props> = () => {
         >
           <div className="overflow-hidden">
             <div className="grid grid-cols-7 gap-17.5 pt-17.5">
-              {brands.map((brand, index) => (
+              {brands.map((brand) => (
                 <img
                   src={brand.image}
                   key={brand.id}

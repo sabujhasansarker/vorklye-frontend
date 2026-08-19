@@ -1,6 +1,6 @@
 "use client";
 
-import { caseStudies, caseStudiesSectionData, type CaseStudy } from "@/data";
+import { caseStudies, caseStudiesSectionData } from "@/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -143,73 +143,3 @@ const CaseStudiesSection: React.FC = () => {
 };
 
 export default CaseStudiesSection;
-
-export const CaseStudiesSection2: React.FC = () => {
-  return (
-    <div className="py-35">
-      <div className="container m-auto px-4">
-        <div className="max-w-200">
-          <p className="text-neutral-400 text-lg font-medium">{caseStudiesSectionData.subtitle}</p>
-          <h2 className="section-title">
-            {caseStudiesSectionData.title}
-          </h2>
-        </div>
-        <div className="case-studies-container flex gap-15 mt-12 flex-wrap">
-          {caseStudies.map((item) => (
-            <div className="w-full" key={item.id}>
-              <div className="flex gap-15">
-                <Link href={`/case-studies/${item.slug}`} className="w-6/12 h-150 overflow-hidden block">
-                  <img
-                    src={item.image}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    alt={item.title}
-                  />
-                </Link>
-                <div className="mt-6">
-                  <h4 className="text-2xl font-semibold">
-                    <Link href={`/case-studies/${item.slug}`} className="hover:text-white transition-colors">
-                      {item.title}
-                    </Link>
-                  </h4>
-                  <div className="inline-flex justify-start items-start gap-28 mt-4">
-                    <div className="inline-flex flex-col justify-start items-start gap-2">
-                      <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
-                        {caseStudiesSectionData.servicesLabel}
-                      </div>
-                      <div className="flex flex-col justify-start items-start gap-1">
-                        {item.services.map((service, sIndex) => (
-                          <div
-                            key={sIndex}
-                            className="text-gray-200 font-medium leading-7"
-                          >
-                            {service}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="inline-flex flex-col justify-start items-start gap-2">
-                      <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
-                        {caseStudiesSectionData.industryLabel}
-                      </div>
-                      <div className="text-gray-200 font-medium leading-7 mt-1">
-                        {item.industry}
-                      </div>
-                    </div>
-                    <div className="inline-flex flex-col justify-start items-start gap-2">
-                      <div className="text-neutral-500 text-sm font-semibold uppercase leading-6">
-                        {caseStudiesSectionData.publishedLabel}
-                      </div>
-                      <div className="text-gray-200 font-medium leading-7 mt-1">
-                        {item.published}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};

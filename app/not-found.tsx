@@ -1,17 +1,14 @@
 "use client";
 
-import { ButtonNormal } from "@/components/Button";
 import Footer from "@/components/Footer";
 import {
   ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
   Briefcase,
   FolderGit2,
   Home as HomeIcon,
   Layers,
   Mail,
-  Search,
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";

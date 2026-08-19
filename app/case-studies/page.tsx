@@ -3,7 +3,7 @@ import { ButtonSm } from "@/components/Button";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Testimonial from "@/components/Testimonial";
-import { caseStudies, caseStudiesPageData, type CaseStudy } from "@/data";
+import { caseStudies, caseStudiesPageData } from "@/data";
 import { useScrollSmootherSetup, useSplitTitleReveal } from "@/utility";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

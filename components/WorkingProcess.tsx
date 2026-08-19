@@ -1,6 +1,6 @@
 "use client";
 
-import { processSteps, workingProcessSectionData, type ProcessStep } from "@/data";
+import { processSteps, workingProcessSectionData } from "@/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";

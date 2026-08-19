@@ -1,4 +1,4 @@
-import { heroData, siteConfig, type HeroData } from "@/data";
+import { heroData, siteConfig } from "@/data";
 import React, { Fragment } from "react";
 
 type Props = {};

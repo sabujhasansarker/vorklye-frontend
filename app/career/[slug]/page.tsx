@@ -1,6 +1,5 @@
 "use client";
 
-import Button, { ButtonNormal, ButtonSm } from "@/components/Button";
 import Footer from "@/components/Footer";
 import { getJobBySlug, jobs } from "@/data";
 import {
@@ -16,13 +15,10 @@ import {
   ExternalLink,
   FileText,
   Gift,
-  Globe,
   Lock,
-  Mail,
   MapPin,
   Send,
   Sparkles,
-  UserCheck,
 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";

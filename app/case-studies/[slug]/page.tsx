@@ -1,13 +1,12 @@
 "use client";
 
-import { ButtonNormal, ButtonSm } from "@/components/Button";
+import { ButtonNormal } from "@/components/Button";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { caseStudies, getCaseStudyBySlug } from "@/data";
 import {
   ArrowLeft,
   ArrowRight,
-  ArrowUpRight,
   ExternalLink,
   Quote,
 } from "lucide-react";

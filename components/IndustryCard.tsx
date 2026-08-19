@@ -4,8 +4,6 @@ import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
 import React, { useRef } from "react";
 
-const INITIAL_GRADIENT_HEIGHT = 230;
-
 type IndustryCardProps = {
   item: {
     id: string | number;

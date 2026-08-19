@@ -1,6 +1,6 @@
 "use client";
 
-import { faqCeoCard, faqItems, faqSectionData, type FAQItem } from "@/data";
+import { faqCeoCard, faqItems, faqSectionData } from "@/data";
 import { ArrowUpRight } from "lucide-react";
 import React, { useState } from "react";
 
