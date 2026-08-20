@@ -1,6 +1,6 @@
 "use client";
 
-import { headerData, headerMenus } from "@/data";
+import { header } from "@/data";
 import { useHeaderFixedOnScrollUp } from "@/utility";
 import Link from "next/link";
 import React, { useRef } from "react";
@@ -14,7 +14,7 @@ const Header: React.FC = () => {
     logoRef,
   );
 
-  const menus = headerMenus;
+  const { menus, button, logo } = header;
 
   return (
     <>
@@ -28,20 +28,20 @@ const Header: React.FC = () => {
           <div className="flex justify-between">
             <div className="flex items-center gap-7.5">
               <Link href="/">
-                <img src={headerData.logo} alt="Logo" />
+                <img src={logo} alt="Logo" />
               </Link>
               <div className="w-[1.70px] h-7 bg-gray-200" />
-              <a href={headerData.shopifyPartnerLink}>
+              <a href="#">
                 <img
                   ref={logoRef}
-                  src={headerData.shopifyPartnerLogo}
+                  src="https://vorklye-frontend-nine.vercel.app/images/shopify-patner.png"
                   alt="Shopify Partner"
                 />
               </a>
             </div>
             <ul className="flex items-center gap-10">
-              {menus.map((menu) => (
-                <li key={menu.id}>
+              {menus.map((menu, index) => (
+                <li key={index}>
                   <Link
                     href={menu.link}
                     className="nav-link justify-start text-white font-semibold leading-7"
@@ -51,10 +51,7 @@ const Header: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <ButtonSm
-              text={headerData.ctaButton.label}
-              href={headerData.ctaButton.link}
-            />
+            <ButtonSm text={button.label} href={button.link} />
           </div>
         </div>
       </header>

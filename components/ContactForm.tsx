@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  budgetOptions,
-  contactPageData,
-  hearAboutUsOptions,
-  serviceTags,
-} from "@/data";
+import { contactPage } from "@/data";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 
@@ -28,6 +23,21 @@ const initialFormData: FormData = {
 };
 
 const ContactForm: React.FC = () => {
+  const {
+    emailPlaceholder,
+    namePlaceholder,
+    budgetPlaceholder,
+    hearAboutUsPlaceholder,
+    messagePlaceholder,
+    servicesLabel,
+    submitButtonText,
+    submittingText,
+    preferEmailLabel,
+    email,
+    budgetOptions,
+    hearAboutUsOptions,
+    serviceTags,
+  } = contactPage;
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
@@ -92,7 +102,7 @@ const ContactForm: React.FC = () => {
             id="email"
             name="email"
             type="email"
-            placeholder={contactPageData.emailPlaceholder}
+            placeholder={emailPlaceholder}
             value={formData.email}
             onChange={handleChange}
             className={inputClass}
@@ -101,7 +111,7 @@ const ContactForm: React.FC = () => {
             id="fullName"
             name="fullName"
             type="text"
-            placeholder={contactPageData.namePlaceholder}
+            placeholder={namePlaceholder}
             value={formData.fullName}
             onChange={handleChange}
             className={inputClass}
@@ -120,7 +130,7 @@ const ContactForm: React.FC = () => {
               }`}
             >
               <option value="" disabled>
-                {contactPageData.budgetPlaceholder}
+                {budgetPlaceholder}
               </option>
               {budgetOptions.map((option) => (
                 <option
@@ -148,7 +158,7 @@ const ContactForm: React.FC = () => {
               }`}
             >
               <option value="" disabled>
-                {contactPageData.hearAboutUsPlaceholder}
+                {hearAboutUsPlaceholder}
               </option>
               {hearAboutUsOptions.map((option) => (
                 <option
@@ -170,7 +180,7 @@ const ContactForm: React.FC = () => {
           id="message"
           name="message"
           rows={5}
-          placeholder={contactPageData.messagePlaceholder}
+          placeholder={messagePlaceholder}
           value={formData.message}
           onChange={handleChange}
           className={`${inputClass} resize-none`}
@@ -178,7 +188,7 @@ const ContactForm: React.FC = () => {
 
         <div>
           <p className="text-white font-semibold text-lg mb-4">
-            {contactPageData.servicesLabel}
+            {servicesLabel}
           </p>
           <div className="flex flex-wrap gap-3">
             {serviceTags.map((tag) => {
@@ -221,14 +231,10 @@ const ContactForm: React.FC = () => {
           >
             <span className="btn-text">
               <span>
-                {status === "submitting"
-                  ? contactPageData.submittingText
-                  : contactPageData.submitButtonText}
+                {status === "submitting" ? submittingText : submitButtonText}
               </span>
               <span>
-                {status === "submitting"
-                  ? contactPageData.submittingText
-                  : contactPageData.submitButtonText}
+                {status === "submitting" ? submittingText : submitButtonText}
               </span>
             </span>
             <span className="btn-icon">
@@ -238,13 +244,13 @@ const ContactForm: React.FC = () => {
           </button>
 
           <p className="text-sm text-neutral-400 text-right font-semibold">
-            {contactPageData.preferEmailLabel}
+            {preferEmailLabel}
             <br />
             <a
-              href={contactPageData.emailHref}
+              href={`mailto:${email}`}
               className="text-white text-[18px] font-semibold underline underline-offset-2 block mt-2"
             >
-              {contactPageData.email}
+              {email}
             </a>
           </p>
         </div>

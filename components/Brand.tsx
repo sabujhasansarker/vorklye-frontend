@@ -1,55 +1,51 @@
 "use client";
 
-import { brands, brandSectionData } from "@/data";
+import { aboutPage, homePage } from "@/data";
 import { ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 
-const INITIAL_COUNT = 14; // Display 7 columns x 2 rows initially
+const INITIAL_COUNT = 14;
 
 const Brand: React.FC = () => {
+  const { title, logos } = homePage.brand;
   const [showAll, setShowAll] = useState(false);
 
-  const initialBrands = brands.slice(0, INITIAL_COUNT);
-  const extraBrands = brands.slice(INITIAL_COUNT);
-  const hasMore = extraBrands.length > 0;
+  const extra = logos.slice(INITIAL_COUNT);
+  const hasMore = extra.length > 0;
 
   return (
-    <div className="py-42.5 border-b border-neutral-900">
+    <section className="border-b border-neutral-900 py-42.5">
       <div className="container m-auto">
         <h2
-          className="max-w-361.5 section-title"
-          dangerouslySetInnerHTML={{ __html: brandSectionData.title }}
+          className="section-title max-w-361.5"
+          dangerouslySetInnerHTML={{ __html: title }}
         />
 
-        {/* Initial visible brands */}
-        <div className="grid grid-cols-7 gap-17.5 mt-25">
-          {initialBrands.map((brand) => (
-            <img src={brand.image} key={brand.id} alt="" />
+        {/* Brands */}
+        <div className="mt-25 grid grid-cols-7 gap-17.5">
+          {logos.slice(0, INITIAL_COUNT).map(({ id, image }) => (
+            <img key={id} src={image} alt="" />
           ))}
         </div>
 
-        {/* Accordion-style collapsible extra brands */}
+        {/* Extra brands */}
         {hasMore && (
           <div
-            className="grid transition-all duration-500 ease-in-out"
-            style={{
-              gridTemplateRows: showAll ? "1fr" : "0fr",
-            }}
+            className="grid overflow-hidden transition-all duration-500 ease-in-out"
+            style={{ gridTemplateRows: showAll ? "1fr" : "0fr" }}
           >
             <div className="overflow-hidden">
               <div className="grid grid-cols-7 gap-17.5 pt-17.5">
-                {extraBrands.map((brand, index) => (
+                {extra.map(({ id, image }, i) => (
                   <img
-                    src={brand.image}
-                    key={brand.id}
+                    key={id}
+                    src={image}
                     alt=""
                     className="transition-all duration-500 ease-in-out"
                     style={{
                       opacity: showAll ? 1 : 0,
-                      transform: showAll
-                        ? "translateY(0)"
-                        : "translateY(-10px)",
-                      transitionDelay: showAll ? `${index * 30}ms` : "0ms",
+                      transform: `translateY(${showAll ? 0 : -10}px)`,
+                      transitionDelay: showAll ? `${i * 30}ms` : "0ms",
                     }}
                   />
                 ))}
@@ -59,55 +55,43 @@ const Brand: React.FC = () => {
         )}
 
         {hasMore && (
-          <div className="text-center mt-25">
-            <button
-              type="button"
-              onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex justify-start items-center gap-3.5 text-neutral-500 cursor-pointer"
-            >
-              <span className="text-base font-semibold leading-7">
-                {showAll ? brandSectionData.showLessLabel : brandSectionData.showMoreLabel}
-              </span>
-              <ChevronDown
-                className={`transition-transform duration-300 ${
-                  showAll ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setShowAll((v) => !v)}
+            className="mx-auto mt-25 flex cursor-pointer items-center gap-3.5 text-neutral-500"
+          >
+            <span className="text-base font-semibold">
+              {showAll ? "Show less" : "More brands"}
+            </span>
+            <ChevronDown
+              className={`transition-transform duration-300 ${
+                showAll ? "rotate-180" : ""
+              }`}
+            />
+          </button>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Brand;
-
 export const BrandShort: React.FC = () => {
+  const { subtitle, logos } = aboutPage.brand;
+
   return (
     <section className="border-b border-neutral-900 py-30">
       <div className="container m-auto">
-        <p className="sub-title text-center">{brandSectionData.shortSubtitle}</p>
-        <div
-          className="grid transition-all duration-500 ease-in-out"
-          style={{
-            gridTemplateRows: "1fr",
-          }}
-        >
-          <div className="overflow-hidden">
-            <div className="grid grid-cols-7 gap-17.5 pt-17.5">
-              {brands.map((brand) => (
-                <img
-                  src={brand.image}
-                  key={brand.id}
-                  alt=""
-                  className="transition-all duration-500 ease-in-out"
-                />
-              ))}
-            </div>
-          </div>
+        <p className="sub-title text-center">{subtitle}</p>
+
+        <div className="grid grid-cols-7 gap-17.5 pt-17.5">
+          {logos.map(
+            (logo) =>
+              logo.shortRender && <img key={logo.id} src={logo.image} alt="" />,
+          )}
         </div>
       </div>
     </section>
   );
 };
+
+export default Brand;

@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  detailedServiceItems as serviceItems,
-  serviceSectionData,
-  services,
-} from "@/data";
+import { homePage, services } from "@/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
@@ -18,12 +14,12 @@ const ServiceSection: React.FC = () => {
   const headersRef = useRef<HTMLHeadingElement[]>([]);
   const contentsRef = useRef<HTMLDivElement[]>([]);
 
+  const { title, subtitle, services } = homePage.service;
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // permanently clip content so a collapsing item can never visually
-      // leak past height:0, even mid-animation
       gsap.set(contentsRef.current, { overflow: "hidden" });
       gsap.set(contentsRef.current.slice(1), { height: 0, opacity: 0 });
       gsap.set(headersRef.current.slice(1), { color: "#404040" });
@@ -84,62 +80,56 @@ const ServiceSection: React.FC = () => {
     >
       <div className="container m-auto flex gap-30 items-start px-6 relative">
         <div className="w-1/2 sticky top-0" ref={leftRef}>
-          <p className="sub-title">{serviceSectionData.subtitle}</p>
-          <h2 className="section-title">{serviceSectionData.title}</h2>
+          <p className="sub-title">{subtitle}</p>
+          <h2 className="section-title">{title}</h2>
         </div>
 
         <div className="w-1/2 flex flex-col justify-start">
-          {services.map(({ id, title, subtitle, description, tags }, index) => (
-            <div
-              key={id}
-              className={`border-b border-neutral-800 ${index === 0 ? "pb-6" : "py-6"} w-full flex flex-col justify-start`}
-            >
-              <h4
-                ref={(el) => {
-                  if (el) headersRef.current[index] = el;
-                }}
-                className="text-4xl font-bold tracking-tight transition-colors duration-300 text-white"
-              >
-                {title}
-              </h4>
+          {services.map(
+            ({ title, shortDes, tags, feature, tagLine }, index) =>
+              feature && (
+                <div
+                  key={index}
+                  className={`border-b border-neutral-800 ${index === 0 ? "pb-6" : "py-6"} w-full flex flex-col justify-start`}
+                >
+                  <h4
+                    ref={(el) => {
+                      if (el) headersRef.current[index] = el;
+                    }}
+                    className="text-4xl font-bold tracking-tight transition-colors duration-300 text-white"
+                  >
+                    {title}
+                  </h4>
 
-              <div
-                ref={(el) => {
-                  if (el) contentsRef.current[index] = el;
-                }}
-                className="overflow-hidden"
-              >
-                <p className="text-neutral-500 text-md font-medium mt-4">
-                  {subtitle}
-                </p>
-                <p className="text-neutral-300 text-xl font-normal leading-8 mt-6">
-                  {description}
-                </p>
-                <div className="flex flex-wrap mt-8 gap-3">
-                  {tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-5 py-2 rounded-full bg-neutral-900 border border-neutral-800 text-white text-[13px] font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                  {/* {tags.map((tag, tagIndex) => (
-                    <p
-                      key={tagIndex}
-                      className="inline-flex justify-center items-center gap-5 text-sm text-neutral-400 font-semibold leading-6"
-                    >
-                      <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full"></span>{" "}
-                      {tag}
+                  <div
+                    ref={(el) => {
+                      if (el) contentsRef.current[index] = el;
+                    }}
+                    className="overflow-hidden"
+                  >
+                    <p className="text-neutral-500 text-md font-semibold mt-4">
+                      {tagLine}
                     </p>
-                  ))} */}
+                    <p className="text-neutral-300 text-xl font-normal leading-8 mt-6">
+                      {shortDes}
+                    </p>
+                    <div className="flex flex-wrap mt-8 gap-3">
+                      {tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-5 py-2 rounded-full bg-neutral-900 border border-neutral-800 text-white text-[13px] font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-15" data-cursor="Service Details">
+                      <ButtonNormal text="Learn More" href="/services" />
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-15" data-cursor="Service Details">
-                  <ButtonNormal text={serviceSectionData.ctaText} href="/services" />
-                </div>
-              </div>
-            </div>
-          ))}
+              ),
+          )}
         </div>
       </div>
     </section>
@@ -353,7 +343,7 @@ export const ServiceItems: React.FC = () => {
     >
       <div className="container mx-auto h-full">
         <div className="grid h-full grid-cols-1 overflow-hidden">
-          {serviceItems.map((item, index) => (
+          {services.map((item, index) => (
             <div
               key={item.title}
               ref={(el) => {
@@ -388,43 +378,43 @@ export const ServiceItems: React.FC = () => {
                   >
                     <div>
                       <h4 className="text-3xl font-bold leading-9 text-gray-200">
-                        <Link href={`/services/${item.slug}`} className="hover:text-white transition-colors">
+                        <Link
+                          href={`/services/${item.title.split(" ").join("-").split("/").join("-")}`}
+                          className="hover:text-white transition-colors"
+                        >
                           {item.title}
                         </Link>
                       </h4>
 
                       <p className="my-5 text-[18px] font-medium leading-8 text-neutral-400">
-                        {item.des}
+                        {item.shortDes}
                       </p>
 
                       <div className="mt-10">
-                        {item.services.map((service) => (
-                          <Link
-                            key={service.id}
-                            href={`/services/${item.slug}/${service.slug}`}
+                        {item.subServices.map((service, i) => (
+                          <div
+                            key={i}
                             className="group flex justify-between border-b border-neutral-900 py-5 hover:border-neutral-700 transition-colors"
                           >
                             <div className="flex gap-5 items-center">
                               <p className="text-lg font-bold leading-5 text-zinc-600 group-hover:text-zinc-400 transition-colors">
-                                {service.id <= 9
-                                  ? `0${service.id}`
-                                  : service.id}
+                                {i <= 9 ? `0${i}` : i}
                               </p>
 
                               <h4 className="text-[19px] font-semibold leading-6 text-neutral-400 group-hover:text-white transition-colors">
-                                {service.title}
+                                {service}
                               </h4>
                             </div>
 
                             <ArrowUpRight className="shrink-0 text-zinc-600 group-hover:text-white transition-colors" />
-                          </Link>
+                          </div>
                         ))}
                       </div>
                     </div>
 
-                    {item.bottomImage && (
+                    {item.skillImage && (
                       <img
-                        src={item.bottomImage}
+                        src={item.skillImage}
                         alt={item.title}
                         className="w-60 shrink-0"
                       />

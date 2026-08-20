@@ -1,17 +1,19 @@
-import { aboutText } from "@/data";
+import { homePage } from "@/data";
 import React from "react";
 import { ButtonUnderlineBig } from "./Button";
 
 const About: React.FC = () => {
+  const { about } = homePage;
+  const { text, button } = about;
   return (
-    aboutText && (
+    about && (
       <div className="border-b border-neutral-900 py-42.5 text-center bg-background">
         <div className="container m-auto">
           <p
             className="text-center section-title"
-            dangerouslySetInnerHTML={{ __html: aboutText }}
+            dangerouslySetInnerHTML={{ __html: text }}
           ></p>
-          <ButtonUnderlineBig />
+          <ButtonUnderlineBig text={button.text} href={button.link} />
         </div>
       </div>
     )

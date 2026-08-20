@@ -1,6 +1,6 @@
 "use client";
 
-import { faqCeoCard, faqItems, faqSectionData } from "@/data";
+import { homePage } from "@/data";
 import { ArrowUpRight } from "lucide-react";
 import React, { useState } from "react";
 
@@ -11,16 +11,18 @@ const FAQ: React.FC = () => {
     setActiveIndex((prev) => (prev === index ? null : index));
   };
 
+  const { title, faqs, ceo, whatsApp } = homePage.faq;
+
   return (
     <div className="py-42.5 border-b border-neutral-900">
       <div className="container m-auto">
         <h2
           className="section-title"
-          dangerouslySetInnerHTML={{ __html: faqSectionData.title }}
+          dangerouslySetInnerHTML={{ __html: title }}
         />
         <div className="flex gap-20 mt-20 justify-between items-start">
           <div className="accordion-items w-full">
-            {faqItems.map((item, index) => {
+            {faqs.map((item, index) => {
               const isActive = activeIndex === index;
 
               return (
@@ -28,7 +30,7 @@ const FAQ: React.FC = () => {
                   key={index}
                   className={`accordion-item border-b border-neutral-900  ${
                     index !== 0 ? "py-8" : "pb-8 "
-                  } ${index == faqItems.length - 1 ? "border-0! pb-0" : ""}`}
+                  } ${index == faqs.length - 1 ? "border-0! pb-0" : ""}`}
                 >
                   <button
                     type="button"
@@ -66,23 +68,23 @@ const FAQ: React.FC = () => {
           </div>
           <div className="max-w-80 p-8 bg-neutral-900 inline-flex flex-col justify-start items-start shrink-0 rounded-sm">
             <img
-              className="size-16 relative rounded-sm"
-              src={faqCeoCard.avatar}
-              alt={faqCeoCard.name}
+              className="size-16 relative rounded-sm object-cover"
+              src={ceo.image}
+              alt={ceo.name}
             />
             <h4 className="text-white text-lg font-medium leading-7 mt-4">
-              {faqCeoCard.message}
+              {ceo.text}
             </h4>
             <a
-              href={faqCeoCard.whatsappLink}
+              href={`tel:${whatsApp.replace(/\s/g, "")}`}
               className="mt-7 py-4 w-full relative rounded-sm bg-[#46E265] inline-flex justify-center items-center gap-2.5"
             >
               <span className="text-black text-lg font-semibold leading-7">
-                {faqCeoCard.buttonLabel}
+                Ask Questions
               </span>
               <img
                 className="self-stretch h-6 relative"
-                src={faqCeoCard.whatsappIcon}
+                src="https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/69c2734b70719aeb95273a22_WhatsApp.avif"
                 alt="WhatsApp"
               />
             </a>
@@ -95,7 +97,7 @@ const FAQ: React.FC = () => {
 
 export default FAQ;
 
-export const FAQJob: React.FC = () => {
+export const FAQJob: React.FC = ({ faq }: any) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   const toggleAccordion = (index: number) => {
@@ -103,7 +105,7 @@ export const FAQJob: React.FC = () => {
   };
   return (
     <div className="accordion-items w-full">
-      {faqItems.map((item, index) => {
+      {faq.map((item, index) => {
         const isActive = activeIndex === index;
 
         return (
@@ -111,7 +113,7 @@ export const FAQJob: React.FC = () => {
             key={index}
             className={`accordion-item border-b border-neutral-900  ${
               index !== 0 ? "py-8" : "pb-8 "
-            } ${index == faqItems.length - 1 ? "border-0! pb-0" : ""}`}
+            } ${index == faq.length - 1 ? "border-0! pb-0" : ""}`}
           >
             <button
               type="button"
@@ -119,7 +121,7 @@ export const FAQJob: React.FC = () => {
               className="accordion-item-title flex justify-between items-center w-full text-left cursor-pointer"
             >
               <h4 className="text-gray-200 text-xl font-semibold leading-7">
-                {item.question}
+                {item.title}
               </h4>
               <ArrowUpRight
                 className={`shrink-0 transition-all duration-300 ${
@@ -136,7 +138,7 @@ export const FAQJob: React.FC = () => {
               <div className="overflow-hidden">
                 <div className="accordion-item-content pt-6">
                   <p className="text-neutral-500 leading-8 text-[17px] font-medium">
-                    {item.answer}
+                    {item.text}
                   </p>
                 </div>
               </div>

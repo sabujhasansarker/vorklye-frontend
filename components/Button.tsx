@@ -81,8 +81,8 @@ export const ButtonUnderline: React.FC<Props> = ({
         <span>{text}</span>
       </span>
       <span className="btn-icon">
-        <ArrowUpRight />
-        <ArrowUpRight />
+        <ArrowUpRight size={20} />
+        <ArrowUpRight size={20} />
       </span>
     </a>
   );

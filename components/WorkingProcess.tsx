@@ -1,6 +1,6 @@
 "use client";
 
-import { processSteps, workingProcessSectionData } from "@/data";
+import { homePage } from "@/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
@@ -12,6 +12,8 @@ const WorkingProcess: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<Array<HTMLDivElement | null>>([]);
+
+  const { title, subtitle, button, process } = homePage.workingProcess;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -85,10 +87,10 @@ const WorkingProcess: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <div>
-            <p className="sub-title">{workingProcessSectionData.subtitle}</p>
-            <h2 className="section-title">{workingProcessSectionData.title}</h2>
+            <p className="sub-title">{subtitle}</p>
+            <h2 className="section-title">{title}</h2>
           </div>
-          <Button text={workingProcessSectionData.ctaText} />
+          <Button text={button.label} href={button.link} />
         </div>
       </div>
 
@@ -97,9 +99,9 @@ const WorkingProcess: React.FC = () => {
         className="working-process-items mt-12 overflow-hidden w-full"
       >
         <div className="flex gap-8 container mx-auto px-4">
-          {processSteps.map((step, index) => (
+          {process.map((step, index) => (
             <div
-              key={step.number}
+              key={index}
               ref={(el) => {
                 cardsRef.current[index] = el;
               }}
@@ -107,7 +109,7 @@ const WorkingProcess: React.FC = () => {
             >
               <div>
                 <p className="text-neutral-500 text-2xl font-semibold leading-7">
-                  {step.number}
+                  {index + 1 <= 9 ? "0" + (index + 1) : index + 1}
                 </p>
                 <h4 className="text-gray-200 text-2xl font-semibold leading-8 mt-10">
                   {step.title}

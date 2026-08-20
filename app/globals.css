@@ -68,11 +68,6 @@ body {
       svg:last-child {
         @apply -translate-x-full translate-y-full group-hover:translate-x-0 group-hover:translate-y-0;
       }
-      &.btn-icon {
-        svg {
-          position: unset;
-        }
-      }
     }
   }
   .btn-normal {

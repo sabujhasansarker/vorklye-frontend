@@ -1,2 +1,2 @@
-export * from "./siteData";
-export { default } from "./siteData";
+export * from "./data";
+export { default } from "./data";

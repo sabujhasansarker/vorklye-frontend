@@ -1,137 +1,170 @@
 "use client";
 
-import {
-  footerBottomRow,
-  footerContactInfo,
-  footerData,
-  footerTopRow,
-  type FooterLink,
-  type FooterSection,
-} from "@/data";
+import { footer } from "@/data";
 import { useFitText } from "@/utility";
 import { ArrowDown } from "lucide-react";
 import React, { useRef } from "react";
 
-const FooterSectionBlock: React.FC<{
+type FooterLink = {
+  label: string;
+  link: string;
+};
+
+type FooterSectionBlockProps = {
   title: string;
-  links: { label: string; link: string }[];
-}> = ({ title, links }) => (
-  <div className="footer-menu-item">
-    <h6 className="text-white text-[1.125rem] font-bold leading-6 tracking-tight">
-      {title}
-    </h6>
-    <ul className="mt-4 space-y-3">
-      {links.map((item) => (
-        <li key={item.label}>
-          <a
-            href={item.link}
-            className="text-zinc-400 hover:text-white text-base font-medium leading-5 tracking-tight"
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+  links: string[] | FooterLink[];
+};
+
+const FooterSectionBlock: React.FC<FooterSectionBlockProps> = ({
+  title,
+  links,
+}) => {
+  return (
+    <div className="footer-menu-item">
+      <h6 className="text-white text-[1.125rem] font-bold leading-6 tracking-tight">
+        {title}
+      </h6>
+
+      <ul className="mt-4 space-y-3">
+        {links.map((item, index) => {
+          const isObject = typeof item === "object";
+
+          const label = isObject ? item.label : item;
+          const link = isObject ? item.link : "#";
+
+          return (
+            <li key={index}>
+              <a
+                href={link}
+                className="text-zinc-400 hover:text-white text-base font-medium leading-5 tracking-tight transition-colors"
+              >
+                {label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
 
 const Footer: React.FC = () => {
   const textRef = useRef<HTMLParagraphElement>(null);
+
   const fontSize = useFitText(textRef);
+
+  const { logo, info, button, social, menus, contactInfo } = footer;
+
   return (
     <footer className="bg-neutral-950 pt-30">
       <div className="container m-auto">
         <div className="flex gap-50">
+          {/* LEFT SIDE */}
           <div className="w-1/4">
-            <img className="w-35 relative" src={footerData.logo} alt="Logo" />
-            <p className="w-96 justify-start text-zinc-400 text-[18px] font-semibold leading-7 mt-7">
-              {footerData.description}
-            </p>
-            <a
-              href={footerData.deckLink}
-              className="pl-6 pr-2 py-2 bg-[#EBFE5B] rounded-sm inline-flex justify-center items-center gap-8 overflow-hidden mt-10"
-            >
-              <span
-                data-hover-text
-                className="justify-start text-zinc-900 text-base font-bold leading-6"
+            {logo && (
+              <img className="w-35 relative" src={logo} alt="Vorklye Logo" />
+            )}
+
+            {info && (
+              <p className="w-96 justify-start text-zinc-400 text-[18px] font-semibold leading-7 mt-7">
+                {info}
+              </p>
+            )}
+
+            {button && (
+              <a
+                href={button.link}
+                className="pl-6 pr-2 py-2 bg-[#EBFE5B] rounded-sm inline-flex justify-center items-center gap-8 overflow-hidden mt-10"
               >
-                {footerData.deckLabel}
-              </span>
-              <span className="bg-zinc-900 size-9 flex items-center justify-center">
-                <ArrowDown />
-              </span>
-            </a>
-            <div className="flex mt-13.5">
-              {footerData.socialLinks.map((social, idx) => (
-                <a
-                  key={idx}
-                  href={social.link}
-                  className="size-13 rounded-[48px] outline -outline-offset-1 outline-gray-200/20 inline-flex justify-center items-center"
+                <span
+                  data-hover-text
+                  className="justify-start text-zinc-900 text-base font-bold leading-6"
                 >
-                  <img src={social.icon} alt={social.name} className="size-5" />
-                </a>
-              ))}
-            </div>
+                  {button.label}
+                </span>
+
+                <span className="bg-zinc-900 size-9 flex items-center justify-center">
+                  <ArrowDown className="text-white" />
+                </span>
+              </a>
+            )}
+
+            {/* SOCIAL */}
+            {social?.length > 0 && (
+              <div className="flex mt-13.5 gap-3">
+                {social.map((item, index) => (
+                  <a
+                    key={index}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.name}
+                    className="size-13 rounded-[48px] outline -outline-offset-1 outline-gray-200/20 inline-flex justify-center items-center"
+                  >
+                    <img src={item.icon} alt={item.name} className="size-5" />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
+          {/* RIGHT SIDE */}
           <div className="w-3/4">
-            <div className="grid grid-cols-3 gap-8">
-              {footerTopRow.map((section) => (
+            <div className="grid grid-cols-3 gap-8 gap-y-15">
+              {menus.map((menu) => (
                 <FooterSectionBlock
-                  key={section.title}
-                  title={section.title}
-                  links={section.links}
+                  key={menu.title}
+                  title={menu.title}
+                  links={menu.menus}
                 />
               ))}
-              <div />
-            </div>
-            <div className="grid grid-cols-3 gap-8 mt-12">
-              {footerBottomRow.map((section) => (
-                <FooterSectionBlock
-                  key={section.title}
-                  title={section.title}
-                  links={section.links}
-                />
-              ))}
+
+              {/* CONTACT INFO */}
               <div className="footer-menu-item">
                 <h6 className="text-zinc-400 text-base font-bold leading-6">
-                  {footerContactInfo.heading}
+                  {contactInfo.heading}
                 </h6>
+
                 <a
-                  data-no-hover
-                  href={`mailto:${footerContactInfo.email}`}
-                  className="block mt-4 text-white text-base font-bold leading-5"
+                  href={`mailto:${contactInfo.email}`}
+                  className="block mt-4 text-white text-base font-bold leading-5 hover:text-[#EBFE5B] transition-colors"
                 >
-                  {footerContactInfo.email}
+                  {contactInfo.email}
                 </a>
 
                 <h6 className="text-zinc-400 text-base font-bold leading-6 mt-8">
-                  {footerContactInfo.callLabel}
+                  {contactInfo.callLabel}
                 </h6>
-                <a
-                  href={`tel:${footerContactInfo.phone.replace(/\s/g, "")}`}
-                  className="flex gap-2 items-center mt-4 text-white text-base font-bold leading-5 "
-                >
+
+                <div className="flex gap-2 items-center mt-4">
                   <img
-                    src={footerData.whatsappIcon}
-                    loading="lazy"
-                    alt="WhatsApp logo"
                     className="size-6"
+                    src="https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/69c2734b70719aeb95273a22_WhatsApp.avif"
+                    alt=""
                   />
-                  {footerContactInfo.phone}
-                </a>
+                  <a
+                    href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+                    className="text-white text-base font-bold leading-5 hover:text-[#EBFE5B] transition-colors"
+                  >
+                    {contactInfo.phone}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* BIG FOOTER TEXT */}
       <div className="flex-1 overflow-hidden mt-30">
         <p
           ref={textRef}
           className="logo-text font-black uppercase whitespace-nowrap leading-none -mb-50"
-          style={{ fontSize: `${fontSize}px` }}
+          style={{
+            fontSize: `${fontSize}px`,
+          }}
         >
-          {footerData.logoText}
+          Vorklye
         </p>
       </div>
     </footer>
