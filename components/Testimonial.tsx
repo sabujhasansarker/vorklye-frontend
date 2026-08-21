@@ -59,7 +59,7 @@ const Testimonial: React.FC = () => {
   };
 
   return (
-    <section className="py-16 sm:py-24 lg:py-35 overflow-hidden">
+    <section className="py-16 sm:py-24 lg:py-30 overflow-hidden">
       <div className="container mx-auto px-5 sm:px-8 lg:px-0">
         <p className="sub-title">{subtitle}</p>
 

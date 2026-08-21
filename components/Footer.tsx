@@ -176,7 +176,8 @@ const Footer: React.FC = () => {
                 </h6>
 
                 <a
-                  href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+                  href={`https://wa.me/${contactInfo.phone.replace(/[^0-9]/g, "")}`}
+                  target="_blank"
                   className="
                     flex
                     items-center

@@ -28,7 +28,8 @@ export async function POST(req: NextRequest) {
         ? services.join(", ")
         : "Not specified";
 
-    const { error } = await resend.emails.send({
+    // 1) NOTIFY YOU — the form submission details
+    const { error: notifyError } = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
       to: process.env.CONTACT_TO_EMAIL as string,
       replyTo: email,
@@ -47,12 +48,36 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    if (error) {
-      console.error("Resend error:", error);
+    if (notifyError) {
+      console.error("Resend notify error:", notifyError);
       return NextResponse.json(
         { error: "Failed to send email." },
         { status: 500 },
       );
+    }
+
+    // 2) AUTO-REPLY — confirmation back to the sender
+    const { error: autoReplyError } = await resend.emails.send({
+      from: "Vorklye <onboarding@resend.dev>",
+      to: email,
+      subject: "We've received your message",
+      html: `
+        <div style="font-family: sans-serif; line-height: 1.6;">
+          <p>Hi ${fullName},</p>
+          <p>Thanks for reaching out — we've received your message and will get back to you within 1–2 business days.</p>
+          <p>Here's a copy of what you sent us:</p>
+          <blockquote style="border-left: 3px solid #ddd; margin: 12px 0; padding-left: 12px; color: #555;">
+            ${(message || "").replace(/\n/g, "<br/>")}
+          </blockquote>
+          <p>Talk soon,<br/>Vorklye</p>
+        </div>
+      `,
+    });
+
+    if (autoReplyError) {
+      // Don't fail the whole request if only the auto-reply fails —
+      // the main notification already went through.
+      console.error("Resend auto-reply error:", autoReplyError);
     }
 
     return NextResponse.json({ success: true });

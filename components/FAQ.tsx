@@ -14,7 +14,7 @@ const FAQ: React.FC = () => {
   const { title, faqs, ceo, whatsApp } = homePage.faq;
 
   return (
-    <div className="py-16 sm:py-28 lg:py-42.5 border-b border-neutral-900">
+    <div className="py-16 sm:py-28 lg:py-30 border-b border-neutral-900">
       <div className="container m-auto px-5 sm:px-8 lg:px-0">
         <h2
           className="section-title"
@@ -78,7 +78,8 @@ const FAQ: React.FC = () => {
               {ceo.text}
             </h4>
             <a
-              href={`tel:${whatsApp.replace(/\s/g, "")}`}
+              href={`https://wa.me/${whatsApp.replace(/[^0-9]/g, "")}`}
+              target="_blank"
               className="mt-6 sm:mt-7 py-3.5 sm:py-4 w-full relative rounded-sm bg-[#46E265] inline-flex justify-center items-center gap-2.5"
             >
               <span className="text-black text-base sm:text-lg font-semibold leading-6 sm:leading-7">

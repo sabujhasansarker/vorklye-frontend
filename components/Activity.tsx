@@ -34,7 +34,7 @@ const Activity: React.FC = () => {
         >
           <h2
             ref={titleRef}
-            className="section-title py-8 sm:py-16 lg:py-35 h-fit self-start"
+            className="section-title py-8 sm:py-16 lg:py-30 h-fit self-start"
             dangerouslySetInnerHTML={{ __html: title }}
           />
 
@@ -43,7 +43,7 @@ const Activity: React.FC = () => {
             className="relative w-full lg:mx-auto lg:max-w-230"
           >
             <div className="flex items-center gap-10 sm:gap-14 lg:gap-20">
-              <div className="flex flex-col gap-24 sm:gap-24 md:gap-32 lg:gap-48 xl:gap-100 py-8 sm:py-16 lg:py-35 px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col gap-24 sm:gap-24 md:gap-32 lg:gap-48 xl:gap-100 py-8 sm:py-16 lg:py-30 px-4 sm:px-6 lg:px-8">
                 {activityStats.col1.map((stat, i) => (
                   <StatCard key={i} stat={stat} />
                 ))}

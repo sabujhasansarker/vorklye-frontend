@@ -48,7 +48,7 @@ const Header: React.FC = () => {
               <a href="#">
                 <img
                   ref={logoRef}
-                  src="https://vorklye-frontend-nine.vercel.app/images/shopify-patner.png"
+                  src="/images/shopify-patner.png"
                   alt="Shopify Partner"
                 />
               </a>
@@ -81,7 +81,7 @@ const Header: React.FC = () => {
             </ul>
 
             {/* BUTTON */}
-            <ButtonSm text={button.label} href={button.link} />
+            <ButtonSm target="_blank" text={button.label} href={button.link} />
           </div>
         </div>
       </header>

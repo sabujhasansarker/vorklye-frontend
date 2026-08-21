@@ -67,7 +67,7 @@ const CaseStudiesSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative border-b border-neutral-900 bg-black py-16 sm:py-24 lg:py-35 text-white">
+    <section className="relative border-b border-neutral-900 bg-black py-16 sm:py-24 lg:py-30 text-white">
       <div ref={containerRef} className="container m-auto px-5 sm:px-8 lg:px-4">
         <div className="max-w-full lg:max-w-200">
           <p className="sub-title">{subtitle}</p>
@@ -93,7 +93,7 @@ const CaseStudiesSection: React.FC = () => {
                       <img
                         src={item.logo}
                         alt={item.title}
-                        className="w-fit h-6 sm:h-8 object-contain"
+                        className="w-fit h-4 sm:h-8 object-contain"
                       />
                     )}
 
@@ -131,16 +131,13 @@ const CaseStudiesSection: React.FC = () => {
                     />
                   </div>
 
-                  <Link
-                    href={`/case-studies/${slug}`}
-                    className="h-56 sm:h-80 lg:h-160 w-full lg:w-1/2 shrink-0"
-                  >
+                  <div className="lg:w-1/2 w-full overflow-hidden">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="size-full object-cover transition-transform duration-500 hover:scale-105"
+                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
                     />
-                  </Link>
+                  </div>
                 </div>
               );
             })}

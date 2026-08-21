@@ -104,8 +104,8 @@ export const header: Header = {
     },
   ],
   button: {
-    label: "Get in touch",
-    link: "#",
+    label: "Book a call",
+    link: "https://cal.com/vorklye-rfn0e4/30min",
   },
   logo: siteData.logo,
 };

@@ -91,7 +91,7 @@ const WorkingProcess: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-black border-b border-neutral-900 overflow-hidden relative flex flex-col justify-center py-8 sm:py-10 lg:py-12"
+      className="bg-black border-b border-neutral-900 overflow-hidden relative flex flex-col justify-center py-8 sm:py-10 lg:py-30"
     >
       <div className="container mx-auto px-5 sm:px-8 lg:px-4">
         <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 sm:items-center sm:justify-between">
