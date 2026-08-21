@@ -3,6 +3,7 @@ import Button, { ButtonSm } from "@/components/Button";
 import FAQ from "@/components/FAQ";
 import VorklyeLayout from "@/components/VorklyeLayout";
 import { aboutPage } from "@/data";
+import { AboutHero, AboutTeam, VisionMission } from "@/data/type";
 
 const AboutPage = () => {
   return (
@@ -35,7 +36,11 @@ const AboutPage = () => {
 
 export default AboutPage;
 
-const Hero = ({ hero }: any) => {
+type HeroProps = {
+  hero: AboutHero;
+};
+
+const Hero = ({ hero }: HeroProps) => {
   const { title, subtitle, button, videoUrl } = hero;
   return (
     <section>
@@ -65,7 +70,11 @@ const Hero = ({ hero }: any) => {
   );
 };
 
-const VissionMission = ({ vissionMission }: any) => {
+type VissionMissionProps = {
+  vissionMission: VisionMission;
+};
+
+const VissionMission = ({ vissionMission }: VissionMissionProps) => {
   const { top, bottom, meddle } = vissionMission;
   return (
     <section className="py-40 border-b border-neutral-900">
@@ -104,7 +113,11 @@ const VissionMission = ({ vissionMission }: any) => {
   );
 };
 
-const Team = ({ team }: any) => {
+type TeamProps = {
+  team: AboutTeam;
+};
+
+const Team = ({ team }: TeamProps) => {
   const { title, subtitle, button, teams } = team;
   return (
     <section className="py-40 border-b border-neutral-900">

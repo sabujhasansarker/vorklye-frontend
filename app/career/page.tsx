@@ -1,8 +1,15 @@
+"use client";
 import { ButtonNormal, ButtonSm } from "@/components/Button";
-import { FAQJob } from "@/components/FAQ";
 import VorklyeLayout from "@/components/VorklyeLayout";
 import { careerPage } from "@/data";
-import React, { Fragment } from "react";
+import {
+  CareerBenefit,
+  CareerFaq,
+  CareerHero,
+  CareerPosition,
+} from "@/data/type";
+import { ArrowUpRight } from "lucide-react";
+import React, { Fragment, useState } from "react";
 
 type Props = {};
 
@@ -12,27 +19,18 @@ const page: React.FC<Props> = () => {
       <Hero hero={careerPage.hero} />
       <Benift benift={careerPage.benift} />
       <Jobs position={careerPage.position} />
-      <section className="py-40">
-        <div className="container m-auto">
-          <div className="text-center">
-            <p className="sub-title">{careerPage.faq.subtitle}</p>
-            <h2
-              className="section-title"
-              dangerouslySetInnerHTML={{ __html: careerPage.faq.title }}
-            ></h2>
-          </div>
-          <div className="max-w-250 m-auto mt-20">
-            <FAQJob faq={careerPage.faq.faqs} />
-          </div>
-        </div>
-      </section>
+      <FAQJob faq={careerPage.faq} />
     </VorklyeLayout>
   );
 };
 
 export default page;
 
-const Hero = ({ hero }: any) => {
+type HeroProps = {
+  hero: CareerHero;
+};
+
+const Hero = ({ hero }: HeroProps) => {
   const { title, subtitle, button, image } = hero;
   return (
     <section>
@@ -55,7 +53,11 @@ const Hero = ({ hero }: any) => {
   );
 };
 
-const Benift = ({ benift }: any) => {
+type BenifitProps = {
+  benift: CareerBenefit;
+};
+
+const Benift = ({ benift }: BenifitProps) => {
   const { title, subtitle, items } = benift;
   return (
     <section className="py-40 border-b border-neutral-900">
@@ -92,7 +94,10 @@ const Benift = ({ benift }: any) => {
   );
 };
 
-const Jobs = ({ position }: any) => {
+type JobProps = {
+  position: CareerPosition;
+};
+const Jobs = ({ position }: JobProps) => {
   const { title, subtitle, careers } = position;
   return (
     <section className="py-40 border-b border-neutral-900" id="openroles">
@@ -126,7 +131,7 @@ const Jobs = ({ position }: any) => {
                   </div>
                 )}
                 <h6 className="work-title text-3xl font-bold text-white mb-5 origin-left group-hover/job:scale-[0.85] transition-transform duration-500 ease-out">
-                  <a href={job.link} data-no-hover>
+                  <a href={job.fromLink} data-no-hover>
                     {job.title}
                   </a>
                 </h6>
@@ -142,10 +147,82 @@ const Jobs = ({ position }: any) => {
                 </ul>
               </div>
               <div className="group-hover/job:-translate-x-7.5 transition-transform duration-500 ease-out">
-                <ButtonNormal text="Apply now" href={job.link} />
+                <ButtonNormal text="Apply now" href={job.fromLink} />
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+type FaqProps = {
+  faq: CareerFaq;
+};
+
+const FAQJob = ({ faq }: FaqProps) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const toggleAccordion = (index: number) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
+  };
+  const { title, subtitle, faqs } = faq;
+  return (
+    <section className="py-40">
+      <div className="container m-auto">
+        <div className="text-center">
+          <p className="sub-title">{subtitle}</p>
+          <h2
+            className="section-title"
+            dangerouslySetInnerHTML={{ __html: title }}
+          ></h2>
+        </div>
+        <div className="max-w-250 m-auto mt-20">
+          <div className="accordion-items w-full">
+            {faqs.map((item, index) => {
+              const isActive = activeIndex === index;
+
+              return (
+                <div
+                  key={index}
+                  className={`accordion-item border-b border-neutral-900  ${
+                    index !== 0 ? "py-8" : "pb-8 "
+                  } ${index == faqs.length - 1 ? "border-0! pb-0" : ""}`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleAccordion(index)}
+                    className="accordion-item-title flex justify-between items-center w-full text-left cursor-pointer"
+                  >
+                    <h4 className="text-gray-200 text-xl font-semibold leading-7">
+                      {item.title}
+                    </h4>
+                    <ArrowUpRight
+                      className={`shrink-0 transition-all duration-300 ${
+                        isActive
+                          ? "text-neutral-300 rotate-90"
+                          : "text-[#1B1B1B]"
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className="grid transition-all duration-300 ease-in-out"
+                    style={{
+                      gridTemplateRows: isActive ? "1fr" : "0fr",
+                    }}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="accordion-item-content pt-6">
+                        <p className="text-neutral-500 leading-8 text-[17px] font-medium">
+                          {item.text}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -1,4 +1,24 @@
-export const siteData = {
+import {
+  AboutPage,
+  Brand,
+  CareerListing,
+  CareerPage,
+  CaseStudiePage,
+  CaseStudy,
+  ContactPage,
+  Faq,
+  Footer,
+  Header,
+  HomePage,
+  Industry,
+  Service,
+  ServicePage,
+  SiteData,
+  TeamMember,
+  Testimonial,
+} from "./type";
+
+export const siteData: SiteData = {
   name: "Vorklye",
   email: "hello@wavespace.agency",
   whatsapp: "+1 628-265-7462",
@@ -60,7 +80,7 @@ export const siteData = {
   ],
 };
 
-export const header = {
+export const header: Header = {
   menus: [
     {
       label: "About Us",
@@ -90,7 +110,7 @@ export const header = {
   logo: siteData.logo,
 };
 
-export const services = [
+export const services: Service[] = [
   {
     title: "UI/UX Design",
     tagLine: "Define who you are. Shape how the world sees you.",
@@ -385,7 +405,7 @@ export const services = [
   },
 ];
 
-export const industries = [
+export const industries: Industry[] = [
   {
     id: 1,
     title: "Finance & Fintech",
@@ -431,7 +451,7 @@ export const industries = [
   },
 ];
 
-export const caseStudies = [
+export const caseStudies: CaseStudy[] = [
   {
     id: 1,
     title: "Capital Growth Solutions",
@@ -609,7 +629,7 @@ export const caseStudies = [
   },
 ];
 
-export const footer = {
+export const footer: Footer = {
   logo: siteData.logo,
   info: siteData.tagline,
   button: {
@@ -648,7 +668,7 @@ export const footer = {
   },
 };
 
-export const brands = [
+export const brands: Brand[] = [
   { id: 1, image: "/images/brand/1.png", home: true, shortRender: true },
   { id: 2, image: "/images/brand/2.png", home: true, shortRender: true },
   { id: 3, image: "/images/brand/3.png", home: true, shortRender: true },
@@ -673,7 +693,7 @@ export const brands = [
   { id: 22, image: "/images/brand/22.png" },
 ];
 
-export const faqs = [
+export const faqs: Faq[] = [
   {
     question: "What are your focus areas as a UI/UX design agency?",
     answer:
@@ -701,7 +721,7 @@ export const faqs = [
   },
 ];
 
-export const testimonials = [
+export const testimonials: Testimonial[] = [
   {
     id: 1,
     video:
@@ -800,7 +820,7 @@ export const testimonials = [
   },
 ];
 
-export const teams = [
+export const teams: TeamMember[] = [
   {
     image:
       "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/690d6e37dc1fd0b514fe70ec_Shahd%20mia-p-500.webp",
@@ -809,7 +829,7 @@ export const teams = [
   },
 ];
 
-export const homePage = {
+export const homePage: HomePage = {
   hero: {
     title: "We design, develop and build",
     des: "We're a design and development agency since 2017 who craft digital masterpiece products.",
@@ -923,7 +943,7 @@ export const homePage = {
   },
 };
 
-export const aboutPage = {
+export const aboutPage: AboutPage = {
   hero: {
     title: "Bringing Vision To Life, One Line Of Code At A Time",
     subtitle:
@@ -987,7 +1007,7 @@ export const aboutPage = {
   },
 };
 
-export const contactPage = {
+export const contactPage: ContactPage = {
   title: "Talk Directly with Our Experts",
   supportImage:
     "https://notionhive.com/_next/image?url=https%3A%2F%2Fcms.notionhive.com%2Fwp-content%2Fuploads%2F2026%2F05%2FFrame-2147223905-1.png&w=1080&q=75",
@@ -1030,7 +1050,7 @@ export const contactPage = {
   ],
 };
 
-export const career = [
+export const career: CareerListing[] = [
   {
     open: true,
     title: "Lead UI / UX Designer",
@@ -1049,7 +1069,7 @@ export const career = [
   },
 ];
 
-export const careerPage = {
+export const careerPage: CareerPage = {
   hero: {
     title: "Collaborate, Create, and Grow Your Career",
     subtitle:
@@ -1150,7 +1170,7 @@ export const careerPage = {
   },
 };
 
-export const caseStudiePage = {
+export const caseStudiePage: CaseStudiePage = {
   hero: {
     title: "Case Studies",
     subtitle:
@@ -1163,7 +1183,7 @@ export const caseStudiePage = {
   caseStudies: caseStudies,
 };
 
-export const servicePage = {
+export const servicePage: ServicePage = {
   hero: {
     title: "Everything Your Brand Needs to Build, Grow and Scale",
     subtitle:

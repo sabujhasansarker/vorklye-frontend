@@ -6,6 +6,7 @@ import IndustryCard from "@/components/IndustryCard";
 import { ServiceItems } from "@/components/Service";
 import VorklyeLayout from "@/components/VorklyeLayout";
 import { servicePage } from "@/data";
+import { ServicePageHero, ServicePageIndustrie } from "@/data/type";
 import React from "react";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,7 +27,11 @@ const page: React.FC<Props> = () => {
 
 export default page;
 
-const Hero = ({ hero }: any) => {
+type HeroProps = {
+  hero: ServicePageHero;
+};
+
+const Hero = ({ hero }: HeroProps) => {
   return (
     <section>
       <div className="container m-auto pt-50">
@@ -48,8 +53,10 @@ const Hero = ({ hero }: any) => {
     </section>
   );
 };
-
-const Industry = ({ industrie }: any) => {
+type IndustryProps = {
+  industrie: ServicePageIndustrie;
+};
+const Industry = ({ industrie }: IndustryProps) => {
   const { title, subtitle, button, industries } = industrie;
   return (
     <section className="py-30 border-b border-neutral-900">
