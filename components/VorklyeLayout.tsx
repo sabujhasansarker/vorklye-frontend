@@ -6,7 +6,7 @@ import { ScrollSmoother, SplitText } from "gsap/all";
 import React, { Fragment } from "react";
 import CustomCursor from "./CustomCursor";
 import Footer from "./Footer";
-import Header from "./Header";
+import Header, { MobileMenu } from "./Header";
 import LinkHoverEffect from "./LinkHoverEffect";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
@@ -21,6 +21,7 @@ const VorklyeLayout: React.FC<Props> = ({ children }) => {
   return (
     <Fragment>
       <Header />
+      <MobileMenu />
       <div id="smooth-wrapper">
         <div id="smooth-content">
           {children}

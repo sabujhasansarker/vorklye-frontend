@@ -61,22 +61,31 @@ const page: React.FC<Props> = () => {
 
   return (
     <VorklyeLayout>
-      <section className="pt-50">
-        <div className="container m-auto">
-          <div className="flex gap-50 items-end justify-between">
-            <h1 className="w-2/4 justify-center text-white text-6xl font-extrabold leading-24 tracking-tight">
-              {title}
-            </h1>
-            <div className="w-1/3">
-              <p className="text-xl font-bold leading-9 mb-14">{subtitle}</p>
+      <section>
+        <div className="container m-auto px-5 sm:px-8 lg:px-0 pt-5 sm:pt-32 lg:pt-50">
+          <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-50 items-start lg:items-end justify-between">
+            <h1
+              className="w-full lg:w-2/4 text-white hero-title"
+              dangerouslySetInnerHTML={{ __html: title }}
+            ></h1>
+            <div className="w-full lg:w-1/3">
+              <p className="hero-subtitle mb-6 sm:mb-10 lg:mb-14">{subtitle}</p>
+
               <ButtonSm text={button.label} href={button.link} />
             </div>
           </div>
+          <div className="about-banner mt-10 sm:mt-14 lg:mt-20">
+            <img
+              className="w-full"
+              src="https://boomdevs.com/wp-content/uploads/2026/07/Rectangle-39919.webp"
+              alt=""
+            />
+          </div>
         </div>
       </section>
-      <section className="pb-30 pt-50 border-b border-neutral-900">
-        <div className="container m-auto">
-          <ul className="flex justify-start gap-20 text-xl font-semibold tracking-tight">
+      <section className="pb-16 pt-20 sm:pt-28 md:pt-36 lg:pt-50 sm:pb-24 lg:pb-30 border-b border-neutral-900">
+        <div className="container m-auto px-5 sm:px-8 lg:px-0">
+          <ul className="flex justify-start flex-wrap gap-x-5 gap-y-3 sm:gap-x-7 sm:gap-y-5 lg:gap-x-12 lg:gap-20 text-base sm:text-lg lg:text-xl font-semibold tracking-tight">
             {categories.map((category) => {
               const filter =
                 category === "All projects"
@@ -90,7 +99,7 @@ const page: React.FC<Props> = () => {
                   <button
                     type="button"
                     onClick={() => handleFilter(filter)}
-                    className={`group flex items-center gap-4 cursor-pointer transition-colors duration-300 ${
+                    className={`group flex items-center gap-3 sm:gap-4 cursor-pointer transition-colors duration-300 whitespace-nowrap ${
                       isActive
                         ? "text-white"
                         : "text-neutral-500 hover:text-white"
@@ -101,15 +110,18 @@ const page: React.FC<Props> = () => {
                         isActive ? "opacity-100" : "opacity-0"
                       }`}
                     />
-
                     {category}
                   </button>
                 </li>
               );
             })}
           </ul>
-          <div className="mt-10">
-            <div ref={gridRef} className="relative">
+
+          <div className="mt-8 sm:mt-10">
+            <div
+              ref={gridRef}
+              className="relative grid grid-cols-1 sm:grid-cols-2 gap-x-6 lg:gap-x-8"
+            >
               {caseStudies.map((item) => {
                 const categoryClass = item.industry
                   .toLowerCase()
@@ -118,15 +130,11 @@ const page: React.FC<Props> = () => {
                 return (
                   <div
                     key={item.id}
-                    className={`case-study-item ${categoryClass}`}
-                    style={{
-                      width: "calc(50% - 12px)",
-                      marginBottom: "50px",
-                    }}
+                    className={`case-study-item ${categoryClass} w-full lg:w-[calc(50%-12px)] mb-[50px]`}
                   >
                     <img
                       src={item.image}
-                      className="w-full h-150 object-cover rounded-sm"
+                      className="w-full lg:h-150  object-cover rounded-sm"
                       alt={item.title}
                     />
 

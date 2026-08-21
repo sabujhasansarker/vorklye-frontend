@@ -231,3 +231,7 @@ body {
     transform: scaleX(1);
   }
 }
+
+.mobile-menu a svg {
+  height: 20px;
+}
