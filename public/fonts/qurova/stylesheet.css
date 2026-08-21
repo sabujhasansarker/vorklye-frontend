@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Qurova DEMO';
+    src: url('QurovaDEMO-Bold.woff2') format('woff2'),
+        url('QurovaDEMO-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Qurova DEMO';
+    src: url('QurovaDEMO-Light.woff2') format('woff2'),
+        url('QurovaDEMO-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Qurova DEMO';
+    src: url('QurovaDEMO-Medium.woff2') format('woff2'),
+        url('QurovaDEMO-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Qurova DEMO';
+    src: url('QurovaDEMO-Regular.woff2') format('woff2'),
+        url('QurovaDEMO-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Qurova DEMO';
+    src: url('QurovaDEMO-SemiBold.woff2') format('woff2'),
+        url('QurovaDEMO-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

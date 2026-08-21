@@ -175,7 +175,7 @@ body {
     @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-normal sm:leading-tight lg:leading-24 tracking-tight;
   }
   .hero-subtitle {
-    @apply text-base sm:text-lg lg:text-xl font-bold leading-7 sm:leading-8 lg:leading-9;
+    @apply text-base sm:text-lg lg:text-xl font-semibold leading-7 sm:leading-8 lg:leading-9;
   }
 
   .sub-title {

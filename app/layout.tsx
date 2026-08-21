@@ -29,6 +29,37 @@ const guminert = localFont({
   variable: "--font-guminert",
   display: "swap",
 });
+const qurova = localFont({
+  src: [
+    {
+      path: "../public/fonts/qurova/QurovaDEMO-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/qurova/QurovaDEMO-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/qurova/QurovaDEMO-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/qurova/QurovaDEMO-SemiBold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/qurova/QurovaDEMO-Bold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  variable: "--font-qurova",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Vorklye",

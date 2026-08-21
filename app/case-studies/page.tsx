@@ -143,14 +143,15 @@ const page: React.FC<Props> = () => {
                     </p>
 
                     <div className="flex gap-2 mt-10 flex-wrap">
-                      {item.services.map((service, index) => (
-                        <p
-                          key={index}
-                          className="px-5 py-2 rounded-full bg-neutral-900 border border-neutral-800 text-white text-[13px] font-semibold"
-                        >
-                          {service}
-                        </p>
-                      ))}
+                      {item.services &&
+                        item.services.map((service, index) => (
+                          <p
+                            key={index}
+                            className="px-5 py-2 rounded-full bg-neutral-900 border border-neutral-800 text-white text-[13px] font-semibold"
+                          >
+                            {service}
+                          </p>
+                        ))}
                     </div>
                   </div>
                 );

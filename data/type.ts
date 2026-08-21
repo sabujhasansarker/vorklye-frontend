@@ -68,6 +68,7 @@ export interface ServiceProcessStep {
   step?: string;
   title: string;
   description: string;
+  tags?: string[];
 }
 
 export interface ServiceMetric {
@@ -81,11 +82,13 @@ export interface ServiceFaq {
 }
 
 export interface Service {
+  id: number;
   title: string;
   tagLine: string;
   feature: boolean;
   shortDes: string;
   image: string;
+  thumbnail?: string;
   skillImage: string;
   subServices: string[];
   deliverables: ServiceDeliverable[];
@@ -128,7 +131,8 @@ export interface CaseStudy {
   client: string;
   feature?: boolean;
   description: string;
-  services: string[];
+  services?: string[];
+  serviceIds?: number[];
   industry: string;
   published: string;
   image: string;

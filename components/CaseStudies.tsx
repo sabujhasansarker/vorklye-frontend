@@ -1,6 +1,6 @@
 "use client";
 
-import { homePage } from "@/data";
+import { caseStudies, homePage } from "@/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -155,3 +155,123 @@ const CaseStudiesSection: React.FC = () => {
 };
 
 export default CaseStudiesSection;
+
+type ServiceCaseStudiesProps = {
+  title: string;
+  subtitle: string;
+  serviceId: number;
+};
+
+export const ServiceCaseStudiesSection: React.FC<ServiceCaseStudiesProps> = ({
+  title,
+  subtitle,
+  serviceId,
+}) => {
+  const relatedCaseStudies = caseStudies.filter((item) =>
+    item.serviceIds?.includes(serviceId),
+  );
+
+  // No related case studies
+  if (!relatedCaseStudies.length) {
+    return null;
+  }
+
+  return (
+    <section className="relative border-b border-neutral-900 bg-black text-white py-16 sm:py-24 lg:py-35">
+      <div className="container mx-auto px-5 sm:px-8 lg:px-0">
+        {/* HEADER */}
+        <div className="max-w-full lg:max-w-200 mx-auto text-center">
+          <p className="sub-title">{subtitle}</p>
+
+          <h2 className="section-title">{title}</h2>
+        </div>
+
+        {/* CASE STUDIES */}
+        <div className="mt-10 sm:mt-14 lg:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-x-6 sm:gap-x-8 lg:gap-x-10 gap-y-12 sm:gap-y-16 lg:gap-y-20">
+          {relatedCaseStudies.map((item) => {
+            const categoryClass = item.industry
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-");
+
+            return (
+              <article
+                key={item.id}
+                className={`case-study-item ${categoryClass}`}
+              >
+                {/* IMAGE */}
+                <Link
+                  href={`/case-studies/${item.id}`}
+                  className="block overflow-hidden rounded-sm group"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="
+                      w-full
+                      h-72
+                      sm:h-100
+                      lg:h-125
+                      object-cover
+                      rounded-sm
+                      transition-transform
+                      duration-700
+                      ease-out
+                      group-hover:scale-105
+                    "
+                  />
+                </Link>
+
+                {/* INDUSTRY */}
+                <p className="text-xs sm:text-sm font-bold mt-5 sm:mt-6 uppercase tracking-wide text-neutral-400">
+                  {item.industry}
+                </p>
+
+                {/* TITLE */}
+                <h4 className="text-xl sm:text-2xl lg:text-3xl font-semibold mt-3 sm:mt-4 tracking-tight">
+                  <Link
+                    href={`/case-studies/${item.id}`}
+                    className="hover:text-neutral-400 transition-colors"
+                  >
+                    {item.title}
+                  </Link>
+                </h4>
+
+                {/* DESCRIPTION */}
+                <p className="text-base sm:text-[17px] lg:text-[18px] leading-7 sm:leading-8 font-medium text-neutral-400 mt-3 max-w-2xl">
+                  {item.description}
+                </p>
+
+                {/* SERVICES */}
+                {item.services && (
+                  <div className="flex gap-2 mt-6 sm:mt-8 flex-wrap">
+                    {item.services.map((service, index) => (
+                      <span
+                        key={index}
+                        className="
+                          px-4
+                          sm:px-5
+                          py-1.5
+                          sm:py-2
+                          rounded-full
+                          bg-neutral-900
+                          border
+                          border-neutral-800
+                          text-neutral-300
+                          text-xs
+                          sm:text-[13px]
+                          font-semibold
+                        "
+                      >
+                        {service}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};

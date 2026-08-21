@@ -439,7 +439,7 @@ export const ServiceItems: React.FC = () => {
                           >
                             <div className="flex gap-3 sm:gap-4 md:gap-5 items-center min-w-0">
                               <p className="text-base sm:text-lg font-bold leading-5 text-zinc-600 group-hover:text-zinc-400 transition-colors shrink-0">
-                                {i <= 9 ? `0${i}` : i}
+                                {i + 1 <= 9 ? `0${i + 1}` : i + 1}
                               </p>
 
                               <h4 className="text-sm sm:text-base md:text-[19px] font-semibold leading-6 text-neutral-400 group-hover:text-white transition-colors truncate">

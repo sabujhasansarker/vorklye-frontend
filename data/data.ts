@@ -112,9 +112,11 @@ export const header: Header = {
 
 export const services: Service[] = [
   {
+    id: 1,
     title: "UI/UX Design",
     tagLine: "Define who you are. Shape how the world sees you.",
     feature: true,
+    thumbnail: "/images/service-banner.png",
     shortDes:
       "Your users will find the app easy to use. Our UI and UX services ensure your product is user-friendly so that it appeals to and catches the hearts of users on any device.",
     image:
@@ -210,6 +212,7 @@ export const services: Service[] = [
     ],
   },
   {
+    id: 2,
     title: "Shopify Development",
     tagLine: "Define who you are. Shape how the world sees you.",
     feature: true,
@@ -253,6 +256,7 @@ export const services: Service[] = [
         title: "Technical Blueprint",
         description:
           "Architecture mapping, app stack audit, and data schema design for Shopify OS 2.0.",
+        tags: ["analytics"],
       },
       {
         step: "02",
@@ -307,6 +311,7 @@ export const services: Service[] = [
     ],
   },
   {
+    id: 3,
     title: "Shopify Development 2",
     tagLine: "Define who you are. Shape how the world sees you.",
     feature: true,
@@ -460,6 +465,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "A complete headless digital commerce overhaul designed to accelerate client conversions and scale operational capacity across global markets.",
     services: ["Shopify Plus", "Migration"],
+    serviceIds: [1, 2],
     industry: "Fintech & Consulting",
     published: "2024",
     image: "/images/case-studies/1.png",
@@ -495,6 +501,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Crafting an immersive high-end fashion experience with responsive 3D lookbooks and seamless omnichannel checkout for modern luxury buyers.",
     services: ["Shopify Theme Development", "CRO Strategy"],
+    serviceIds: [1, 2],
     industry: "Luxury Fashion & Apparel",
     published: "2023",
     image:
@@ -530,6 +537,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Transforming a clean beauty DTC brand with custom skin-diagnostic quizzes, recurring subscription models, and personalized product bundles.",
     services: ["Custom App Setup", "Subscription Commerce", "Design System"],
+    serviceIds: [1, 2],
     industry: "Beauty & Personal Care",
     published: "2023",
     image: "/images/case-studies/1.png",
@@ -564,6 +572,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "Enterprise multi-warehouse B2B and DTC unified commerce platform built for extreme catalog complexity and wholesale volume discounts.",
     services: ["Shopify Plus B2B", "ERP Integration", "Headless Architecture"],
+    serviceIds: [1, 2],
     industry: "Sports & Outdoor Equipment",
     published: "2024",
     image:
