@@ -49,7 +49,7 @@ const ServiceDetailPage: React.FC<Props> = ({
   return (
     <VorklyeLayout>
       <div className="container m-auto px-5 sm:px-8 lg:px-0 pt-5 sm:pt-32 lg:pt-50">
-        <div className="flex flex-col lg:flex-row gap-10 sm:gap-14 lg:gap-50 items-start">
+        <div className="flex flex-col lg:flex-row gap-10 sm:gap-14 lg:gap-50 items-end">
           {/* LEFT */}
           <div className="w-full lg:w-3/8">
             <h1
@@ -70,7 +70,7 @@ const ServiceDetailPage: React.FC<Props> = ({
 
           {/* RIGHT */}
           <div className="w-full lg:w-5/8 flex flex-col gap-10 sm:gap-14 lg:gap-20 items-start lg:items-end">
-            <ul className="w-full grid grid-cols-1 sm:grid-cols-2 gap-y-5 sm:gap-y-7 gap-x-6 lg:gap-x-12">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 sm:gap-y-7 gap-x-6 lg:gap-x-20">
               {subServices.map((service, i) => (
                 <li
                   key={i}
