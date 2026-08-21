@@ -18,6 +18,7 @@ import { ButtonSm } from "./Button";
 const Header: React.FC = () => {
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLImageElement>(null);
+  const pathname = usePathname();
 
   const { spacerHeight, scrolled } = useHeaderFixedOnScrollUp(
     headerRef,
@@ -55,16 +56,28 @@ const Header: React.FC = () => {
 
             {/* MENU */}
             <ul className="flex items-center gap-6 lg:gap-10">
-              {menus.map((menu, index) => (
-                <li key={index}>
-                  <Link
-                    href={menu.link}
-                    className="nav-link text-white font-semibold leading-7"
-                  >
-                    {menu.label}
-                  </Link>
-                </li>
-              ))}
+              {menus.map((menu, index) => {
+                const isActive =
+                  menu.link === "/"
+                    ? pathname === "/"
+                    : pathname === menu.link ||
+                      pathname.startsWith(`${menu.link}/`);
+
+                return (
+                  <li key={index}>
+                    <Link
+                      href={menu.link}
+                      className={`nav-link font-semibold leading-7 transition-colors duration-300 ${
+                        isActive
+                          ? "text-white"
+                          : "text-white/60 hover:text-white"
+                      }`}
+                    >
+                      {menu.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
             {/* BUTTON */}
