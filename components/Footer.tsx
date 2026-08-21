@@ -164,16 +164,7 @@ const Footer: React.FC = () => {
                 {/* EMAIL */}
                 <a
                   href={`mailto:${contactInfo.email}`}
-                  className="
-                    block
-                    mt-3 sm:mt-4
-                    text-white
-                    text-sm sm:text-base
-                    font-bold
-                    leading-5
-                    break-words
-                    hover:text-[#EBFE5B]
-                    transition-colors
+                  className="block mt-3 sm:mt-4 text-white text-sm sm:text-base font-bold leading-5 wrap-break-word hover:text-[#EBFE5B] transition-colors
                   "
                 >
                   {contactInfo.email}

@@ -381,7 +381,7 @@ export const ServiceItems: React.FC = () => {
       className="relative min-h-screen md:h-screen md:overflow-hidden border-b border-neutral-900 bg-black"
     >
       <div className="container mx-auto h-full px-5 sm:px-8 lg:px-0">
-        <div className="flex flex-col md:flex-row h-full w-full ...">
+        <div className="grid h-full grid-cols-1 overflow-hidden">
           {services.map((item, index) => (
             <div
               key={item.title}
