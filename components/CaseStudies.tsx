@@ -17,33 +17,49 @@ const CaseStudiesSection: React.FC = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      const cards = itemsRef.current.filter(Boolean);
+      // Only run the sticky-stack pin/scale animation on larger screens.
+      // On mobile the cards render as a normal stacked list (see JSX below),
+      // so pinning/scaling would fight the natural scroll flow.
+      const mm = gsap.matchMedia();
 
-      cards.forEach((card, i) => {
-        gsap.set(card, { zIndex: i + 1 });
+      mm.add("(min-width: 1024px)", () => {
+        const cards = itemsRef.current.filter(Boolean);
 
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top 100px",
-          endTrigger: containerRef.current,
-          end: "bottom bottom",
-          pin: true,
-          pinSpacing: false,
-        });
+        cards.forEach((card, i) => {
+          gsap.set(card, { zIndex: i + 1 });
 
-        if (cards[i + 1]) {
-          gsap.to(card, {
-            scale: 0.92,
-            opacity: 0,
-            ease: "none",
-            scrollTrigger: {
-              trigger: cards[i + 1],
-              start: "top 90%",
-              end: "top 10%",
-              scrub: true,
-            },
+          const pinTrigger = ScrollTrigger.create({
+            trigger: card,
+            start: "top 100px",
+            endTrigger: containerRef.current,
+            end: "bottom bottom",
+            pin: true,
+            pinSpacing: false,
           });
-        }
+
+          let fadeTween: gsap.core.Tween | undefined;
+
+          if (cards[i + 1]) {
+            fadeTween = gsap.to(card, {
+              scale: 0.92,
+              opacity: 0,
+              ease: "none",
+              scrollTrigger: {
+                trigger: cards[i + 1],
+                start: "top 90%",
+                end: "top 10%",
+                scrub: true,
+              },
+            });
+          }
+
+          // Cleanup for this media query context
+          return () => {
+            pinTrigger.kill();
+            fadeTween?.scrollTrigger?.kill();
+            fadeTween?.kill();
+          };
+        });
       });
     }, containerRef);
 
@@ -51,14 +67,14 @@ const CaseStudiesSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative border-b border-neutral-900 bg-black py-35 text-white">
-      <div ref={containerRef} className="container m-auto px-4">
-        <div className="max-w-200">
+    <section className="relative border-b border-neutral-900 bg-black py-16 sm:py-24 lg:py-35 text-white">
+      <div ref={containerRef} className="container m-auto px-5 sm:px-8 lg:px-4">
+        <div className="max-w-full lg:max-w-200">
           <p className="sub-title">{subtitle}</p>
           <h2 className="section-title">{title}</h2>
         </div>
 
-        <div className="mt-15 mb-20 flex flex-col gap-10">
+        <div className="mt-8 sm:mt-10 lg:mt-15 mb-10 sm:mb-14 lg:mb-20 flex flex-col gap-6 sm:gap-8 lg:gap-10">
           {caseStudies
             .filter((item) => item.feature)
             .map((item, index) => {
@@ -70,22 +86,26 @@ const CaseStudiesSection: React.FC = () => {
                   ref={(el) => {
                     if (el) itemsRef.current[index] = el;
                   }}
-                  className="sticky-card flex w-full items-center justify-between overflow-hidden rounded-sm border-2 border-neutral-900 bg-black"
+                  className="sticky-card flex flex-col lg:flex-row w-full items-stretch lg:items-center justify-between overflow-hidden rounded-sm border-2 border-neutral-900 bg-black"
                 >
-                  <div className="flex h-full w-1/2 flex-col justify-center p-15">
+                  <div className="flex w-full lg:h-full lg:w-1/2 flex-col justify-center p-6 sm:p-10 lg:p-15">
                     {item.logo && (
-                      <img src={item.logo} alt={item.title} className="w-fit" />
+                      <img
+                        src={item.logo}
+                        alt={item.title}
+                        className="w-fit h-6 sm:h-8 object-contain"
+                      />
                     )}
 
-                    <h4 className="my-5 text-3xl font-bold text-gray-200">
+                    <h4 className="my-4 sm:my-5 text-xl sm:text-2xl lg:text-3xl font-bold text-gray-200">
                       <Link href={`/case-studies/${slug}`}>{item.title}</Link>
                     </h4>
 
-                    <p className="max-w-123.75 text-lg font-medium leading-8 text-gray-200">
+                    <p className="max-w-full lg:max-w-123.75 text-base sm:text-lg font-medium leading-7 sm:leading-8 text-gray-200">
                       {item.description}
                     </p>
 
-                    <div className="mt-10 flex gap-28">
+                    <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-wrap gap-6 sm:gap-10 lg:gap-28">
                       {[
                         ["Services", item.services?.join(", ")],
                         ["Industry", item.industry],
@@ -94,10 +114,10 @@ const CaseStudiesSection: React.FC = () => {
                         ([label, value]) =>
                           value && (
                             <div key={label}>
-                              <p className="text-sm font-semibold uppercase text-neutral-500">
+                              <p className="text-xs sm:text-sm font-semibold uppercase text-neutral-500">
                                 {label}
                               </p>
-                              <p className="text-base font-semibold leading-8 text-gray-200">
+                              <p className="text-sm sm:text-base font-semibold leading-7 sm:leading-8 text-gray-200">
                                 {value}
                               </p>
                             </div>
@@ -111,7 +131,10 @@ const CaseStudiesSection: React.FC = () => {
                     />
                   </div>
 
-                  <Link href={`/case-studies/${slug}`} className="h-160 w-1/2">
+                  <Link
+                    href={`/case-studies/${slug}`}
+                    className="h-56 sm:h-80 lg:h-160 w-full lg:w-1/2 shrink-0"
+                  >
                     <img
                       src={item.image}
                       alt={item.title}

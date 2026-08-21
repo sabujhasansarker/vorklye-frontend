@@ -9,6 +9,7 @@ import { ButtonSm } from "./Button";
 const Header: React.FC = () => {
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLImageElement>(null);
+
   const { spacerHeight, scrolled } = useHeaderFixedOnScrollUp(
     headerRef,
     logoRef,
@@ -20,17 +21,20 @@ const Header: React.FC = () => {
     <>
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 w-full z-99 transition-all duration-350 ease-out ${
-          scrolled ? "py-4 scrolled bg-black/80 backdrop-blur-sm" : "py-10"
+        className={`hidden sm:block fixed top-0 left-0 w-full z-[99] transition-all duration-350 ease-out ${
+          scrolled ? "py-4 bg-black/80 backdrop-blur-sm" : "py-10"
         }`}
       >
-        <div className="container m-auto">
-          <div className="flex justify-between">
+        <div className="container mx-auto px-5 lg:px-0">
+          <div className="flex items-center justify-between">
+            {/* LOGO */}
             <div className="flex items-center gap-7.5">
               <Link href="/">
                 <img src={logo} alt="Logo" />
               </Link>
-              <div className="w-[1.70px] h-7 bg-gray-200" />
+
+              <div className="w-[1.7px] h-7 bg-gray-200" />
+
               <a href="#">
                 <img
                   ref={logoRef}
@@ -39,24 +43,29 @@ const Header: React.FC = () => {
                 />
               </a>
             </div>
-            <ul className="flex items-center gap-10">
+
+            {/* MENU */}
+            <ul className="flex items-center gap-6 lg:gap-10">
               {menus.map((menu, index) => (
                 <li key={index}>
                   <Link
                     href={menu.link}
-                    className="nav-link justify-start text-white font-semibold leading-7"
+                    className="nav-link text-white font-semibold leading-7"
                   >
                     {menu.label}
                   </Link>
                 </li>
               ))}
             </ul>
+
+            {/* BUTTON */}
             <ButtonSm text={button.label} href={button.link} />
           </div>
         </div>
       </header>
 
-      <div style={{ height: spacerHeight }} />
+      {/* SPACER */}
+      <div style={{ height: spacerHeight }} className="hidden sm:block" />
     </>
   );
 };

@@ -9,25 +9,38 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export function useScrollSmootherSetup() {
   useLayoutEffect(() => {
-    const smoother = ScrollSmoother.create({
-      smooth: 1.5,
-      effects: true,
-      normalizeScroll: true,
-    });
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-    const refreshAll = () => ScrollTrigger.refresh();
+    const mm = gsap.matchMedia();
 
-    const raf1 = requestAnimationFrame(() => {
-      requestAnimationFrame(refreshAll);
+    mm.add("(min-width: 768px)", () => {
+      const smoother = ScrollSmoother.create({
+        smooth: 1.5,
+        effects: true,
+        normalizeScroll: true,
+      });
+
+      const refreshAll = () => {
+        ScrollTrigger.refresh();
+      };
+
+      const raf1 = requestAnimationFrame(() => {
+        requestAnimationFrame(refreshAll);
+      });
+
+      document.fonts?.ready.then(refreshAll);
+      window.addEventListener("load", refreshAll);
+
+      return () => {
+        cancelAnimationFrame(raf1);
+        window.removeEventListener("load", refreshAll);
+
+        smoother.kill();
+      };
     });
-    document.fonts?.ready.then(refreshAll);
-    window.addEventListener("load", refreshAll);
 
     return () => {
-      cancelAnimationFrame(raf1);
-      window.removeEventListener("load", refreshAll);
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      smoother.kill();
+      mm.revert();
     };
   }, []);
 }

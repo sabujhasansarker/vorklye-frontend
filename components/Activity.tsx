@@ -6,10 +6,12 @@ import React, { useRef } from "react";
 
 const StatCard = ({ stat }: { stat: { value: string; text: string } }) => (
   <div className="stat-item">
-    <h2 className="text-8xl md:text-9xl font-medium leading-none text-white">
+    <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-medium leading-none text-white">
       {stat.value}
     </h2>
-    <p className="mt-8 text-xl leading-8 text-neutral-400">{stat.text}</p>
+    <p className="mt-4 sm:mt-6 lg:mt-8 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-neutral-400">
+      {stat.text}
+    </p>
   </div>
 );
 
@@ -25,31 +27,32 @@ const Activity: React.FC = () => {
 
   return (
     <div className="bg-neutral-950">
-      <div className="container m-auto">
-        <div ref={sectionRef} className="flex gap-50 relative">
+      <div className="container m-auto px-5 sm:px-8 lg:px-0">
+        <div
+          ref={sectionRef}
+          className="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-50 relative"
+        >
           <h2
             ref={titleRef}
-            className="section-title py-35 h-fit self-start"
+            className="section-title py-8 sm:py-16 lg:py-35 h-fit self-start"
             dangerouslySetInnerHTML={{ __html: title }}
           />
 
           <div
             ref={rightColRef}
-            className="relative mx-auto max-w-230 border-l border-white/10 pl-8"
+            className="relative w-full lg:mx-auto lg:max-w-230"
           >
-            <div className="flex items-center border-x border-white/10 gap-8">
-              <div className="flex flex-col gap-100 py-35 px-8 border-r border-white/10">
+            <div className="flex items-center gap-10 sm:gap-14 lg:gap-20">
+              <div className="flex flex-col gap-24 sm:gap-24 md:gap-32 lg:gap-48 xl:gap-100 py-8 sm:py-16 lg:py-35 px-4 sm:px-6 lg:px-8">
                 {activityStats.col1.map((stat, i) => (
                   <StatCard key={i} stat={stat} />
                 ))}
               </div>
-              <div className="self-stretch w-px bg-white/10"></div>
-              <div className="flex flex-col gap-100 py-35 px-8">
+              <div className="flex flex-col gap-24 sm:gap-24 md:gap-32 lg:gap-48 xl:gap-100 py-8 sm:py-16 lg:py-35 px-4 sm:px-6 lg:px-8">
                 {activityStats.col2.map((stat, i) => (
                   <StatCard key={i} stat={stat} />
                 ))}
               </div>
-              <div className="self-stretch w-px bg-white/10 mr-8"></div>
             </div>
           </div>
         </div>

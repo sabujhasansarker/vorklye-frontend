@@ -131,15 +131,15 @@ export const ButtonSm: React.FC<Props> = ({
         <span>{text}</span>
       </span>
       {showIcon && (
-        <span className="btn-icon w-10 h-10">
-          <ArrowUpRight className="h-5 w-5" />
-          <ArrowUpRight className="h-5 w-5" />
+        <span className="btn-icon w-8 h-8 sm:w-10 sm:h-10">
+          <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
+          <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
         </span>
       )}
     </>
   );
 
-  const combinedClassName = `btn-primary py-2 pl-5 pr-2 group text-[18px] leading-6 font-semibold${
+  const combinedClassName = `btn-primary py-2 pl-4 pr-2 sm:py-2 sm:pl-5 sm:pr-2 group text-base sm:text-[18px] leading-5 sm:leading-6 font-semibold${
     disabled ? " pointer-events-none opacity-50" : ""
   }${className ? ` ${className}` : ""}`;
 
@@ -219,7 +219,7 @@ export const ButtonUnderlineBig: React.FC<Props> = ({
     </>
   );
 
-  const combinedClassName = `btn-underline mt-17.5 text-2xl font-semibold pb-2.5 group${
+  const combinedClassName = `btn-underline mt-10 sm:mt-14 lg:mt-17.5 text-lg sm:text-xl lg:text-2xl font-semibold pb-2 sm:pb-2.5 group${
     disabled ? " pointer-events-none opacity-50" : ""
   }${className ? ` ${className}` : ""}`;
 
@@ -284,14 +284,14 @@ export const ButtonUnderline: React.FC<Props> = ({
       </span>
       {showIcon && (
         <span className="btn-icon">
-          <ArrowUpRight size={20} />
-          <ArrowUpRight size={20} />
+          <ArrowUpRight size={16} className="sm:hidden" />
+          <ArrowUpRight size={20} className="hidden sm:block" />
         </span>
       )}
     </>
   );
 
-  const combinedClassName = `btn-underline mt-12 w-fit group${
+  const combinedClassName = `btn-underline mt-8 sm:mt-12 w-fit group${
     disabled ? " pointer-events-none opacity-50" : ""
   }${className ? ` ${className}` : ""}`;
 
