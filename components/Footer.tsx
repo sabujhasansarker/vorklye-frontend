@@ -53,8 +53,8 @@ const Footer: React.FC = () => {
   return (
     <footer className="relative w-full max-w-full overflow-hidden bg-neutral-950 pt-14 sm:pt-20 md:pt-24 lg:pt-30">
       {/* MAIN FOOTER */}
-      <div className="container mx-auto w-full max-w-full px-5 sm:px-8 lg:px-0">
-        <div className="flex flex-col lg:flex-row gap-14 sm:gap-18 lg:gap-20 xl:gap-30">
+      <div className="container mx-auto px-5 sm:px-8 lg:px-0">
+        <div className="flex flex-col lg:flex-row gap-14 sm:gap-18 lg:gap-20 xl:gap-50">
           {/* ================= LEFT ================= */}
           <div className="w-full lg:w-[28%] shrink-0">
             {/* LOGO */}
@@ -145,20 +145,7 @@ const Footer: React.FC = () => {
 
           {/* ================= RIGHT ================= */}
           <div className="w-full lg:flex-1 min-w-0">
-            <div
-              className="
-                grid
-                grid-cols-2
-                sm:grid-cols-3
-                lg:grid-cols-4
-                gap-x-5
-                sm:gap-x-8
-                lg:gap-x-10
-                gap-y-10
-                sm:gap-y-12
-                lg:gap-y-14
-              "
-            >
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-x-5 sm:gap-x-8 lg:gap-x-10 gap-y-10 sm:gap-y-12 lg:gap-y-14">
               {/* MENU ITEMS */}
               {menus.map((menu) => (
                 <FooterSectionBlock
