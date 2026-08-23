@@ -20,24 +20,45 @@ import {
 
 export const siteData: SiteData = {
   name: "Vorklye",
-  email: "hello@wavespace.agency",
+
+  email: "hello@vorklye.com",
+
   whatsapp: "+1 628-265-7462",
+
   logo: "/images/logo.png",
+
   ceo: {
     name: "Ariyan",
-    image:
-      "https://vorklye.com/wp-content/uploads/2025/12/Mizanur-rahman-ariyan-ceo-1.jpg",
-    text: "Hi, I'm Ariyan, the CEO and Founder of Vorklye. Don't hesitate to reach out to me anytime – I'm here to answer all your questions!",
+    image: "/images/team/ariyan.webp",
+    text: "Hi, I'm Ariyan, CEO & Founder of Vorklye. If you have a Shopify project, growth challenge, or just want to explore what's possible, feel free to reach out. I'm always happy to talk.",
   },
+
   tagline:
-    "Wavespace is a global UI/UX design agency that boosts brand value with user-friendly, effective designs for web, mobile, and SaaS platforms.",
+    "Vorklye is a Shopify growth partner helping ambitious ecommerce brands build, optimize, and scale high-performing online stores.",
+
   socialLinks: [
     {
-      name: "facebook",
+      name: "Facebook",
       link: "https://www.facebook.com/profile.php?id=61570212765563",
-      icon: "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6966148bb93b4207a29b9dc7_wavespace-facebook.png",
+      icon: "/images/social/fb.png",
+    },
+    {
+      name: "Instagram",
+      link: "https://www.instagram.com/vorklye/",
+      icon: "/images/social/twitter.avif",
+    },
+    {
+      name: "LinkedIn",
+      link: "https://www.linkedin.com/company/vorklye",
+      icon: "/images/social/linkedin.png",
+    },
+    {
+      name: "LinkedIn",
+      link: "https://www.instagram.com/vorklye/",
+      icon: "/images/social/twitter.avif",
     },
   ],
+
   contactLink: [
     {
       label: "Clutch",
@@ -56,13 +77,14 @@ export const siteData: SiteData = {
       link: "#",
     },
   ],
+
   menus: [
     {
       label: "About Us",
       link: "/about",
     },
     {
-      label: "Service",
+      label: "Services",
       link: "/services",
     },
     {
@@ -70,8 +92,8 @@ export const siteData: SiteData = {
       link: "/case-studies",
     },
     {
-      label: "Career",
-      link: "/career",
+      label: "Insights",
+      link: "/insights",
     },
     {
       label: "Contact",
@@ -113,300 +135,365 @@ export const header: Header = {
 export const services: Service[] = [
   {
     id: 1,
-    title: "UI/UX Design",
-    tagLine: "Define who you are. Shape how the world sees you.",
+    title: "Design",
+    tagLine: "Make your brand impossible to overlook.",
     feature: true,
-    thumbnail: "/images/service-banner.png",
     shortDes:
-      "Your users will find the app easy to use. Our UI and UX services ensure your product is user-friendly so that it appeals to and catches the hearts of users on any device.",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422ed8ffd5696dac6a4_UX%20Design-p-1080.webp",
-
-    skillImage:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/67a0fbbe15bf58f5b51affcf_Frame%201618871790%20(5).avif",
+      "We design distinctive, intuitive, and conversion-focused Shopify experiences that make your brand look better and help customers buy with confidence.",
+    image: "/images/services/shopify-design.webp",
+    skillImage: "/images/services/shopify-design-skill.webp",
 
     subServices: [
-      "UX Research Service",
-      "UX Audit & Strategy",
-      "UX Usability Testing",
-      "UI UX Consulting",
-      "UI UX Design",
-      "AI UI UX Design",
+      "UI/UX Design",
+      "Website Design",
+      "UX & Usability Audit",
+      "Landing Page Design",
+      "Brand Identity Design",
+      "Mobile-First Design",
+      "Design System Development",
+      "Conversion-Focused Redesign",
     ],
 
-    deliverables: [
-      {
-        title: "Full Figma Design System",
-        description:
-          "Comprehensive tokenized component libraries, typography scale, color tokens, and responsive layout grids.",
-      },
-      {
-        title: "Interactive Prototypes",
-        description:
-          "High-fidelity micro-interaction prototypes ready for usability testing and stakeholder validation.",
-      },
-      {
-        title: "User Journey & Wireframes",
-        description:
-          "Low and mid-fidelity architecture mappings focusing on conversion friction removal.",
-      },
-      {
-        title: "Developer Hand-off Documentation",
-        description:
-          "Pixel-perfect asset exports, motion specs, and responsive breakpoint guides for engineering teams.",
-      },
-    ],
     process: [
       {
-        title: "Empathize & Research",
+        step: "01",
+        title: "Research & Discovery",
         description:
-          "Deep-dive stakeholder interviews, competitor benchmarking, and heat-map analytics audit.",
+          "We study your brand, customers, competitors, and business goals to understand what your experience needs to achieve.",
       },
       {
-        title: "Information Architecture",
+        step: "02",
+        title: "UX & Structure",
         description:
-          "Structuring intuitive sitemaps, user task flows, and mobile-first wireframe skeletons.",
+          "We map user journeys, information architecture, and page structures to create a clear and intuitive shopping experience.",
       },
       {
-        title: "Visual UI Design",
+        step: "03",
+        title: "Visual Design",
         description:
-          "Applying brand identities into immersive, accessible, and high-impact visual design layouts.",
+          "We turn your brand identity into a distinctive, responsive interface designed to build trust and drive action.",
       },
       {
-        title: "Prototype & User Test",
+        step: "04",
+        title: "Prototype & Refine",
         description:
-          "Interactive validation with real users to measure task completion speed and satisfaction.",
+          "We create interactive prototypes, gather feedback, and refine the experience before development begins.",
       },
     ],
+
     metrics: [
-      {
-        value: "+64%",
-        label: "Average Mobile Conversion Uplift",
-      },
-      {
-        value: "4.9/5",
-        label: "Client Usability Score",
-      },
-      {
-        value: "350+",
-        label: "Figma Components Engineered",
-      },
+      { value: "UX", label: "Conversion-Focused Design" },
+      { value: "Figma", label: "Design System Ready" },
+      { value: "100%", label: "Responsive Experiences" },
     ],
+
     faqs: [
       {
-        question: "How long does a full UI/UX design project take?",
+        question: "Can you redesign my existing Shopify store?",
         answer:
-          "A standard brand redesign typically takes 3 to 6 weeks, depending on the scope of pages, device requirements, and interactive prototype complexity.",
+          "Absolutely. We can audit your existing store, identify UX and conversion opportunities, and redesign the experience around your brand and business goals.",
       },
       {
-        question: "Do you deliver design systems in Figma?",
+        question: "Do you provide Figma design files?",
         answer:
-          "Yes, 100% of our UI/UX deliverables are built in Figma using modern auto-layout, variables, component properties, and tokenized design systems.",
+          "Yes. Our design process can include detailed Figma designs, responsive layouts, reusable components, and design systems ready for development.",
       },
     ],
+
     tags: [
-      "Brand Discovery",
-      "Research",
-      "Brand Positioning",
-      "Messaging Framework",
+      "UI/UX Design",
+      "UX Research",
+      "Wireframing",
+      "Prototyping",
+      "Figma",
     ],
   },
+
   {
     id: 2,
-    title: "Shopify Development",
-    tagLine: "Define who you are. Shape how the world sees you.",
+    title: "Development",
+    tagLine: "Build a Shopify store that's ready to perform and scale.",
     feature: true,
     shortDes:
-      "Building lightning-fast, high-converting custom Shopify and Shopify Plus storefronts.",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422a7f442bbf1487074_Web%20Design-p-1080.webp",
-    skillImage:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/67a0fbbe15bf58f5b51affcf_Frame%201618871790%20(5).avif",
+      "From custom themes to advanced Shopify builds, we create fast, flexible, and scalable ecommerce experiences designed around your brand and business goals.",
+    image: "/images/services/shopify-development.webp",
+    skillImage: "/images/services/shopify-development-skill.webp",
+
     subServices: [
+      "Plus Development",
       "Custom Theme Development",
-      "App Integration & Setup",
-      "Store Setup & Configuration",
-      "Headless Shopify Commerce",
+      "Mobile App Development",
+      "AI-Powered Storefronts",
+      "App Development",
+      "Speed Optimization",
+      "Headless Commerce",
+      "B2B & Wholesale Setup",
+      "No-code / Low-code Builds",
     ],
-    deliverables: [
-      {
-        title: "Bespoke Custom Liquid Theme",
-        description:
-          "Zero-bloat, custom Shopify OS 2.0 theme built from scratch with modular dynamic sections.",
-      },
-      {
-        title: "90+ PageSpeed Optimization",
-        description:
-          "Asset prefetching, script minimization, and modern image formats to maximize Core Web Vitals.",
-      },
-      {
-        title: "App & ERP Custom Integrations",
-        description:
-          "Custom connectors for Klaviyo, Recharge, Gorgias, NetSuite, and 3PL fulfillment platforms.",
-      },
-      {
-        title: "Internationalization & Multi-Currency",
-        description:
-          "Shopify Markets setup with localized currencies, languages, and geo-targeted pricing.",
-      },
-    ],
+
     process: [
       {
         step: "01",
-        title: "Technical Blueprint",
+        title: "Technical Discovery",
         description:
-          "Architecture mapping, app stack audit, and data schema design for Shopify OS 2.0.",
-        tags: ["analytics"],
+          "We understand your business requirements, technical needs, integrations, and the functionality your Shopify store needs.",
       },
       {
         step: "02",
-        title: "Sprint-Based Development",
+        title: "Architecture & Development",
         description:
-          "Clean, componentized Liquid or Headless development in Git-versioned staging stores.",
+          "We build your Shopify experience using clean, scalable, and performance-focused development practices.",
       },
       {
         step: "03",
-        title: "QA & Performance Testing",
+        title: "Features & Integrations",
         description:
-          "Cross-browser testing, accessibility audit, payment gateway testing, and load speed optimization.",
+          "We implement custom functionality and connect the tools your business needs to run your store efficiently.",
       },
       {
         step: "04",
-        title: "Zero-Downtime Launch",
+        title: "QA & Launch",
         description:
-          "DNS switch, domain verification, 301 redirect validation, and real-time order monitoring.",
+          "We test the store across devices, browsers, functionality, and performance before delivering a smooth launch.",
       },
     ],
+
     metrics: [
-      {
-        value: "95+",
-        label: "Google Lighthouse Mobile Score",
-      },
-      {
-        value: "< 1.2s",
-        label: "Average Page Load Time",
-      },
-      {
-        value: "100%",
-        label: "Zero Downtime Launch Record",
-      },
+      { value: "Shopify", label: "Platform Expertise" },
+      { value: "95+", label: "Performance-Focused Builds" },
+      { value: "100%", label: "Responsive Development" },
     ],
+
     faqs: [
       {
-        question: "Can you build headless Shopify stores with Next.js?",
+        question: "Can you build a custom Shopify theme?",
         answer:
-          "Yes, we specialize in Headless Shopify architectures combining Shopify Storefront API with Next.js for instant page loads and total frontend flexibility.",
+          "Yes. We can build a fully custom Shopify theme around your brand, customer experience, and business requirements.",
       },
       {
-        question: "Do you handle custom app integrations?",
+        question: "Do you work with Shopify Plus?",
         answer:
-          "Yes, we build and configure custom Shopify apps and private webhooks to connect your ERP, CRM, and fulfillment tools.",
+          "Yes. We work with Shopify Plus stores and can build advanced storefront experiences, custom functionality, integrations, and scalable ecommerce solutions.",
       },
     ],
+
     tags: [
-      "Brand Discovery",
-      "Research",
-      "Brand Positioning",
-      "Messaging Framework",
+      "Shopify Plus",
+      "Theme Development",
+      "Liquid",
+      "Custom Features",
+      "Headless",
     ],
   },
+
   {
     id: 3,
-    title: "Shopify Development 2",
-    tagLine: "Define who you are. Shape how the world sees you.",
+    title: "Integrations",
+    tagLine: "Connect your store to everything your business needs.",
     feature: true,
     shortDes:
-      "Building lightning-fast, high-converting custom Shopify and Shopify Plus storefronts.",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422a7f442bbf1487074_Web%20Design-p-1080.webp",
-    skillImage:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/67a0fbbe15bf58f5b51affcf_Frame%201618871790%20(5).avif",
+      "We connect Shopify with the platforms, tools, and systems behind your business to create a seamless and efficient ecommerce ecosystem.",
+    image: "/images/services/shopify-integrations.webp",
+    skillImage: "/images/services/shopify-integrations-skill.webp",
+
     subServices: [
-      "Custom Theme Development",
-      "App Integration & Setup",
-      "Store Setup & Configuration",
-      "Headless Shopify Commerce",
+      "ERP Integration",
+      "PIM Integration",
+      "CRM Integration",
+      "Amazon Integration",
+      "Przelewy24 Payment Setup",
+      "InPost Shipping Integration",
+      "Shipment Tracking Integration",
     ],
-    deliverables: [
-      {
-        title: "Bespoke Custom Liquid Theme",
-        description:
-          "Zero-bloat, custom Shopify OS 2.0 theme built from scratch with modular dynamic sections.",
-      },
-      {
-        title: "90+ PageSpeed Optimization",
-        description:
-          "Asset prefetching, script minimization, and modern image formats to maximize Core Web Vitals.",
-      },
-      {
-        title: "App & ERP Custom Integrations",
-        description:
-          "Custom connectors for Klaviyo, Recharge, Gorgias, NetSuite, and 3PL fulfillment platforms.",
-      },
-      {
-        title: "Internationalization & Multi-Currency",
-        description:
-          "Shopify Markets setup with localized currencies, languages, and geo-targeted pricing.",
-      },
-    ],
+
     process: [
       {
         step: "01",
-        title: "Technical Blueprint",
+        title: "System Discovery",
         description:
-          "Architecture mapping, app stack audit, and data schema design for Shopify OS 2.0.",
+          "We understand your existing tools, data flow, business processes, and integration requirements.",
       },
       {
         step: "02",
-        title: "Sprint-Based Development",
+        title: "Integration Planning",
         description:
-          "Clean, componentized Liquid or Headless development in Git-versioned staging stores.",
+          "We define the right architecture, data flow, APIs, and integration approach for a reliable Shopify ecosystem.",
       },
       {
         step: "03",
-        title: "QA & Performance Testing",
+        title: "Connect & Configure",
         description:
-          "Cross-browser testing, accessibility audit, payment gateway testing, and load speed optimization.",
+          "We connect Shopify with your required platforms and configure the workflows needed to keep your systems working together.",
       },
       {
         step: "04",
-        title: "Zero-Downtime Launch",
+        title: "Test & Monitor",
         description:
-          "DNS switch, domain verification, 301 redirect validation, and real-time order monitoring.",
+          "We test data synchronization, workflows, and edge cases to make sure your integrations work reliably in real-world scenarios.",
       },
     ],
+
     metrics: [
-      {
-        value: "95+",
-        label: "Google Lighthouse Mobile Score",
-      },
-      {
-        value: "< 1.2s",
-        label: "Average Page Load Time",
-      },
-      {
-        value: "100%",
-        label: "Zero Downtime Launch Record",
-      },
+      { value: "API", label: "Custom Integrations" },
+      { value: "ERP", label: "Business System Connectivity" },
+      { value: "24/7", label: "Reliable Data Flow" },
     ],
+
     faqs: [
       {
-        question: "Can you build headless Shopify stores with Next.js?",
+        question: "Can you connect Shopify with our existing ERP or CRM?",
         answer:
-          "Yes, we specialize in Headless Shopify architectures combining Shopify Storefront API with Next.js for instant page loads and total frontend flexibility.",
+          "Yes. We can integrate Shopify with ERP, CRM, PIM, fulfillment, marketing, analytics, and other business systems using available integrations or custom APIs.",
       },
       {
-        question: "Do you handle custom app integrations?",
+        question: "Can you build custom Shopify integrations?",
         answer:
-          "Yes, we build and configure custom Shopify apps and private webhooks to connect your ERP, CRM, and fulfillment tools.",
+          "Yes. When an existing app or connector isn't enough, we can build custom API-based integrations around your specific business requirements.",
       },
     ],
-    tags: [
-      "Brand Discovery",
-      "Research",
-      "Brand Positioning",
-      "Messaging Framework",
+
+    tags: ["ERP", "CRM", "PIM", "API", "Payments", "Shipping"],
+  },
+
+  {
+    id: 4,
+    title: "Migration",
+    tagLine: "Move to Shopify without losing what you've built.",
+    feature: true,
+    shortDes:
+      "We help brands move from other ecommerce platforms to Shopify with careful planning, clean data migration, SEO protection, and a smooth transition.",
+    image: "/images/services/shopify-migration.webp",
+    skillImage: "/images/services/shopify-migration-skill.webp",
+
+    subServices: [
+      "WooCommerce to Shopify",
+      "Magento to Shopify",
+      "BigCommerce to Shopify",
+      "Shopware to Shopify",
+      "WordPress to Shopify",
     ],
+
+    process: [
+      {
+        step: "01",
+        title: "Audit & Planning",
+        description:
+          "We review your current platform, store structure, data, integrations, SEO setup, and business requirements before migration.",
+      },
+      {
+        step: "02",
+        title: "Data & Store Setup",
+        description:
+          "We prepare your Shopify environment and migrate products, customers, orders, content, and other required data.",
+      },
+      {
+        step: "03",
+        title: "Rebuild & Validate",
+        description:
+          "We recreate the important parts of your store, configure integrations, and carefully validate migrated data and functionality.",
+      },
+      {
+        step: "04",
+        title: "SEO-Safe Launch",
+        description:
+          "We handle redirects, domain configuration, final testing, and launch checks to make the transition as smooth as possible.",
+      },
+    ],
+
+    metrics: [
+      { value: "SEO", label: "Migration Protection" },
+      { value: "100%", label: "Data-Focused Process" },
+      { value: "Shopify", label: "Migration Expertise" },
+    ],
+
+    faqs: [
+      {
+        question: "Can you migrate our existing store to Shopify?",
+        answer:
+          "Yes. We can migrate stores from platforms such as WooCommerce, Magento, BigCommerce, Shopware, WordPress, and other ecommerce platforms.",
+      },
+      {
+        question: "Will our SEO rankings be affected during migration?",
+        answer:
+          "We plan the migration carefully around SEO, including URL mapping, redirects, metadata, and other technical considerations to help preserve your existing search visibility.",
+      },
+    ],
+
+    tags: [
+      "WooCommerce",
+      "Magento",
+      "BigCommerce",
+      "Shopware",
+      "SEO Migration",
+    ],
+  },
+
+  {
+    id: 5,
+    title: "Growth",
+    tagLine: "Don't stop at launch. Turn your store into a growth engine.",
+    feature: true,
+    shortDes:
+      "We help Shopify brands improve performance, increase conversions, and continuously evolve their store into a stronger growth channel.",
+    image: "/images/services/shopify-growth.webp",
+    skillImage: "/images/services/shopify-growth-skill.webp",
+
+    subServices: [
+      "Conversion Rate Optimization",
+      "Plytix PIM Setup",
+      "Klaviyo Email Marketing",
+      "Site Maintenance",
+      "SEO Optimization",
+      "Consulting Services",
+    ],
+
+    process: [
+      {
+        step: "01",
+        title: "Audit & Analyze",
+        description:
+          "We review your store, customer journey, analytics, performance, and business goals to identify the biggest growth opportunities.",
+      },
+      {
+        step: "02",
+        title: "Build the Growth Roadmap",
+        description:
+          "We prioritize opportunities and create a practical roadmap focused on the changes most likely to improve your store and business.",
+      },
+      {
+        step: "03",
+        title: "Optimize & Execute",
+        description:
+          "We implement improvements across UX, development, SEO, performance, analytics, and conversion to make your store work harder.",
+      },
+      {
+        step: "04",
+        title: "Measure & Scale",
+        description:
+          "We monitor results, learn from customer behavior, and continuously improve the experience as your brand grows.",
+      },
+    ],
+
+    metrics: [
+      { value: "CRO", label: "Conversion Optimization" },
+      { value: "SEO", label: "Organic Growth" },
+      { value: "Data", label: "Growth Decisions" },
+    ],
+
+    faqs: [
+      {
+        question: "Do you provide support after launch?",
+        answer:
+          "Yes. We can continue supporting your Shopify store with maintenance, improvements, new features, optimization, troubleshooting, and growth-focused work.",
+      },
+      {
+        question: "Can you help increase our Shopify store conversions?",
+        answer:
+          "Yes. We analyze your customer journey and store performance to identify conversion opportunities and implement improvements based on data and user behavior.",
+      },
+    ],
+
+    tags: ["CRO", "SEO", "Analytics", "Performance", "Growth Strategy"],
   },
 ];
 
@@ -656,8 +743,8 @@ export const footer: Footer = {
       menus: services[1].subServices,
     },
     {
-      title: services[2].title,
-      menus: services[2].subServices,
+      title: services[4].title,
+      menus: services[4].subServices,
     },
     {
       title: "Agency",
@@ -704,29 +791,34 @@ export const brands: Brand[] = [
 
 export const faqs: Faq[] = [
   {
-    question: "What are your focus areas as a UI/UX design agency?",
+    question: "How long does it take to build a Shopify store?",
     answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+      "Every project is different. A typical Shopify build can take around 3–4 weeks, while custom designs, advanced features, and complex integrations may take 6–8 weeks or more. After understanding your requirements, we'll provide a clear timeline for your project.",
   },
   {
-    question: "How long does a typical project take to complete?",
+    question: "Do you work with existing Shopify stores or only new builds?",
     answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+      "Both. We work with brands launching new Shopify stores as well as existing stores that need a redesign, optimization, or new functionality. We can also help businesses migrate from platforms like WooCommerce, Wix, or other ecommerce systems.",
   },
   {
-    question: "Do you offer support after the project is delivered?",
+    question: "Can you customize a Shopify theme or build one from scratch?",
     answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+      "Yes. We can customize an existing Shopify theme to fit your brand and requirements, or create a fully custom Shopify experience from the ground up using Shopify's latest development framework.",
   },
   {
-    question: "What industries do you usually work with?",
+    question: "What happens after my Shopify store launches?",
     answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+      "Our relationship doesn't have to end at launch. We can provide ongoing support, maintenance, performance improvements, conversion optimization, and new feature development to help your store continue to grow.",
   },
   {
-    question: "How much does it cost to work with your agency?",
+    question: "Will my Shopify store be optimized for speed and SEO?",
     answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+      "Yes. We build with performance and search visibility in mind. Depending on your project, this can include Core Web Vitals optimization, image and code optimization, technical SEO, on-page SEO, and other improvements that help your store perform better.",
+  },
+  {
+    question: "Can you integrate Shopify with my existing tools?",
+    answer:
+      "Absolutely. We can connect Shopify with the tools your business relies on, including payment and shipping solutions, subscriptions, email marketing platforms, analytics, Meta Pixel, CRMs, third-party APIs, and custom systems.",
   },
 ];
 
@@ -840,8 +932,8 @@ export const teams: TeamMember[] = [
 
 export const homePage: HomePage = {
   hero: {
-    title: "We design, develop and build",
-    des: "We're a design and development agency since 2017 who craft digital masterpiece products.",
+    title: "<span>Vorklye</span> — Your Shopify Growth Partner",
+    des: "We design, build, optimize, and scale high-converting Shopify stores that turn more visitors into customers—and more customers into long-term growth.",
     showShopifyPlusIcon: true,
     videoBg: "/images/hero-video.mp4",
     brand: {
@@ -850,15 +942,16 @@ export const homePage: HomePage = {
     },
   },
   about: {
-    text: "<span>Welcome to Vorklye — We're a </span>Shopify design and development <span>studio, dedicated to bringing your brand's essence to life online. From custom themes to seamless user experiences, every project is a bespoke journey — we collaborate closely with you to build something that truly stands out.</span>",
+    text: "Vorklye is a <span>Shopify growth partner</span> for ambitious ecommerce brands. We combine strategy, design, development, and conversion optimization to build Shopify experiences that look exceptional, convert better, and drive sustainable growth.",
     button: {
-      text: "More about us",
+      text: "More About Vorklye",
       link: "/about",
     },
   },
   caseStudie: {
-    title: "Real stories, real results – see what we've made possible.",
-    subtitle: "/Case Studies",
+    title:
+      "<span>Real stories, real results.</span> See how we’ve helped ambitious brands build better, convert more, and grow faster.",
+    subtitle: "/ Work That Drives Growth",
     caseStudies: caseStudies,
     button: {
       label: "More works",
@@ -867,46 +960,46 @@ export const homePage: HomePage = {
   },
   brand: {
     title:
-      "We're a team of commerce specialists who have helped countless <span>brands build, grow and increase.</span>",
+      "We're a team of commerce specialists who help ambitious brands <span>build, grow, and scale.</span>",
     logos: brands,
   },
   service: {
     title:
-      "End-to-end Shopify systems, designed to scale the brand behind the store.",
+      "Strategy, design, and technology working together to <span>build brands that scale.</span>",
     subtitle: "/ What we build",
     services: services,
   },
   workingProcess: {
-    title: "How it works",
+    title: "From your first idea to <span>long-term growth.</span>",
     subtitle: "/ Working process",
     button: {
-      label: "Get in touch",
+      label: "Start a project",
       link: "#",
     },
     process: [
       {
-        title: "Discovery & Research",
+        title: "Discover & Understand",
         description:
-          "We start by understanding your business, goals, target audience, and competitors to build a clear project foundation.",
-        tags: ["Video meeting", "Discovery"],
+          "We learn about your brand, business goals, customers, challenges, and exactly what your store needs to grow.",
+        tags: ["Strategy", "UX Audit", "Market Research"],
       },
       {
-        title: "Strategy & Design",
+        title: "Plan & Build",
         description:
-          "Crafting bespoke wireframes, interactive UI prototypes, and design systems tailored specifically for your brand identity.",
-        tags: ["Video meeting"],
+          "We turn the strategy into a high-performing Shopify experience with thoughtful design, powerful functionality, and seamless integrations.",
+        tags: ["UI/UX Design", "Shopify Development", "Custom Features"],
       },
       {
-        title: "Development & Build",
+        title: "Launch & Deliver",
         description:
-          "Converting designs into high-performance, pixel-perfect Shopify or WordPress stores with seamless integrations.",
-        tags: ["Video meeting"],
+          "We test every detail, optimize performance, and make sure your store is ready to deliver a smooth experience from day one.",
+        tags: ["QA & Testing", "Speed Optimization", "SEO"],
       },
       {
-        title: "Scale & Optimization",
+        title: "Support & Grow",
         description:
-          "Rigorous testing, SEO optimization, speed enhancement, and ongoing support to ensure your store continues to grow.",
-        tags: ["Video meeting"],
+          "We continue working with you after launch to optimize your store, improve conversions, and unlock new opportunities for growth.",
+        tags: ["CRO", "Analytics", "Ongoing Support"],
       },
     ],
   },
@@ -917,50 +1010,51 @@ export const homePage: HomePage = {
     whatsApp: siteData.whatsapp,
   },
   activity: {
-    title: "Perfect <br /> — activity",
+    title: "Built to <br /> — <span>grow</span>",
     activityStats: {
       col1: [
         {
-          value: "1.8M",
-          text: "We helped to get companies with $200M+ funding.",
+          value: "150+",
+          text: "Shopify stores, experiences, and growth projects delivered for ambitious brands.",
         },
         {
-          value: "12+",
-          text: "We have had quite a run in our 12+ years of working.",
+          value: "06+",
+          text: "Years of turning Shopify expertise into better experiences and stronger ecommerce growth.",
         },
         {
-          value: "99%",
-          text: "Average 99% clients satisfaction with expertise.",
+          value: "95%",
+          text: "Client satisfaction built through clear communication, quality work, and long-term partnerships.",
         },
       ],
       col2: [
         {
-          value: "260+",
-          text: "Crafted responsive, user-centered website & app.",
+          value: "100%",
+          text: "Focused on Shopify, from strategy and UI/UX to development and optimization.",
         },
         {
-          value: "80+",
-          text: "Professional skilled designers and developers.",
+          value: "24/7",
+          text: "Our mindset stays focused on solving problems, improving performance, and helping brands grow.",
         },
       ],
     },
   },
   testimonial: {
     subtitle: "/ Client Stories",
-    title: "<span>Success</span> Stories That Inspire Us",
+    title: "What happens when <span>great brands grow.</span>",
     testimonials: testimonials,
   },
 };
 
 export const aboutPage: AboutPage = {
   hero: {
-    title: "Bringing Vision To Life, One Line Of Code At A Time",
+    title:
+      "Building Better Shopify Experiences, <span>Growing Better Brands.</span>",
     subtitle:
-      "We’re more than a software company. We’re your strategic partner in building purposeful, high-impact digital products that grow with your business.",
+      "We partner with ambitious ecommerce brands to turn ideas into high-performing Shopify experiences—from strategy and design to development, optimization, and long-term growth.",
     videoUrl: "",
     button: {
-      label: "Book a Free Strategy Call",
-      link: "#",
+      label: "Start a Project",
+      link: "/contact",
     },
   },
   brand: {
@@ -969,69 +1063,88 @@ export const aboutPage: AboutPage = {
   },
   counter: [
     {
-      text: "Shopify Experts in our team",
+      text: "Shopify specialists on our team",
+      value: "+10",
+    },
+    {
+      text: "Shopify stores built & optimized",
       value: "+50",
     },
     {
-      text: "Managed Shopify Plus Stores",
-      value: "+60",
-    },
-    {
-      text: "Customers continue to work with us",
+      text: "Clients who continue to work with us",
       value: "90%",
     },
     {
-      text: "Realised projects",
-      value: "+200",
+      text: "Projects successfully delivered",
+      value: "+100",
     },
   ],
   visionMission: {
     top: {
       subtitle: "/ Mission",
       title:
-        "Bridging the gap between business vision and digital execution with tailored, expert-driven solutions.",
+        "To help ambitious ecommerce brands turn Shopify into a powerful engine for better experiences, stronger conversions, and sustainable growth.",
       image: "https://boomdevs.com/wp-content/uploads/2026/07/Image-3.webp",
     },
+
     meddle: [
       "https://boomdevs.com/wp-content/uploads/2026/07/Image-3.webp",
       "https://boomdevs.com/wp-content/uploads/2026/07/Image-3.webp",
       "https://boomdevs.com/wp-content/uploads/2026/07/Image-3.webp",
     ],
+
     bottom: {
       subtitle: "/ Vision",
       title:
-        "To shape a future where digital solutions are intuitive, impactful, and universally available.",
+        "To become the trusted Shopify growth partner behind the next generation of ambitious ecommerce brands.",
       image: "https://boomdevs.com/wp-content/uploads/2026/07/Image-3.webp",
     },
   },
   team: {
     title:
-      "We are your product geek, UX mind, UI lovers, & Webflow builders. Your creative team, just a Slack away.",
-    subtitle: "/ Meet our creatives",
+      "A team of Shopify strategists, designers, and developers <span>working together to grow your brand.</span>",
+
+    subtitle: "/ Meet the team",
+
     button: {
       label: "Join our team",
-      link: "#",
+      link: "/career",
     },
+
     teams: teams,
   },
 };
 
 export const contactPage: ContactPage = {
-  title: "Talk Directly with Our Experts",
+  title: "<span>Let’s Build Something That Grows.</span>",
+
   supportImage:
     "https://notionhive.com/_next/image?url=https%3A%2F%2Fcms.notionhive.com%2Fwp-content%2Fuploads%2F2026%2F05%2FFrame-2147223905-1.png&w=1080&q=75",
+
   description:
-    "You’ve scrolled this far, so we clearly have your attention. Now, let’s help you grab your customers' attention with something they can't ignore.",
-  emailPlaceholder: "Email",
+    "Have a Shopify store to build, improve, or scale? Tell us what you're working on, and our team will help you find the right strategy, solution, and next step for your brand.",
+
+  emailPlaceholder: "Email address",
+
   namePlaceholder: "Full name",
+
   budgetPlaceholder: "Project budget",
+
   hearAboutUsPlaceholder: "How did you hear about us?",
-  messagePlaceholder: "Tell us about your product and goals.",
-  servicesLabel: "How can we help you?",
-  submitButtonText: "Send message",
+
+  messagePlaceholder:
+    "Tell us about your brand, Shopify store, goals, and what you'd like to achieve.",
+
+  servicesLabel: "What can we help you with?",
+
+  submitButtonText: "Start a conversation",
+
   submittingText: "Sending...",
+
   preferEmailLabel: "Prefer email?",
+
   email: siteData.email,
+
   budgetOptions: [
     "Under $5,000",
     "$5,000 – $10,000",
@@ -1039,23 +1152,25 @@ export const contactPage: ContactPage = {
     "$25,000 – $50,000",
     "$50,000+",
   ],
+
   hearAboutUsOptions: [
     "Google Search",
-    "Instagram",
     "LinkedIn",
+    "Instagram",
     "Referral",
-    "Twitter / X",
+    "Clutch",
     "Other",
   ],
+
   serviceTags: [
-    "UI/UX Design",
-    "SaaS Design",
-    "Branding",
-    "CRO",
-    "Mobile app",
-    "Development",
-    "MVP Development",
-    "Web Design",
+    "Shopify Development",
+    "Shopify Design",
+    "Shopify Plus",
+    "Shopify Integrations",
+    "Shopify Migration",
+    "Conversion Optimization",
+    "Shopify SEO",
+    "Ongoing Growth",
   ],
 };
 
@@ -1080,69 +1195,60 @@ export const career: CareerListing[] = [
 
 export const careerPage: CareerPage = {
   hero: {
-    title: "Collaborate, Create, and Grow Your Career",
+    title: "Build Your Career <span>Where Ecommerce Grows.</span>",
     subtitle:
-      "We’re a team of thinkers, makers, and doers — passionate about creating meaningful experiences and solving real problems. If you’re driven by creativity, collaboration, and constant growth, you’ll feel right at home here.",
+      "We’re a team of strategists, designers, developers, and problem-solvers building Shopify experiences for ambitious brands. If you love great work, continuous learning, and solving meaningful challenges, there’s a place for you at Vorklye.",
     button: {
-      label: "Explore open roles",
+      label: "Explore Open Roles",
       link: "#open",
     },
     image:
       "https://boomdevs.com/wp-content/uploads/2026/07/Rectangle-39919.webp",
   },
   benift: {
-    title: "Why Work With Us?",
-    subtitle: "/ Design Agency",
+    title: "Why Work <span>With Us?</span>",
+    subtitle: "/ Life at Vorklye",
+
     items: [
       {
-        title: "Remote Work = Freedom",
+        title: "Remote-First Culture",
         description:
-          "Skip the daily commute—we’ve embraced a remote-first culture from day one",
+          "Work from where you do your best work. We believe great ideas don't require a daily commute.",
       },
       {
-        title: "Two Festival Bonuses",
+        title: "Learning & Growth",
         description:
-          "Double the celebrations, double the rewards — enjoy two annual bonuses, each equal to 50% of your gross salary.",
+          "Keep learning, experiment with new ideas, and grow your skills while working on real ecommerce challenges.",
       },
       {
-        title: "Generous Leave Benefits",
+        title: "Mentorship & Support",
         description:
-          "Our comprehensive leave benefits—including annual, sick, and marriage leave—ensure you can maintain a healthy work–life balance.",
-      },
-      {
-        title: "Mentorship & Personal Growth",
-        description:
-          "Not just a boss, but a mentor—helping you achieve your fullest potential.",
-      },
-      {
-        title: "Device & Internet Allowance",
-        description:
-          "At Vorklye, we help our team work at their best by supporting device purchases and internet costs.",
-      },
-      {
-        title: "Health & Wellness Allowance",
-        description:
-          "Your health—and your family’s—comes first. Our medical allowance stands by you during life’s toughest moments, offering emergency loans with simple and flexible EMI plans.",
-      },
-      {
-        title: "Generous Leave Benefits",
-        description:
-          "Our comprehensive leave benefits—including annual, sick, and marriage leave—ensure you can maintain a healthy work–life balance.",
+          "Work alongside experienced teammates who share knowledge, give honest feedback, and help you reach your potential.",
       },
       {
         title: "Performance Bonuses",
         description:
-          "Your effort matters at Vorklye. Go the extra mile and earn bonuses for exceptional contributions.",
+          "Great work deserves recognition. We reward meaningful contributions and exceptional performance.",
       },
       {
-        title: "Emergency Loan Facilities",
+        title: "Flexible Work Environment",
         description:
-          "We support our team during unexpected moments by offering emergency loans with simple and flexible EMI plans.",
+          "We value outcomes over hours. Manage your work with the flexibility you need while staying connected with the team.",
       },
       {
-        title: "Generous Leave Benefits",
+        title: "Device & Internet Support",
         description:
-          "Our comprehensive leave benefits—including annual, sick, and marriage leave—ensure you can maintain a healthy work–life balance.",
+          "We help you stay productive by supporting the tools, devices, and internet resources you need to do your best work.",
+      },
+      {
+        title: "Paid Leave",
+        description:
+          "Take time to rest, recharge, and take care of the things that matter outside of work.",
+      },
+      {
+        title: "Team Collaboration",
+        description:
+          "Collaborate with strategists, designers, developers, and growth specialists to create work that makes a real impact.",
       },
     ],
   },
@@ -1153,27 +1259,36 @@ export const careerPage: CareerPage = {
   },
   faq: {
     title: "Questions? We’re <span>Here to Help</span>",
-    subtitle: "/FAQ",
+    subtitle: "/ FAQ",
+
     faqs: [
       {
-        title: "What are your focus areas as a UI/UX design agency?",
-        text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+        title: "What kind of people are you looking for?",
+        text: "We’re looking for curious, responsible, and growth-minded people who care about doing great work. Whether you’re a designer, developer, strategist, or specialist, we value strong skills, clear communication, and a willingness to learn.",
       },
       {
-        title: "How long does a typical project take to complete?",
-        text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+        title: "Is Vorklye a remote-first company?",
+        text: "Yes. We work with a remote-first approach, giving our team the flexibility to work from where they’re most productive while staying connected through regular communication and collaboration.",
       },
       {
-        title: "Do you offer support after the project is delivered?",
-        text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+        title: "What is your hiring process?",
+        text: "Our process typically starts with an application review, followed by an introductory conversation and a role-specific assessment or interview. We keep the process focused and transparent so both sides can decide if we’re a good fit.",
       },
       {
-        title: "What industries do you usually work with?",
-        text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+        title: "Do you hire for junior and entry-level positions?",
+        text: "Yes, depending on our current hiring needs. We’re always interested in meeting talented people who are eager to learn, take ownership, and grow their skills through real-world projects.",
       },
       {
-        title: "How much does it cost to work with your agency?",
-        text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea eius iure dignissimos? Maxime necessitatibus magnam quam consectetur inventore placeat, delectus enim officiis reprehenderit itaque voluptate consequatur nobis libero totam ipsum.",
+        title: "What benefits does Vorklye offer?",
+        text: "Our benefits may include remote work flexibility, paid leave, performance bonuses, learning and mentorship opportunities, device and internet support, and other team-focused benefits depending on the role and company policy.",
+      },
+      {
+        title: "Can I apply if there isn't an open position for my role?",
+        text: "Absolutely. If you believe you’d be a great addition to Vorklye, you can still reach out and share your portfolio, experience, and what you’d like to contribute. We’ll keep strong candidates in mind for future opportunities.",
+      },
+      {
+        title: "What is the work culture like at Vorklye?",
+        text: "We believe in ownership, honest communication, continuous learning, and collaborative problem-solving. You’ll work with a multidisciplinary team where everyone is encouraged to share ideas and take responsibility for their work.",
       },
     ],
   },
@@ -1181,12 +1296,12 @@ export const careerPage: CareerPage = {
 
 export const caseStudiePage: CaseStudiePage = {
   hero: {
-    title: "Case Studies",
+    title: "Work That <span>Drives Growth.</span>",
     subtitle:
-      "We’re more than a software company. We’re your strategic partner in building purposeful, high-impact digital products that grow with your business.",
+      "Explore the Shopify stores, strategies, and experiences we’ve built to help ambitious ecommerce brands perform better, convert more, and grow with confidence.",
     button: {
-      label: "Let’s Discuss Your Project",
-      link: "#",
+      label: "Start Your Project",
+      link: "/contact",
     },
   },
   caseStudies: caseStudies,
@@ -1194,22 +1309,22 @@ export const caseStudiePage: CaseStudiePage = {
 
 export const servicePage: ServicePage = {
   hero: {
-    title: "Everything Your Brand Needs to Build, Grow and Scale",
+    title: "Everything Your Shopify Brand Needs to <span>Grow & Scale.</span>",
     subtitle:
-      "From the first brand strategy session to the final line of code, we handle every dimension of your growth under one roof.",
+      "From strategy and design to development, integrations, migration, and ongoing optimization—we bring everything together to build a Shopify experience designed for growth.",
     button: {
-      label: "Let’s Discuss Your Project",
-      link: "#",
+      label: "Let’s Build Your Store",
+      link: "/contact",
     },
     image:
       "https://boomdevs.com/wp-content/uploads/2026/07/Rectangle-39919.webp",
   },
   industrie: {
-    title: "Industry expertise <span>‍across globally</span>",
+    title: "Built for your industry. <span>Designed to grow.</span>",
     subtitle: "/ Industries",
     button: {
-      label: "Consult an expert",
-      link: "#",
+      label: "Talk to an expert",
+      link: "/contact",
     },
     industries: industries,
   },

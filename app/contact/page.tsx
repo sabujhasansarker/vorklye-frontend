@@ -11,14 +11,15 @@ const page: React.FC<Props> = () => {
   const { title, description, supportImage } = contactPage;
   return (
     <VorklyeLayout>
-      <section className="border-b border-neutral-900 pt-5 sm:pt-20 md:pt-28 lg:pt-40 xl:pt-50 pb-10">
+      <section className="border-b relative border-neutral-900 pt-5 sm:pt-20 md:pt-28 lg:pt-40 xl:pt-50 pb-10">
         <div className="container mx-auto px-5 sm:px-8 lg:px-0">
           <div className="flex flex-col lg:flex-row gap-12 sm:gap-16 lg:gap-24 xl:gap-60">
             {/* LEFT CONTENT */}
             <div className="w-full lg:max-w-140 shrink-0">
-              <h2 className="section-title text-4xl sm:text-5xl md:text-6xl lg:text-6xl leading-normal md:leading-18 lg:leading-22">
-                {title}
-              </h2>
+              <h2
+                className="section-title text-4xl sm:text-5xl md:text-6xl lg:text-6xl leading-normal md:leading-18 lg:leading-22"
+                dangerouslySetInnerHTML={{ __html: title }}
+              ></h2>
 
               {supportImage && (
                 <img

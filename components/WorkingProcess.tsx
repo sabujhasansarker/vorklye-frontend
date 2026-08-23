@@ -94,10 +94,13 @@ const WorkingProcess: React.FC = () => {
       className="bg-black border-b border-neutral-900 overflow-hidden relative flex flex-col justify-center py-8 sm:py-10 lg:py-30"
     >
       <div className="container mx-auto px-5 sm:px-8 lg:px-4">
-        <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 sm:items-center sm:justify-between">
-          <div>
+        <div className="flex flex-col lg:flex-row gap-5 sm:gap-6 lg:items-center lg:justify-between">
+          <div className="w-full lg:max-w-xl">
             <p className="sub-title">{subtitle}</p>
-            <h2 className="section-title">{title}</h2>
+            <h2
+              className="section-title"
+              dangerouslySetInnerHTML={{ __html: title }}
+            ></h2>
           </div>
           <Button text={button.label} href={button.link} />
         </div>

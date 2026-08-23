@@ -1,6 +1,7 @@
 "use client";
 
 import { homePage, services } from "@/data";
+import { useSmootherReady } from "@/utility";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
@@ -15,30 +16,41 @@ const ServiceSection: React.FC = () => {
   const contentsRef = useRef<HTMLDivElement[]>([]);
 
   const { title, subtitle, services } = homePage.service;
+  const smootherReady = useSmootherReady();
 
   useEffect(() => {
+    if (!smootherReady) return;
+
     gsap.registerPlugin(ScrollTrigger);
 
+    ScrollTrigger.config({
+      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+    });
+
     const ctx = gsap.context(() => {
-      // The pinned "one service open at a time" scroll animation only makes
-      // sense with the side-by-side sticky layout used on lg+ screens. On
-      // mobile/tablet the section renders as a normal stacked list with all
-      // service details visible, so we skip the pin/height/opacity tweens
-      // entirely there.
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px)", () => {
+        const heights = contentsRef.current.map((el) => el.scrollHeight);
+
         gsap.set(contentsRef.current, { overflow: "hidden" });
         gsap.set(contentsRef.current.slice(1), { height: 0, opacity: 0 });
-        gsap.set(headersRef.current.slice(1), { color: "#404040" });
+        gsap.set(contentsRef.current[0], { height: heights[0] });
+        gsap.set(headersRef.current.slice(1), {
+          color: "#404040",
+          opacity: 0.5,
+        });
+        gsap.set(headersRef.current[0], { opacity: 1 });
 
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
-            end: "+=250%",
+            end: "+=350%",
             pin: true,
-            scrub: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            scrub: 1.5,
             invalidateOnRefresh: true,
           },
         });
@@ -48,37 +60,42 @@ const ServiceSection: React.FC = () => {
 
           tl.to(
             contentsRef.current[index],
-            { height: 0, opacity: 0, duration: 1 },
+            { height: 0, opacity: 0, duration: 2, ease: "none" },
             `step-${index}`,
           )
             .to(
               headersRef.current[index],
-              { color: "#404040", duration: 1 },
+              { color: "#404040", opacity: 0.5, duration: 2, ease: "none" },
               `step-${index}`,
             )
             .to(
               contentsRef.current[index + 1],
-              { height: "auto", opacity: 1, duration: 1 },
+              {
+                height: heights[index + 1],
+                opacity: 1,
+                duration: 2,
+                ease: "none",
+              },
               `step-${index}`,
             )
             .to(
               headersRef.current[index + 1],
-              { color: "#ffffff", duration: 1 },
+              { color: "#ffffff", opacity: 1, duration: 2, ease: "none" },
               `step-${index}`,
             );
           tl.set(
             contentsRef.current[index],
             { height: 0, opacity: 0 },
-            `step-${index}+=1`,
+            `step-${index}+=2`,
           ).set(
             headersRef.current[index],
-            { color: "#404040" },
-            `step-${index}+=1`,
+            { color: "#404040", opacity: 0.5 },
+            `step-${index}+=2`,
           );
         });
 
-        // Cleanup when leaving this breakpoint (matchMedia handles reverting
-        // the gsap.set calls automatically via context revert on ctx.revert())
+        ScrollTrigger.refresh();
+
         return () => {
           tl.scrollTrigger?.kill();
           tl.kill();
@@ -87,7 +104,7 @@ const ServiceSection: React.FC = () => {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [smootherReady]);
 
   return (
     <section
@@ -100,7 +117,10 @@ const ServiceSection: React.FC = () => {
           ref={leftRef}
         >
           <p className="sub-title">{subtitle}</p>
-          <h2 className="section-title">{title}</h2>
+          <h2
+            className="section-title"
+            dangerouslySetInnerHTML={{ __html: title }}
+          ></h2>
         </div>
 
         <div className="w-full lg:w-1/2 flex flex-col justify-start">
@@ -111,15 +131,18 @@ const ServiceSection: React.FC = () => {
                   key={index}
                   className={`border-b border-neutral-800 ${index === 0 ? "pb-5 sm:pb-6" : "py-5 sm:py-6"} w-full flex flex-col justify-start`}
                 >
-                  <h4
-                    ref={(el) => {
-                      if (el) headersRef.current[index] = el;
-                    }}
-                    className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight transition-colors duration-300 text-white"
+                  <Link
+                    href={`/services/${title.split(" ").join("-").split("/").join("-")}`}
                   >
-                    {title}
-                  </h4>
-
+                    <h4
+                      ref={(el) => {
+                        if (el) headersRef.current[index] = el;
+                      }}
+                      className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight transition-colors duration-300 text-white"
+                    >
+                      {title}
+                    </h4>
+                  </Link>
                   <div
                     ref={(el) => {
                       if (el) contentsRef.current[index] = el;
@@ -142,10 +165,7 @@ const ServiceSection: React.FC = () => {
                         </span>
                       ))}
                     </div>
-                    <div
-                      className="mt-8 sm:mt-10 lg:mt-15"
-                      data-cursor="Service Details"
-                    >
+                    <div className="mt-8 sm:mt-10 lg:mt-15">
                       <ButtonNormal text="Learn More" href="/services" />
                     </div>
                   </div>

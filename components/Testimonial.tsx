@@ -64,7 +64,7 @@ const Testimonial: React.FC = () => {
         <p className="sub-title">{subtitle}</p>
 
         <h2
-          className="section-title max-w-full sm:max-w-100"
+          className="section-title max-w-full sm:max-w-120"
           dangerouslySetInnerHTML={{ __html: title }}
         />
       </div>

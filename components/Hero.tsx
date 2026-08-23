@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   const { title, des, showShopifyPlusIcon, videoBg, brand } = hero;
 
   return (
-    <section className="relative sm:min-h-screen overflow-hidden pt-5 pb-10 sm:pb-10 sm:pt-40 md:pt-60 lg:pt-77.5">
+    <section className="relative home-page-hero sm:min-h-screen overflow-hidden pt-5 pb-10 sm:pb-10 sm:pt-40 md:pt-60 lg:pt-77.5">
       {/* Background */}
       {videoBg && (
         <Fragment>
@@ -34,9 +34,10 @@ const Hero: React.FC = () => {
 
         <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 lg:gap-10">
           {title && (
-            <h1 className="mt-6 sm:mt-8 lg:mt-10 max-w-full lg:max-w-225 text-5xl md:text-6xl lg:text-8xl font-extrabold leading-normal sm:leading-normal md:leading-none lg:leading-35 text-white">
-              {title}
-            </h1>
+            <h1
+              dangerouslySetInnerHTML={{ __html: title }}
+              className="mt-6 sm:mt-8 lg:mt-10 max-w-full lg:max-w-225 text-5xl md:text-6xl lg:text-8xl font-extrabold leading-normal sm:leading-normal md:leading-none lg:leading-35 text-white"
+            ></h1>
           )}
 
           {des && (

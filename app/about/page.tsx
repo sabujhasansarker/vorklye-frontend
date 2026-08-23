@@ -158,10 +158,13 @@ const Team = ({ team }: TeamProps) => {
       <div className="container mx-auto px-5 sm:px-8 lg:px-0">
         {/* HEADER */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-12 lg:gap-20">
-          <div className="w-full md:w-2/3">
+          <div className="w-full md:max-w-4xl">
             <p className="sub-title mb-4 sm:mb-5">{subtitle}</p>
 
-            <h2 className="section-title">{title}</h2>
+            <h2
+              className="section-title"
+              dangerouslySetInnerHTML={{ __html: title }}
+            ></h2>
           </div>
 
           {button && (

@@ -165,9 +165,9 @@ body {
   }
 
   .section-title {
-    @apply text-gray-200 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-normal sm:leading-tight md:leading-19.5 tracking-tight overflow-hidden;
+    @apply text-neutral-500 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-normal sm:leading-tight md:leading-19.5 tracking-tight overflow-hidden;
     span {
-      @apply text-neutral-500;
+      @apply text-gray-200;
     }
   }
 

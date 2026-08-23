@@ -17,7 +17,7 @@ const Brand: React.FC = () => {
     <section className="border-b border-neutral-900 py-16 sm:py-28 lg:py-42.5">
       <div className="container m-auto px-5 sm:px-8 lg:px-0">
         <h2
-          className="section-title max-w-full lg:max-w-361.5"
+          className="section-title max-w-full lg:max-w-7xl"
           dangerouslySetInnerHTML={{ __html: title }}
         />
 

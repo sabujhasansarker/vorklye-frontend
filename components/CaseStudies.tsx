@@ -69,9 +69,12 @@ const CaseStudiesSection: React.FC = () => {
   return (
     <section className="relative border-b border-neutral-900 bg-black py-16 sm:py-24 lg:py-30 text-white">
       <div ref={containerRef} className="container m-auto px-5 sm:px-8 lg:px-4">
-        <div className="max-w-full lg:max-w-200">
+        <div className="max-w-full lg:max-w-300">
           <p className="sub-title">{subtitle}</p>
-          <h2 className="section-title">{title}</h2>
+          <h2
+            className="section-title"
+            dangerouslySetInnerHTML={{ __html: title }}
+          ></h2>
         </div>
 
         <div className="mt-8 sm:mt-10 lg:mt-15 mb-10 sm:mb-14 lg:mb-20 flex flex-col gap-6 sm:gap-8 lg:gap-10">

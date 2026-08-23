@@ -70,7 +70,10 @@ const Benift = ({ benift }: BenifitProps) => {
         <div>
           <p className="sub-title mb-4 sm:mb-5">{subtitle}</p>
 
-          <h2 className="section-title max-w-4xl">{title}</h2>
+          <h2
+            className="section-title max-w-4xl"
+            dangerouslySetInnerHTML={{ __html: title }}
+          ></h2>
         </div>
 
         {/* BENEFITS */}
@@ -222,8 +225,8 @@ const Jobs = ({ position }: JobProps) => {
     >
       <div className="container mx-auto px-5 sm:px-8 lg:px-0">
         {/* HEADER */}
-        <div className="flex flex-col md:flex-row md:items-center gap-4 sm:gap-6 md:gap-12 lg:gap-20">
-          <p className="sub-title mb-0! shrink-0">{subtitle}</p>
+        <div className="divide-amber-50">
+          <p className="sub-title">{subtitle}</p>
 
           <h2
             className="section-title"

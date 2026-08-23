@@ -59,11 +59,6 @@ export interface Header {
 // services
 // ==========================================================================
 
-export interface ServiceDeliverable {
-  title: string;
-  description: string;
-}
-
 export interface ServiceProcessStep {
   step?: string;
   title: string;
@@ -91,7 +86,6 @@ export interface Service {
   thumbnail?: string;
   skillImage: string;
   subServices: string[];
-  deliverables: ServiceDeliverable[];
   process: ServiceProcessStep[];
   metrics: ServiceMetric[];
   faqs: ServiceFaq[];

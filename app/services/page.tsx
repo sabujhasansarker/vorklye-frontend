@@ -68,7 +68,7 @@ const Industry = ({ industrie }: IndustryProps) => {
           <div>
             <p className="sub-title">{subtitle}</p>
             <h2
-              className="section-title max-w-full sm:max-w-120"
+              className="section-title max-w-full sm:max-w-150"
               dangerouslySetInnerHTML={{ __html: title }}
             ></h2>
           </div>
