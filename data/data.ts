@@ -591,8 +591,7 @@ export const caseStudies: CaseStudy[] = [
     serviceIds: [1, 2],
     industry: "Luxury Fashion & Apparel",
     published: "2023",
-    image:
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
+    image: "/images/case-studies/shwoodshop.gif",
     logo: "/images/brand/4.png",
     websiteUrl: "https://example.com/rovero",
     challenge:

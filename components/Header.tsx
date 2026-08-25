@@ -31,7 +31,7 @@ const Header: React.FC = () => {
     <>
       <header
         ref={headerRef}
-        className={`hidden sm:block fixed top-0 left-0 w-full z-[99] transition-all duration-350 ease-out ${
+        className={`hidden xl:block fixed top-0 left-0 w-full z-99 transition-all duration-350 ease-out ${
           scrolled ? "py-4 bg-black/80 backdrop-blur-sm" : "py-10"
         }`}
       >
@@ -40,16 +40,16 @@ const Header: React.FC = () => {
             {/* LOGO */}
             <div className="flex items-center gap-7.5">
               <Link href="/">
-                <img src={logo} alt="Logo" />
+                <img src={logo} alt="Logo" className="max-w-38" />
               </Link>
 
-              <div className="w-[1.7px] h-7 bg-gray-200" />
+              <div className="w-[1.4px] h-8 bg-gray-200" />
 
               <a href="#">
                 <img
-                  ref={logoRef}
                   src="/images/shopify-patner.png"
                   alt="Shopify Partner"
+                  className="max-w-35"
                 />
               </a>
             </div>
@@ -126,7 +126,7 @@ export const MobileMenu = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="block sm:hidden">
+    <div className="block xl:hidden">
       {/* backdrop when the "More" sheet is open */}
       {open && (
         <div
@@ -135,7 +135,7 @@ export const MobileMenu = () => {
         />
       )}
 
-      <div className="fixed bottom-0 left-0 z-999999 w-full">
+      <div className="fixed bottom-0 left-0 right-0 z-999999 max-w-200 w-full m-auto">
         {/* "More" sheet — white list, scrollable */}
         <div
           className={`relative z-50 overflow-hidden transition-all duration-300 ease-out ${

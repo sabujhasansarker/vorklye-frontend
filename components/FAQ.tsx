@@ -70,7 +70,7 @@ const FAQ: React.FC = () => {
           </div>
           <div className="w-full lg:max-w-80 p-6 sm:p-8 bg-neutral-900 inline-flex flex-col justify-start items-start shrink-0 rounded-sm">
             <img
-              className="size-14 sm:size-16 relative rounded-sm object-cover"
+              className="size-16 sm:size-20 relative rounded-sm object-cover "
               src={ceo.image}
               alt={ceo.name}
             />

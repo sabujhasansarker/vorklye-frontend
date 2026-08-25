@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
               <img
                 src={logo}
                 alt="Vorklye Logo"
-                className="block w-28 sm:w-32 lg:w-35 max-w-full"
+                className="block w-28 sm:w-32 lg:w-40 max-w-full"
               />
             )}
 
@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
                   pl-5 sm:pl-6
                   pr-2
                   py-2
-                  bg-[#EBFE5B]
+                  bg-[#C9FF00]
                   rounded-sm
                   inline-flex
                   items-center
@@ -210,28 +210,7 @@ const Footer: React.FC = () => {
       ===================================================== */}
       <div className="relative w-full max-w-full overflow-hidden mt-16 sm:mt-20 md:mt-24 lg:mt-30">
         <div className="w-full max-w-full overflow-hidden">
-          <p
-            className="
-              logo-text
-              w-full
-              max-w-none
-              whitespace-nowrap
-              overflow-hidden
-              font-black
-              uppercase
-              leading-[0.75]
-              tracking-[-0.06em]
-              text-white
-              select-none
-              pointer-events-none
-              text-[26vw]
-              sm:text-[25vw]
-              md:text-[24vw]
-              lg:text-[23vw]
-            "
-          >
-            Vorklye
-          </p>
+          <img src="/images/footer-logo.png" className="w-full" alt="" />
         </div>
       </div>
     </footer>

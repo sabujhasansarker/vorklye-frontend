@@ -96,7 +96,7 @@ const CaseStudiesSection: React.FC = () => {
                       <img
                         src={item.logo}
                         alt={item.title}
-                        className="w-fit h-4 sm:h-8 object-contain"
+                        className="w-fit h-4 sm:h-8 object-contain mb-10"
                       />
                     )}
 
@@ -108,24 +108,32 @@ const CaseStudiesSection: React.FC = () => {
                       {item.description}
                     </p>
 
-                    <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-wrap gap-6 sm:gap-10 lg:gap-28">
+                    <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-wrap lg:flex-nowrap gap-6 sm:gap-10 lg:gap-28">
                       {[
-                        ["Services", item.services?.join(", ")],
+                        ["Services", item.services],
                         ["Industry", item.industry],
                         ["Published", item.published],
-                      ].map(
-                        ([label, value]) =>
-                          value && (
-                            <div key={label}>
-                              <p className="text-xs sm:text-sm font-semibold uppercase text-neutral-500">
-                                {label}
-                              </p>
-                              <p className="text-sm sm:text-base font-semibold leading-7 sm:leading-8 text-gray-200">
-                                {value}
-                              </p>
-                            </div>
-                          ),
-                      )}
+                      ].map(([label, value], tagI) => {
+                        if (!value) return null;
+
+                        return (
+                          <div key={tagI}>
+                            <p className="text-xs sm:text-sm font-semibold uppercase text-neutral-500 mb-2">
+                              {label}
+                            </p>
+
+                            <p className="text-sm block sm:text-base font-semibold leading-7 sm:leading-8 text-gray-200">
+                              {Array.isArray(value)
+                                ? value.map((service, index) => (
+                                    <span key={index} className="block">
+                                      {service}
+                                    </span>
+                                  ))
+                                : value}
+                            </p>
+                          </div>
+                        );
+                      })}
                     </div>
 
                     <ButtonUnderline
@@ -134,7 +142,7 @@ const CaseStudiesSection: React.FC = () => {
                     />
                   </div>
 
-                  <div className="lg:w-1/2 w-full overflow-hidden">
+                  <div className="lg:w-1/2 w-full h-full overflow-hidden">
                     <img
                       src={item.image}
                       alt={item.title}

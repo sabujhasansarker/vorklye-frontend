@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   const { title, des, showShopifyPlusIcon, videoBg, brand } = hero;
 
   return (
-    <section className="relative home-page-hero sm:min-h-screen overflow-hidden pt-5 pb-10 sm:pb-10 sm:pt-40 md:pt-60 lg:pt-77.5">
+    <section className="relative home-page-hero sm:min-h-screen overflow-hidden pt-5 pb-10 xl:pt-77.5">
       {/* Background */}
       {videoBg && (
         <Fragment>
@@ -26,22 +26,22 @@ const Hero: React.FC = () => {
       <div className="container relative z-10 m-auto px-5 sm:px-8 lg:px-0">
         {showShopifyPlusIcon && (
           <img
-            src="/images/shopifyplus.svg"
+            src="/images/shopifyplus.png"
             alt="Shopify Plus"
-            className="h-6 sm:h-8 w-auto"
+            className="max-w-90"
           />
         )}
 
-        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 lg:gap-10">
+        <div className="flex flex-col xl:flex-row items-start xl:items-end justify-between gap-6 xl:gap-10">
           {title && (
             <h1
               dangerouslySetInnerHTML={{ __html: title }}
-              className="mt-6 sm:mt-8 lg:mt-10 max-w-full lg:max-w-225 text-5xl md:text-6xl lg:text-8xl font-extrabold leading-normal sm:leading-normal md:leading-none lg:leading-35 text-white"
+              className="mt-6 sm:mt-8 lg:mt-10 max-w-full xl:max-w-225 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-normal sm:leading-normal md:leading-none lg:leading-32 xl:leading-35 text-white"
             ></h1>
           )}
 
           {des && (
-            <div className="mb-0 lg:mb-5 flex max-w-full lg:max-w-100 gap-4 sm:gap-5">
+            <div className="mb-0 lg:mb-5 flex max-w-full xl:max-w-100 gap-4 sm:gap-5">
               <img
                 src="/images/hero-icon.svg"
                 alt=""
