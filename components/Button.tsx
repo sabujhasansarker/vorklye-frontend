@@ -284,8 +284,8 @@ export const ButtonUnderline: React.FC<Props> = ({
       </span>
       {showIcon && (
         <span className="btn-icon">
-          <ArrowUpRight size={16} className="sm:hidden" />
-          <ArrowUpRight size={20} className="hidden sm:block" />
+          <ArrowUpRight size={20} />
+          <ArrowUpRight size={20} />
         </span>
       )}
     </>
