@@ -81,7 +81,7 @@ const Testimonial: React.FC = () => {
         {testimonials.map((item, index) => (
           <SwiperSlide
             key={item.id}
-            className="w-64! h-116! sm:w-80! sm:h-140! lg:w-96! lg:h-176! rounded-[10px] overflow-hidden"
+            className="w-64! h-116! sm:w-80! sm:h-140! lg:w-96! lg:h-176! rounded-sm overflow-hidden"
           >
             <div
               className="relative w-full h-full"
@@ -155,7 +155,7 @@ const Testimonial: React.FC = () => {
                     : "opacity-100"
                 }`}
               >
-                <img src={item.logo} alt="" className="h-5 sm:h-6 w-auto" />
+                <img src={item.logo} alt="" className="max-w-70 min-w-12" />
 
                 <p className="text-neutral-50 text-sm sm:text-base lg:text-lg font-medium leading-6 sm:leading-7 mt-4 sm:mt-5 lg:mt-5.5">
                   {item.quote}

@@ -140,8 +140,8 @@ export const services: Service[] = [
     feature: true,
     shortDes:
       "We design distinctive, intuitive, and conversion-focused Shopify experiences that make your brand look better and help customers buy with confidence.",
-    image: "/images/services/shopify-design.webp",
-    skillImage: "/images/services/shopify-design-skill.webp",
+    image: "/images/services/shopify-design.avif",
+    skillImage: "/images/services/shopify-design-skill.avif",
 
     subServices: [
       "UI/UX Design",
@@ -208,7 +208,6 @@ export const services: Service[] = [
       "Figma",
     ],
   },
-
   {
     id: 2,
     title: "Development",
@@ -216,8 +215,8 @@ export const services: Service[] = [
     feature: true,
     shortDes:
       "From custom themes to advanced Shopify builds, we create fast, flexible, and scalable ecommerce experiences designed around your brand and business goals.",
-    image: "/images/services/shopify-development.webp",
-    skillImage: "/images/services/shopify-development-skill.webp",
+    image: "/images/services/shopify-development.avif",
+    skillImage: "/images/services/shopify-development-skill.avif",
 
     subServices: [
       "Plus Development",
@@ -227,7 +226,6 @@ export const services: Service[] = [
       "App Development",
       "Speed Optimization",
       "Headless Commerce",
-      "B2B & Wholesale Setup",
       "No-code / Low-code Builds",
     ],
 
@@ -285,7 +283,6 @@ export const services: Service[] = [
       "Headless",
     ],
   },
-
   {
     id: 3,
     title: "Integrations",
@@ -293,8 +290,8 @@ export const services: Service[] = [
     feature: true,
     shortDes:
       "We connect Shopify with the platforms, tools, and systems behind your business to create a seamless and efficient ecommerce ecosystem.",
-    image: "/images/services/shopify-integrations.webp",
-    skillImage: "/images/services/shopify-integrations-skill.webp",
+    image: "/images/services/shopify-integrations.avif",
+    skillImage: "/images/services/shopify-integrations-skill.avif",
 
     subServices: [
       "ERP Integration",
@@ -354,7 +351,6 @@ export const services: Service[] = [
 
     tags: ["ERP", "CRM", "PIM", "API", "Payments", "Shipping"],
   },
-
   {
     id: 4,
     title: "Migration",
@@ -362,15 +358,14 @@ export const services: Service[] = [
     feature: true,
     shortDes:
       "We help brands move from other ecommerce platforms to Shopify with careful planning, clean data migration, SEO protection, and a smooth transition.",
-    image: "/images/services/shopify-migration.webp",
-    skillImage: "/images/services/shopify-migration-skill.webp",
+    image: "/images/services/shopify-migration.avif",
+    skillImage: "/images/services/shopify-migration-skill.avif",
 
     subServices: [
       "WooCommerce to Shopify",
       "Magento to Shopify",
       "BigCommerce to Shopify",
       "Shopware to Shopify",
-      "WordPress to Shopify",
     ],
 
     process: [
@@ -427,7 +422,6 @@ export const services: Service[] = [
       "SEO Migration",
     ],
   },
-
   {
     id: 5,
     title: "Growth",
@@ -435,8 +429,8 @@ export const services: Service[] = [
     feature: true,
     shortDes:
       "We help Shopify brands improve performance, increase conversions, and continuously evolve their store into a stronger growth channel.",
-    image: "/images/services/shopify-growth.webp",
-    skillImage: "/images/services/shopify-growth-skill.webp",
+    image: "/images/services/shopify-growth.avif",
+    skillImage: "/images/services/shopify-growth-skill.avif",
 
     subServices: [
       "Conversion Rate Optimization",
@@ -500,46 +494,51 @@ export const services: Service[] = [
 export const industries: Industry[] = [
   {
     id: 1,
-    title: "Finance & Fintech",
-    des: "We create digital products that are both secure and easy to trust, with tidy dashboards and simple steps.",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835cc8700162359f97782eb_Frame%202147203191.webp",
-    link: "#",
+    title: "Fashion & Clothing",
+    des: "We build high-converting Shopify stores that showcase your collections, strengthen your brand, and turn shoppers into loyal customers.",
+    image: "/images/industries/fashion.avif",
   },
   {
     id: 2,
-    title: "E-Commerce & DTC",
-    des: "Our approach of making things simpler and more effective helps users go from browsing to checkout in a few simple steps.",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835cc8663ee6ba76a5af586_Frame%202147203193.webp",
+    title: "Beauty & Cosmetics",
+    des: "We create elegant Shopify stores that showcase your beauty products, build customer trust, and deliver a seamless shopping experience.",
+    image: "/images/industries/cosmetics.avif",
   },
   {
     id: 3,
-    title: "SaaS & B2B Platforms",
-    des: "We build smooth interfaces that make it easy for teams to work, so they can manage tasks quickly and effectively.",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835cc88ff1994c95ae66383_Frame%202147203194.webp",
-  },
-  {
-    id: 6,
-    title: "Finance & Fintech",
-    des: "We create digital products that are both secure and easy to trust, with tidy dashboards and simple steps.",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835cc8700162359f97782eb_Frame%202147203191.webp",
+    title: "Home & Living",
+    des: "We design conversion-focused Shopify stores that bring your home and lifestyle products to life while making every purchase effortless.",
+    image: "/images/industries/home.avif",
   },
   {
     id: 4,
-    title: "E-Commerce & DTC",
-    des: "Our approach of making things simpler and more effective helps users go from browsing to checkout in a few simple steps.",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835cc8663ee6ba76a5af586_Frame%202147203193.webp",
+    title: "Jewelry & Accessories",
+    des: "We craft premium Shopify stores that highlight the details of your products, elevate your brand, and create a memorable shopping experience.",
+    image: "/images/industries/jewelry.avif",
   },
   {
     id: 5,
-    title: "SaaS & B2B Platforms",
-    des: "We build smooth interfaces that make it easy for teams to work, so they can manage tasks quickly and effectively.",
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835cc88ff1994c95ae66383_Frame%202147203194.webp",
+    title: "Food & Beverage",
+    des: "We build engaging Shopify stores that make your products irresistible, simplify discovery, and help turn visitors into repeat customers.",
+    image: "/images/industries/food.avif",
+  },
+  {
+    id: 6,
+    title: "Pet Products",
+    des: "We create friendly, high-performing Shopify stores that make it easy for pet brands to showcase products and grow online sales.",
+    image: "/images/industries/pet.avif",
+  },
+  {
+    id: 7,
+    title: "Fitness & Sports",
+    des: "We build powerful Shopify stores for fitness and sports brands that showcase products clearly and turn active shoppers into customers.",
+    image: "/images/industries/fitness.avif",
+  },
+  {
+    id: 8,
+    title: "Electronics & Gadgets",
+    des: "We design modern Shopify stores that present complex products clearly, build trust, and create a smooth path from discovery to checkout.",
+    image: "/images/industries/electronics.avif",
   },
 ];
 
@@ -824,108 +823,74 @@ export const faqs: Faq[] = [
 export const testimonials: Testimonial[] = [
   {
     id: 1,
-    video:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
+    image: "/images/clients/sek.avif",
     videoLink:
-      "https://github.com/sabujhasansarker/client-video/raw/main/2.mp4.mp4",
-    logo: "/images/brand/3.png",
+      "https://github.com/sabujhasansarker/client-video/raw/main/3.mp4",
+    logo: "/images/brand/1.png",
     quote:
-      "Design Monks did an amazing job bringing my brand to life. From the",
-    name: "Tommy Lu",
-    role: "Founder @ GoodGenes",
+      "Ariyan and barkley Absolutely fantastic in turn to creating my website ....",
+    name: "Sek",
+    role: "United Kingdom",
   },
   {
     id: 2,
-    image:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
+    image: "/images/clients/denny.avif",
     videoLink:
       "https://github.com/sabujhasansarker/client-video/raw/main/2.mp4.mp4",
-    logo: "/images/brand/4.png",
+    logo: "/images/brand/2.png",
     quote:
-      "The team really understood our vision and delivered beyond what we expected.",
-    name: "Sarah Kim",
-    role: "CEO @ Nova Studio",
+      "Hello everyone i would like to tell you about my experience found with ....",
+    name: "Denny",
+    role: "Napoli, Italy",
   },
   {
     id: 3,
-    image:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
+    image: "/images/clients/alex.avif",
     videoLink:
-      "https://github.com/sabujhasansarker/client-video/raw/main/2.mp4.mp4",
-    logo: "/images/brand/5.png",
-    quote:
-      "Communication was smooth throughout the project and the results speak for themselves.",
-    name: "James Carter",
-    role: "Founder @ Blume",
-  },
-  {
-    id: 4,
-    image:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    videoLink:
-      "https://github.com/sabujhasansarker/client-video/raw/main/2.mp4.mp4",
-    logo: "/images/brand/6.png",
-    quote:
-      "Professional, fast, and genuinely invested in our success. Highly recommend.",
-    name: "Elena Marsh",
-    role: "CMO @ Fenix",
-  },
-  {
-    id: 5,
-    image:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    videoLink:
-      "https://github.com/sabujhasansarker/client-video/raw/main/2.mp4.mp4",
+      "https://github.com/sabujhasansarker/client-video/raw/main/1.mp4",
     logo: "/images/brand/3.png",
     quote:
-      "Design Monks did an amazing job bringing my brand to life. From the",
-    name: "Tommy Lu",
-    role: "Founder @ GoodGenes",
-  },
-  {
-    id: 6,
-    image:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    videoLink:
-      "https://github.com/sabujhasansarker/client-video/raw/main/2.mp4.mp4",
-    logo: "/images/brand/4.png",
-    quote:
-      "The team really understood our vision and delivered beyond what we expected.",
-    name: "Sarah Kim",
-    role: "CEO @ Nova Studio",
-  },
-  {
-    id: 7,
-    image:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    videoLink:
-      "https://github.com/sabujhasansarker/client-video/raw/main/2.mp4.mp4",
-    logo: "/images/brand/5.png",
-    quote:
-      "Communication was smooth throughout the project and the results speak for themselves.",
-    name: "James Carter",
-    role: "Founder @ Blume",
-  },
-  {
-    id: 8,
-    image:
-      "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/6972023ccec47fa8734cf934_Client_Armen%20Avagyan%20_916.avif",
-    videoLink:
-      "https://github.com/sabujhasansarker/client-video/raw/main/2.mp4.mp4",
-    logo: "/images/brand/6.png",
-    quote:
-      "Professional, fast, and genuinely invested in our success. Highly recommend.",
-    name: "Elena Marsh",
-    role: "CMO @ Fenix",
+      "I want to recommend Ariyan. He is supper good vary knowledgeable....",
+    name: "Alex",
+    role: "United Kingdom",
   },
 ];
 
 export const teams: TeamMember[] = [
   {
-    image:
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/690d6e37dc1fd0b514fe70ec_Shahd%20mia-p-500.webp",
-    name: "Shahid Miah",
+    image: "/images/team/ariyan.avif",
+    name: "Mizanur Rahman Ariyan",
     designation: "Founder & CEO",
+  },
+  {
+    image: "/images/team/sabuj.avif",
+    name: "Md Sabuj Sarker",
+    designation: "Co-Founder & COO",
+  },
+  {
+    image: "/images/team/mohin.avif",
+    name: "Mohin Uddin",
+    designation: "Shopify Developer",
+  },
+  {
+    image: "/images/team/hasibul.avif",
+    name: "Hasibul Hasan",
+    designation: "Shopify Developer",
+  },
+  {
+    image: "/images/team/imtiaz.avif",
+    name: "MH Imtiaz Omar",
+    designation: "UI/UX Designer",
+  },
+  {
+    image: "/images/team/noman.avif",
+    name: "Abdullah Al Noman",
+    designation: "Marketer",
+  },
+  {
+    image: "/images/team/tohidul.avif",
+    name: "Tohidul Islam",
+    designation: "Adviser",
   },
 ];
 

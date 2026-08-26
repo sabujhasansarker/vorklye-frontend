@@ -412,7 +412,7 @@ export const ServiceItems: React.FC = () => {
               }}
               className="md:col-start-1 md:row-start-1 h-auto md:h-screen w-full bg-black"
             >
-              <div className="flex flex-col md:flex-row h-full w-full gap-6 sm:gap-10 md:gap-25">
+              <div className="flex flex-col md:flex-row h-full w-full gap-6 sm:gap-10 md:gap-15">
                 {/* IMAGE */}
                 <div className="h-[36%] sm:h-[40%] md:h-screen w-full md:w-1/2 overflow-hidden shrink-0">
                   <img
@@ -435,7 +435,7 @@ export const ServiceItems: React.FC = () => {
                         contentRef.current[index] = el;
                       }
                     }}
-                    className="flex flex-col gap-8 sm:gap-12 md:gap-30 py-6 sm:py-10 md:py-20 justify-start md:justify-around h-full"
+                    className="flex flex-col gap-8 md:gap-12 py-6 sm:py-10 md:py-15 h-full"
                   >
                     <div>
                       <h4 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight md:leading-9 text-gray-200">
@@ -477,7 +477,7 @@ export const ServiceItems: React.FC = () => {
                       <img
                         src={item.skillImage}
                         alt={item.title}
-                        className="hidden sm:block w-32 md:w-60 shrink-0"
+                        className="shrink-0 max-h-16 w-fit"
                       />
                     )}
                   </div>
