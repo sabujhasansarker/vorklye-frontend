@@ -12,7 +12,7 @@ export function useScrollSmootherSetup() {
     const smoother = ScrollSmoother.create({
       smooth: 1.5,
       effects: true,
-      normalizeScroll: true,
+      normalizeScroll: false,
     });
 
     const refreshAll = () => ScrollTrigger.refresh();

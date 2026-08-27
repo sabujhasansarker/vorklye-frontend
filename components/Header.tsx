@@ -2,17 +2,10 @@
 
 import { header } from "@/data";
 import { useHeaderFixedOnScrollUp } from "@/utility";
-import {
-  BriefcaseBusiness,
-  Crown,
-  FolderDot,
-  Home,
-  Menu,
-  X,
-} from "lucide-react";
+import { BriefcaseBusiness, Crown, FolderDot, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ButtonSm } from "./Button";
 
 const Header: React.FC = () => {
@@ -101,14 +94,13 @@ const menus = [
 ];
 
 const moreLinks = [
-  { label: "Home", desc: "Home is where the monk lives", link: "/" },
+  { label: "Home", desc: "Home is where the Vorklye lives", link: "/" },
   { label: "About us", desc: "The journey of Design Monks", link: "/about" },
   {
     label: "Meet the team",
-    desc: "An overview of the Monk family",
+    desc: "An overview of the Vorklye family",
     link: "/team",
   },
-  { label: "Blogs", desc: "A collection of informative blogs", link: "/blogs" },
   {
     label: "Career",
     desc: "Work with top global brands, grow your skills",
@@ -116,7 +108,7 @@ const moreLinks = [
   },
   {
     label: "Contact us",
-    desc: "Start your dream design journey from here",
+    desc: "Start your dream growth journey from here",
     link: "/contact",
   },
 ];
@@ -124,9 +116,42 @@ const moreLinks = [
 export const MobileMenu = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+  const scrollRef = useRef<HTMLUListElement>(null);
+
+  // Track chatbot open/close state from Chatbot component
+  useEffect(() => {
+    const handleChatbotState = (e: Event) => {
+      const detail = (e as CustomEvent<{ isOpen: boolean }>).detail;
+      setIsChatbotOpen(detail.isOpen);
+    };
+    window.addEventListener("chatbot-state", handleChatbotState);
+    return () =>
+      window.removeEventListener("chatbot-state", handleChatbotState);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const stopPropagation = (e: Event) => {
+      e.stopPropagation();
+    };
+
+    el.addEventListener("wheel", stopPropagation, { passive: true });
+    el.addEventListener("touchstart", stopPropagation, { passive: true });
+    el.addEventListener("touchmove", stopPropagation, { passive: true });
+
+    return () => {
+      el.removeEventListener("wheel", stopPropagation);
+      el.removeEventListener("touchstart", stopPropagation);
+      el.removeEventListener("touchmove", stopPropagation);
+    };
+  }, [open]);
 
   return (
-    <div className="block xl:hidden">
+    <div className={`xl:hidden ${isChatbotOpen ? "hidden" : "block"}`}>
       {/* backdrop when the "More" sheet is open */}
       {open && (
         <div
@@ -142,7 +167,14 @@ export const MobileMenu = () => {
             open ? "max-h-[70vh]" : "max-h-0"
           }`}
         >
-          <ul className="bg-white rounded-t-4xl max-h-[70vh] overflow-y-auto pb-4">
+          <ul
+            ref={scrollRef}
+            data-scrollable="true"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+            className="bg-white rounded-t-4xl max-h-[60vh] overflow-y-auto overscroll-contain touch-pan-y pb-4"
+          >
             {moreLinks.map((item, i) => (
               <li key={i} className="border-b border-black/5 last:border-none">
                 <a
@@ -183,12 +215,24 @@ export const MobileMenu = () => {
 
             {/* floating center action button */}
             <li className="relative flex-1">
-              <a
-                href="/"
-                className="flex items-center justify-center bg-gradient-to-br from-[#EBFE5B] to-black text-white size-16 rounded-full absolute left-1/2 -translate-x-1/2 -top-22"
+              <button
+                onClick={() => {
+                  window.dispatchEvent(new Event("toggle-chatbot"));
+                }}
+                title="AI Chatbot Support"
+                aria-label="AI Chatbot Support"
+                className="size-16 rounded-full absolute left-1/2 -translate-x-1/2 -top-20 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
               >
-                <Home size={26} />
-              </a>
+                <img
+                  src={
+                    isChatbotOpen
+                      ? "/images/chat-icon-x.png"
+                      : "/images/chat-icon-mobile.png"
+                  }
+                  alt="AI Chatbot"
+                  className="size-16 object-contain"
+                />
+              </button>
             </li>
 
             {menus.slice(2).map((menu, i) => {

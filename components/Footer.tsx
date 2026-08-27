@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
   const { logo, info, button, social, menus, contactInfo } = footer;
 
   return (
-    <footer className="relative w-full max-w-full overflow-hidden bg-neutral-950 pt-14 sm:pt-20 md:pt-24 lg:pt-30 pb-28 lg:pb-0">
+    <footer className="relative w-full max-w-full overflow-hidden bg-neutral-950 pt-14 sm:pt-20 md:pt-24 lg:pt-30 pb-20 lg:pb-0">
       {/* MAIN FOOTER */}
       <div className="container mx-auto px-5 sm:px-8 lg:px-0">
         <div className="flex flex-col lg:flex-row gap-14 sm:gap-18 lg:gap-20 xl:gap-50">
