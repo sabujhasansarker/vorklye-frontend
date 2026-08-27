@@ -132,11 +132,6 @@ export interface CaseStudy {
   image: string;
   logo: string;
   websiteUrl: string;
-  challenge: string;
-  solution: string;
-  results: CaseStudyResult[];
-  galleryImages: string[];
-  testimonial: CaseStudyTestimonial;
 }
 
 // ==========================================================================

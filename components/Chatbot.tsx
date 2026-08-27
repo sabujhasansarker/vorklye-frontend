@@ -8,7 +8,6 @@ import {
   queryWebsiteKnowledge,
 } from "@/lib/chatbotKnowledge";
 import {
-  Bot,
   ChevronRight,
   ExternalLink,
   RotateCcw,
@@ -558,19 +557,19 @@ export function Chatbot() {
             {isTyping && (
               <div className="flex items-center gap-2.5 text-neutral-400 text-xs">
                 <div className="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center shrink-0">
-                  <Bot className="w-4 h-4 text-emerald-400 animate-pulse" />
+                  <img src="/images/chat-icon.png" className="size-7" />
                 </div>
                 <div className="px-4 py-2.5 rounded-2xl bg-neutral-900 border border-white/10 flex items-center gap-1.5">
                   <span
-                    className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce"
+                    className="w-1.5 h-1.5 rounded-full bg-[#C9FF00] animate-bounce"
                     style={{ animationDelay: "0ms" }}
                   />
                   <span
-                    className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce"
+                    className="w-1.5 h-1.5 rounded-full bg-[#C9FF00] animate-bounce"
                     style={{ animationDelay: "150ms" }}
                   />
                   <span
-                    className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce"
+                    className="w-1.5 h-1.5 rounded-full bg-[#C9FF00] animate-bounce"
                     style={{ animationDelay: "300ms" }}
                   />
                   <span className="ml-1 text-[11px] text-neutral-400">

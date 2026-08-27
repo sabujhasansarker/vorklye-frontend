@@ -81,8 +81,6 @@ const CaseStudiesSection: React.FC = () => {
           {caseStudies
             .filter((item) => item.feature)
             .map((item, index) => {
-              const slug = item.title.toLowerCase().replace(/\s+/g, "-");
-
               return (
                 <div
                   key={item.id}
@@ -96,15 +94,15 @@ const CaseStudiesSection: React.FC = () => {
                       <img
                         src={item.logo}
                         alt={item.title}
-                        className="w-fit h-4 sm:h-8 object-contain mb-10"
+                        className="w-30 mb-10"
                       />
                     )}
 
-                    <h4 className="my-4 sm:my-5 text-xl sm:text-2xl lg:text-3xl font-bold text-gray-200">
-                      <Link href={`/case-studies/${slug}`}>{item.title}</Link>
+                    <h4 className="my-4 sm:my-5 text-xl sm:text-2xl lg:text-3xl leading-normal font-bold text-gray-200">
+                      {item.title}
                     </h4>
 
-                    <p className="max-w-full lg:max-w-123.75 text-base sm:text-lg font-medium leading-7 sm:leading-8 text-gray-200">
+                    <p className="max-w-full text-base sm:text-lg font-medium leading-7 sm:leading-8 text-gray-200">
                       {item.description}
                     </p>
 
@@ -137,8 +135,9 @@ const CaseStudiesSection: React.FC = () => {
                     </div>
 
                     <ButtonUnderline
-                      text="View Details"
-                      href={`/case-studies/${slug}`}
+                      target="_blank"
+                      text="Visit Website"
+                      href={`${item.websiteUrl}`}
                     />
                   </div>
 

@@ -545,181 +545,83 @@ export const industries: Industry[] = [
 export const caseStudies: CaseStudy[] = [
   {
     id: 1,
-    title: "Capital Growth Solutions",
-    client: "Capital Growth Inc.",
+    title: "Luxy Hair Extensions E-Commerce Overhaul",
+    client: "Luxy Hair Co.",
     feature: true,
     description:
-      "A complete headless digital commerce overhaul designed to accelerate client conversions and scale operational capacity across global markets.",
-    services: ["Shopify Plus", "Migration"],
+      "A high-converting, pro-grade e-commerce storefront tailored for custom hair extension matching, interactive shade selector quizzes, and seamless global shopping experiences.",
+    services: ["Shopify Plus", "Custom UI/UX", "Virtual Shade Matching"],
     serviceIds: [1, 2],
-    industry: "Fintech & Consulting",
-    published: "2024",
-    image: "/images/case-studies/1.png",
-    logo: "/images/brand/3.png",
-    websiteUrl: "https://example.com/capital-growth",
-    challenge:
-      "Capital Growth needed to modernize their outdated legacy commerce architecture which was causing slow page speeds (4.8s TTFB), disjointed checkout journeys, and poor mobile conversion rates that hindered international expansion.",
-    solution:
-      "We engineered a custom headless Shopify storefront integrated with real-time inventory management, a modular design system, and multi-currency checkout, cutting latency by 72% and streamlining customer flows.",
-    results: [
-      { label: "Conversion Rate Increase", value: "+148%" },
-      { label: "Page Load Acceleration", value: "3.2x Faster" },
-      { label: "Annual Revenue Growth", value: "+210%" },
-      { label: "Mobile Bounce Rate", value: "-42%" },
-    ],
-    galleryImages: [
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422ed8ffd5696dac6a4_UX%20Design-p-1080.webp",
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422a7f442bbf1487074_Web%20Design-p-1080.webp",
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c4229130cd923555f69b_Mobile%20App%20Design-p-1080.webp",
-    ],
-    testimonial: {
-      quote:
-        "The team at Vorklye transformed our entire digital ecosystem. Our store is faster, more engaging, and our conversion rate doubled within three months of launch.",
-      author: "Marcus Vance",
-      role: "VP of Digital @ Capital Growth",
-    },
+    industry: "Beauty & Personal Care",
+    published: "2026",
+    image: "/images/case-studies/luxy.avif",
+    logo: "/images/brand/23.png",
+    websiteUrl: "https://www.luxyhair.com/",
   },
   {
     id: 2,
-    title: "Rovero Commerce Platform",
+    title: "Bootea Health & Fitness Digital Transformation",
+    client: "Bootea UK",
     feature: true,
-    client: "Rovero Lifestyle",
     description:
-      "Crafting an immersive high-end fashion experience with responsive 3D lookbooks and seamless omnichannel checkout for modern luxury buyers.",
-    services: ["Shopify Theme Development", "CRO Strategy"],
+      "An all-natural health and detox e-commerce storefront designed to streamline international orders, promote subscription-based teatox kits, and deliver flexible eating plans.",
+    services: [
+      "Shopify Plus",
+      "E-Commerce Optimization",
+      "Custom UI/UX",
+      "Global Fulfillment",
+    ],
     serviceIds: [1, 2],
-    industry: "Luxury Fashion & Apparel",
-    published: "2023",
-    image: "/images/case-studies/shwoodshop.gif",
-    logo: "/images/brand/4.png",
-    websiteUrl: "https://example.com/rovero",
-    challenge:
-      "Rovero was struggling to replicate the premium in-store luxury boutique feel on digital screens. Customer sessions were dropping off prematurely on product detail pages, and checkout abandonment was above 75%.",
-    solution:
-      "We designed an editorial-grade aesthetic with high-fidelity visual storytelling, interactive lookbooks, one-click checkout, and AI-driven sizing guidance that instilled confidence in shoppers.",
-    results: [
-      { label: "Average Order Value (AOV)", value: "+38%" },
-      { label: "Checkout Completion Rate", value: "+86%" },
-      { label: "Engagement Time On Site", value: "+2.4x" },
-      { label: "Return Rate Reduction", value: "-24%" },
-    ],
-    galleryImages: [
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422529dc0db1881445e_Branding%20%26%20Identity-p-1080.webp",
-      "/images/case-studies/1.png",
-    ],
-    testimonial: {
-      quote:
-        "Our digital flagship now feels as exclusive and refined as our Madison Avenue store. Vorklye's attention to detail is truly world-class.",
-      author: "Elena Rostova",
-      role: "Creative Director @ Rovero",
-    },
+    industry: "Health, Fitness & Wellness",
+    published: "2026",
+    image: "/images/case-studies/bootea.avif",
+    logo: "/images/brand/bootea.png",
+    websiteUrl: "https://www.bootea.com/",
   },
   {
     id: 3,
-    title: "Lumina Skincare Experience",
-    client: "Lumina Botanicals",
+    title: "frank green Digital Commerce Transformation",
+    client: "frank green Australia",
+    feature: true,
     description:
-      "Transforming a clean beauty DTC brand with custom skin-diagnostic quizzes, recurring subscription models, and personalized product bundles.",
-    services: ["Custom App Setup", "Subscription Commerce", "Design System"],
+      "A stylish, eco-friendly lifestyle storefront engineered for customizable reusable drinkware, seamless global shipping, corporate gifting, and bespoke product personalization.",
+    services: ["Shopify Plus"],
     serviceIds: [1, 2],
-    industry: "Beauty & Personal Care",
-    published: "2023",
-    image: "/images/case-studies/1.png",
-    logo: "/images/brand/5.png",
-    websiteUrl: "https://example.com/lumina",
-    challenge:
-      "Lumina needed to boost recurring customer lifetime value (LTV) and educate users on complex botanical regimens without cluttering the mobile shopping experience.",
-    solution:
-      "We built an interactive skincare quiz that automatically generates custom routine bundles, alongside a frictionless Recharge subscription workflow that increased subscriber retention.",
-    results: [
-      { label: "Subscription Revenue Share", value: "46% of Total" },
-      { label: "Customer Lifetime Value (LTV)", value: "+92%" },
-      { label: "Quiz Completion Rate", value: "78%" },
-      { label: "Repeat Purchase Rate", value: "3.1x" },
-    ],
-    galleryImages: [
-      "/images/case-studies/1.png",
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422ed8ffd5696dac6a4_UX%20Design-p-1080.webp",
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-    ],
-    testimonial: {
-      quote:
-        "The routine quiz and subscription experience developed by Vorklye became our primary growth lever overnight. We couldn't be happier.",
-      author: "Chloe Bennett",
-      role: "Co-Founder @ Lumina Botanicals",
-    },
+    industry: "Lifestyle, Home",
+    published: "2026",
+    image: "/images/case-studies/frankgreen.avif",
+    logo: "/images/brand/frankgreen.png",
+    websiteUrl: "https://frankgreen.com.au/",
   },
   {
     id: 4,
-    title: "Apex Outdoor Equipment",
-    client: "Apex Gear International",
+    title: "Leonye E-Commerce & Brand Transformation",
+    client: "Leonye UK",
+    feature: true,
     description:
-      "Enterprise multi-warehouse B2B and DTC unified commerce platform built for extreme catalog complexity and wholesale volume discounts.",
-    services: ["Shopify Plus B2B", "ERP Integration", "Headless Architecture"],
+      "A modern UK pet lifestyle and care storefront engineered for custom subscription deliveries, interactive pet essentials, and seamless doorstep fulfillment.",
+    services: ["Shopify Plus", "E-Commerce Optimization"],
     serviceIds: [1, 2],
-    industry: "Sports & Outdoor Equipment",
-    published: "2024",
-    image:
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-    logo: "/images/brand/6.png",
-    websiteUrl: "https://example.com/apex-gear",
-    challenge:
-      "Apex handled 12,000+ SKUs across 8 regional warehouses, needing tiered wholesale pricing, instant quote generation, and rapid consumer order fulfillment on a single platform.",
-    solution:
-      "We architected a unified Shopify Plus B2B & DTC platform connected to their NetSuite ERP with custom tier pricing logic, faceted search filters, and instant shipping calculation.",
-    results: [
-      { label: "Wholesale Order Efficiency", value: "+320%" },
-      { label: "Catalog Search Speed", value: "45ms" },
-      { label: "Enterprise Sales Velocity", value: "+175%" },
-      { label: "Manual Order Processing Time", value: "-80%" },
-    ],
-    galleryImages: [
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-      "/images/case-studies/1.png",
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422a7f442bbf1487074_Web%20Design-p-1080.webp",
-    ],
-    testimonial: {
-      quote:
-        "Vorklye solved complex enterprise B2B logistics that other agencies declared impossible on Shopify. They are absolute technical wizards.",
-      author: "David Sterling",
-      role: "Chief Operating Officer @ Apex Gear",
-    },
+    industry: "Pet Care, Lifestyle & Accessories",
+    published: "2026",
+    image: "/images/case-studies/leonye.avif",
+    logo: "/images/brand/leonye.png",
+    websiteUrl: "https://leonye.com/",
   },
   {
     id: 5,
-    title: "Apex Outdoor Equipment",
-    client: "Apex Gear International",
+    title: "Shwood Eyewear E-Commerce & Brand Storefront",
+    client: "Shwood Eyewear",
+    feature: true,
     description:
-      "Enterprise multi-warehouse B2B and DTC unified commerce platform built for extreme catalog complexity and wholesale volume discounts.",
-    services: ["Shopify Plus B2B", "ERP Integration", "Headless Architecture"],
-    industry: "Sports & Outdoor Equipment",
-    published: "2024",
-    image:
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-    logo: "/images/brand/6.png",
-    websiteUrl: "https://example.com/apex-gear",
-    challenge:
-      "Apex handled 12,000+ SKUs across 8 regional warehouses, needing tiered wholesale pricing, instant quote generation, and rapid consumer order fulfillment on a single platform.",
-    solution:
-      "We architected a unified Shopify Plus B2B & DTC platform connected to their NetSuite ERP with custom tier pricing logic, faceted search filters, and instant shipping calculation.",
-    results: [
-      { label: "Wholesale Order Efficiency", value: "+320%" },
-      { label: "Catalog Search Speed", value: "45ms" },
-      { label: "Enterprise Sales Velocity", value: "+175%" },
-      { label: "Manual Order Processing Time", value: "-80%" },
-    ],
-    galleryImages: [
-      "https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp",
-      "/images/case-studies/1.png",
-      "https://cdn.prod.website-files.com/6655d16113e6966ef4eb1041/6835c422a7f442bbf1487074_Web%20Design-p-1080.webp",
-    ],
-    testimonial: {
-      quote:
-        "Vorklye solved complex enterprise B2B logistics that other agencies declared impossible on Shopify. They are absolute technical wizards.",
-      author: "David Sterling",
-      role: "Chief Operating Officer @ Apex Gear",
-    },
+      "An iconic Oregon-based eyewear brand storefront featuring handcrafted wood classics, titanium & acetate originals, custom collection bundles, and active performance sunglass lines.",
+    services: ["E-Commerce Optimization", "Brand Experience"],
+    serviceIds: [1, 2],
+    industry: "Eyewear & Fashion Accessories",
+    published: "2026",
+    image: "/images/case-studies/shwood.gif",
+    logo: "/images/brand/shwood.png",
+    websiteUrl: "https://shwood.com/",
   },
 ];
 

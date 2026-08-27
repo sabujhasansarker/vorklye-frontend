@@ -263,7 +263,6 @@ export const ButtonUnderlineBig: React.FC<Props> = ({
 export const ButtonUnderline: React.FC<Props> = ({
   text = "More about us",
   href = "#",
-  external,
   target,
   rel,
   className = "",
@@ -272,7 +271,6 @@ export const ButtonUnderline: React.FC<Props> = ({
   ariaLabel,
   showIcon = true,
 }) => {
-  const useNativeAnchor = external ?? isExternalLink(href);
   const computedRel =
     rel ?? (target === "_blank" ? "noopener noreferrer" : undefined);
 
@@ -282,6 +280,7 @@ export const ButtonUnderline: React.FC<Props> = ({
         <span>{text}</span>
         <span>{text}</span>
       </span>
+
       {showIcon && (
         <span className="btn-icon">
           <ArrowUpRight size={20} />
@@ -307,23 +306,8 @@ export const ButtonUnderline: React.FC<Props> = ({
     );
   }
 
-  if (useNativeAnchor) {
-    return (
-      <a
-        href={href}
-        target={target}
-        rel={computedRel}
-        className={combinedClassName}
-        onClick={onClick}
-        aria-label={ariaLabel ?? text}
-      >
-        {content}
-      </a>
-    );
-  }
-
   return (
-    <Link
+    <a
       href={href}
       target={target}
       rel={computedRel}
@@ -332,7 +316,7 @@ export const ButtonUnderline: React.FC<Props> = ({
       aria-label={ariaLabel ?? text}
     >
       {content}
-    </Link>
+    </a>
   );
 };
 
