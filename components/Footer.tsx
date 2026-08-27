@@ -1,7 +1,6 @@
 "use client";
 
 import { footer } from "@/data";
-import { ArrowDown } from "lucide-react";
 import React from "react";
 
 type FooterLink = {
@@ -71,38 +70,6 @@ const Footer: React.FC = () => {
               <p className="w-full max-w-md mt-5 sm:mt-7 text-zinc-400 text-sm sm:text-base lg:text-[18px] font-semibold leading-6 sm:leading-7">
                 {info}
               </p>
-            )}
-
-            {/* BUTTON */}
-            {button && (
-              <a
-                href={button.link}
-                className="
-                  mt-7 sm:mt-9
-                  pl-5 sm:pl-6
-                  pr-2
-                  py-2
-                  bg-[#C9FF00]
-                  rounded-sm
-                  inline-flex
-                  items-center
-                  justify-between
-                  gap-5 sm:gap-8
-                  max-w-full
-                  overflow-hidden
-                "
-              >
-                <span
-                  data-hover-text
-                  className="text-zinc-900 text-sm sm:text-base font-bold leading-6 whitespace-nowrap"
-                >
-                  {button.label}
-                </span>
-
-                <span className="bg-zinc-900 size-8 sm:size-9 flex items-center justify-center shrink-0">
-                  <ArrowDown className="text-white size-4 sm:size-5" />
-                </span>
-              </a>
             )}
 
             {/* SOCIAL */}
