@@ -75,11 +75,7 @@ const page: React.FC<Props> = () => {
             </div>
           </div>
           <div className="about-banner mt-10 sm:mt-14 lg:mt-20">
-            <img
-              className="w-full"
-              src="https://boomdevs.com/wp-content/uploads/2026/07/Rectangle-39919.webp"
-              alt=""
-            />
+            <img className="w-full" src="/images/about.avif" alt="" />
           </div>
         </div>
       </section>

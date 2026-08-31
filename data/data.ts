@@ -23,7 +23,7 @@ export const siteData: SiteData = {
 
   email: "hello@vorklye.com",
 
-  whatsapp: "+1 628-265-7462",
+  whatsapp: "+880 1898-930213",
 
   logo: "/images/logo.png",
 
@@ -1068,8 +1068,7 @@ export const careerPage: CareerPage = {
       label: "Explore Open Roles",
       link: "#open",
     },
-    image:
-      "https://boomdevs.com/wp-content/uploads/2026/07/Rectangle-39919.webp",
+    image: "/images/about.avif",
   },
   benift: {
     title: "Why Work <span>With Us?</span>",
@@ -1182,8 +1181,7 @@ export const servicePage: ServicePage = {
       label: "Let’s Build Your Store",
       link: "/contact",
     },
-    image:
-      "https://boomdevs.com/wp-content/uploads/2026/07/Rectangle-39919.webp",
+    image: "/images/about.avif",
   },
   industrie: {
     title: "Built for your industry. <span>Designed to grow.</span>",

@@ -2450,8 +2450,7 @@ export const aboutPageData = {
   heroSubtitle:
     "We’re more than a software company. We’re your strategic partner in building purposeful, high-impact digital products that grow with your business.",
   heroCtaText: "Book a Free Strategy Call",
-  bannerImage:
-    "https://boomdevs.com/wp-content/uploads/2026/07/Rectangle-39919.webp",
+  bannerImage: "/images/about.avif",
   counter: aboutCounter,
   missionSubtitle: "/ Mission",
   missionTitle:
@@ -2477,8 +2476,7 @@ export const careerPageData = {
   heroSubtitle:
     "We’re a team of thinkers, makers, and doers — passionate about creating meaningful experiences and solving real problems. If you’re driven by creativity, collaboration, and constant growth, you’ll feel right at home here.",
   heroCtaText: "Explore open roles",
-  bannerImage:
-    "https://boomdevs.com/wp-content/uploads/2026/07/Rectangle-39919.webp",
+  bannerImage: "/images/about.avif",
   whyWorkSubtitle: "/ Design Agency",
   whyWorkTitle: "Why Work With Us?",
   positionsSubtitle: "/Position",
@@ -2495,8 +2493,7 @@ export const servicesPageData = {
   heroSubtitle:
     "From the first brand strategy session to the final line of code, we handle every dimension of your growth under one roof.",
   heroCtaText: "Let’s Discuss Your Project",
-  bannerImage:
-    "https://boomdevs.com/wp-content/uploads/2026/07/Rectangle-39919.webp",
+  bannerImage: "/images/about.avif",
   industriesSubtitle: "/ Industries",
   industriesTitle: "Industry expertise <span>across globally</span>",
   consultButtonText: "Consult an expert",
