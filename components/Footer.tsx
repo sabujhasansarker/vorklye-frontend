@@ -177,7 +177,7 @@ const Footer: React.FC = () => {
       ===================================================== */}
       <div className="relative w-full max-w-full overflow-hidden mt-16 sm:mt-20 md:mt-24 lg:mt-30">
         <div className="w-full max-w-full overflow-hidden">
-          <img src="/images/footer-logo.png" className="w-full" alt="" />
+          <img src="/images/footer-logo.avif" className="w-full" alt="" />
         </div>
       </div>
     </footer>

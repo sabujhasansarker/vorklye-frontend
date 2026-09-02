@@ -177,7 +177,7 @@ export const MobileMenu = () => {
           >
             {moreLinks.map((item, i) => (
               <li key={i} className="border-b border-black/5 last:border-none">
-                <a
+                <Link
                   href={item.link}
                   onClick={() => setOpen(false)}
                   className="block px-6 py-4"
@@ -186,7 +186,7 @@ export const MobileMenu = () => {
                     {item.label}
                   </p>
                   <p className="text-black/50 text-sm mt-0.5">{item.desc}</p>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -200,7 +200,7 @@ export const MobileMenu = () => {
               const isActive = pathname === menu.link;
               return (
                 <li key={i} className="flex-1">
-                  <a
+                  <Link
                     href={menu.link}
                     className={`flex flex-col items-center gap-1.5 transition-colors ${
                       isActive ? "text-white" : "text-white/50"
@@ -208,31 +208,23 @@ export const MobileMenu = () => {
                   >
                     <Icon size={22} />
                     <span>{menu.label}</span>
-                  </a>
+                  </Link>
                 </li>
               );
             })}
 
             {/* floating center action button */}
             <li className="relative flex-1">
-              <button
-                onClick={() => {
-                  window.dispatchEvent(new Event("toggle-chatbot"));
-                }}
-                title="AI Chatbot Support"
-                aria-label="AI Chatbot Support"
+              <Link
+                href="/"
                 className="size-16 rounded-full absolute left-1/2 -translate-x-1/2 -top-20 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
               >
                 <img
-                  src={
-                    isChatbotOpen
-                      ? "/images/chat-icon-x.png"
-                      : "/images/chat-icon-mobile.png"
-                  }
+                  src={"/images/mobile-home.avif"}
                   alt="AI Chatbot"
                   className="size-16 object-contain"
                 />
-              </button>
+              </Link>
             </li>
 
             {menus.slice(2).map((menu, i) => {
@@ -240,7 +232,7 @@ export const MobileMenu = () => {
               const isActive = pathname === menu.link;
               return (
                 <li key={i} className="flex-1">
-                  <a
+                  <Link
                     href={menu.link}
                     className={`flex flex-col items-center gap-1.5 transition-colors ${
                       isActive ? "text-white" : "text-white/50"
@@ -248,7 +240,7 @@ export const MobileMenu = () => {
                   >
                     <Icon size={22} />
                     <span>{menu.label}</span>
-                  </a>
+                  </Link>
                 </li>
               );
             })}

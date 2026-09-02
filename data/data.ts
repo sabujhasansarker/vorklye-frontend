@@ -25,7 +25,7 @@ export const siteData: SiteData = {
 
   whatsapp: "+880 1898-930213",
 
-  logo: "/images/logo.png",
+  logo: "/images/logo.avif",
 
   ceo: {
     name: "Ariyan",
@@ -555,8 +555,8 @@ export const caseStudies: CaseStudy[] = [
     industry: "Beauty & Personal Care",
     published: "2026",
     image: "/images/case-studies/luxy.avif",
-    logo: "/images/brand/23.png",
-    websiteUrl: "https://www.luxyhair.com/",
+    logo: "/images/brand/luxy.png",
+    websiteUrl: "https://www.luxy.com/",
   },
   {
     id: 2,
@@ -665,28 +665,64 @@ export const footer: Footer = {
 };
 
 export const brands: Brand[] = [
-  { id: 1, image: "/images/brand/1.png", home: true, shortRender: true },
-  { id: 2, image: "/images/brand/2.png", home: true, shortRender: true },
-  { id: 3, image: "/images/brand/3.png", home: true, shortRender: true },
-  { id: 4, image: "/images/brand/4.png", home: true, shortRender: true },
-  { id: 5, image: "/images/brand/5.png", home: true, shortRender: true },
-  { id: 6, image: "/images/brand/6.png", home: true, shortRender: true },
-  { id: 7, image: "/images/brand/7.png", shortRender: true },
-  { id: 8, image: "/images/brand/8.png", shortRender: true },
-  { id: 9, image: "/images/brand/9.png", shortRender: true },
-  { id: 10, image: "/images/brand/10.png", shortRender: true },
-  { id: 11, image: "/images/brand/11.png", shortRender: true },
-  { id: 12, image: "/images/brand/12.png", shortRender: true },
-  { id: 13, image: "/images/brand/13.png", shortRender: true },
-  { id: 14, image: "/images/brand/14.png", shortRender: true },
-  { id: 15, image: "/images/brand/15.png", shortRender: true },
-  { id: 16, image: "/images/brand/16.png", shortRender: true },
-  { id: 17, image: "/images/brand/17.png", shortRender: true },
-  { id: 18, image: "/images/brand/18.png", shortRender: true },
-  { id: 19, image: "/images/brand/19.png", shortRender: true },
-  { id: 20, image: "/images/brand/20.png", shortRender: true },
-  { id: 21, image: "/images/brand/21.png", shortRender: true },
-  { id: 22, image: "/images/brand/22.png" },
+  {
+    id: 1,
+    image: "/images/brand/grandejohnson.png",
+    home: false,
+    shortRender: true,
+  },
+  { id: 2, image: "/images/brand/luxy.png", home: true, shortRender: true },
+  {
+    id: 3,
+    image: "/images/brand/disc.png",
+    home: false,
+
+    shortRender: true,
+  },
+  { id: 4, image: "/images/brand/strapey.png", home: false, shortRender: true },
+  { id: 5, image: "/images/brand/kingice.png", home: true, shortRender: true },
+  {
+    id: 6,
+    image: "/images/brand/profashionhair.png",
+    home: true,
+    shortRender: true,
+  },
+
+  {
+    id: 7,
+    image: "/images/brand/cherrydiva.png",
+    shortRender: true,
+    home: true,
+  },
+  { id: 8, image: "/images/brand/watchmeglow.png", shortRender: true },
+  { id: 9, image: "/images/brand/shwoodshop.png", shortRender: true },
+  { id: 10, image: "/images/brand/fitskin.png", shortRender: true },
+  { id: 11, image: "/images/brand/goodsaltlife.png", shortRender: true },
+  {
+    id: 12,
+    image: "/images/brand/vanitylaser.png",
+    shortRender: true,
+    home: true,
+  },
+  {
+    id: 13,
+    image: "/images/brand/orlandolakebuenavistaevents.png",
+    shortRender: true,
+  },
+  { id: 14, image: "/images/brand/hairsolutions.png", shortRender: true },
+  { id: 15, image: "/images/brand/nyrosenaturals.png", shortRender: true },
+  { id: 16, image: "/images/brand/debemcomavida.png", shortRender: true },
+  { id: 17, image: "/images/brand/untamed.png", shortRender: true },
+  { id: 18, image: "/images/brand/frankgreen.png", shortRender: true },
+  { id: 19, image: "/images/brand/lyka.png", shortRender: true },
+  { id: 20, image: "/images/brand/ufd.png", shortRender: true },
+  { id: 21, image: "/images/brand/ninjatransfers.png", shortRender: true },
+  { id: 22, image: "/images/brand/thebedroomparkcity.png" },
+  { id: 23, image: "/images/brand/lucywalkerjewelry.png" },
+  { id: 24, image: "/images/brand/turbopersonaltraining.png" },
+  { id: 25, image: "/images/brand/aventigroup.png" },
+  { id: 26, image: "/images/brand/bigfellaautoexpress.png" },
+  { id: 27, image: "/images/brand/bootea.png", home: true },
 ];
 
 export const faqs: Faq[] = [
@@ -984,8 +1020,7 @@ export const aboutPage: AboutPage = {
 export const contactPage: ContactPage = {
   title: "<span>Let’s Build Something That Grows.</span>",
 
-  supportImage:
-    "https://notionhive.com/_next/image?url=https%3A%2F%2Fcms.notionhive.com%2Fwp-content%2Fuploads%2F2026%2F05%2FFrame-2147223905-1.png&w=1080&q=75",
+  supportImage: "/images/support-team.avif",
 
   description:
     "Have a Shopify store to build, improve, or scale? Tell us what you're working on, and our team will help you find the right strategy, solution, and next step for your brand.",

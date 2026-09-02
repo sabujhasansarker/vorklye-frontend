@@ -345,14 +345,14 @@ export function Chatbot() {
           <div className="relative z-10 flex items-center justify-center size-full">
             {isOpen ? (
               <img
-                src="/images/chat-icon-x.png"
+                src="/images/chat-icon-x.avif"
                 alt="Close Chat"
                 className="size-full object-contain transform transition-all duration-300 rotate-0 group-hover:rotate-90 group-hover:scale-105"
               />
             ) : (
               <div className="relative size-full flex items-center justify-center">
                 <img
-                  src="/images/chat-icon.png"
+                  src="/images/chat-icon.avif"
                   alt="Open Chat"
                   className="size-full object-contain transform transition-all duration-300 group-hover:rotate-12 group-hover:scale-110"
                 />
@@ -384,7 +384,7 @@ export function Chatbot() {
           <div className="flex items-center justify-between px-5 py-4 bg-linear-to-r from-neutral-900 via-neutral-900/90 to-neutral-950 border-b border-white/10 shrink-0">
             <div className="flex items-center gap-3">
               <div className="relative ">
-                <img src="/images/chat-icon.png" className="size-10" alt="" />
+                <img src="/images/chat-icon.avif" className="size-10" alt="" />
               </div>
               <div>
                 <div className="flex items-start gap-1.5">
@@ -445,7 +445,7 @@ export function Chatbot() {
                     {msg.sender === "user" ? (
                       <UserRound className="w-4 h-4" />
                     ) : (
-                      <img src="/images/chat-icon.png" alt="" />
+                      <img src="/images/chat-icon.avif" alt="" />
                     )}
                   </div>
                   <div>
@@ -557,7 +557,7 @@ export function Chatbot() {
             {isTyping && (
               <div className="flex items-center gap-2.5 text-neutral-400 text-xs">
                 <div className="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center shrink-0">
-                  <img src="/images/chat-icon.png" className="size-7" />
+                  <img src="/images/chat-icon.avif" className="size-7" />
                 </div>
                 <div className="px-4 py-2.5 rounded-2xl bg-neutral-900 border border-white/10 flex items-center gap-1.5">
                   <span

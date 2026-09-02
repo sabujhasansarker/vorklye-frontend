@@ -60,7 +60,11 @@ const Hero = ({ hero }: HeroProps) => {
           </div>
         </div>
         <div className="about-banner mt-10 sm:mt-14 lg:mt-20">
-          <img className="w-full" src="/images/about.avif" alt="" />
+          <img
+            className="w-full max-h-150 object-cover object-top"
+            src="/images/about.avif"
+            alt=""
+          />
         </div>
       </div>
     </section>

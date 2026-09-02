@@ -24,7 +24,12 @@ const Brand: React.FC = () => {
         {/* Brands */}
         <div className="mt-10 sm:mt-16 lg:mt-25 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-8 sm:gap-12 lg:gap-17.5 items-center justify-items-center">
           {logos.slice(0, INITIAL_COUNT).map(({ id, image }) => (
-            <img key={id} src={image} alt="" className="max-w-full h-auto" />
+            <img
+              key={id}
+              src={image}
+              alt=""
+              className="md:max-w-30 md:max-h-20 max-w-20 max-h-20"
+            />
           ))}
         </div>
 
@@ -41,7 +46,7 @@ const Brand: React.FC = () => {
                     key={id}
                     src={image}
                     alt=""
-                    className="max-w-full h-auto transition-all duration-500 ease-in-out"
+                    className="md:max-w-30 md:max-h-20 max-w-20 max-h-20 transition-all duration-500 ease-in-out"
                     style={{
                       opacity: showAll ? 1 : 0,
                       transform: `translateY(${showAll ? 0 : -10}px)`,
@@ -91,7 +96,7 @@ export const BrandShort: React.FC = () => {
                   key={logo.id}
                   src={logo.image}
                   alt=""
-                  className="max-w-full h-auto"
+                  className="md:max-w-30 md:max-h-20 max-w-20 max-h-20"
                 />
               ),
           )}

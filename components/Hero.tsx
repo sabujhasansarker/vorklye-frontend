@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
                         key={`${id}-${index}`}
                         src={image}
                         alt="Brand Logo"
-                        className="object-contain"
+                        className="object-contain max-w-30 max-h-20"
                       />
                     ),
                 )}
